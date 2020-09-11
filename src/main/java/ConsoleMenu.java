@@ -10,14 +10,12 @@ public class ConsoleMenu {
     public static void main(String[] args) {
 
 
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-    STDOUT.info("Welcome to out winky-twinkie drink application!!!\n Please take a look on menu :\n \n " +
-            "__________________________________________________________________ \n \n " +
-            " Lets try to find drink what will suit you !");
-
-
+        STDOUT.info("Welcome to out winky-twinkie drink application!!!\n Please take a look on menu :\n \n " +
+                "__________________________________________________________________ \n \n " +
+                " Lets try to find drink what will suit you !");
 
 
-}
+    }
 }
