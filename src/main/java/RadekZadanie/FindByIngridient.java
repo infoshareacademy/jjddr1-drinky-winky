@@ -3,24 +3,26 @@ package RadekZadanie;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
-public class FindByIngridient {
-    private List<String> ingridientList;
+public class FindByIngridient extends FindByName{
 
-    public FindByIngridient() {
-        this.ingridientList = ingridientList;
-    }
+    private List<DrinkList> ingridientList = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+    private String ingridentFromScanner = scanner.nextLine();
 
-    public List<String> findDrinkByIngridient(String ingridientInputName) {
+
+        // method to find a recipe by drink's ingridient
+    public List<String> findByIngridient(String ingridentFromScanner) {
         List<String> drinksByIngridientList = new ArrayList<>();
-        for (String ingridientIteration : ingridientList) {
-            if (ingridientIteration.equals((ingridientInputName))) {
-                drinksByIngridientList.add(ingridientInputName);
+        for (String ingridientElement : ingridientList) {
+            if (ingridientElement.equals((ingridentFromScanner))) {
+               String drinkByIngridient = drinkList.getName();
             }
         }
         if (drinksByIngridientList.isEmpty()) {
             return Collections.emptyList();
         }
-        return drinksByIngridientList;
+        return drinkByIngridient;
     }
-}
+

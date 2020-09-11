@@ -3,25 +3,34 @@ package RadekZadanie;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class FindByName {
 
-    private List<String> drinkList;
+    public List<String> drinkList = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+    private String drinkFromScanner = scanner.nextLine();
 
-    public FindByName() {
-        this.drinkList = new ArrayList<>();
-    }
-
-    public List<String> findDrinkByName(String drinkInputName) {
-        List<String> drinkListToFind = new ArrayList<>();
-        for (String drinkIteration : drinkList) {
-            if (drinkIteration.equals(drinkInputName)) {
-                drinkListToFind.add(drinkIteration);
+    // method to find a recipe by drinks' name
+    public  List<DrinkList> findByName(String drinkFromScanner) {
+            List<String> drinkListToFind = new ArrayList<>();
+        for (String drinkElement : drinkList) {
+            if (drinkElement.equals(drinkFromScanner)) {
+                drinkListToFind.add(drinkElement);
             }
         }
         if (drinkListToFind.isEmpty()) {
             return Collections.emptyList();
         }
         return drinkListToFind;
+    }
+    // proba zrobienia tego funkcyjnie
+
+    List<DrinkList> functionDrink = drinkList.stream().filter(b -> b.getName().compareTo(drinkInputName)).collect(Collectors.toList());
+    Logger logger = Logger.getLogger("main");
+    logger.info(functionDrink.toString());
+
     }
 }
