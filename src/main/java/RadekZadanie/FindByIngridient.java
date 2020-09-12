@@ -8,8 +8,6 @@ import java.util.Scanner;
 public class FindByIngridient extends FindByName{
 
     private List<DrinkList> ingridientList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
-    private String ingridentFromScanner = scanner.nextLine();
 
 
         // method to find a recipe by drink's ingridient

@@ -9,9 +9,7 @@ import java.util.stream.Collectors;
 
 public class FindByName {
 
-    public List<String> drinkList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
-    private String drinkFromScanner = scanner.nextLine();
+    public List<DrinkList> drinkList = new ArrayList<>();
 
     // method to find a recipe by drinks' name
     public  List<DrinkList> findByName(String drinkFromScanner) {
@@ -27,8 +25,8 @@ public class FindByName {
         return drinkListToFind;
     }
     // proba zrobienia tego funkcyjnie
-
-    List<DrinkList> functionDrink = drinkList.stream().filter(b -> b.getName().compareTo(drinkInputName)).collect(Collectors.toList());
+    public void functionMethod(){
+    List<DrinkList> functionDrink = drinkList.stream().filter(b -> b.getName().compareTo(inputFromScanner)).collect(Collectors.toList());
     Logger logger = Logger.getLogger("main");
     logger.info(functionDrink.toString());
 
