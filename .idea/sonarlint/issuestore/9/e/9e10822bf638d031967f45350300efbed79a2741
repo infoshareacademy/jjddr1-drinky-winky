@@ -1,0 +1,8 @@
+
+Z
+java:S1068"8Remove this unused "ingridentFromScanner" private field.(¢ˆ¾şÿÿÿÿ8¿ŞÔÊÇ.
+g
+java:S3973"GUse indentation to denote the code conditionally executed by this "if".(ÿÈúÿÿÿÿ8¿ùİÊÇ.
+Q
+java:S1066"/Merge this if statement with the enclosing one.(É„ø…úÿÿÿÿ8¿ùİÊÇ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡‹üÿÿÿÿ
