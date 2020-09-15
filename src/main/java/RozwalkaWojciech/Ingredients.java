@@ -12,12 +12,12 @@ public class Ingredients {
     private String fakeIngredient;
 
 
-    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3"})
+    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
     public String getFakeIngredient() {
         return fakeIngredient;
     }
 
-    @JsonSetter()
+    @JsonSetter("fakeIngredients")
     public void setFakeIngredient(String ingredient) {
         ingredients.add(ingredient);
     }

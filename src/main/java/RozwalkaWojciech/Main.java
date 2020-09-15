@@ -20,7 +20,7 @@ public class Main {
 
         DrinkList drinkList = mapper.readValue(file, DrinkList.class);
 
-        System.out.println(drinkList.getDrinkById("11007").getStrDrink());
+        System.out.println(drinkList.getDrinkById("11007").getFakeIngredient());
         System.out.println(drinkList.getDrinkByName("Margarita"));
 
 
