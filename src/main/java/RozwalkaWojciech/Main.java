@@ -16,48 +16,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
+        File file = new File("search.json");
 
-        List<> list = new ArrayList();
-        list = mapper.readValue("search.json", DrinkList<>.class);
+        DrinkList drinkList = mapper.readValue(file, DrinkList.class);
 
-        DrinkList[] drinkLists = mapper.readValue("search.json", DrinkList[].class);
-        System.out.println(Arrays.toString(drinkLists));
-
-        System.out.println(drinkLists);
+        System.out.println(drinkList.getDrinkById("11007").getStrDrink());
+        System.out.println(drinkList.getDrinkByName("Margarita"));
 
 
 
-
-
-
-
-
-
-
-
-
-/*
-        //private static final JsonProvider jsonProvider = new JsonProvider();
-        ObjectMapper mapper = new ObjectMapper();
-
-        java.io.File file = new java.io.File("search.json");
-
-        String jsonString = mapper.writeValueAsString(file);
-        System.out.println(jsonString);
-
-
-
-
-
-        java.io.File file1 = new java.io.File("search.json");
-        List<String> allDataList = new ArrayList<>();
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine()) {
-            allDataList = Collections.singletonList(sc.nextLine());
-        }
-        System.out.println(allDataList);
-*/
-
+        System.out.println(drinkList);
 
     }
 }

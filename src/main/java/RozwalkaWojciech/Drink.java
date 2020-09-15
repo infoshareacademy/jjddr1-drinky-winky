@@ -1,20 +1,30 @@
 package RozwalkaWojciech;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink {
     private final String idDrink;
     private final String strDrink;
-    private final String[] ingredient;
 
-
-    public Drink(@JsonProperty("idDrink") String idDrink, @JsonProperty("strDrink") String strDrink, String[] ingredient) {
+    public Drink(@JsonProperty("idDrink") String idDrink,
+                 @JsonProperty("strDrink") String strDrink
+    ) {
         this.idDrink = idDrink;
         this.strDrink = strDrink;
-        this.ingredient = ingredient;
+
+    }
+
+    public String getIdDrink() {
+        return idDrink;
+    }
+
+    public String getStrDrink() {
+        return strDrink;
     }
 
     @Override
@@ -22,7 +32,6 @@ public class Drink {
         return "Drink{" +
                 "idDrink='" + idDrink + '\'' +
                 ", strDrink='" + strDrink + '\'' +
-                ", ingredient=" + Arrays.toString(ingredient) +
                 '}';
     }
 }

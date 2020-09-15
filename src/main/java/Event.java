@@ -1,3 +1,4 @@
+/*
 public class Event {
     private int id;
     @JsonProperty("name")
@@ -132,4 +133,4 @@ public class Event {
             return designation;
         }
     }
-}
+}*/
