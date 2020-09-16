@@ -1,13 +1,11 @@
-//package RadekZadanie;
-//
 //import java.util.ArrayList;
 //import java.util.Collections;
 //import java.util.List;
-//import java.util.Scanner;
 //
-//public class FindByIngridient extends FindByName{
 //
-//    private List<DrinkList> ingridientList = new ArrayList<>();
+//public class FindByIngridient{
+//
+//    private List<Drinki> ingridientList = new ArrayList<>();
 //
 //
 //        // method to find a recipe by drink's ingridient
@@ -15,7 +13,7 @@
 //        List<String> drinksByIngridientList = new ArrayList<>();
 //        for (String ingridientElement : ingridientList) {
 //            if (ingridientElement.equals((ingridentFromScanner))) {
-//               String drinkByIngridient = drinkList.getName();
+//               String drinkByIngridient = drin.getName();
 //            }
 //        }
 //        if (drinksByIngridientList.isEmpty()) {
@@ -23,4 +21,4 @@
 //        }
 //        return drinkByIngridient;
 //    }
-//
+
