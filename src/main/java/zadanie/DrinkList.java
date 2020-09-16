@@ -1,38 +1,48 @@
 package zadanie;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DrinkList {
-    private String idDrink;
-    private String strDrink;
 
+    private final List<Drink> allDrink;
 
-    public String getIdDrink() {
-        return idDrink;
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public DrinkList(@JsonProperty("drinks") List<Drink> allDrink) {
+        this.allDrink = allDrink;
     }
 
-    public String getStrDrink() {
-        return strDrink;
+    public List<Drink> getAllDrink() {
+        return allDrink;
     }
-//    public List<Drinki> getStrIngredient() {
-//        return strIngredient;
-//    }
 
+    public Drink getDrinkById(String id) {
+        List<Drink> drinkList = getAllDrink();
+        for (Drink drink : drinkList) {
+            if (drink.getIdDrink().equals(id)) {
+                return drink;
+            }
+        }
+        return null;
+    }
+
+    public Drink getDrinkByName(String name) {
+        List<Drink> drinkList = getAllDrink();
+        for (Drink drink : drinkList) {
+            if (drink.getStrDrink().equals(name)) {
+                return drink;
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString() {
-        return "Drinki{" +
-                "idDrink='" + idDrink + '\'' +
-                ", strDrink='" + strDrink + '\'' +
+        return "DrinkList{" +
+                "allDrink=" + allDrink +
                 '}';
     }
 }
-
-
-
-

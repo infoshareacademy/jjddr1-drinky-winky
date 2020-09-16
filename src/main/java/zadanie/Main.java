@@ -1,30 +1,31 @@
 package zadanie;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Main{
-    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
-    private static final ObjectMapper mapper = new ObjectMapper();
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Main {
 
     public static void main(String[] args) throws IOException {
-//        DrinksJason wydruk = new DrinksJason();
-//        File file = new File("/home/radoslaw/Desktop/jjddr1-drinky-winky/src/main/java/resources/search.json");
-//        Scanner myReader = new Scanner(file);
-//        while(myReader.hasNextLine()){
-//        String data = myReader.nextLine();
-//        wydruk = mapper.readValue(data, DrinksJason.class);
-//        System.out.println(wydruk);}
-Mapper mapper = new Mapper();
-        List<DrinkList> drinkLists = mapper.saveJsonAsArray();
-        System.out.println(drinkLists);
-//        JsonSave jsonSave = new JsonSave();
-//        System.out.println(jsonSave.saveJsonAsArray().toString());
+
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File("search.json");
+
+        DrinkList drinkList = mapper.readValue(file, DrinkList.class);
+
+        System.out.println(drinkList.getDrinkById("11007").getFakeIngredient());
+        System.out.println(drinkList.getDrinkByName("Margarita"));
+
+
+
+        System.out.println(drinkList);
+
     }
 }
