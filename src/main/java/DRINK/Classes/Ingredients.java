@@ -1,4 +1,4 @@
-package RozwalkaWojciech;
+package DRINK.Classes;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -21,6 +21,4 @@ public class Ingredients {
     public void setFakeIngredient(String ingredient) {
         ingredients.add(ingredient);
     }
-
-
 }
