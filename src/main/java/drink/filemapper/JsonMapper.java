@@ -1,6 +1,6 @@
-package DRINK;
+package drink.filemapper;
 
-import DRINK.Classes.DrinkList;
+import drink.classes.DrinkList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -10,7 +10,7 @@ public final class JsonMapper {
 
     static DrinkList drinkList() {
         ObjectMapper mapper = new ObjectMapper();
-        File file = new File("test.json");
+        File file = new File("search.json");
         DrinkList drinkList = null;
         try {
             drinkList = mapper.readValue(file, DrinkList.class);
@@ -19,7 +19,6 @@ public final class JsonMapper {
         }
         return drinkList;
     }
-
     private static void saveToNewFile() {
         DrinkList drinkList = JsonMapper.drinkList();
         ObjectMapper mapper = new ObjectMapper();

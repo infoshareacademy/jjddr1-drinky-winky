@@ -1,4 +1,4 @@
-package DRINK.Classes;
+package drink.classes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,9 +12,7 @@ public class DrinkList {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public DrinkList(@JsonProperty("alldrinks") List<Drink> allDrink) {
         this.allDrink = allDrink;
-
     }
-
 
     public List<Drink> getAllDrink() {
         return allDrink;
@@ -23,7 +21,7 @@ public class DrinkList {
     public Drink getDrinkById(String id) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getIdDrink().equals(id)) {
+            if (drink.getId().equals(id)) {
                 return drink;
             }
         }
@@ -33,7 +31,7 @@ public class DrinkList {
     public Drink getDrinkByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getStrDrink().equals(name)) {
+            if (drink.getName().equals(name)) {
                 return drink;
             }
         }
@@ -43,13 +41,12 @@ public class DrinkList {
     public Drink getCategoryByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getStrCategory().equals(name)) {
+            if (drink.getCategory().equals(name)) {
                 return drink;
             }
         }
         return null;
     }
-
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package DRINK.Menu;
+package drink.menu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ public class ShowByCategory {
     void showByCategory() {
         int submenu2ExitCode = 0;
 
-        while (submenu2ExitCode != 9) {
+        while (submenu2ExitCode != 7) {
             stdout.info("\n");
             stdout.info("┌──────────────────────────────────────────┐\n");
             stdout.info("│                                          │\n");
@@ -21,7 +21,7 @@ public class ShowByCategory {
             stdout.info("│   2. SHOW  .....                         │\n");
             stdout.info("│   2. SHOW  ........                      │\n");
             stdout.info("│                                          │\n");
-            stdout.info("│  \u001b[36m 9. BACK TO MAIN MENU\u001b[0m                   │\n");
+            stdout.info("│  \u001b[36m 7. BACK TO MAIN MENU\u001b[0m                   │\n");
             stdout.info("│                                          │\n");
             stdout.info("└──────────────────────────────────────────┘\n");
             stdout.info("\n");
@@ -35,10 +35,10 @@ public class ShowByCategory {
                     //TODO metoda2
                     stdout.info("\nOPTION SUBMENU 2 - 2\n");
                     break;
-                case 9:
+                case 7:
                     //TODO metoda 3
                     stdout.info("       BACK TO MAIN MENU       \n\n");
-                    submenu2ExitCode = 9;
+                    submenu2ExitCode = 7;
                     break;
                 case 0:
                     break;
