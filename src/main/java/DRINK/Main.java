@@ -23,7 +23,6 @@ public class Main {
      // System.out.println(drinkList.getDrinkById("11007").getStrCategory());
      //  System.out.println(drinkList.toString());
      //   System.out.println("trutut" + drinkList.getCategoryByName("Ordinary Drink"));
-        Menu.mainMenu();
 
     }
 }

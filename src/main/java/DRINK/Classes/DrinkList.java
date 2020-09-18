@@ -15,7 +15,6 @@ public class DrinkList {
 
     }
 
-
     public List<Drink> getAllDrink() {
         return allDrink;
     }
@@ -50,9 +49,19 @@ public class DrinkList {
         return null;
     }
 
+    public List<Drink> getDrinkByIngredient(String ingredient) {
+        List<Drink> drinkList = getAllDrink();
+        List<Drink> result = new ArrayList<>();
+        for (Drink drink : drinkList) {
+            if (drink.getIngredients().contains(ingredient)) {
+                result.add(drink);
+            }
+        }
+        return result;
+    }
 
     @Override
     public String toString() {
-        return "Drinks list:\n\n\n" + allDrink+"\n";
+        return "Drinks list:\n\n\n" + allDrink + "\n";
     }
 }

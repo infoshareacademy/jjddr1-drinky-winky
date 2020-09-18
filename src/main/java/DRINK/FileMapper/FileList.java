@@ -1,5 +1,6 @@
-package DRINK;
+package DRINK.FileMapper;
 
+import DRINK.Classes.Drink;
 import DRINK.Classes.DrinkList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 public class FileList {
     public static void main(String[] args) throws FileNotFoundException {
-        DrinkList drinkList = DRINK.JsonMapper.drinkList();
+        DrinkList drinkList = Drink.JsonMapper.drinkList();
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("test.json"), drinkList);
