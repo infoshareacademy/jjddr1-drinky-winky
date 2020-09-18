@@ -19,8 +19,8 @@ public class ShowByCategory {
             stdout.info("│                                          │\n");
             stdout.info("│   1. SHOW  ....                          │\n");
             stdout.info("│   2. SHOW  .....                         │\n");
-            stdout.info("│   2. SHOW  ........                      │\n");
-            stdout.info("│                                          │\n");
+            stdout.info("│   3. SHOW  ........                      │\n");
+            stdout.info("│   4. SHOW  ..........                    │\n");
             stdout.info("│  \u001b[36m 7. BACK TO MAIN MENU\u001b[0m                   │\n");
             stdout.info("│                                          │\n");
             stdout.info("└──────────────────────────────────────────┘\n");

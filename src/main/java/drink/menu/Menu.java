@@ -26,7 +26,7 @@ public class Menu {
         while (mainExitCode != 7) {
 
             stdout.info("┌──────────────────────────────────────────┐\n");
-            stdout.info("│    \u001b[35m    CHOOSE OPTION FROM MENU         \u001b[0m  │\n");
+            stdout.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m   │\n");
             stdout.info("│                                          │\n");
             stdout.info("│   1. List of all recipes                 │\n");
             stdout.info("│   2. Search for specific recipe          │\n");

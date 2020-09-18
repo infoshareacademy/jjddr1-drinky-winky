@@ -48,8 +48,31 @@ public class DrinkList {
         return null;
     }
 
+    public List<Drink> getDrinksByIngredients(String ingredient) {
+        List<Drink> drinkList = getAllDrink();
+        List<Drink> result = new ArrayList<>();
+        for (Drink drink : drinkList) {
+            if (drink.getIngredients().contains(ingredient)) {
+                result.add(drink);
+            }
+        }
+        return result;
+    }
+
+    public List<Drink> getDrinksByCategory(String category) {
+        List<Drink> drinkList = getAllDrink();
+        List<Drink> result = new ArrayList<>();
+        for (Drink drink : drinkList) {
+            if (drink.getCategory().contains(category)) {
+                result.add(drink);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink+"\n";
     }
+
 }
