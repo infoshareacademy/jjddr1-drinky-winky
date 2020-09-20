@@ -20,7 +20,7 @@ public class Repository {
     }
 
     public static Repository getInstance() {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             INSTANCE = new Repository();
         }
         return INSTANCE;
@@ -37,6 +37,7 @@ public class Repository {
     public List<Drink> getListOfDrinksByIngredient(String ingredient) {
         return drinkList.getDrinksByIngredients(ingredient);
     }
+
     public List<Drink> getListOfCategories(String category) {
         return drinkList.getDrinksByCategory(category);
     }
@@ -72,12 +73,29 @@ public class Repository {
         return drinkList;
     }
 
-
+    /**
+     * TEST METHOD ONLY
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        /**
+         * METHOD MUST RUN ONLY ONCE!
+         * WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
+         * Option should be selected from the MENU!
+         */
         saveToNewFile();
-        Repository repo = new Repository();
-        DrinkList drinkList = readFile(USER_DATA_BASE_PATH_NAME);
-        List<Drink> salt = drinkList.getDrinksByIngredients("Salt");
+
+        /**
+         * SINGLETON to use for Repository getters
+         *
+         * Repository.getInstance().getSOMETHING
+         */
+        List<Drink> salt = Repository.getInstance().getListOfDrinksByIngredient("Salt");
+
+        /**
+         * Way to print drink names after the ingredient ("Salt") searched
+         */
         for (Drink drink : salt) {
             System.out.println(drink.getName());
         }
