@@ -6,16 +6,13 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.filemapper.Repository;
-
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Repository repo = new Repository();
         ObjectMapper mapper = new ObjectMapper();
-        File file = new File("test.json");
+        File file = new File("search.json");
 
         try {
             DrinkList drinkList = mapper.readValue(file, DrinkList.class);
@@ -23,6 +20,7 @@ public class Main {
             e.printStackTrace();
         }
         Menu.mainMenu();
+
 
 
 

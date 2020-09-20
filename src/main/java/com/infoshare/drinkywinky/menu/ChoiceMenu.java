@@ -5,17 +5,17 @@ import org.slf4j.LoggerFactory;
 
 import java.util.regex.Pattern;
 
-import static com.infoshare.drinkywinky.menu.Menu.scanner;
+import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ChoiceMenu {
 
-    private static final Logger stdout = LoggerFactory.getLogger("CONSOLE_OUT");
+    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static int choiceMenu() {
         int result = 0;
 
         try {
-            String in = scanner.next();
+            String in = SCANNER.next();
 
             if ((Pattern.matches("[1-7]", in))) {
                 try {
