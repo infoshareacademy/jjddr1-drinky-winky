@@ -1,12 +1,12 @@
-package drink;
+package com.infoshare.drinkywinky;
 
 import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import drink.classes.DrinkList;
-import drink.menu.Menu;
-import drink.filemapper.Repository;
+import com.infoshare.drinkywinky.model.DrinkList;
+import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.filemapper.Repository;
 
 
 public class Main {

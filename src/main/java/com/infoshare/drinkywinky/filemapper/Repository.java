@@ -1,8 +1,8 @@
-package drink.filemapper;
+package com.infoshare.drinkywinky.filemapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import drink.classes.Drink;
-import drink.classes.DrinkList;
+import com.infoshare.drinkywinky.model.Drink;
+import com.infoshare.drinkywinky.model.DrinkList;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package drink.classes;
+package com.infoshare.drinkywinky.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

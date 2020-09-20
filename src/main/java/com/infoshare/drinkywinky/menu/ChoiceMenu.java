@@ -1,13 +1,13 @@
-package drink.menu;
+package com.infoshare.drinkywinky.menu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.regex.Pattern;
 
-import static drink.menu.Menu.scanner;
+import static com.infoshare.drinkywinky.menu.Menu.scanner;
 
-public class Choicemenu {
+public class ChoiceMenu {
 
     private static final Logger stdout = LoggerFactory.getLogger("CONSOLE_OUT");
 

@@ -1,4 +1,4 @@
-package drink.menu;
+package com.infoshare.drinkywinky.menu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,36 +40,36 @@ public class Menu {
             stdout.info("\n");
             stdout.info("CHOOSE NUMBER: \n");
 
-            switch (Choicemenu.choiceMenu()) {
+            switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     stdout.info(" CHOSEN : 1. List of all recipes   \n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     //TODO PRINT ALL EVENTS
                     break;
                 case 2:
                     stdout.info(" CHOSEN : 2. Search for specific recipe\n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     //TODO metoda 2
                     break;
                 case 3:
                     //TODO metoda 3
                     stdout.info(" CHOSEN : 3. Add/remove recipe  \n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     break;
                 case 4:
                     //TODO metoda 3
                     stdout.info(" CHOSEN : 4. Manage yours favorites \n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     break;
                 case 5:
                     //TODO metoda 3
                     stdout.info(" CHOSEN : 5. Search for drink by category\n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     break;
                 case 6:
                     //TODO metoda 3
                     stdout.info(" CHOSEN : 6. Edit configuration      \n");
-                    new drink.menu.ShowByCategory().showByCategory();
+                    new ShowByCategory().showByCategory();
                     break;
                 case 7:
                     stdout.info("\n");

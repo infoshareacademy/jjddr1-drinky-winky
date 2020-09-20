@@ -1,4 +1,4 @@
-package drink.menu;
+package com.infoshare.drinkywinky.menu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class ShowByCategory {
             stdout.info("\n");
             stdout.info("CHOOSE NUMBER: \n");
 
-            switch (Choicemenu.choiceMenu()) {
+            switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     stdout.info("\nOPTION SUBMENU 2 - 1\n");
                     break;
