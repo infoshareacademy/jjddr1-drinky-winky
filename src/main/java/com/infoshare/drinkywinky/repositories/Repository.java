@@ -1,4 +1,4 @@
-package com.infoshare.drinkywinky.filemapper;
+package com.infoshare.drinkywinky.repositories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.Drink;
@@ -9,11 +9,21 @@ import java.io.IOException;
 import java.util.List;
 
 public class Repository {
-    private static final String PATH_NAME = "search.json";
-    private DrinkList drinkList;
+    private static final String DATA_BASE_PATH_NAME = "search.json";
+    private static final String USER_DATA_BASE_PATH_NAME = "drink list.json";
     private static final String MESSAGE = "File is saved";
+    private static Repository INSTANCE = null;
+    private DrinkList drinkList;
 
     public Repository() {
+        drinkList = readFile(USER_DATA_BASE_PATH_NAME);
+    }
+
+    public static Repository getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new Repository();
+        }
+        return INSTANCE;
     }
 
     public Drink getDrinkByName(String drinkName) {
@@ -40,10 +50,10 @@ public class Repository {
     }
 
     static String saveToNewFile() {
-        DrinkList drinkList = Repository.readFile(PATH_NAME);
+        DrinkList drinkList = Repository.readFile(DATA_BASE_PATH_NAME);
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("DrinksList.json"), drinkList);
+            mapper.writeValue(new File(USER_DATA_BASE_PATH_NAME), drinkList);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,10 +72,11 @@ public class Repository {
         return drinkList;
     }
 
+
     public static void main(String[] args) {
         saveToNewFile();
         Repository repo = new Repository();
-        DrinkList drinkList = readFile("DrinksList.json");
+        DrinkList drinkList = readFile(USER_DATA_BASE_PATH_NAME);
         List<Drink> salt = drinkList.getDrinksByIngredients("Salt");
         for (Drink drink : salt) {
             System.out.println(drink.getName());

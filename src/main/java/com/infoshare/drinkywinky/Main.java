@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.repositories.Repository;
 
 public class Main {
 
@@ -21,9 +22,7 @@ public class Main {
         }
         Menu.mainMenu();
 
-
-
-
+        System.out.println(Repository.getInstance().getDrinkList());
 
 
     }

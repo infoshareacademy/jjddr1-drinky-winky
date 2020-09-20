@@ -3,14 +3,15 @@ package com.infoshare.drinkywinky.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrinkList {
 
     private final List<Drink> allDrink;
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public DrinkList(@JsonProperty("alldrinks") List<Drink> allDrink) {
+    public DrinkList(@JsonProperty("drinks") List<Drink> allDrink) {
         this.allDrink = allDrink;
     }
 
