@@ -13,7 +13,8 @@ public class Drink {
     private final String id;
     private final String name;
     private final String category;
-    private List<String> ingredients = new ArrayList<>();
+    private final List<String> ingredients = new ArrayList<>();
+    private boolean favorite = false;
 
 
     @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
@@ -53,10 +54,29 @@ public class Drink {
         return ingredients;
     }
 
+//    public boolean getIsFavorite() {
+//        return favorite;
+//    }
+
+//    public void setFavorite(boolean favorite) {
+//        this.favorite = favorite;
+//    }
+
     @Override
+    public String toString() {
+        return "Drink{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", ingredients=" + ingredients +
+                ", favorite=" + favorite +
+                '}';
+    }
+
+    /*    @Override
     public String toString() {
         return "Drink name : " + name +
                 ", SearchByCategory : " + category + ",\nIngredients : \n" + ingredients +
                 " ," + " idDrink : " + id + ".\n";
-    }
+    }*/
 }

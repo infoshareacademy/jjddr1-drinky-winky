@@ -39,6 +39,7 @@ public class DrinkList {
         return null;
     }
 
+    // maybe it should be in utils
     public Drink getCategoryByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
@@ -49,7 +50,7 @@ public class DrinkList {
         return null;
     }
 
-    public List<Drink> getDrinksByIngredients(String ingredient) {
+    public List<Drink> getDrinkByIngredients(String ingredient) {
         List<Drink> drinkList = getAllDrink();
         List<Drink> result = new ArrayList<>();
         for (Drink drink : drinkList) {
@@ -60,7 +61,8 @@ public class DrinkList {
         return result;
     }
 
-    public List<Drink> getDrinksByCategory(String category) {
+    // maybe it should be in utils
+    public List<Drink> getDrinkByCategory(String category) {
         List<Drink> drinkList = getAllDrink();
         List<Drink> result = new ArrayList<>();
         for (Drink drink : drinkList) {
@@ -71,9 +73,21 @@ public class DrinkList {
         return result;
     }
 
+//    public List<Drink> getFavoriteDrink() {
+//        List<Drink> drinkList = getAllDrink();
+//        List<Drink> result = new ArrayList<>();
+//        for (Drink drink : drinkList) {
+//            if (drink.getIsFavorite()) {
+//                result.add(drink);
+//            }
+//        }
+//        return result;
+//    }
+
+
     @Override
     public String toString() {
-        return "Drinks list:\n\n\n" + allDrink+"\n";
+        return "Drinks list:\n\n\n" + allDrink + "\n";
     }
 
 }

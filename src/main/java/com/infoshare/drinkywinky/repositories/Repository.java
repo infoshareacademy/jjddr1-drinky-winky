@@ -30,17 +30,21 @@ public class Repository {
         return drinkList.getDrinkByName(drinkName);
     }
 
-    public Drink getGetDrinkById(String drinkId) {
+    public Drink getDrinkById(String drinkId) {
         return drinkList.getDrinkById(drinkId);
     }
 
-    public List<Drink> getListOfDrinksByIngredient(String ingredient) {
-        return drinkList.getDrinksByIngredients(ingredient);
+    public List<Drink> getListOfDrinkByIngredient(String ingredient) {
+        return drinkList.getDrinkByIngredients(ingredient);
     }
 
     public List<Drink> getListOfCategories(String category) {
-        return drinkList.getDrinksByCategory(category);
+        return drinkList.getDrinkByCategory(category);
     }
+
+//    public List<Drink> getFavoriteDrink() {
+//        return drinkList.getFavoriteDrink();
+//    }
 
     public DrinkList getDrinkList() {
         return drinkList;
@@ -91,7 +95,7 @@ public class Repository {
          *
          * Repository.getInstance().getSOMETHING
          */
-        List<Drink> salt = Repository.getInstance().getListOfDrinksByIngredient("Salt");
+        List<Drink> salt = Repository.getInstance().getListOfDrinkByIngredient("Salt");
 
         /**
          * Way to print drink names after the ingredient ("Salt") searched
@@ -99,5 +103,7 @@ public class Repository {
         for (Drink drink : salt) {
             System.out.println(drink.getName());
         }
+
+        System.out.println(Repository.getInstance().getDrinkList());
     }
 }
