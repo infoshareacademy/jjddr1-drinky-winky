@@ -10,11 +10,11 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink {
-    private final String id;
-    private final String name;
-    private final String category;
-    private final List<String> ingredients = new ArrayList<>();
-    private boolean favorite = false;
+    private String id;
+    private String name;
+    private String category;
+    private List<String> ingredients = new ArrayList<>();
+    //   private boolean favorite;
 
 
     @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
@@ -38,12 +38,27 @@ public class Drink {
         this.category = category;
     }
 
+    public Drink(String id, String name, String category, List<String> ingredients) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.ingredients = ingredients;
+    }
+
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
@@ -62,21 +77,11 @@ public class Drink {
 //        this.favorite = favorite;
 //    }
 
-    @Override
-    public String toString() {
-        return "Drink{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", ingredients=" + ingredients +
-                ", favorite=" + favorite +
-                '}';
-    }
 
-    /*    @Override
+    @Override
     public String toString() {
         return "Drink name : " + name +
                 ", SearchByCategory : " + category + ",\nIngredients : \n" + ingredients +
                 " ," + " idDrink : " + id + ".\n";
-    }*/
+    }
 }
