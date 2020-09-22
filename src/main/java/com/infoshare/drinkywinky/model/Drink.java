@@ -10,12 +10,10 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink {
-    private String id;
-    private String name;
-    private String category;
+    private final String id;
+    private final String name;
+    private final String category;
     private List<String> ingredients = new ArrayList<>();
-    //   private boolean favorite;
-
 
     @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
     public String getFakeIngredient() {
@@ -49,16 +47,8 @@ public class Drink {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCategory() {
@@ -69,19 +59,10 @@ public class Drink {
         return ingredients;
     }
 
-//    public boolean getIsFavorite() {
-//        return favorite;
-//    }
-
-//    public void setFavorite(boolean favorite) {
-//        this.favorite = favorite;
-//    }
-
-
     @Override
     public String toString() {
-        return "Drink name : " + name +
-                ", SearchByCategory : " + category + ",\nIngredients : \n" + ingredients +
-                " ," + " idDrink : " + id + ".\n";
+        return "Drink name: " + name +
+                "\nCategory: " + category + "\nIngredients: " + ingredients +
+                "\nID: " + id + "\n";
     }
 }

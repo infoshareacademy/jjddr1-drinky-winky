@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,16 +39,21 @@ public class Menu {
             STDOUT.info("│  \u001b[36m 7. END OF PROGRAM                    \u001b[0m  │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n");
             STDOUT.info("\n");
-            STDOUT.info("CHOOSE NUMBER: \n");
+            STDOUT.info("CHOOSE NUMBER: ");
 
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
+                    STDOUT.info(String.valueOf(Repository.getInstance().getDrinkList().getNamesOfDrink()));
                     new ShowByCategory().showByCategory();
                     //TODO PRINT ALL EVENTS
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for specific recipe\n");
+                    String userDrinkName;
+                    STDOUT.info("Enter name of recipe: ");
+                    userDrinkName = SCANNER.next();
+                    STDOUT.info(String.valueOf(Repository.getInstance().getDrinkList().getDrinkByName(userDrinkName)));
                     new ShowByCategory().showByCategory();
                     //TODO metoda 2
                     break;

@@ -6,6 +6,8 @@ import com.infoshare.drinkywinky.model.DrinkList;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Repository {
@@ -13,7 +15,7 @@ public class Repository {
     private static final String USER_DATA_BASE_PATH_NAME = "drink list.json";
     private static final String MESSAGE = "File is saved";
     private static Repository INSTANCE = null;
-    private DrinkList drinkList;
+    private static DrinkList drinkList;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
@@ -42,10 +44,6 @@ public class Repository {
         return drinkList.getDrinkByCategory(category);
     }
 
-//    public List<Drink> getFavoriteDrink() {
-//        return drinkList.getFavoriteDrink();
-//    }
-
     public DrinkList getDrinkList() {
         return drinkList;
     }
@@ -54,7 +52,7 @@ public class Repository {
         this.drinkList = drinkList;
     }
 
-    static String saveToNewFile() {
+    public static String saveToNewFile() {
         DrinkList drinkList = Repository.readFile(DATA_BASE_PATH_NAME);
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -75,35 +73,5 @@ public class Repository {
             e.printStackTrace();
         }
         return drinkList;
-    }
-
-    /**
-     * TEST METHOD ONLY
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        /**
-         * METHOD MUST RUN ONLY ONCE!
-         * WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
-         * Option should be selected from the MENU!
-         */
-        saveToNewFile();
-
-        /**
-         * SINGLETON to use for Repository getters
-         *
-         * Repository.getInstance().getSOMETHING
-         */
-        List<Drink> salt = Repository.getInstance().getListOfDrinkByIngredient("Salt");
-
-        /**
-         * Way to print drink names after the ingredient ("Salt") searched
-         */
-        for (Drink drink : salt) {
-            System.out.println(drink.getName());
-        }
-
-        System.out.println(Repository.getInstance().getDrinkList());
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DrinkList {
 
@@ -32,7 +33,7 @@ public class DrinkList {
     public Drink getDrinkByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getName().equals(name)) {
+            if (drink.getName().equalsIgnoreCase(name)) {
                 return drink;
             }
         }
@@ -73,17 +74,15 @@ public class DrinkList {
         return result;
     }
 
-//    public List<Drink> getFavoriteDrink() {
-//        List<Drink> drinkList = getAllDrink();
-//        List<Drink> result = new ArrayList<>();
-//        for (Drink drink : drinkList) {
-//            if (drink.getIsFavorite()) {
-//                result.add(drink);
-//            }
-//        }
-//        return result;
-//    }
-
+    /**
+     * @return only names of all drink
+     */
+    public List<String> getNamesOfDrink() {
+        return allDrink
+                .stream()
+                .map(Drink::getName)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public String toString() {

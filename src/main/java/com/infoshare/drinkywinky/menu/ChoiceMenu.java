@@ -30,6 +30,4 @@ public class ChoiceMenu {
         }
         return result;
     }
-
-   // DrinkList drinkList = new DrinkList();
 }
