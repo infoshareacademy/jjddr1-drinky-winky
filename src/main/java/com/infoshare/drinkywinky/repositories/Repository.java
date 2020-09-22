@@ -50,6 +50,8 @@ public class Repository {
         this.drinkList = drinkList;
     }
 
+    public List<String> getListOfDrinkNames() {return drinkList.getNamesOfDrinks();}
+
     static String saveToNewFile() {
         DrinkList drinkList = Repository.readFile(DATA_BASE_PATH_NAME);
         ObjectMapper mapper = new ObjectMapper();
@@ -73,6 +75,8 @@ public class Repository {
         return drinkList;
     }
 
+
+
     /**
      * TEST METHOD ONLY
      *
@@ -84,20 +88,21 @@ public class Repository {
          * WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
          * Option should be selected from the MENU!
          */
-        saveToNewFile();
-
+        /*saveToNewFile();*/
+        System.out.println(Repository.getInstance().getListOfDrinkNames());
         /**
          * SINGLETON to use for Repository getters
          *
          * Repository.getInstance().getSOMETHING
          */
-        List<Drink> salt = Repository.getInstance().getListOfDrinksByIngredient("Salt");
+        /*System.out.println(Repository.getInstance().getListOfDrinkNames());*/
+       /* List<Drink> salt = Repository.getInstance().getListOfDrinksByIngredient("Salt");
 
-        /**
+        *//**
          * Way to print drink names after the ingredient ("Salt") searched
-         */
+         *//*
         for (Drink drink : salt) {
             System.out.println(drink.getName());
-        }
+        }*/
     }
 }

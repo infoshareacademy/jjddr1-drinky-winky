@@ -36,6 +36,12 @@ public class Drink {
         this.name = name;
         this.category = category;
     }
+    public Drink(String id, String name, String category, List<String> ingredients) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.ingredients = ingredients;
+    }
 
     public String getId() {
         return id;

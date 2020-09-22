@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.display.DrinkMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,13 +44,14 @@ public class Menu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
-                    new ShowByCategory().showByCategory();
-                    //TODO PRINT ALL EVENTS
+                    /*new ShowByCategory().showByCategory();*/
+
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for specific recipe\n");
                     new ShowByCategory().showByCategory();
-                    //TODO metoda 2
+                    DrinkMenu drinkMenu = new DrinkMenu();
+                    drinkMenu.displayDrinksMenu();
                     break;
                 case 3:
                     //TODO metoda 3

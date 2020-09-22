@@ -1,15 +1,16 @@
 package com.infoshare.drinkywinky;
 
-import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.display.DrinkMenu;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Menu.mainMenu();
 
-        System.out.println(Repository.getInstance().getDrinkList());
+        DrinkMenu drinkMenu = new DrinkMenu();
+        drinkMenu.displayDrinksMenu();
+
+
 
 
     }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DrinkList {
 
@@ -70,6 +71,17 @@ public class DrinkList {
         }
         return result;
     }
+    public List<String> getNamesOfDrinks() {
+        List<Drink> drinkList = getAllDrink();
+        List<String> drinkNames = drinkList
+                .stream()
+                .map(drink -> drink.getName())
+                .collect(Collectors.toList());
+        return drinkNames;
+    }
+
+
+
 
     @Override
     public String toString() {
