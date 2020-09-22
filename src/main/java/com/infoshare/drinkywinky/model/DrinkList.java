@@ -40,6 +40,9 @@ public class DrinkList {
     }
 
     public Drink getDrinkByCategory(String category) {
+
+   //     allDrink.stream().filter(e -> e.getCategory().contains(category)).map(e->e.getCategory());
+
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
             if (drink.getCategory().contains(category)) {

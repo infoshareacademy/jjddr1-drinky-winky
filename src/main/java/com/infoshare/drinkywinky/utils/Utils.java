@@ -14,12 +14,10 @@ public class Utils {
     /**
      * @return only names of all drink
      */
-    public static List<String> getNamesOfDrink() {
+    public static List<String> getNamesOfAllDrink() {
         return Repository.getInstance().getDrinkList().getAllDrink()
                 .stream()
                 .map(Drink::getName)
                 .collect(Collectors.toList());
     }
-
-
 }

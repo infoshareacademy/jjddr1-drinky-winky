@@ -25,7 +25,7 @@ public class ShowByCategory {
             STDOUT.info("│                                          │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n");
             STDOUT.info("\n");
-            STDOUT.info("CHOOSE NUMBER: \n");
+            STDOUT.info("CHOOSE NUMBER: ");
 
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
