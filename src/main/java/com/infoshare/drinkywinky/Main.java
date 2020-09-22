@@ -14,6 +14,13 @@ public class Main {
     public static void main(String[] args) {
 
         /*
+          METHOD MUST RUN ONLY ONCE!
+          WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
+          Option should be selected from the MENU!
+         */
+        Repository.saveToNewFile();
+
+        /*
          display main menu
         */
         Menu.mainMenu();
@@ -37,29 +44,23 @@ public class Main {
          way to display drink by enter name
          */
         String name = "Blue Margarita";
-        Utils.displayDrinkByName(name);
 
 
-        /*
-          METHOD MUST RUN ONLY ONCE!
-          WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
-          Option should be selected from the MENU!
-         */
-        Repository.saveToNewFile();
+
 
         /*
           SINGLETON to use for Repository getters
 
           Repository.getInstance().getSOMETHING
          */
-        List<Drink> salt = Repository.getInstance().getListOfDrinkByIngredient("Salt");
+//        List<Drink> salt = Repository.getInstance().getListOfDrinkByIngredient("Salt");
 
         /*
           Way to print drink names after the ingredient ("Salt") searched
          */
-        for (Drink drink : salt) {
-            System.out.println(drink.getName());
-        }
+//        for (Drink drink : salt) {
+//            System.out.println(drink.getName());
+//        }
 
     }
 }

@@ -1,6 +1,7 @@
 package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +45,7 @@ public class Menu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
-                    STDOUT.info(String.valueOf(Repository.getInstance().getDrinkList().getNamesOfDrink()));
+                    STDOUT.info(String.valueOf(Utils.getNamesOfDrink()));
                     new ShowByCategory().showByCategory();
                     //TODO PRINT ALL EVENTS
                     break;

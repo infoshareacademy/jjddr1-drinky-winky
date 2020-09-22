@@ -6,8 +6,6 @@ import com.infoshare.drinkywinky.model.DrinkList;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Repository {
@@ -28,28 +26,24 @@ public class Repository {
         return INSTANCE;
     }
 
+    public Drink getDrinkById(String drinkId) {
+        return drinkList.getDrinkById(drinkId);
+    }
+
     public Drink getDrinkByName(String drinkName) {
         return drinkList.getDrinkByName(drinkName);
     }
 
-    public Drink getDrinkById(String drinkId) {
-        return drinkList.getDrinkById(drinkId);
+    public Drink getDrinkByCategories(String category) {
+        return drinkList.getDrinkByCategory(category);
     }
 
     public List<Drink> getListOfDrinkByIngredient(String ingredient) {
         return drinkList.getDrinkByIngredients(ingredient);
     }
 
-    public List<Drink> getListOfCategories(String category) {
-        return drinkList.getDrinkByCategory(category);
-    }
-
     public DrinkList getDrinkList() {
         return drinkList;
-    }
-
-    public void setDrinkList(DrinkList drinkList) {
-        this.drinkList = drinkList;
     }
 
     public static String saveToNewFile() {

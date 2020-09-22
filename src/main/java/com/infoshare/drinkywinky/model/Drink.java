@@ -13,7 +13,7 @@ public class Drink {
     private final String id;
     private final String name;
     private final String category;
-    private List<String> ingredients = new ArrayList<>();
+    private final List<String> ingredients = new ArrayList<>();
 
     @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
     public String getFakeIngredient() {
@@ -36,12 +36,6 @@ public class Drink {
         this.category = category;
     }
 
-    public Drink(String id, String name, String category, List<String> ingredients) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.ingredients = ingredients;
-    }
 
     public String getId() {
         return id;
