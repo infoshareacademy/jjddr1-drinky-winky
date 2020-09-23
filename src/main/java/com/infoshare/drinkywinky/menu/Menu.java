@@ -73,7 +73,8 @@ public class Menu {
                     STDOUT.info(String.valueOf(Utils.getNamesOfAllDrink()) + "\n");
                     String userDrinkName;
                     STDOUT.info("Enter name of recipe: ");
-                    userDrinkName = SCANNER.next();
+                    SCANNER.nextLine();
+                    userDrinkName = SCANNER.nextLine();
                     STDOUT.info(String.valueOf(Repository.getInstance().getDrinkByName(userDrinkName)));
                     new ShowByCategory().showByCategory();
                     //TODO metoda 2
