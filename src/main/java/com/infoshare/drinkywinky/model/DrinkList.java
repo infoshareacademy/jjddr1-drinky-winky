@@ -1,18 +1,18 @@
-package DRINK.Classes;
+package com.infoshare.drinkywinky.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrinkList {
 
     private final List<Drink> allDrink;
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public DrinkList(@JsonProperty("alldrinks") List<Drink> allDrink) {
+    public DrinkList(@JsonProperty("drinks") List<Drink> allDrink) {
         this.allDrink = allDrink;
-
     }
 
     public List<Drink> getAllDrink() {
@@ -22,7 +22,7 @@ public class DrinkList {
     public Drink getDrinkById(String id) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getIdDrink().equals(id)) {
+            if (drink.getId().equals(id)) {
                 return drink;
             }
         }
@@ -32,24 +32,24 @@ public class DrinkList {
     public Drink getDrinkByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getStrDrink().equals(name)) {
+            if (drink.getName().equalsIgnoreCase(name)) {
                 return drink;
             }
         }
         return null;
     }
 
-    public Drink getCategoryByName(String name) {
+    public Drink getDrinkByCategory(String category) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
-            if (drink.getStrCategory().equals(name)) {
+            if (drink.getCategory().contains(category)) {
                 return drink;
             }
         }
         return null;
     }
 
-    public List<Drink> getDrinkByIngredient(String ingredient) {
+    public List<Drink> getDrinkByIngredients(String ingredient) {
         List<Drink> drinkList = getAllDrink();
         List<Drink> result = new ArrayList<>();
         for (Drink drink : drinkList) {
@@ -60,8 +60,20 @@ public class DrinkList {
         return result;
     }
 
+    // maybe it should be in utils
+//    public Drink getCategoryByName(String name) {
+//        List<Drink> drinkList = getAllDrink();
+//        for (Drink drink : drinkList) {
+//            if (drink.getCategory().equals(name)) {
+//                return drink;
+//            }
+//        }
+//        return null;
+//    }
+
     @Override
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink + "\n";
     }
+
 }
