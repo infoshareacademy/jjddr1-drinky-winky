@@ -44,24 +44,12 @@ public class DrinkList {
     public List<Drink> getDrinkByIngredients(String ingredient) {
         return allDrink
                 .stream()
-                .filter(e->e.getIngredients().contains(ingredient))
+                .filter(e -> e.getIngredients().contains(ingredient))
                 .collect(Collectors.toList());
     }
-
-    // maybe it should be in utils
-//    public Drink getCategoryByName(String name) {
-//        List<Drink> drinkList = getAllDrink();
-//        for (Drink drink : drinkList) {
-//            if (drink.getCategory().equals(name)) {
-//                return drink;
-//            }
-//        }
-//        return null;
-//    }
 
     @Override
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink + "\n";
     }
-
 }
