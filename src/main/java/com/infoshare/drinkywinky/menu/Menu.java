@@ -1,10 +1,13 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -45,16 +48,33 @@ public class Menu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
-                    STDOUT.info(String.valueOf(Utils.getNamesOfDrink()));
+
+                    /*
+                     a numbered list of names
+                    */
+                    List<String> drinks;
+                    drinks = Utils.getNamesOfAllDrink();
+                    int i = 1;
+                    for (String s : drinks) {
+                        STDOUT.info(i + ". " + s + "\n");
+                        i++;
+                    }
+
+                    /*
+                     list of names in the array
+                    */
+                    STDOUT.info(String.valueOf(Utils.getNamesOfAllDrink()) + "\n");
+
                     new ShowByCategory().showByCategory();
                     //TODO PRINT ALL EVENTS
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for specific recipe\n");
+                    STDOUT.info(String.valueOf(Utils.getNamesOfAllDrink()) + "\n");
                     String userDrinkName;
                     STDOUT.info("Enter name of recipe: ");
                     userDrinkName = SCANNER.next();
-                    STDOUT.info(String.valueOf(Repository.getInstance().getDrinkList().getDrinkByName(userDrinkName)));
+                    STDOUT.info(String.valueOf(Repository.getInstance().getDrinkByName(userDrinkName)));
                     new ShowByCategory().showByCategory();
                     //TODO metoda 2
                     break;

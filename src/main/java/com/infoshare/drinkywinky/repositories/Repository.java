@@ -26,15 +26,15 @@ public class Repository {
         return INSTANCE;
     }
 
-    public Drink getDrinkById(String drinkId) {
+    public List<Drink> getDrinkById(String drinkId) {
         return drinkList.getDrinkById(drinkId);
     }
 
-    public Drink getDrinkByName(String drinkName) {
+    public List<Drink> getDrinkByName(String drinkName) {
         return drinkList.getDrinkByName(drinkName);
     }
 
-    public Drink getDrinkByCategories(String category) {
+    public List<Drink> getDrinkByCategories(String category) {
         return drinkList.getDrinkByCategory(category);
     }
 
