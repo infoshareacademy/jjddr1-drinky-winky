@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky;
 
+import com.infoshare.drinkywinky.display.DrinkDisplay;
 import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
@@ -13,15 +14,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         /*
           METHOD MUST RUN ONLY ONCE!
           WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
           Option should be selected from the MENU!
          */
-        Repository.saveToNewFile();
+        /*Repository.saveToNewFile();
 
         System.out.println(Utils.getNamesOfAllIngredients());
-        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));*/
 
         /*
          display main menu
