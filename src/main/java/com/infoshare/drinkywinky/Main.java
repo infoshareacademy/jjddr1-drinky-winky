@@ -20,6 +20,8 @@ public class Main {
          */
         Repository.saveToNewFile();
 
+        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+
         /*
          display main menu
         */

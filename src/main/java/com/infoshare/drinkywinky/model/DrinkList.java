@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DrinkList {
 
@@ -19,48 +20,32 @@ public class DrinkList {
         return allDrink;
     }
 
-    public Drink getDrinkById(String id) {
-        List<Drink> drinkList = getAllDrink();
-        for (Drink drink : drinkList) {
-            if (drink.getId().equals(id)) {
-                return drink;
-            }
-        }
-        return null;
+    public List<Drink> getDrinkById(String id) {
+        return allDrink
+                .stream()
+                .filter(e -> e.getId().equals(id))
+                .collect(Collectors.toList());
     }
 
-    public Drink getDrinkByName(String name) {
-        List<Drink> drinkList = getAllDrink();
-        for (Drink drink : drinkList) {
-            if (drink.getName().equalsIgnoreCase(name)) {
-                return drink;
-            }
-        }
-        return null;
+    public List<Drink> getDrinkByName(String name) {
+        return allDrink
+                .stream()
+                .filter(e -> e.getName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
     }
 
-    public Drink getDrinkByCategory(String category) {
-
-   //     allDrink.stream().filter(e -> e.getCategory().contains(category)).map(e->e.getCategory());
-
-        List<Drink> drinkList = getAllDrink();
-        for (Drink drink : drinkList) {
-            if (drink.getCategory().contains(category)) {
-                return drink;
-            }
-        }
-        return null;
+    public List<Drink> getDrinkByCategory(String category) {
+        return allDrink
+                .stream()
+                .filter(e -> e.getCategory().equalsIgnoreCase(category))
+                .collect(Collectors.toList());
     }
 
     public List<Drink> getDrinkByIngredients(String ingredient) {
-        List<Drink> drinkList = getAllDrink();
-        List<Drink> result = new ArrayList<>();
-        for (Drink drink : drinkList) {
-            if (drink.getIngredients().contains(ingredient)) {
-                result.add(drink);
-            }
-        }
-        return result;
+        return allDrink
+                .stream()
+                .filter(e->e.getIngredients().contains(ingredient))
+                .collect(Collectors.toList());
     }
 
     // maybe it should be in utils
