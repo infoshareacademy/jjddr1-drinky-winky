@@ -12,6 +12,9 @@ public class ChoiceMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
+    /**
+     * Method which is used as an argument in switch loop
+     */
     public static int choiceMenu() {
         int result = 0;
 

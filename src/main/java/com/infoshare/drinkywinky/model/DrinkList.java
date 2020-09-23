@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class which consists of a list of all drinks and methods to search for drink's recipe
+ */
 public class DrinkList {
 
     private final List<Drink> allDrink;
@@ -19,6 +21,9 @@ public class DrinkList {
         return allDrink;
     }
 
+    /**
+     * @return drink's recipe by it's id
+     */
     public Drink getDrinkById(String id) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
@@ -28,7 +33,9 @@ public class DrinkList {
         }
         return null;
     }
-
+    /**
+     * @return drink's recipe by it's name
+     */
     public Drink getDrinkByName(String name) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
@@ -38,7 +45,9 @@ public class DrinkList {
         }
         return null;
     }
-
+    /**
+     * @return drink's recipe by it's category
+     */
     public Drink getDrinkByCategory(String category) {
         List<Drink> drinkList = getAllDrink();
         for (Drink drink : drinkList) {
@@ -48,7 +57,9 @@ public class DrinkList {
         }
         return null;
     }
-
+    /**
+     * @return drink's recipe by an ingredient
+     */
     public List<Drink> getDrinkByIngredients(String ingredient) {
         List<Drink> drinkList = getAllDrink();
         List<Drink> result = new ArrayList<>();

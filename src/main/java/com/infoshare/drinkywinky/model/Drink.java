@@ -8,6 +8,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class which contains all the basic fields which are needed from Json file
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink {
     private final String id;
@@ -26,7 +29,9 @@ public class Drink {
             ingredients.add(ingredient);
         }
     }
-
+    /**
+     * Constructor sets Strings from Json file as Class fields
+     */
     public Drink(@JsonProperty("idDrink") String id,
                  @JsonProperty("strDrink") String name,
                  @JsonProperty("strCategory") String category
@@ -36,7 +41,9 @@ public class Drink {
         this.category = category;
     }
 
-
+    /**
+     * Getter methods for all the fields
+     */
     public String getId() {
         return id;
     }

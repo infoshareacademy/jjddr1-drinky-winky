@@ -12,6 +12,9 @@ public class Menu {
     public static final Scanner SCANNER = new Scanner(System.in);
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
+    /**
+     * Method which displays main Menu of the application
+     */
     public static void mainMenu() {
         int mainExitCode = 0;
 
