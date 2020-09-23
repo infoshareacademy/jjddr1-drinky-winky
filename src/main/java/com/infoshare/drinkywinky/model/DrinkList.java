@@ -3,8 +3,8 @@ package com.infoshare.drinkywinky.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DrinkList {
@@ -46,6 +46,11 @@ public class DrinkList {
                 .stream()
                 .filter(e -> e.getIngredients().contains(ingredient))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(allDrink);
     }
 
     @Override

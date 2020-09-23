@@ -23,6 +23,9 @@ public class Utils {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @return only unique names included in each drink
+     */
     public static Set<String> getNamesOfAllIngredients() {
         Set<String> ing = new HashSet<>();
         List<Drink> allDrink = Repository.getInstance().getDrinkList().getAllDrink();
