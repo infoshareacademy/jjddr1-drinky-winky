@@ -42,7 +42,7 @@ public class DrinkDisplay {
         if (preparingMenu().containsKey(choice)){
             String selectedDrink = (String) preparingMenu().get(choice);
             System.out.println("Your choice is: "+selectedDrink+
-                    "\n Recipe for your "+ selectedDrink+"is: \n"+ Repository.getInstance().getDrinkByName(selectedDrink));
+                    "\n Recipe for your "+ selectedDrink+" is: \n"+ Repository.getInstance().getDrinkByName(selectedDrink));
         }else System.out.println("Wrong choice.");
 
     }

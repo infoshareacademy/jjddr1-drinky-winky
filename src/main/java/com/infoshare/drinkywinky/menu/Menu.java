@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.display.DrinkDisplay;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
@@ -45,9 +46,7 @@ public class Menu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
-                    STDOUT.info(String.valueOf(Utils.getNamesOfAllDrink()) + "\n");
-                    new ShowByCategory().showByCategory();
-                    //TODO PRINT ALL EVENTS
+                    DrinkDisplay.menuService();
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for specific recipe\n");
