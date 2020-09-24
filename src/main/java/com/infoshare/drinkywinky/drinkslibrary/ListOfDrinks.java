@@ -13,7 +13,7 @@ import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ListOfDrinks {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
-    public static final int NUMBER_OF_DRINKS_BY_PAGE = 5;
+    public static final int NUMBER_OF_DRINKS_BY_PAGE = 10;
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
@@ -22,10 +22,10 @@ public class ListOfDrinks {
     private int numberOfPages;
     private List<String> alphabeticalList;
     private int trigger;
-    private List<String> defaultList;
+    private List<String> currentDefaultListOfDrinks;
 
-    public void alphabeticalMenu() {
-        defaultList = Utils.getNamesOfAllDrink();
+    public void alphabeticalScrollingMenu() {
+        currentDefaultListOfDrinks = Utils.getNamesOfAllDrink();
         countNumberOfMenuPages();
         toAlphabeticalList();
 
@@ -46,7 +46,10 @@ public class ListOfDrinks {
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
 
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
+
+            //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
             chooseTheOption();
+
         } while (true);
     }
 
@@ -65,8 +68,7 @@ public class ListOfDrinks {
 
     private void fillingMenuByDrinks() {
         for (int i = (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE); i <= (NUMBER_OF_DRINKS_BY_PAGE + (pageNumber * NUMBER_OF_DRINKS_BY_PAGE)); i++) {
-            if (i <= defaultList.size()) {
-                //TODO Magic numbers
+            if (i <= currentDefaultListOfDrinks.size()) {
                 int numberOfSpaces = MENU_WIDTH_1 - Integer.toString(i).length() - alphabeticalList.get(i - 1).length();
                 String whitespace = String.format("%1$" + numberOfSpaces + "s", "");
                 STDOUT.info("│   \u001b[33m{}.\u001b[0m {}{}│\n", i, alphabeticalList.get(i - 1), whitespace);
@@ -79,28 +81,27 @@ public class ListOfDrinks {
     }
 
     private void countNumberOfMenuPages() {
-        numberOfPages = defaultList.size() / NUMBER_OF_DRINKS_BY_PAGE;
-        if (defaultList.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
-            numberOfPages = defaultList.size() / NUMBER_OF_DRINKS_BY_PAGE + 1;
+        numberOfPages = currentDefaultListOfDrinks.size() / NUMBER_OF_DRINKS_BY_PAGE;
+        if (currentDefaultListOfDrinks.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
+            numberOfPages = currentDefaultListOfDrinks.size() / NUMBER_OF_DRINKS_BY_PAGE + 1;
         }
     }
 
     private void toAlphabeticalList() {
-        alphabeticalList = defaultList.stream().sorted().collect(Collectors.toList());
+        alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
     }
-
 
     private void chooseTheOption() {
         in = SCANNER.next();
         trigger = 1;
-        changePage();
+        changePageOfMenu();
         quitToMainMenu();
         if (trigger == 1) {
             chooseSpecificDrink();
         }
     }
 
-    private void changePage() {
+    private void changePageOfMenu() {
         if (in.equalsIgnoreCase("N")) {
             if (pageNumber == numberOfPages - 1) {
                 STDOUT.info("\n\u001b[31m It's LAST page, you cannot move forward!\u001b[0m\n");
@@ -140,6 +141,6 @@ public class ListOfDrinks {
 
     public static void main(String[] args) {
         ListOfDrinks list = new ListOfDrinks();
-        list.alphabeticalMenu();
+        list.alphabeticalScrollingMenu();
     }
 }
