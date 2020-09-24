@@ -48,7 +48,7 @@ public class Menu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. List of all recipes   \n");
-                    STDOUT.info(String.valueOf(Utils.getNamesOfDrink()));
+                    STDOUT.info(String.valueOf(Utils.getNamesOfAllDrink()));
                     new ShowByCategory().showByCategory();
                     //TODO PRINT ALL EVENTS
                     break;
