@@ -1,17 +1,12 @@
 package com.infoshare.drinkywinky;
 
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.model.Drink;
-import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
-import com.infoshare.drinkywinky.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
 
         /*
           METHOD MUST RUN ONLY ONCE!
@@ -20,12 +15,15 @@ public class Main {
          */
         Repository.saveToNewFile();
 
-        System.out.println(Utils.getNamesOfAllIngredients());
-        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+//        System.out.println(Utils.getNamesOfAllIngredients());
+//        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+//        System.out.println("Lista " + Repository.getInstance().getDrinkByCategories("Ordinary Drink"));
+//        System.out.println("Lista Cat" + Utils.getCathegoryofAllDrink());
 
         /*
          display main menu
         */
+        Menu.intro();
         Menu.mainMenu();
 
         //getDrinkList() should use inside class

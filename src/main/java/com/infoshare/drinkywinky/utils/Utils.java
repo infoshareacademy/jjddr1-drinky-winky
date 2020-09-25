@@ -24,8 +24,20 @@ public class Utils {
     }
 
     /**
+     * @return only Cathegory of each drink.
+     */
+    public static Set<String> getCategoryofAllDrink() {
+        return Repository.getInstance().getDrinkList().getAllDrink()
+                .stream().
+                        map(Drink::getCategory)
+                .collect(Collectors.toSet());
+    }
+
+    /**
      * @return only unique names included in each drink
      */
+
+
     public static Set<String> getNamesOfAllIngredients() {
         Set<String> ing = new HashSet<>();
         List<Drink> allDrink = Repository.getInstance().getDrinkList().getAllDrink();
@@ -33,10 +45,12 @@ public class Utils {
             List<String> ingredients = drink.getIngredients();
             ing.addAll(ingredients);
         }
+
         return ing;
+    }
+}
 //        Repository.getInstance().getDrinkList().getAllDrink()
 //                .stream()
 //                .map(Drink::getIngredients)
 //                .collect(Collectors.toSet())
-    }
-}
+

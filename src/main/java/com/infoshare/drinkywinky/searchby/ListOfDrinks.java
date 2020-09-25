@@ -1,4 +1,4 @@
-package com.infoshare.drinkywinky.drinkslibrary;
+package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.repositories.Repository;
@@ -13,7 +13,7 @@ import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ListOfDrinks {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
-    public static final int NUMBER_OF_DRINKS_BY_PAGE = 10;
+    public static final int NUMBER_OF_DRINKS_BY_PAGE = 7;
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
@@ -123,6 +123,7 @@ public class ListOfDrinks {
 
     private void quitToMainMenu() {
         if (in.equalsIgnoreCase("X")) {
+
             Menu.mainMenu();
             trigger = 0;
         }
