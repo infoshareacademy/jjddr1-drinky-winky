@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink {
@@ -30,10 +29,12 @@ public class Drink {
     public Drink(@JsonProperty("idDrink") String id,
                  @JsonProperty("strDrink") String name,
                  @JsonProperty("strCategory") String category
+
     ) {
         this.id = id;
         this.name = name;
         this.category = category;
+
     }
 
     public Drink(String id, String name, String category, List<String> ingredients) {
@@ -58,6 +59,8 @@ public class Drink {
     public List<String> getIngredients() {
         return ingredients;
     }
+
+
 
     @Override
     public String toString() {
