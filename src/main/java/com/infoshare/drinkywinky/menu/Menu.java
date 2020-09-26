@@ -56,6 +56,7 @@ public class Menu {
                     break;
                 case 4:
                     STDOUT.info(" CHOSEN : 4. Edit configuration      \n");
+                    new PropertiesMenu().propertiesMenu();
                     break;
                 case 5:
                     mainExitCode = 5;
