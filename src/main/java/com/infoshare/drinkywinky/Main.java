@@ -13,7 +13,6 @@ public class Main {
           WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
           Option should be selected from the MENU!
          */
-        Repository.saveToNewFile();
 
 //        System.out.println(Utils.getNamesOfAllIngredients());
 //        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
