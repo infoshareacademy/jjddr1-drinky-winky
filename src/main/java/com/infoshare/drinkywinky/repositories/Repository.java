@@ -58,7 +58,7 @@ public class Repository {
         return MESSAGE;
     }
 
-    public static DrinkList readFile(String path) {
+        static DrinkList readFile(String path) {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(path);
         DrinkList drinkList = null;
