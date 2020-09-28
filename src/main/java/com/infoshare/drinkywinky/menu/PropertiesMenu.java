@@ -1,10 +1,15 @@
 package com.infoshare.drinkywinky.menu;
 
 
+
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 
@@ -13,11 +18,14 @@ public class PropertiesMenu {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
+
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
-            Repository.saveToNewFile();
+            List<String> drink = new ArrayList<String>();
             STDOUT.info("FILE RESTORED.\n");
+            Repository.saveToNewFile();
+            Menu.mainMenu();
         } else {
             STDOUT.info("Returning to properties menu.\n");
             propertiesMenu();
