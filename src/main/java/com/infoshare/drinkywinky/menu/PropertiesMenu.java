@@ -25,7 +25,9 @@ public class PropertiesMenu {
             List<String> drink = new ArrayList<String>();
             STDOUT.info("FILE RESTORED.\n");
             Repository.saveToNewFile();
-            Menu.mainMenu();
+            STDOUT.info("PLEASE RESTART PROGRAM TO GET UPDATED.\n");
+
+
         } else {
             STDOUT.info("Returning to properties menu.\n");
             propertiesMenu();
@@ -52,7 +54,11 @@ public class PropertiesMenu {
 
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
-                    STDOUT.info(" CHOOSE : \n1. Sort by ASC   \n2. Sort by DESC \n ");
+                    STDOUT.info("┌──────────────────────────────────────────┐\n");
+                    STDOUT.info("│      \u001b[101m        CHOOSE :         \u001b[0m           │\n");
+                    STDOUT.info("│    1. Sort by ASC                        │\n");
+                    STDOUT.info("│    2. Sort by DESC                       │\n");
+                    STDOUT.info("└──────────────────────────────────────────┘\n");
                     new ConfigLoader().loadAppConfig();
                     switch (ChoiceMenu.choiceMenu()) {
                         case 1:
