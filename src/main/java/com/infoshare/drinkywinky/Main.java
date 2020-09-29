@@ -7,27 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        /*
-          METHOD MUST RUN ONLY ONCE!
-          WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
-          Option should be selected from the MENU!
-         */
-
-//        System.out.println(Utils.getNamesOfAllIngredients());
-//        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
-//        System.out.println("Lista " + Repository.getInstance().getDrinkByCategories("Ordinary Drink"));
-//        System.out.println("Lista Cat" + Utils.getCathegoryofAllDrink());
-
         /*
          display main menu
         */
         Menu.intro();
         Menu.mainMenu();
-
-        //getDrinkList() should use inside class
-//        final List<Drink> allDrink = Repository.getInstance().getDrinkList().getAllDrink();
-//        System.out.println(allDrink);
 
         /*
           way to add new drink
@@ -39,14 +23,6 @@ public class Main {
 //        Drink annaDrink = new Drink("02", "Anna", "Ordinary drink", ingredients);
 //
 //        System.out.println(annaDrink);
-
-        /*
-         way to display drink by enter name
-         */
-        String name = "Blue Margarita";
-
-
-
 
         /*
           SINGLETON to use for Repository getters

@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class Repository {
-    private static final String DATA_BASE_PATH_NAME = "search.json";
-    private static final String USER_DATA_BASE_PATH_NAME = "drink list.json";
+    private static final String DATA_BASE_PATH_NAME = "src/main/resources/search.json";
+    private static final String USER_DATA_BASE_PATH_NAME = "src/main/resources/drink list.json";
     private static final String MESSAGE = "File is saved";
     private static Repository INSTANCE = null;
     private static DrinkList drinkList;
@@ -58,7 +58,7 @@ public class Repository {
         return MESSAGE;
     }
 
-        static DrinkList readFile(String path) {
+    static DrinkList readFile(String path) {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(path);
         DrinkList drinkList = null;
