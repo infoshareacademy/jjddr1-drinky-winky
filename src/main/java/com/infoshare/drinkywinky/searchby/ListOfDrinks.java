@@ -139,9 +139,4 @@ public class ListOfDrinks {
 
         }
     }
-
-    public static void main(String[] args) {
-        ListOfDrinks list = new ListOfDrinks();
-        list.alphabeticalScrollingMenu();
-    }
 }

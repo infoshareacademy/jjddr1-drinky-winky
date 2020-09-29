@@ -1,13 +1,10 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.searchby.ListOfDrinks;
 import com.infoshare.drinkywinky.searchby.ShowByCategory;
 import com.infoshare.drinkywinky.searchby.ShowByIngredients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 
 public class SearchMenu {
@@ -47,6 +44,7 @@ public class SearchMenu {
                 case 4:
                     STDOUT.info(" Welcome to main menu \n");
                     Menu.mainMenu();
+
                     mainExitCode = 4;
                     break;
                 default:

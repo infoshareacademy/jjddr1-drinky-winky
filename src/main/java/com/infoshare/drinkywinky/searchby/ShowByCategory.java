@@ -28,7 +28,7 @@ public class ShowByCategory {
     private static String SORT_TYPE = AppConfig.recipeSortType;
 
     public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getCategoryofAllDrink();
+        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink();
         countNumberOfMenuPages();
         toAlphabeticalList();
 
@@ -87,8 +87,8 @@ public class ShowByCategory {
     }
 
     private void toAlphabeticalList() {
-            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
-        }
+        alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+    }
 
     private void chooseTheOption() {
         in = SCANNER.next();
@@ -137,10 +137,4 @@ public class ShowByCategory {
 
         }
     }
-
-    public static void main(String[] args) {
-        ShowByCategory list = new ShowByCategory();
-        list.alphabeticalScrollingMenu();
-    }
 }
-

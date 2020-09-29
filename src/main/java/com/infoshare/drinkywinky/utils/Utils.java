@@ -26,7 +26,7 @@ public class Utils {
     /**
      * @return only Cathegory of each drink.
      */
-    public static Set<String> getCategoryofAllDrink() {
+    public static Set<String> getCategoryOfAllDrink() {
         return Repository.getInstance().getDrinkList().getAllDrink()
                 .stream().
                         map(Drink::getCategory)
