@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.model.DrinkList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

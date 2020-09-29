@@ -6,7 +6,8 @@ import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
@@ -134,11 +135,4 @@ public class ShowByIngredients {
 
         }
     }
-
-    public static void main(String[] args) {
-        com.infoshare.drinkywinky.searchby.ShowByIngredients list = new com.infoshare.drinkywinky.searchby.ShowByIngredients();
-        list.alphabeticalScrollingMenu();
-
-    }
 }
-

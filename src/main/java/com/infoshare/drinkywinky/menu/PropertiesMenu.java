@@ -1,7 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
 
-
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
@@ -25,7 +24,7 @@ public class PropertiesMenu {
             List<String> drink = new ArrayList<String>();
             STDOUT.info("FILE RESTORED.\n");
             Repository.saveToNewFile();
-            STDOUT.info("PLEASE RESTART PROGRAM TO GET UPDATED.\n");
+            STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
 
 
         } else {
@@ -34,7 +33,7 @@ public class PropertiesMenu {
         }
     }
 
-    public static void propertiesMenu() {
+    public static void propertiesMenu()  {
 
         int mainExitCode = 0;
 
