@@ -17,13 +17,13 @@ public class SearchMenu {
         while ( mainExitCode != 4 ) {
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m   │\n");
+            STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   1. Search for a drink by name          │\n");
             STDOUT.info("│   2. Search for a drink by ingredient    │\n");
             STDOUT.info("│   3. Search for a drink by category      │\n");
             STDOUT.info("│                                          │\n");
-            STDOUT.info("│  \u001b[36m 4. TO MAIN MENU                   \u001b[0m  │\n");
+            STDOUT.info("│  \u001b[36m 4. TO MAIN MENU                   \u001b[0m     │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n");
             STDOUT.info("\n");
             STDOUT.info("CHOOSE NUMBER: ");
