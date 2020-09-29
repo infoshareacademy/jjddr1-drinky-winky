@@ -19,6 +19,7 @@ public class Repository {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
     }
 
+
     public static Repository getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Repository();
@@ -57,7 +58,7 @@ public class Repository {
         return MESSAGE;
     }
 
-    static DrinkList readFile(String path) {
+        static DrinkList readFile(String path) {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File(path);
         DrinkList drinkList = null;

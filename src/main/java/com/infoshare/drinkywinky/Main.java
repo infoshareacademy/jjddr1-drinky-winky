@@ -1,31 +1,28 @@
 package com.infoshare.drinkywinky;
 
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.model.Drink;
-import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
-import com.infoshare.drinkywinky.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
 
         /*
           METHOD MUST RUN ONLY ONCE!
           WHEN USER OPEN APP FIRST TIME, OR FOR HIS REQUEST!
           Option should be selected from the MENU!
          */
-        Repository.saveToNewFile();
 
-        System.out.println(Utils.getNamesOfAllIngredients());
-        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+//        System.out.println(Utils.getNamesOfAllIngredients());
+//        System.out.println(Repository.getInstance().getListOfDrinkByIngredient("Salt"));
+//        System.out.println("Lista " + Repository.getInstance().getDrinkByCategories("Ordinary Drink"));
+//        System.out.println("Lista Cat" + Utils.getCathegoryofAllDrink());
 
         /*
          display main menu
         */
+        Menu.intro();
         Menu.mainMenu();
 
         //getDrinkList() should use inside class

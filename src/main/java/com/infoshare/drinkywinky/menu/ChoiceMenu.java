@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.model.DrinkList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,7 @@ public class ChoiceMenu {
         try {
             String in = SCANNER.next();
 
-            if ((Pattern.matches("[1-7]", in))) {
+            if ((Pattern.matches("[1-5]", in))) {
                 try {
                     result = Integer.parseInt(in);
                 } catch (NumberFormatException e) {
