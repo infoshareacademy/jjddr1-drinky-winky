@@ -28,7 +28,7 @@ public class ShowByCategory {
     private static String SORT_TYPE = AppConfig.recipeSortType;
 
     public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink();
+        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
         toAlphabeticalList();
 

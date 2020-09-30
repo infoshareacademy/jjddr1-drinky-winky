@@ -25,7 +25,7 @@ public class ListOfDrinks {
     private List<String> currentDefaultListOfDrinks;
 
     public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getNamesOfAllDrink();
+        currentDefaultListOfDrinks = Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
         toAlphabeticalList();
 
