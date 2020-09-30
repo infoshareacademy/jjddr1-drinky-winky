@@ -49,6 +49,15 @@ public class DrinkList {
                 .collect(Collectors.toList());
     }
 
+    public List<Drink> getDrinkByRecipe(String recipe) {
+
+        return  allDrink
+        .stream()
+                .filter(e -> e.getRecipe()
+                        .equalsIgnoreCase(recipe)).
+                        collect(Collectors.toList());
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(allDrink);
