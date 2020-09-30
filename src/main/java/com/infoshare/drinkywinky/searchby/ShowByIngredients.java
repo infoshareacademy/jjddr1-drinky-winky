@@ -26,7 +26,7 @@ public class ShowByIngredients {
     private HashSet<String> currentDefaultListOfIngredients;
 
     public void alphabeticalScrollingMenu() {
-        currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients();
+        currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
         toAlphabeticalList();
 

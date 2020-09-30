@@ -44,7 +44,8 @@ public class DrinkList {
     public List<Drink> getDrinkByIngredients(String ingredient) {
         return allDrink
                 .stream()
-                .filter(e -> e.getIngredients().contains(ingredient))
+                .filter(e ->
+                        e.getIngredients().stream().anyMatch(i -> i.equalsIgnoreCase(ingredient)))
                 .collect(Collectors.toList());
     }
 

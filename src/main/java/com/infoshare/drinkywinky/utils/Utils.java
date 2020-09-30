@@ -1,6 +1,7 @@
 package com.infoshare.drinkywinky.utils;
 
 import com.infoshare.drinkywinky.model.Drink;
+import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.util.HashSet;
@@ -16,18 +17,18 @@ public class Utils {
     /**
      * @return only names of all drink
      */
-    public static List<String> getNamesOfAllDrink() {
-        return Repository.getInstance().getDrinkList().getAllDrink()
+    public static List<String> getNamesOfAllDrink(DrinkList drinkList) {
+        return   drinkList.getAllDrink()
                 .stream()
                 .map(Drink::getName)
                 .collect(Collectors.toList());
     }
 
     /**
-     * @return only Cathegory of each drink.
+     * @return only category of each drink.
      */
-    public static Set<String> getCategoryOfAllDrink() {
-        return Repository.getInstance().getDrinkList().getAllDrink()
+    public static Set<String> getCategoryOfAllDrink(DrinkList drinkList) {
+        return drinkList.getAllDrink()
                 .stream().
                         map(Drink::getCategory)
                 .collect(Collectors.toSet());
@@ -36,14 +37,12 @@ public class Utils {
     /**
      * @return only unique names included in each drink
      */
-    public static Set<String> getNamesOfAllIngredients() {
-        Set<String> ing = new HashSet<>();
-        List<Drink> allDrink = Repository.getInstance().getDrinkList().getAllDrink();
+    public static Set<String> getNamesOfAllIngredients(DrinkList drinkList) {
+        Set<String> ingredients = new HashSet<>();
+        List<Drink> allDrink = drinkList.getAllDrink();
         for (Drink drink : allDrink) {
-            List<String> ingredients = drink.getIngredients();
-            ing.addAll(ingredients);
+           drink.getIngredients().forEach(e ->ingredients.add(e.toLowerCase()));
         }
-
-        return ing;
+        return ingredients;
     }
 }
