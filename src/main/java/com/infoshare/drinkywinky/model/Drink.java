@@ -12,6 +12,11 @@ public class Drink {
     private final String id;
     private final String name;
     private final String category;
+    private final String recipe;
+    private final String alkoholic;
+    private final String datemodified;
+    private final String glass;
+
     private List<String> ingredients = new ArrayList<>();
 
     @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
@@ -28,20 +33,32 @@ public class Drink {
 
     public Drink(@JsonProperty("idDrink") String id,
                  @JsonProperty("strDrink") String name,
-                 @JsonProperty("strCategory") String category
+                 @JsonProperty("strCategory") String category,
+                 @JsonProperty("strInstructions") String recipe,
+                 @JsonProperty("strAlcoholic") String alkoholic,
+                 @JsonProperty("dateModified") String datemodified,
+                 @JsonProperty("strGlass") String glass
 
     ) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.recipe = recipe;
+        this.alkoholic = alkoholic;
+        this.datemodified = datemodified;
+        this.glass = glass;
 
     }
 
-    public Drink(String id, String name, String category, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe,String alkoholic,String datemodified, String glass, List<String> ingredients) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.recipe =  recipe;
         this.ingredients = ingredients;
+        this.alkoholic = alkoholic;
+        this.datemodified = datemodified;
+        this.glass = glass;
     }
 
 
@@ -57,6 +74,20 @@ public class Drink {
         return category;
     }
 
+    public String getRecipe() { return recipe;}
+
+    public String getAlkoholic() {
+        return alkoholic;
+    }
+
+    public String getDatemodified() {
+        return datemodified;
+    }
+
+    public String getGlass() {
+        return glass;
+    }
+
     public List<String> getIngredients() {
         return ingredients;
     }
@@ -68,6 +99,6 @@ public class Drink {
     public String toString() {
         return "Drink name: " + name +
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id + "\n";
+                "\nID: " + id  +"\nRecipe: \n" + recipe +"\nAlkoholic: " + alkoholic + "\nGlass type: " + glass +"\nDate of modification: " + datemodified;
     }
 }
