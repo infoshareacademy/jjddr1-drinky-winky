@@ -50,11 +50,11 @@ public class Drink {
 
     }
 
-    public Drink(String id, String name, String category, String recipe,String alkoholic,String datemodified, String glass, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe, String alkoholic, String datemodified, String glass, List<String> ingredients) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.recipe =  recipe;
+        this.recipe = recipe;
         this.ingredients = ingredients;
         this.alkoholic = alkoholic;
         this.datemodified = datemodified;
@@ -74,7 +74,9 @@ public class Drink {
         return category;
     }
 
-    public String getRecipe() { return recipe;}
+    public String getRecipe() {
+        return recipe;
+    }
 
     public String getAlkoholic() {
         return alkoholic;
@@ -93,12 +95,11 @@ public class Drink {
     }
 
 
-
-
     @Override
     public String toString() {
-        return "Drink name: " + name +
+        return "\nDrink name: " + name +
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id  +"\nRecipe: \n" + recipe +"\nAlkoholic: " + alkoholic + "\nGlass type: " + glass +"\nDate of modification: " + datemodified;
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlkoholic: " + alkoholic +
+                "\nGlass type: " + glass + "\nDate of modification: " + datemodified + "\n";
     }
 }
