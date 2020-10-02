@@ -13,15 +13,16 @@ import java.util.List;
 import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
-import static com.infoshare.drinkywinky.menu.Menu.STDOUT;
 
 public class PropertiesMenu {
+
+    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
-            List<String> drink = new ArrayList<String>();
+            List<String> drink = new ArrayList<>();
             STDOUT.info("FILE RESTORED.\n");
             Repository.loadDataBase();
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");

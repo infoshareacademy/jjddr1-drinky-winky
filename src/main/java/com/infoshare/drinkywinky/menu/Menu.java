@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Menu {
 
     public static final Scanner SCANNER = new Scanner(System.in);
-    public static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void intro() {
         STDOUT.info("┌──────────────────────────────────────────┐\n");
