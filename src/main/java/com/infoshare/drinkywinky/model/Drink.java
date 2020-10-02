@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -36,7 +35,7 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strCategory") String category,
                  @JsonProperty("strInstructions") String recipe,
                  @JsonProperty("strAlcoholic") String alcoholic,
-                 @JsonProperty("dateModified") String datemodified,
+                 @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
 
     ) {
@@ -45,11 +44,11 @@ public class Drink implements Comparable<Drink> {
         this.category = category;
         this.recipe = recipe;
         this.alcoholic = alcoholic;
-        this.dateModified = datemodified;
+        this.dateModified = dateModified;
         this.glass = glass;
     }
 
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String datemodified, String glass, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients) {
 
         this.id = id;
         this.name = name;
@@ -57,7 +56,7 @@ public class Drink implements Comparable<Drink> {
         this.recipe = recipe;
         this.ingredients = ingredients;
         this.alcoholic = alcoholic;
-        this.dateModified = datemodified;
+        this.dateModified = dateModified;
         this.glass = glass;
     }
 
@@ -81,7 +80,7 @@ public class Drink implements Comparable<Drink> {
         return alcoholic;
     }
 
-    public String getDatemodified() {
+    public String getDateModified() {
         return dateModified;
     }
 
