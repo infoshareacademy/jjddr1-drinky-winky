@@ -8,13 +8,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Drink {
+public class Drink implements Comparable<Drink> {
     private final String id;
     private final String name;
     private final String category;
     private final String recipe;
-    private final String alkoholic;
-    private final String datemodified;
+    private final String alcoholic;
+    private final String dateModified;
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
@@ -35,7 +35,7 @@ public class Drink {
                  @JsonProperty("strDrink") String name,
                  @JsonProperty("strCategory") String category,
                  @JsonProperty("strInstructions") String recipe,
-                 @JsonProperty("strAlcoholic") String alkoholic,
+                 @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String datemodified,
                  @JsonProperty("strGlass") String glass
 
@@ -44,23 +44,22 @@ public class Drink {
         this.name = name;
         this.category = category;
         this.recipe = recipe;
-        this.alkoholic = alkoholic;
-        this.datemodified = datemodified;
+        this.alcoholic = alcoholic;
+        this.dateModified = datemodified;
         this.glass = glass;
-
     }
 
-    public Drink(String id, String name, String category, String recipe, String alkoholic, String datemodified, String glass, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe, String alcoholic, String datemodified, String glass, List<String> ingredients) {
+
         this.id = id;
         this.name = name;
         this.category = category;
         this.recipe = recipe;
         this.ingredients = ingredients;
-        this.alkoholic = alkoholic;
-        this.datemodified = datemodified;
+        this.alcoholic = alcoholic;
+        this.dateModified = datemodified;
         this.glass = glass;
     }
-
 
     public String getId() {
         return id;
@@ -78,12 +77,12 @@ public class Drink {
         return recipe;
     }
 
-    public String getAlkoholic() {
-        return alkoholic;
+    public String getAlcoholic() {
+        return alcoholic;
     }
 
     public String getDatemodified() {
-        return datemodified;
+        return dateModified;
     }
 
     public String getGlass() {
@@ -94,12 +93,17 @@ public class Drink {
         return ingredients;
     }
 
-
     @Override
     public String toString() {
         return "\nDrink name: " + name +
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlkoholic: " + alkoholic +
-                "\nGlass type: " + glass + "\nDate of modification: " + datemodified + "\n";
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
+                "\nGlass type: " + glass + "\nDate of modification: "
+                + dateModified + "\n";
+    }
+
+    @Override
+    public int compareTo(Drink o) {
+        return name.compareToIgnoreCase(o.getName());
     }
 }

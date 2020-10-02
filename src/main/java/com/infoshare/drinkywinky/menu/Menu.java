@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +11,6 @@ public class Menu {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void intro() {
-
         STDOUT.info("┌──────────────────────────────────────────┐\n");
         STDOUT.info("│                                          │\n");
         STDOUT.info("│ \u001b[32m   WELCOME TO MANAGE DRINK APLICATION    \u001b[0m│\n");

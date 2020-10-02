@@ -12,8 +12,6 @@ public class ConfigLoader {
     public static final String RECIPE_SORT_TYPE_KEY = "recipe.sort.type";
     public static final String DATE_FORMAT_KEY = "date.format";
 
-
-
     public ConfigLoader loadAppConfig() {
         AppConfig.recipeSortType = getProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
         AppConfig.dateFormat = getProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
@@ -30,11 +28,9 @@ public class ConfigLoader {
                     "Wrong key: " + key + " in config file!  " + "\n" + "Set new default value: "
                             + defaultValue);
             result = prop.getProperty(key, defaultValue);
-
         } else {
             result = prop.getProperty(key);
         }
-
         return result;
     }
 
@@ -56,4 +52,5 @@ public class ConfigLoader {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }}
+    }
+}

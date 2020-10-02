@@ -6,8 +6,6 @@ import com.infoshare.drinkywinky.properties.ConfigLoader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
-
 public class DateFormater {
     ConfigLoader configLoader = new ConfigLoader().loadAppConfig();
     LocalDateTime localDateTime = LocalDateTime.now();
@@ -22,5 +20,4 @@ public class DateFormater {
         return formatter;
     }
 
-    }
-
+}

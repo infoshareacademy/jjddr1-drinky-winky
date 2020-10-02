@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
@@ -16,13 +15,11 @@ import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
-
 public class PropertiesMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
-
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
@@ -30,21 +27,18 @@ public class PropertiesMenu {
             STDOUT.info("FILE RESTORED.\n");
             Repository.loadDataBase();
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
-
-
         } else {
             STDOUT.info("Returning to properties menu.\n");
             propertiesMenu();
         }
     }
 
-    public static void propertiesMenu()  {
+    public static void propertiesMenu() {
         Properties prop = new Properties();
         ConfigLoader config = new ConfigLoader();
         int mainExitCode = 0;
 
-        while ( mainExitCode != 4 ) {
-
+        while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
             STDOUT.info("│                                          │\n");
@@ -67,7 +61,8 @@ public class PropertiesMenu {
                     switch (ChoiceMenu.choiceMenu()) {
                         case 1:
                             STDOUT.info("ASC activated\n");
-                            try { OutputStream out = new FileOutputStream("./resources/config.properties");
+                            try {
+                                OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                                 prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
                                 prop.store(out, "File Saved");
@@ -80,7 +75,8 @@ public class PropertiesMenu {
                             break;
                         default:
                             STDOUT.info("DESC activated\n");
-                            try { OutputStream out = new FileOutputStream("./resources/config.properties");
+                            try {
+                                OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                                 prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
                                 prop.store(out, "File Saved");
@@ -95,7 +91,6 @@ public class PropertiesMenu {
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
-
                     break;
                 case 3:
                     STDOUT.info("┌──────────────────────────────────────────┐\n");

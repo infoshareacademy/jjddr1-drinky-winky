@@ -58,7 +58,6 @@ public class DrinkList {
     }
 
     public List<Drink> getDrinkByRecipe(String recipe) {
-
         return allDrink
                 .stream()
                 .filter(e -> e.getRecipe()
@@ -75,5 +74,4 @@ public class DrinkList {
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink + "\n";
     }
-
 }
