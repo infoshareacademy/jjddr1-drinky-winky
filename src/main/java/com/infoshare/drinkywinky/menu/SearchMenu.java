@@ -5,10 +5,12 @@ import com.infoshare.drinkywinky.searchby.ListOfDrinks;
 import com.infoshare.drinkywinky.searchby.ShowByCategory;
 import com.infoshare.drinkywinky.searchby.ShowByIngredients;
 import com.infoshare.drinkywinky.utils.Utils;
-
-import static com.infoshare.drinkywinky.menu.Menu.STDOUT;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SearchMenu {
+
+    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void secondMenu() {
         int mainExitCode = 0;
