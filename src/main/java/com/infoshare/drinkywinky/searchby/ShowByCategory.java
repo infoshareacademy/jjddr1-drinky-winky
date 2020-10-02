@@ -90,11 +90,12 @@ public class ShowByCategory {
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
             alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
-            Collections.sort( alphabeticalList, Collections.reverseOrder());
+            Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
             alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
         }
     }
+
     private void chooseTheOption() {
         in = SCANNER.next();
         trigger = 1;

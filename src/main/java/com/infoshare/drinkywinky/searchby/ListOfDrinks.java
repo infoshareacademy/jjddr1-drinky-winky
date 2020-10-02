@@ -1,11 +1,9 @@
 package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
-import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,12 +95,12 @@ public class ListOfDrinks {
     }
 
     private void toAlphabeticalList() {
-            if (SORT_TYPE.equals("DESC")) {
-                currentDefaultListOfDrinks.sort(Collections.reverseOrder());
-                alphabeticalList = new ArrayList<>(currentDefaultListOfDrinks);
+        if (SORT_TYPE.equals("DESC")) {
+            currentDefaultListOfDrinks.sort(Collections.reverseOrder());
+            alphabeticalList = new ArrayList<>(currentDefaultListOfDrinks);
 
-             } else {
-                alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+        } else {
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
         }
     }
 

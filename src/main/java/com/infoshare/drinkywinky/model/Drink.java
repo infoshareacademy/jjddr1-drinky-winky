@@ -14,7 +14,7 @@ public class Drink implements Comparable<Drink> {
     private final String category;
     private final String recipe;
     private final String alcoholic;
-    private final String datemodified;
+    private final String dateModified;
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
@@ -45,11 +45,9 @@ public class Drink implements Comparable<Drink> {
         this.category = category;
         this.recipe = recipe;
         this.alcoholic = alcoholic;
-        this.datemodified = datemodified;
+        this.dateModified = datemodified;
         this.glass = glass;
-
     }
-
 
     public Drink(String id, String name, String category, String recipe, String alcoholic, String datemodified, String glass, List<String> ingredients) {
 
@@ -59,10 +57,9 @@ public class Drink implements Comparable<Drink> {
         this.recipe = recipe;
         this.ingredients = ingredients;
         this.alcoholic = alcoholic;
-        this.datemodified = datemodified;
+        this.dateModified = datemodified;
         this.glass = glass;
     }
-
 
     public String getId() {
         return id;
@@ -85,7 +82,7 @@ public class Drink implements Comparable<Drink> {
     }
 
     public String getDatemodified() {
-        return datemodified;
+        return dateModified;
     }
 
     public String getGlass() {
@@ -100,13 +97,13 @@ public class Drink implements Comparable<Drink> {
     public String toString() {
         return "\nDrink name: " + name +
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic + "\nGlass type: " + glass + "\nDate of modification: "
-                + datemodified + "\n";
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
+                "\nGlass type: " + glass + "\nDate of modification: "
+                + dateModified + "\n";
     }
 
     @Override
     public int compareTo(Drink o) {
         return name.compareToIgnoreCase(o.getName());
-
     }
 }

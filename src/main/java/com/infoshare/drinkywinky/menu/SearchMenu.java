@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.searchby.ListOfDrinks;
 import com.infoshare.drinkywinky.searchby.ShowByCategory;
@@ -9,7 +8,6 @@ import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class SearchMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
@@ -17,7 +15,7 @@ public class SearchMenu {
     public static void secondMenu() {
         int mainExitCode = 0;
 
-        while ( mainExitCode != 4 ) {
+        while (mainExitCode != 4) {
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");

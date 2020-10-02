@@ -60,17 +60,17 @@ public class Repository {
 
     public void remove(Drink drink) {
         drinkList.removeDrink(drink);
-        saveToFile(drinkList,USER_DATA_BASE_PATH_NAME);
+        saveToFile(drinkList, USER_DATA_BASE_PATH_NAME);
     }
 
     public void addFavorite(Drink drink) {
         favoriteDrinkList.addDrink(drink);
-        saveToFile(favoriteDrinkList,FAVORITE_DRINK_LIST_PATH_NAME);
+        saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
     public void removeFavorite(Drink drink) {
         favoriteDrinkList.removeDrink(drink);
-        saveToFile(favoriteDrinkList,FAVORITE_DRINK_LIST_PATH_NAME);
+        saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
     public static void saveToFile(DrinkList drinkList, String path) {

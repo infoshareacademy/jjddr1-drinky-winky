@@ -25,7 +25,7 @@ public class Utils {
     }
 
     /**
-     * @return only category of each drink.
+     * @return only category of each drink
      */
     public static Set<String> getCategoryOfAllDrink(DrinkList drinkList) {
         return drinkList.getAllDrink()

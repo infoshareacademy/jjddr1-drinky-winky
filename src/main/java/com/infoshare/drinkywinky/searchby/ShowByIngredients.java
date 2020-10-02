@@ -90,7 +90,7 @@ public class ShowByIngredients {
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
             alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
-            Collections.sort( alphabeticalList, Collections.reverseOrder());
+            Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
             alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
         }
@@ -140,7 +140,6 @@ public class ShowByIngredients {
 
             String s = String.valueOf(Repository.getInstance().getListOfDrinkByIngredient(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
-
         }
     }
 }
