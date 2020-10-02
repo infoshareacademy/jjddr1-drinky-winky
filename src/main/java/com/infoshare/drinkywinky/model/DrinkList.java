@@ -20,6 +20,14 @@ public class DrinkList {
         return allDrink;
     }
 
+    public void addDrink(Drink drink) {
+        allDrink.add(drink);
+    }
+
+    public void removeDrink(Drink drink) {
+        allDrink.remove(drink);
+    }
+
     public List<Drink> getDrinkById(String id) {
         return allDrink
                 .stream()
@@ -51,8 +59,8 @@ public class DrinkList {
 
     public List<Drink> getDrinkByRecipe(String recipe) {
 
-        return  allDrink
-        .stream()
+        return allDrink
+                .stream()
                 .filter(e -> e.getRecipe()
                         .equalsIgnoreCase(recipe)).
                         collect(Collectors.toList());
@@ -67,4 +75,5 @@ public class DrinkList {
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink + "\n";
     }
+
 }

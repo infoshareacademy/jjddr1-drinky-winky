@@ -28,7 +28,7 @@ public class PropertiesMenu {
         if (answer.equalsIgnoreCase("yes")) {
             List<String> drink = new ArrayList<String>();
             STDOUT.info("FILE RESTORED.\n");
-            Repository.saveToNewFile();
+            Repository.loadDataBase();
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
 
 

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Drink {
+public class Drink implements Comparable<Drink> {
     private final String id;
     private final String name;
     private final String category;
@@ -54,7 +54,7 @@ public class Drink {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.recipe =  recipe;
+        this.recipe = recipe;
         this.ingredients = ingredients;
         this.alcoholic = alcoholic;
         this.datemodified = datemodified;
@@ -74,7 +74,9 @@ public class Drink {
         return category;
     }
 
-    public String getRecipe() { return recipe;}
+    public String getRecipe() {
+        return recipe;
+    }
 
     public String getAlcoholic() {
         return alcoholic;
@@ -92,14 +94,16 @@ public class Drink {
         return ingredients;
     }
 
-
-
-
     @Override
     public String toString() {
         return "\nDrink name: " + name +
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id  +"\nRecipe: \n" + recipe +"\nAlcoholic: " + alcoholic + "\nGlass type: " + glass +"\nDate of modification: "
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic + "\nGlass type: " + glass + "\nDate of modification: "
                 + datemodified + "\n";
+    }
+
+    @Override
+    public int compareTo(Drink o) {
+        return name.compareToIgnoreCase(o.getName());
     }
 }

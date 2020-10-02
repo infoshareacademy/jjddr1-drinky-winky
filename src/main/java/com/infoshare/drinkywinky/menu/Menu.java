@@ -52,6 +52,7 @@ public class Menu {
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Manage yours favorites \n");
+                    new SearchMenu().secondMenu();
                     break;
                 case 4:
                     STDOUT.info(" CHOSEN : 4. Edit configuration      \n");
