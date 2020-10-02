@@ -1,11 +1,13 @@
 package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +26,7 @@ public class ShowByIngredients {
     private List<String> alphabeticalList;
     private int trigger;
     private HashSet<String> currentDefaultListOfIngredients;
+    private static Object SORT_TYPE = AppConfig.recipeSortType;
 
     public void alphabeticalScrollingMenu() {
         currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList());
@@ -85,7 +88,12 @@ public class ShowByIngredients {
     }
 
     private void toAlphabeticalList() {
-        alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
+        if (SORT_TYPE.equals("DESC")) {
+            alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
+            Collections.sort( alphabeticalList, Collections.reverseOrder());
+        } else {
+            alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
+        }
     }
 
     private void chooseTheOption() {

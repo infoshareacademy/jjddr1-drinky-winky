@@ -1,6 +1,8 @@
 package com.infoshare.drinkywinky;
 
 import com.infoshare.drinkywinky.menu.Menu;
+
+import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 
 public class Main {
@@ -10,9 +12,9 @@ public class Main {
         /*
          display main menu
         */
+        new ConfigLoader().loadAppConfig();
         Menu.intro();
         Menu.mainMenu();
-
         /*
           way to add new drink
          */
