@@ -4,7 +4,6 @@ import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,10 +13,9 @@ import java.util.List;
 import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+import static com.infoshare.drinkywinky.menu.Menu.STDOUT;
 
 public class PropertiesMenu {
-
-    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
         STDOUT.info("Are you sure to reset data base ?\n");

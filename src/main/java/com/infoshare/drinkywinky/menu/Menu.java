@@ -2,13 +2,12 @@ package com.infoshare.drinkywinky.menu;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Scanner;
 
 public class Menu {
 
     public static final Scanner SCANNER = new Scanner(System.in);
-    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    public static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void intro() {
         STDOUT.info("┌──────────────────────────────────────────┐\n");
