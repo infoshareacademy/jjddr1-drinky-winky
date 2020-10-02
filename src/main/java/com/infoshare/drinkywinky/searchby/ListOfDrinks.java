@@ -1,6 +1,7 @@
 package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
@@ -25,13 +26,13 @@ public class ListOfDrinks {
     private String in;
     private int numberOfPages;
     private List<String> alphabeticalList;
-    private int trigger;
     private List<String> currentDefaultListOfDrinks;
+    private int trigger;
     private static Object SORT_TYPE = AppConfig.recipeSortType;
 
 
-    public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList());
+    public void alphabeticalScrollingMenu(List<String> drinkList) {
+        currentDefaultListOfDrinks = drinkList;
         countNumberOfMenuPages();
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
