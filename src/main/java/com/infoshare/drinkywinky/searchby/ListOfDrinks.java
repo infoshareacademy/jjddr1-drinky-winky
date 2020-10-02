@@ -1,11 +1,15 @@
 package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.properties.AppConfig;
+import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,10 +27,14 @@ public class ListOfDrinks {
     private List<String> alphabeticalList;
     private int trigger;
     private List<String> currentDefaultListOfDrinks;
+    private static Object SORT_TYPE = AppConfig.recipeSortType;
+
 
     public void alphabeticalScrollingMenu() {
         currentDefaultListOfDrinks = Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
+        ConfigLoader config = new ConfigLoader();
+        config.loadAppConfig();
         toAlphabeticalList();
 
         do {
@@ -88,7 +96,13 @@ public class ListOfDrinks {
     }
 
     private void toAlphabeticalList() {
-        alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            if (SORT_TYPE.equals("DESC")) {
+                currentDefaultListOfDrinks.sort(Collections.reverseOrder());
+                alphabeticalList = new ArrayList<>(currentDefaultListOfDrinks);
+
+             } else {
+                alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+        }
     }
 
     private void chooseTheOption() {
