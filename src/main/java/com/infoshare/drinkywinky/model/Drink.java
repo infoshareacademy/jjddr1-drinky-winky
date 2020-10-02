@@ -50,7 +50,9 @@ public class Drink implements Comparable<Drink> {
 
     }
 
+
     public Drink(String id, String name, String category, String recipe, String alcoholic, String datemodified, String glass, List<String> ingredients) {
+
         this.id = id;
         this.name = name;
         this.category = category;
@@ -105,5 +107,6 @@ public class Drink implements Comparable<Drink> {
     @Override
     public int compareTo(Drink o) {
         return name.compareToIgnoreCase(o.getName());
+
     }
 }

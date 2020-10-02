@@ -2,12 +2,15 @@ package com.infoshare.drinkywinky;
 
 import com.infoshare.drinkywinky.menu.Menu;
 
+
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
+
 
 public class Main {
 
     public static void main(String[] args) {
+
 
         /*
          display main menu
@@ -39,6 +42,7 @@ public class Main {
 //        for (Drink drink : salt) {
 //            System.out.println(drink.getName());
 //        }
+
 
     }
 }
