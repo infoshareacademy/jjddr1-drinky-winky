@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
@@ -35,6 +36,7 @@ public class PropertiesMenu {
     public static void propertiesMenu() {
         Properties prop = new Properties();
         ConfigLoader config = new ConfigLoader();
+        Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
 
         while (mainExitCode != 4) {
@@ -66,8 +68,6 @@ public class PropertiesMenu {
                                 prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -80,8 +80,6 @@ public class PropertiesMenu {
                                 prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -89,8 +87,32 @@ public class PropertiesMenu {
                     }
                     break;
                 case 2:
-                    STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
-                    break;
+                    config.loadAppConfig();
+
+                    try {
+                        STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
+                        STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
+                        Menu.SCANNER.nextLine();
+                        do {
+                            if (SORT_TYPE.equals("DESC")) {
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
+                            }
+                            if (SORT_TYPE.equals("ASC")) {
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
+                            } else {
+                                STDOUT.info("Wrong data format. Please use as per instruction.\nyyyy - years, MM - months, dd - days, HH - hours, mm - minutes, ss - seconds\n");
+                                propertiesMenu();
+                            }
+                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
+                            prop.store(out, "File Saved");
+                            config.loadAppConfig();
+                            STDOUT.info(String.format("Chosen :%s\n", AppConfig.dateFormat));
+                            break;
+                        }while (true) ;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }break;
                 case 3:
                     STDOUT.info("┌──────────────────────────────────────────┐\n");
                     STDOUT.info("|    CHOSEN : 3. LOAD FROM ORIGINAL FILE   |\n");

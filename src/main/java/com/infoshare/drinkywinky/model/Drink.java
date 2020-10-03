@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.infoshare.drinkywinky.utils.DateFormatter;
+
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -91,7 +93,9 @@ public class Drink implements Comparable<Drink> {
     }
 
     public String getDateModified() {
-        return dateModified;
+        DateFormatter formatter = new DateFormatter();
+        formatter.getDateTime(dateModified);
+        return formatter.getDateTime(dateModified);
     }
 
     public String getGlass() {
@@ -108,7 +112,7 @@ public class Drink implements Comparable<Drink> {
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
                 "\nGlass type: " + glass + "\nDate of modification: "
-                + dateModified + "\n";
+                + getDateModified() + "\n";
     }
 
     @Override
