@@ -4,6 +4,8 @@ import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +25,6 @@ public class DataDownloadMenu {
 
     public static void main(String[] args) {
 
-        List<String> ingredientsList;
         String id = Utils.getRandomId(7);
         String dateModified = "2020.04.05";
         List<String> ingredientsList = new ArrayList<>();
@@ -54,7 +55,6 @@ public class DataDownloadMenu {
         String measures = SCANNER.nextLine();
         measuresList.add(measures);
 
-        Drink drink = new Drink(id, name, category, recipe, alcoholic, glass, ingredientsList, measuresList);
 
         //created new Drink object
         Drink drink = new Drink(id, name, category, recipe, alcoholic, dateModified, glass, ingredientsList);
