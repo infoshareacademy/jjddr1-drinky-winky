@@ -1,9 +1,7 @@
 package com.infoshare.drinkywinky.menu;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -12,7 +10,6 @@ public class Menu {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void intro() {
-
         STDOUT.info("┌──────────────────────────────────────────┐\n");
         STDOUT.info("│                                          │\n");
         STDOUT.info("│ \u001b[32m   WELCOME TO MANAGE DRINK APLICATION    \u001b[0m│\n");
@@ -52,6 +49,7 @@ public class Menu {
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Manage yours favorites \n");
+                    new SearchMenu().secondMenu();
                     break;
                 case 4:
                     STDOUT.info(" CHOSEN : 4. Edit configuration      \n");

@@ -7,6 +7,7 @@ import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,10 +26,10 @@ public class ShowByCategory {
     private List<String> alphabeticalList;
     private int trigger;
     private Set<String> currentDefaultListOfDrinks;
-    private static String SORT_TYPE = AppConfig.recipeSortType;
+    private static Object SORT_TYPE = AppConfig.recipeSortType;
 
     public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink();
+        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
         toAlphabeticalList();
 
@@ -87,7 +88,12 @@ public class ShowByCategory {
     }
 
     private void toAlphabeticalList() {
-        alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+        if (SORT_TYPE.equals("DESC")) {
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            Collections.sort(alphabeticalList, Collections.reverseOrder());
+        } else {
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+        }
     }
 
     private void chooseTheOption() {

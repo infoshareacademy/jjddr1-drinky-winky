@@ -1,11 +1,12 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.searchby.ListOfDrinks;
 import com.infoshare.drinkywinky.searchby.ShowByCategory;
 import com.infoshare.drinkywinky.searchby.ShowByIngredients;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 public class SearchMenu {
 
@@ -14,7 +15,7 @@ public class SearchMenu {
     public static void secondMenu() {
         int mainExitCode = 0;
 
-        while ( mainExitCode != 4 ) {
+        while (mainExitCode != 4) {
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
@@ -31,7 +32,7 @@ public class SearchMenu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Search for a drink by name  \n");
-                    new ListOfDrinks().alphabeticalScrollingMenu();
+                    new ListOfDrinks().alphabeticalScrollingMenu(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for a drink by ingredient  \n");
