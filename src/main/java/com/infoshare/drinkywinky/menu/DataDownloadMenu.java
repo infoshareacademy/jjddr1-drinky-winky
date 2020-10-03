@@ -26,6 +26,11 @@ public class DataDownloadMenu {
         List<String> ingredientsList;
         String id = Utils.getRandomId(7);
         String dateModified = "2020.04.05";
+        List<String> ingredientsList = new ArrayList<>();
+        List<String> measuresList = new ArrayList<>();
+
+        STDOUT.info("Fill ID: \n");
+        String id = SCANNER.nextLine();
 
         STDOUT.info("Fill NAME: \n");
         String name = SCANNER.nextLine();
@@ -44,6 +49,12 @@ public class DataDownloadMenu {
 
         STDOUT.info("Enter ingredient and separate with a coma: \n");
         ingredientsList = addIngredients(SCANNER.nextLine());
+
+        STDOUT.info("Fill MEASURES: \n");
+        String measures = SCANNER.nextLine();
+        measuresList.add(measures);
+
+        Drink drink = new Drink(id, name, category, recipe, alcoholic, glass, ingredientsList, measuresList);
 
         //created new Drink object
         Drink drink = new Drink(id, name, category, recipe, alcoholic, dateModified, glass, ingredientsList);

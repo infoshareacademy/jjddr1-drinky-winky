@@ -19,8 +19,9 @@ public class Drink implements Comparable<Drink> {
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
+    private List<String> measures = new ArrayList<>();
 
-    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
+    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7"})
     public String getFakeIngredient() {
         return null;
     }
@@ -32,6 +33,18 @@ public class Drink implements Comparable<Drink> {
         }
     }
 
+    @JsonAlias({"strMeasure1", "strMeasure2", "strMeasure3", "strMeasure4", "strMeasure5", "strMeasure6", "strMeasure7"})
+    public String getFakeMeasure() {
+        return null;
+    }
+
+    @JsonSetter()
+    public void setFakeMeasure(String measure) {
+        if (measure != null) {
+            measures.add(measure);
+        }
+    }
+
     public Drink(@JsonProperty("idDrink") String id,
                  @JsonProperty("strDrink") String name,
                  @JsonProperty("strCategory") String category,
@@ -39,6 +52,7 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
+
     ) {
         this.id = id;
         this.name = name;
@@ -66,6 +80,7 @@ public class Drink implements Comparable<Drink> {
         this.alcoholic = alcoholic;
         this.dateModified = dateModified;
         this.glass = glass;
+        this.measures = measures;
     }
 
     public String getId() {
@@ -99,7 +114,32 @@ public class Drink implements Comparable<Drink> {
     }
 
     public List<String> getIngredients() {
-        return ingredients;
+        List<String> strings = new ArrayList<>();
+
+        if (ingredients.size() == measures.size()) {
+            System.out.println("jestesmy w ifie");
+            for (int i = 0; i < ingredients.size(); i++) {
+                String s = ingredients.get(i);
+                String s1 = measures.get(i);
+                String s3 = s.concat(s1);
+                strings.add(s3);
+            }
+        } else {
+            for (int i = 0; i < measures.size(); i++) {
+                String s4 = ingredients.get(i + 1);
+                String s5 = measures.get(i);
+                String concat = s4.concat(s5);
+                strings.add(concat);
+            }
+            String salt = ingredients.get(0);
+            strings.add(salt);
+        }
+
+        return strings;
+    }
+
+    public List<String> getMeasures() {
+        return measures;
     }
 
     @Override

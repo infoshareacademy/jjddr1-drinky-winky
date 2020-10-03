@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.utils;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
+import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.math.BigInteger;
 import java.util.HashSet;
@@ -48,6 +49,15 @@ public class Utils {
             drink.getIngredients().forEach(e -> ingredients.add(e.toLowerCase()));
         }
         return ingredients;
+    }
+
+    public static Set<String> getNamesOfAllMeasures(DrinkList drinkList) {
+        Set<String> measures = new HashSet<>();
+        List<Drink> allDrink = drinkList.getAllDrink();
+        for (Drink measure : allDrink) {
+            measure.getMeasures().forEach(e -> measures.add((e.toLowerCase())));
+        }
+        return measures;
     }
 
     /**

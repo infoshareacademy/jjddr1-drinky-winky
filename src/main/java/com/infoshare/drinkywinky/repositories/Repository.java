@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class Repository {
     private static final String DATA_BASE_PATH_NAME = "src/main/resources/search.json";
@@ -36,7 +37,7 @@ public class Repository {
         return drinkList.getDrinkByName(drinkName);
     }
 
-    public List<Drink> getDrinkByCategories(String category) {
+    public Set<Drink> getDrinkByCategories(String category) {
         return drinkList.getDrinkByCategory(category);
     }
 
