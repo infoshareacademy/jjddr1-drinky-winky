@@ -16,6 +16,7 @@ public class DataDownloadMenu {
     public static void main(String[] args) {
 
         List<String> ingredientsList = new ArrayList<>();
+        List<String> measuresList = new ArrayList<>();
 
         STDOUT.info("Fill ID: \n");
         String id = SCANNER.nextLine();
@@ -39,7 +40,12 @@ public class DataDownloadMenu {
         String ingredient = SCANNER.nextLine();
         ingredientsList.add(ingredient);
 
-        Drink drink = new Drink(id, name, category, recipe, alcoholic, glass, ingredientsList);
+        STDOUT.info("Fill MEASURES: \n");
+        String measures = SCANNER.nextLine();
+        measuresList.add(measures);
+
+        Drink drink = new Drink(id, name, category, recipe, alcoholic, glass, ingredientsList, measuresList);
+
 
         System.out.println(drink);
     }

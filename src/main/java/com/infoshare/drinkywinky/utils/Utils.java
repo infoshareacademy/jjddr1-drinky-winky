@@ -4,9 +4,11 @@ import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -18,9 +20,9 @@ public class Utils {
      * @return only names of all drink
      */
     public static List<String> getNamesOfAllDrink(DrinkList drinkList) {
-        return   drinkList.getAllDrink()
+        return drinkList.getAllDrink()
                 .stream()
-                .map(Drink::getName)
+                .map(drink -> drink.getName())
                 .collect(Collectors.toList());
     }
 
@@ -41,8 +43,25 @@ public class Utils {
         Set<String> ingredients = new HashSet<>();
         List<Drink> allDrink = drinkList.getAllDrink();
         for (Drink drink : allDrink) {
-           drink.getIngredients().forEach(e ->ingredients.add(e.toLowerCase()));
+            drink.getIngredients().forEach(e -> ingredients.add(e.toLowerCase()));
         }
         return ingredients;
+    }
+
+    public static Set<String> getNamesOfAllMeasures(DrinkList drinkList) {
+        Set<String> measures = new HashSet<>();
+        List<Drink> allDrink = drinkList.getAllDrink();
+        for (Drink measure : allDrink) {
+            measure.getMeasures().forEach(e -> measures.add((e.toLowerCase())));
+        }
+        return measures;
+    }
+
+    public static String getRandomId() {
+        String randomId = String
+                .format("%040d", new BigInteger(UUID.randomUUID()
+                        .toString()
+                        .replace("-", ""), 16));
+        return randomId.substring(randomId.length() - 7);
     }
 }

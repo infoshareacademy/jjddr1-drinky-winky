@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
+import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
@@ -20,17 +21,22 @@ public class ShowByCategory {
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
-    private int pageNumber = 0;
-    private String in;
-    private int numberOfPages;
-    private List<String> alphabeticalList;
-    private int trigger;
-    private Set<String> currentDefaultListOfDrinks;
     private static Object SORT_TYPE = AppConfig.recipeSortType;
+    private int pageNumber = 0;
+    private int numberOfPages;
+    private int trigger;
+    private String in;
+    private List<String> alphabeticalList;
+    private Set<String> currentDefaultListOfDrinks;
 
-    public void alphabeticalScrollingMenu() {
-        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
+    public void alphabeticalScrollingMenu(Set<String> drinkList) {
+//        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
+//        countNumberOfMenuPages();
+//        toAlphabeticalList();
+        alphabeticalList = (List) drinkList;
         countNumberOfMenuPages();
+        ConfigLoader config = new ConfigLoader();
+        config.loadAppConfig();
         toAlphabeticalList();
 
         do {
@@ -89,10 +95,10 @@ public class ShowByCategory {
 
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
-            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            alphabeticalList.stream().sorted().collect(Collectors.toSet());
             Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
-            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            alphabeticalList.stream().sorted().collect(Collectors.toSet());
         }
     }
 

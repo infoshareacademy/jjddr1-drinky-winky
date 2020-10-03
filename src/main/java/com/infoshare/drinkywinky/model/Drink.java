@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,8 +18,9 @@ public class Drink implements Comparable<Drink> {
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
+    private List<String> measures = new ArrayList<>();
 
-    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6"})
+    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7"})
     public String getFakeIngredient() {
         return null;
     }
@@ -30,6 +32,18 @@ public class Drink implements Comparable<Drink> {
         }
     }
 
+    @JsonAlias({"strMeasure1", "strMeasure2", "strMeasure3", "strMeasure4", "strMeasure5", "strMeasure6", "strMeasure7"})
+    public String getFakeMeasure() {
+        return null;
+    }
+
+    @JsonSetter()
+    public void setFakeMeasure(String measure) {
+        if (measure != null) {
+            measures.add(measure);
+        }
+    }
+
     public Drink(@JsonProperty("idDrink") String id,
                  @JsonProperty("strDrink") String name,
                  @JsonProperty("strCategory") String category,
@@ -37,6 +51,7 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
+
 
     ) {
         this.id = id;
@@ -48,7 +63,7 @@ public class Drink implements Comparable<Drink> {
         this.glass = glass;
     }
 
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients, List<String> measures) {
 
         this.id = id;
         this.name = name;
@@ -58,9 +73,11 @@ public class Drink implements Comparable<Drink> {
         this.alcoholic = alcoholic;
         this.dateModified = dateModified;
         this.glass = glass;
+        this.measures = measures;
     }
+
     //delete this after change DataDownloadMenu class
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String glass, List<String> ingredients) {
+    public Drink(String id, String name, String category, String recipe, String alcoholic, String glass, List<String> ingredients, List<String> measures) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -68,6 +85,7 @@ public class Drink implements Comparable<Drink> {
         this.alcoholic = alcoholic;
         this.glass = glass;
         this.ingredients = ingredients;
+        this.measures = measures;
     }
 
     public String getId() {
@@ -99,16 +117,41 @@ public class Drink implements Comparable<Drink> {
     }
 
     public List<String> getIngredients() {
-        return ingredients;
+        List<String> strings = new ArrayList<>();
+
+        if (ingredients.size() == measures.size()) {
+            System.out.println("jestesmy w ifie");
+            for (int i = 0; i < ingredients.size(); i++) {
+                String s = ingredients.get(i);
+                String s1 = measures.get(i);
+                String s3 = s.concat(s1);
+                strings.add(s3);
+            }
+        } else {
+            for (int i = 0; i < measures.size(); i++) {
+                String s4 = ingredients.get(i + 1);
+                String s5 = measures.get(i);
+                String concat = s4.concat(s5);
+                strings.add(concat);
+            }
+            String salt = ingredients.get(0);
+            strings.add(salt);
+        }
+
+        return strings;
+    }
+
+    public List<String> getMeasures() {
+        return measures;
     }
 
     @Override
     public String toString() {
-        return "\nDrink name: " + name +
-                "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
-                "\nGlass type: " + glass + "\nDate of modification: "
-                + dateModified + "\n";
+
+
+        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients and measures: " + getIngredients()
+                + "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic + "\nGlass type: "
+                + glass + "\nDate of modification: " + dateModified + "\n";
     }
 
     @Override
@@ -116,3 +159,11 @@ public class Drink implements Comparable<Drink> {
         return name.compareToIgnoreCase(o.getName());
     }
 }
+
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder("The Social Security Numbers you entered are:\n");
+//        for (int i = 0; i < ingredients.size(); i++) {
+//            sb.append(ingredients[i]).append("\n");
+//        }
+//        return sb.toString();
+//    }

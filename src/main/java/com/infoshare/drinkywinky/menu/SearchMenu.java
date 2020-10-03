@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.searchby.ListOfDrinks;
 import com.infoshare.drinkywinky.searchby.ShowByCategory;
@@ -7,6 +8,8 @@ import com.infoshare.drinkywinky.searchby.ShowByIngredients;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class SearchMenu {
 
@@ -40,7 +43,7 @@ public class SearchMenu {
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Search for a drink by category  \n");
-                    new ShowByCategory().alphabeticalScrollingMenu();
+                    new ShowByCategory().alphabeticalScrollingMenu( Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList()));
                     break;
                 case 4:
                     STDOUT.info(" Welcome to main menu \n");
