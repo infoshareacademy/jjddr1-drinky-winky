@@ -1,6 +1,7 @@
 package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +38,11 @@ public class DataDownloadMenu {
 //        System.out.println(uuid2);
 
 
-        System.out.println(getRandomId());
+
+        for (int i = 0; i < 100; i++) {
+            System.out.println(Utils.getRandomId(40));
+
+        }
 
 
         List<String> ingredientsList = new ArrayList<>();
