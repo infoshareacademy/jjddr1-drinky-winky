@@ -4,51 +4,28 @@ import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class DataDownloadMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
 
-
-
-
-    public static String getRandomId () {
-        String randomId = String
-                .format("%040d", new BigInteger(UUID.randomUUID()
-                        .toString()
-                        .replace("-", ""),16));
-        return randomId.substring(randomId.length() - 7);
+    /**
+     * @param userIngredients names of ingredients separate with coma
+     * @return list containing the names of the ingredients
+     */
+    public static List<String> addIngredients(String userIngredients) {
+        return Arrays.asList(userIngredients.split(",").clone());
     }
 
     public static void main(String[] args) {
 
-
-//        String randomId = UUID.randomUUID().toString();
-//        String uuid1 = UUID.randomUUID().toString();
-//        String uuid2 = UUID.randomUUID().toString();
-//        System.out.println(randomId);
-//        System.out.println(uuid1);
-//        System.out.println(uuid2);
-
-
-
-        for (int i = 0; i < 100; i++) {
-            System.out.println(Utils.getRandomId(40));
-
-        }
-
-
-        List<String> ingredientsList = new ArrayList<>();
-
-        STDOUT.info("Fill ID: \n");
-        String id = SCANNER.nextLine();
+        List<String> ingredientsList;
+        String id = Utils.getRandomId(7);
+        String dateModified = "2020.04.05";
 
         STDOUT.info("Fill NAME: \n");
         String name = SCANNER.nextLine();
@@ -65,12 +42,13 @@ public class DataDownloadMenu {
         STDOUT.info("Fill GLASS: \n");
         String glass = SCANNER.nextLine();
 
-        STDOUT.info("Fill INGREDIENT: \n");
-        String ingredient = SCANNER.nextLine();
-        ingredientsList.add(ingredient);
+        STDOUT.info("Enter ingredient and separate with a coma: \n");
+        ingredientsList = addIngredients(SCANNER.nextLine());
 
-        Drink drink = new Drink(id, name, category, recipe, alcoholic, glass, ingredientsList);
+        //created new Drink object
+        Drink drink = new Drink(id, name, category, recipe, alcoholic, dateModified, glass, ingredientsList);
 
+        //check new Drink object
         System.out.println(drink);
     }
 }
