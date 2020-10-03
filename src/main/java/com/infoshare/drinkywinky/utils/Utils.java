@@ -4,9 +4,11 @@ import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -44,5 +46,16 @@ public class Utils {
            drink.getIngredients().forEach(e ->ingredients.add(e.toLowerCase()));
         }
         return ingredients;
+    }
+
+    /**
+     * @return random number of 7 character long
+     */
+    public static String getRandomId () {
+        String randomId = String
+                .format("%040d", new BigInteger(UUID.randomUUID()
+                        .toString()
+                        .replace("-", ""),16));
+        return randomId.substring(randomId.length() - 7);
     }
 }
