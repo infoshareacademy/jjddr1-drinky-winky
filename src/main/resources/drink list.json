@@ -1,1 +1,100 @@
-{"allDrink":[{"dateModified":"2020-10-03","id":"11007","name":"Margarita","category":"Ordinary Drink","recipe":"Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.","alcoholic":"Alcoholic","glass":"Cocktail glass","ingredients":["Salt","Lime juice","Triple sec","Tequila"],"fakeIngredient":null},{"dateModified":"2020-10-03","id":"11118","name":"Blue Margarita","category":"Ordinary Drink","recipe":"Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve.","alcoholic":"Alcoholic","glass":"Cocktail glass","ingredients":["Salt","Lime juice","Blue Curacao","Tequila"],"fakeIngredient":null},{"dateModified":"2020-10-03","id":"17216","name":"Tommy's Margarita","category":"Ordinary Drink","recipe":"Shake and strain into a chilled cocktail glass.","alcoholic":"Alcoholic","glass":"Old-Fashioned glass","ingredients":["Agave syrup","Lime Juice","Tequila"],"fakeIngredient":null},{"dateModified":"2020-10-03","id":"16158","name":"Whitecap Margarita","category":"Other/Unknown","recipe":"Place all ingredients in a blender and blend until smooth. This makes one drink.","alcoholic":"Alcoholic","glass":"Margarita/Coupette glass","ingredients":["Lime juice","Cream of coconut","Tequila","Ice"],"fakeIngredient":null},{"dateModified":"2020-10-03","id":"12322","name":"Strawberry Margarita","category":"Ordinary Drink","recipe":"Rub rim of cocktail glass with lemon juice and dip rim in salt. Shake schnapps, tequila, triple sec, lemon juice, and strawberries with ice, strain into the salt-rimmed glass, and serve.","alcoholic":"Alcoholic","glass":"Cocktail glass","ingredients":["Salt","Strawberries","Lemon juice","Triple sec","Tequila","Strawberry schnapps"],"fakeIngredient":null},{"dateModified":"2020-10-03","id":"178332","name":"Smashed Watermelon Margarita","category":"Cocktail","recipe":"In a mason jar muddle the watermelon and 5 mint leaves together into a puree and strain. Next add the grapefruit juice, juice of half a lime and the tequila as well as some ice. Put a lid on the jar and shake. Pour into a glass and add more ice. Garnish with fresh mint and a small slice of watermelon.","alcoholic":"Alcoholic","glass":"Collins glass","ingredients":["Watermelon","Tequila","Lime","Grapefruit Juice","Mint","Watermelon"],"fakeIngredient":null}]}
+{"allDrink":[
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Ordinary Drink",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Cocktail glass",
+    "id": "11007",
+    "ingredients": [
+      "Salt",
+      "Lime juice",
+      "Triple sec",
+      "Tequila"
+    ],
+    "name": "Margarita",
+    "recipe": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass."
+  },
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Ordinary Drink",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Cocktail glass",
+    "id": "11118",
+    "ingredients": [
+      "Salt",
+      "Lime juice",
+      "Blue Curacao",
+      "Tequila"
+    ],
+    "name": "Blue Margarita",
+    "recipe": "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve."
+  },
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Ordinary Drink",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Old-Fashioned glass",
+    "id": "17216",
+    "ingredients": [
+      "Agave syrup",
+      "Lime Juice",
+      "Tequila"
+    ],
+    "name": "Tommy's Margarita",
+    "recipe": "Shake and strain into a chilled cocktail glass."
+  },
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Other/Unknown",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Margarita/Coupette glass",
+    "id": "16158",
+    "ingredients": [
+      "Lime juice",
+      "Cream of coconut",
+      "Tequila",
+      "Ice"
+    ],
+    "name": "Whitecap Margarita",
+    "recipe": "Place all ingredients in a blender and blend until smooth. This makes one drink."
+  },
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Ordinary Drink",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Cocktail glass",
+    "id": "12322",
+    "ingredients": [
+      "Salt",
+      "Strawberries",
+      "Lemon juice",
+      "Triple sec",
+      "Tequila",
+      "Strawberry schnapps"
+    ],
+    "name": "Strawberry Margarita",
+    "recipe": "Rub rim of cocktail glass with lemon juice and dip rim in salt. Shake schnapps, tequila, triple sec, lemon juice, and strawberries with ice, strain into the salt-rimmed glass, and serve."
+  },
+  {
+    "alcoholic": "Alcoholic",
+    "category": "Cocktail",
+    "dateModified": "2020-10-03",
+    "fakeIngredient": null,
+    "glass": "Collins glass",
+    "id": "178332",
+    "ingredients": [
+      "Watermelon",
+      "Tequila",
+      "Lime",
+      "Grapefruit Juice",
+      "Mint",
+      "Watermelon"
+    ],
+    "name": "Smashed Watermelon Margarita",
+    "recipe": "In a mason jar muddle the watermelon and 5 mint leaves together into a puree and strain. Next add the grapefruit juice, juice of half a lime and the tequila as well as some ice. Put a lid on the jar and shake. Pour into a glass and add more ice. Garnish with fresh mint and a small slice of watermelon."
+  }]}
