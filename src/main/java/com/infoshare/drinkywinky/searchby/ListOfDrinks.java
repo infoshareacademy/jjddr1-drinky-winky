@@ -6,7 +6,6 @@ import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -149,7 +148,6 @@ public class ListOfDrinks {
 
             String s = String.valueOf(Repository.getInstance().getDrinkByName(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
-
         }
     }
 }

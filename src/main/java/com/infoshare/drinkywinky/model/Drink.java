@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.infoshare.drinkywinky.utils.DateFormatter;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink implements Comparable<Drink> {
@@ -88,10 +88,12 @@ public class Drink implements Comparable<Drink> {
         return alcoholic;
     }
 
+    //TODO @Daniel this method created problem??
     public String getDateModified() {
-        DateFormatter formatter = new DateFormatter();
-        formatter.getDateTime(dateModified);
-        return formatter.getDateTime(dateModified);
+//        DateFormatter formatter = new DateFormatter();
+//        formatter.getDateTime(dateModified);
+//        return formatter.getDateTime(dateModified);
+        return dateModified;
     }
 
     public String getGlass() {
