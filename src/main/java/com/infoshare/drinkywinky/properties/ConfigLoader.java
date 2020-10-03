@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.Properties;
 
+import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+
 public class ConfigLoader {
     private Properties prop = null;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
@@ -13,8 +15,9 @@ public class ConfigLoader {
     public static final String DATE_FORMAT_KEY = "date.format";
 
     public ConfigLoader loadAppConfig() {
-        AppConfig.recipeSortType = getProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-        AppConfig.dateFormat = getProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
+        AppConfig.recipeSortType = getProperty( RECIPE_SORT_TYPE_KEY,"ASC");
+        AppConfig.dateFormat = getProperty( DATE_FORMAT_KEY,"HH:mm:ss dd-MM-yyyy");
+
         return null;
     }
 

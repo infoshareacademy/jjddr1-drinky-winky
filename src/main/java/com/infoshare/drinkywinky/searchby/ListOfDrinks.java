@@ -30,10 +30,10 @@ public class ListOfDrinks {
 
 
     public void alphabeticalScrollingMenu(List<String> drinkList) {
-        currentDefaultListOfDrinks = drinkList;
-        countNumberOfMenuPages();
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
+        currentDefaultListOfDrinks = drinkList;
+        countNumberOfMenuPages();
         toAlphabeticalList();
 
         do {
