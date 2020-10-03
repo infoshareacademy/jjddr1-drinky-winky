@@ -15,7 +15,7 @@ public class Drink implements Comparable<Drink> {
     private final String category;
     private final String recipe;
     private final String alcoholic;
-    private String dateModified;
+    private final String dateModified;
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
@@ -39,7 +39,6 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
-
     ) {
         this.id = id;
         this.name = name;
@@ -50,8 +49,15 @@ public class Drink implements Comparable<Drink> {
         this.glass = glass;
     }
 
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients) {
-
+    public Drink(String id,
+                 String name,
+                 String category,
+                 String recipe,
+                 String alcoholic,
+                 String dateModified,
+                 String glass,
+                 List<String> ingredients
+    ) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -60,16 +66,6 @@ public class Drink implements Comparable<Drink> {
         this.alcoholic = alcoholic;
         this.dateModified = dateModified;
         this.glass = glass;
-    }
-    //delete this after change DataDownloadMenu class
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String glass, List<String> ingredients) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.recipe = recipe;
-        this.alcoholic = alcoholic;
-        this.glass = glass;
-        this.ingredients = ingredients;
     }
 
     public String getId() {
