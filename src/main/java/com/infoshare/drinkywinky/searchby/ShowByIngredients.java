@@ -6,12 +6,10 @@ import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ShowByIngredients {
@@ -20,13 +18,13 @@ public class ShowByIngredients {
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
-    private int pageNumber = 0;
-    private String in;
-    private int numberOfPages;
-    private List<String> alphabeticalList;
-    private int trigger;
-    private HashSet<String> currentDefaultListOfIngredients;
     private static Object SORT_TYPE = AppConfig.recipeSortType;
+    private int pageNumber = 0;
+    private int numberOfPages;
+    private int trigger;
+    private String in;
+    private List<String> alphabeticalList;
+    private HashSet<String> currentDefaultListOfIngredients;
 
     public void alphabeticalScrollingMenu() {
         currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList());
@@ -90,7 +88,7 @@ public class ShowByIngredients {
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
             alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
-            Collections.sort( alphabeticalList, Collections.reverseOrder());
+            Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
             alphabeticalList = currentDefaultListOfIngredients.stream().sorted().collect(Collectors.toList());
         }
@@ -140,7 +138,6 @@ public class ShowByIngredients {
 
             String s = String.valueOf(Repository.getInstance().getListOfDrinkByIngredient(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
-
         }
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DrinkList {
@@ -42,11 +43,11 @@ public class DrinkList {
                 .collect(Collectors.toList());
     }
 
-    public List<Drink> getDrinkByCategory(String category) {
+    public Set<Drink> getDrinkByCategory(String category) {
         return allDrink
                 .stream()
                 .filter(e -> e.getCategory().equalsIgnoreCase(category))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     public List<Drink> getDrinkByIngredients(String ingredient) {
@@ -58,12 +59,18 @@ public class DrinkList {
     }
 
     public List<Drink> getDrinkByRecipe(String recipe) {
-
         return allDrink
                 .stream()
                 .filter(e -> e.getRecipe()
                         .equalsIgnoreCase(recipe)).
                         collect(Collectors.toList());
+    }
+
+    public List<Drink> getDrinkByMeasure(String measure) {
+        return allDrink
+                .stream()
+                .filter(e -> e.getMeasures().stream().anyMatch(i -> i.equalsIgnoreCase(measure)))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -75,5 +82,4 @@ public class DrinkList {
     public String toString() {
         return "Drinks list:\n\n\n" + allDrink + "\n";
     }
-
 }

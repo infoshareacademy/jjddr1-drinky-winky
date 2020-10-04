@@ -1,12 +1,12 @@
 package com.infoshare.drinkywinky.menu;
 
-
+import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,36 +15,35 @@ import java.util.List;
 import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
 
 
 public class PropertiesMenu {
-
+    private static Object SORT_TYPE = AppConfig.recipeSortType;
+    private static Object DATE_TYPE = dateFormat;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
-
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
-            List<String> drink = new ArrayList<String>();
+            List<String> drink = new ArrayList<>();
             STDOUT.info("FILE RESTORED.\n");
             Repository.loadDataBase();
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
-
-
         } else {
             STDOUT.info("Returning to properties menu.\n");
             propertiesMenu();
         }
     }
 
-    public static void propertiesMenu()  {
+    public static void propertiesMenu() {
         Properties prop = new Properties();
         ConfigLoader config = new ConfigLoader();
+        Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
 
-        while ( mainExitCode != 4 ) {
-
+        while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
             STDOUT.info("│                                          │\n");
@@ -67,26 +66,30 @@ public class PropertiesMenu {
                     switch (ChoiceMenu.choiceMenu()) {
                         case 1:
                             STDOUT.info("ASC activated\n");
-                            try { OutputStream out = new FileOutputStream("./resources/config.properties");
+                            try {
+                                config.loadAppConfig();
+                                prop.get(ConfigLoader.DATE_FORMAT_KEY);
+                                prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
+                                OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-                                prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         default:
                             STDOUT.info("DESC activated\n");
-                            try { OutputStream out = new FileOutputStream("./resources/config.properties");
+                            try {
+                                config.loadAppConfig();
+                                prop.get(ConfigLoader.DATE_FORMAT_KEY);
+                                prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
+                                OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-                                prop.setProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -94,8 +97,32 @@ public class PropertiesMenu {
                     }
                     break;
                 case 2:
-                    STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
+                    config.loadAppConfig();
 
+                    try {
+                        STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
+                        STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
+                        prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
+                        if (SORT_TYPE.equals("DESC")) {
+                            prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
+                        } else if (SORT_TYPE.equals("ASC")) {
+                            prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
+                        } else {
+                            STDOUT.info("Wrong data format. Please use as per instruction.\nyyyy - years, MM - months, dd - days, HH - hours, mm - minutes, ss - seconds\n");
+                            propertiesMenu();
+
+                        }
+                        Menu.SCANNER.nextLine();
+                        OutputStream out = new FileOutputStream("./resources/config.properties");
+                        prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
+                        prop.store(out, "File Saved");
+                        config.loadAppConfig();
+                        STDOUT.info("Chosen :" + dateFormat + "\n");
+                        break;
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 3:
                     STDOUT.info("┌──────────────────────────────────────────┐\n");

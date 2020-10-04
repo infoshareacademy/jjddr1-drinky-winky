@@ -3,11 +3,15 @@ package com.infoshare.drinkywinky.repositories;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
+import com.infoshare.drinkywinky.properties.AppConfig;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class Repository {
     private static final String DATA_BASE_PATH_NAME = "src/main/resources/search.json";
@@ -17,6 +21,7 @@ public class Repository {
     private static Repository INSTANCE = null;
     private static DrinkList drinkList;
     private static DrinkList favoriteDrinkList;
+    private static Object DATE_FORMAT = AppConfig.dateFormat;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
@@ -37,7 +42,7 @@ public class Repository {
         return drinkList.getDrinkByName(drinkName);
     }
 
-    public List<Drink> getDrinkByCategories(String category) {
+    public Set<Drink> getDrinkByCategories(String category) {
         return drinkList.getDrinkByCategory(category);
     }
 
@@ -55,22 +60,24 @@ public class Repository {
 
     public void add(Drink drink) {
         drinkList.addDrink(drink);
+        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
         saveToFile(drinkList, USER_DATA_BASE_PATH_NAME);
     }
 
     public void remove(Drink drink) {
         drinkList.removeDrink(drink);
-        saveToFile(drinkList,USER_DATA_BASE_PATH_NAME);
+        saveToFile(drinkList, USER_DATA_BASE_PATH_NAME);
     }
 
     public void addFavorite(Drink drink) {
         favoriteDrinkList.addDrink(drink);
-        saveToFile(favoriteDrinkList,FAVORITE_DRINK_LIST_PATH_NAME);
+        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
+        saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
     public void removeFavorite(Drink drink) {
         favoriteDrinkList.removeDrink(drink);
-        saveToFile(favoriteDrinkList,FAVORITE_DRINK_LIST_PATH_NAME);
+        saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
     public static void saveToFile(DrinkList drinkList, String path) {
