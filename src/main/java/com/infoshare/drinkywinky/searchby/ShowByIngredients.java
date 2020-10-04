@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ShowByIngredients {
@@ -19,13 +18,13 @@ public class ShowByIngredients {
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
-    private int pageNumber = 0;
-    private String in;
-    private int numberOfPages;
-    private List<String> alphabeticalList;
-    private int trigger;
-    private HashSet<String> currentDefaultListOfIngredients;
     private static Object SORT_TYPE = AppConfig.recipeSortType;
+    private int pageNumber = 0;
+    private int numberOfPages;
+    private int trigger;
+    private String in;
+    private List<String> alphabeticalList;
+    private HashSet<String> currentDefaultListOfIngredients;
 
     public void alphabeticalScrollingMenu() {
         currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList());

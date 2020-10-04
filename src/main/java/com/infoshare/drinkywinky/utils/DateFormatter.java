@@ -15,7 +15,8 @@ public class DateFormatter {
         config.loadAppConfig();
         this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(AppConfig.dateFormat));
     }
+
     public String getDateTime(String dateModified) {
-    return this.dateTime;
+        return this.dateTime;
     }
 }

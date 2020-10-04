@@ -29,6 +29,7 @@ public class DataDownloadMenu {
         String id = Utils.getRandomId(7); //number of id char length;
         String dateModified = String.valueOf(DateFormatter.formatter);
         List<String> ingredientsList;
+        List<String> measuresList;
         String name;
         String category;
         String alcoholic;
@@ -57,6 +58,9 @@ public class DataDownloadMenu {
         STDOUT.info("Enter ingredients and separate with a coma: \n");
         ingredientsList = addIngredients(SCANNER.nextLine());
 
+        STDOUT.info("Enter measures and separate with a coma: \n");
+        measuresList = addIngredients(SCANNER.nextLine());
+
         //created new Drink object for test
         Drink drink = new Drink(
                 id,
@@ -66,7 +70,9 @@ public class DataDownloadMenu {
                 alcoholic,
                 dateModified,
                 glass,
-                ingredientsList);
+                ingredientsList,
+                measuresList
+        );
 
         //check new Drink object
         System.out.println(drink);

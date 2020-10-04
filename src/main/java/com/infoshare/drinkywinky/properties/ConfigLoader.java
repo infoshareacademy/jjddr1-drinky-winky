@@ -15,8 +15,8 @@ public class ConfigLoader {
     public static final String DATE_FORMAT_KEY = "date.format";
 
     public ConfigLoader loadAppConfig() {
-        AppConfig.recipeSortType = getProperty( RECIPE_SORT_TYPE_KEY,"ASC");
-        AppConfig.dateFormat = getProperty( DATE_FORMAT_KEY,"HH:mm:ss dd-MM-yyyy");
+        AppConfig.recipeSortType = getProperty(RECIPE_SORT_TYPE_KEY, "ASC");
+        AppConfig.dateFormat = getProperty(DATE_FORMAT_KEY, "HH:mm:ss dd-MM-yyyy");
 
         return null;
     }
