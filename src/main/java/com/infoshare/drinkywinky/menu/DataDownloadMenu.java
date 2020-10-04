@@ -22,6 +22,14 @@ public class DataDownloadMenu {
         return Arrays.asList(userIngredients.split(",").clone());
     }
 
+    /**
+     * @param userMeasures names of measures separate with coma
+     * @return list containing the value of measures
+     */
+    public static List<String> addMeasures(String userMeasures) {
+        return Arrays.asList(userMeasures.split(",").clone());
+    }
+
     //test class only!!!
     public static void main(String[] args) {
 
@@ -39,7 +47,7 @@ public class DataDownloadMenu {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
 
-        STDOUT.info("Enter CATEGORIES of drink: \n");
+        STDOUT.info("Enter CATEGORIES of a drink: \n");
         category = SCANNER.nextLine();
 
         STDOUT.info("Give the RECIPE: \n");
@@ -52,14 +60,14 @@ public class DataDownloadMenu {
             alcoholic = "No-Alcoholic";
         }
 
-        STDOUT.info("Pass the GLASS: \n");
+        STDOUT.info("Write the kind of GLASS: \n");
         glass = SCANNER.nextLine();
 
-        STDOUT.info("Enter ingredients and separate with a coma: \n");
+        STDOUT.info("Enter ingredients each separated with a coma: \n");
         ingredientsList = addIngredients(SCANNER.nextLine());
 
-        STDOUT.info("Enter measures and separate with a coma: \n");
-        measuresList = addIngredients(SCANNER.nextLine());
+        STDOUT.info("Enter measures each separated with a com: \n");
+        measuresList = addMeasures(SCANNER.nextLine());
 
         //created new Drink object for test
         Drink drink = new Drink(
