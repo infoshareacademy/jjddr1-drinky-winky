@@ -6,6 +6,7 @@ import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,13 +26,11 @@ public class ListOfDrinks {
     private int trigger;
     private String in;
     private List<String> alphabeticalList;
-    private List<String> currentDefaultListOfDrinks;
-
 
     public void alphabeticalScrollingMenu(List<String> drinkList) {
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
-        currentDefaultListOfDrinks = drinkList;
+        alphabeticalList = drinkList;
         countNumberOfMenuPages();
         toAlphabeticalList();
 
@@ -74,7 +73,7 @@ public class ListOfDrinks {
 
     private void fillingMenuByDrinks() {
         for (int i = (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE); i <= (NUMBER_OF_DRINKS_BY_PAGE + (pageNumber * NUMBER_OF_DRINKS_BY_PAGE)); i++) {
-            if (i <= currentDefaultListOfDrinks.size()) {
+            if (i <= alphabeticalList.size()) {
                 int numberOfSpaces = MENU_WIDTH_1 - Integer.toString(i).length() - alphabeticalList.get(i - 1).length();
                 String whitespace = String.format("%1$" + numberOfSpaces + "s", "");
                 STDOUT.info("│   \u001b[33m{}.\u001b[0m {}{}│\n", i, alphabeticalList.get(i - 1), whitespace);
@@ -87,19 +86,19 @@ public class ListOfDrinks {
     }
 
     private void countNumberOfMenuPages() {
-        numberOfPages = currentDefaultListOfDrinks.size() / NUMBER_OF_DRINKS_BY_PAGE;
-        if (currentDefaultListOfDrinks.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
-            numberOfPages = currentDefaultListOfDrinks.size() / NUMBER_OF_DRINKS_BY_PAGE + 1;
+        numberOfPages = alphabeticalList.size() / NUMBER_OF_DRINKS_BY_PAGE;
+        if (alphabeticalList.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
+            numberOfPages = alphabeticalList.size() / NUMBER_OF_DRINKS_BY_PAGE + 1;
         }
     }
 
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
-            currentDefaultListOfDrinks.sort(Collections.reverseOrder());
-            alphabeticalList = new ArrayList<>(currentDefaultListOfDrinks);
+            alphabeticalList.sort(Collections.reverseOrder());
+            alphabeticalList = new ArrayList<>(alphabeticalList);
 
         } else {
-            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            alphabeticalList = alphabeticalList.stream().sorted().collect(Collectors.toList());
         }
     }
 
