@@ -30,8 +30,8 @@ public class DataDownloadMenu {
         List<String> ingredientsList = new ArrayList<>();
         List<String> measuresList = new ArrayList<>();
 
-        STDOUT.info("Fill ID: \n");
-        String id = SCANNER.nextLine();
+//        STDOUT.info("Fill ID: \n");
+//        String id = SCANNER.nextLine();
 
         STDOUT.info("Fill NAME: \n");
         String name = SCANNER.nextLine();

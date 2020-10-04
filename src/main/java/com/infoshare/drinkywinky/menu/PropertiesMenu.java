@@ -42,7 +42,7 @@ public class PropertiesMenu {
         ConfigLoader config = new ConfigLoader();
         Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
-        prop.
+
 
         while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
