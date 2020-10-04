@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
@@ -68,9 +65,10 @@ public class PropertiesMenu {
                             STDOUT.info("ASC activated\n");
                             try {
                                 config.loadAppConfig();
+                                prop.get(ConfigLoader.DATE_FORMAT_KEY);
+                                prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
-                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-                                prop.get(dateFormat);
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY,dateFormat);
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
@@ -82,9 +80,10 @@ public class PropertiesMenu {
                             STDOUT.info("DESC activated\n");
                             try {
                                 config.loadAppConfig();
+                                prop.get(ConfigLoader.DATE_FORMAT_KEY);
+                                prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
-                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-                                prop.get(dateFormat);
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY,dateFormat);
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
@@ -100,17 +99,16 @@ public class PropertiesMenu {
                     try {
                         STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
                         STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
-                        do {
-                            if (Objects.equals(SORT_TYPE, "DESC")) {
-                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-
+                        prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
+                            if (SORT_TYPE.equals("DESC")) {
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                             }
-                            else if (Objects.equals(SORT_TYPE, "ASC")) {
-                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY,"ASC");
+                            else if (SORT_TYPE.equals("ASC")) {
+                                prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY,"ASC");
                             } else {
                                 STDOUT.info("Wrong data format. Please use as per instruction.\nyyyy - years, MM - months, dd - days, HH - hours, mm - minutes, ss - seconds\n");
                                 propertiesMenu();
-                                break;
+
                             }
                             Menu.SCANNER.nextLine();
                             OutputStream out = new FileOutputStream("./resources/config.properties");
@@ -119,7 +117,7 @@ public class PropertiesMenu {
                             config.loadAppConfig();
                             STDOUT.info("Chosen :" + dateFormat + "\n");
                             break;
-                        }while (true) ;
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }break;

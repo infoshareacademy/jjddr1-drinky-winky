@@ -3,8 +3,12 @@ package com.infoshare.drinkywinky.repositories;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
+import com.infoshare.drinkywinky.properties.AppConfig;
+
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,6 +20,7 @@ public class Repository {
     private static Repository INSTANCE = null;
     private static DrinkList drinkList;
     private static DrinkList favoriteDrinkList;
+    private static Object DATE_FORMAT = AppConfig.dateFormat;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
@@ -54,6 +59,7 @@ public class Repository {
 
     public void add(Drink drink) {
         drinkList.addDrink(drink);
+        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
         saveToFile(drinkList, USER_DATA_BASE_PATH_NAME);
     }
 
@@ -64,6 +70,7 @@ public class Repository {
 
     public void addFavorite(Drink drink) {
         favoriteDrinkList.addDrink(drink);
+        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
         saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 

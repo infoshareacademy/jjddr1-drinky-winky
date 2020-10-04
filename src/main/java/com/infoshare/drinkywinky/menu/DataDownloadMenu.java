@@ -1,6 +1,8 @@
 package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
+
+import com.infoshare.drinkywinky.utils.DateFormatter;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ public class DataDownloadMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
-
     /**
      * @param userIngredients names of ingredients separate with coma
      * @return list containing the names of the ingredients
@@ -24,10 +25,9 @@ public class DataDownloadMenu {
 
     //test class only!!!
     public static void main(String[] args) {
-
         //fields should be private after test in MAIN CLASS
-        String id = Utils.getRandomId(7); //number of id char length
-        String dateModified = "2020.04.05"; //please fix this field
+        String id = Utils.getRandomId(7); //number of id char length;
+        String dateModified = String.valueOf(DateFormatter.formatter);
         List<String> ingredientsList;
         String name;
         String category;
