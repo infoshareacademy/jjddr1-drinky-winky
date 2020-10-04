@@ -3,11 +3,12 @@ package com.infoshare.drinkywinky.menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,12 +16,11 @@ import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
-import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
 
 
 public class PropertiesMenu {
-    private static Object SORT_TYPE = AppConfig.recipeSortType;
-    private static Object DATE_TYPE = dateFormat;
+    private static final Object SORT_TYPE = AppConfig.recipeSortType;
+    private static final Object DATE_TYPE = dateFormat;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
     public static void decision() {
@@ -42,7 +42,6 @@ public class PropertiesMenu {
         ConfigLoader config = new ConfigLoader();
         Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
-        prop.
 
         while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
@@ -72,8 +71,8 @@ public class PropertiesMenu {
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                                 prop.get(dateFormat);
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY,dateFormat);
-                                prop.store(out, "File Saved");
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
+                                prop.store(out, "File Saved!");
                                 config.loadAppConfig();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -86,7 +85,7 @@ public class PropertiesMenu {
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
                                 prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                                 prop.get(dateFormat);
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY,dateFormat);
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
                                 prop.store(out, "File Saved");
                                 config.loadAppConfig();
                             } catch (IOException e) {
@@ -101,13 +100,12 @@ public class PropertiesMenu {
                     try {
                         STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
                         STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
-                        do {
+
                             if (Objects.equals(SORT_TYPE, "DESC")) {
                                 prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
 
-                            }
-                            else if (Objects.equals(SORT_TYPE, "ASC")) {
-                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY,"ASC");
+                            } else if (Objects.equals(SORT_TYPE, "ASC")) {
+                                prop.put(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                             } else {
                                 STDOUT.info("Wrong data format. Please use as per instruction.\nyyyy - years, MM - months, dd - days, HH - hours, mm - minutes, ss - seconds\n");
                                 propertiesMenu();
@@ -115,15 +113,16 @@ public class PropertiesMenu {
                             }
                             Menu.SCANNER.nextLine();
                             OutputStream out = new FileOutputStream("./resources/config.properties");
-                            prop.put(ConfigLoader.DATE_FORMAT_KEY,Menu.SCANNER.nextLine());
+                            prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
                             prop.store(out, "File Saved");
                             config.loadAppConfig();
-                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            STDOUT.info("Chosen :{}"+ "\n", dateFormat);
                             break;
-                        }while (true) ;
+                       
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }break;
+                    }
+                    break;
                 case 3:
                     STDOUT.info("┌──────────────────────────────────────────┐\n");
                     STDOUT.info("|    CHOSEN : 3. LOAD FROM ORIGINAL FILE   |\n");

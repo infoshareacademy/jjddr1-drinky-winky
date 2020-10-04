@@ -23,7 +23,6 @@ public class Menu {
 
     public static void mainMenu() {
         int mainExitCode = 0;
-
         while (mainExitCode != 5) {
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");

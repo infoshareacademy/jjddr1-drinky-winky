@@ -112,8 +112,7 @@ public class Drink implements Comparable<Drink> {
                 "\nCategory: " + category + "\nIngredients: " + ingredients +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
                 "\nGlass type: " + glass + "\nDate of modification: "
-                + getDateModified() + "\n";
-    }
+                + getDateModified() + "\n";    }
 
     @Override
     public int compareTo(Drink o) {
