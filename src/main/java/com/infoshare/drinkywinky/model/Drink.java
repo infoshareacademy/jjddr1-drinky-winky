@@ -50,10 +50,9 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strInstructions") String recipe,
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
-                 @JsonProperty("strGlass") String glass,
+                 @JsonProperty("strGlass") String glass
+                 ) {
 
-
-                 List<String> ingredientsList) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -63,7 +62,7 @@ public class Drink implements Comparable<Drink> {
         this.glass = glass;
     }
 
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String glass, List<String> ingredients, List<String> measures) {
+    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients, List<String> measures) {
 
         this.id = id;
         this.name = name;
@@ -71,8 +70,7 @@ public class Drink implements Comparable<Drink> {
         this.recipe = recipe;
         this.ingredients = ingredients;
         this.alcoholic = alcoholic;
-//        this.dateModified = dateModified;
-//        String dateModified
+        this.dateModified = dateModified;
         this.glass = glass;
         this.measures = measures;
     }

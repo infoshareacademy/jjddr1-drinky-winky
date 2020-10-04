@@ -58,18 +58,18 @@ public class DataDownloadMenu {
         ingredientsList = addIngredients(SCANNER.nextLine());
 
         //created new Drink object for test
-        Drink drink = new Drink(
-               id,
-               name,
-               category,
-               recipe,
-               alcoholic,
-               dateModified,
-               glass,
-               ingredientsList
-        );
-
-        //check new Drink object
-        System.out.println(drink);
+//        Drink drink = new Drink(
+//               id,
+//               name,
+//               category,
+//               recipe,
+//               alcoholic,
+//               dateModified,
+//               glass,
+//               ingredientsList
+//        );
+//
+//        //check new Drink object
+//        System.out.println(drink);
     }
 }
