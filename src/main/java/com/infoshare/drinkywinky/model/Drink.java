@@ -104,30 +104,7 @@ public class Drink implements Comparable<Drink> {
         return glass;
     }
 
-    public List<String> getIngredients() {
-        List<String> strings = new ArrayList<>();
-
-        if (ingredients.size() == measures.size()) {
-            System.out.println("jestesmy w ifie");
-            for (int i = 0; i < ingredients.size(); i++) {
-                String s = ingredients.get(i);
-                String s1 = measures.get(i);
-                String s3 = s.concat(s1);
-                strings.add(s3);
-            }
-        } else {
-            for (int i = 0; i < measures.size(); i++) {
-                String s4 = ingredients.get(i + 1);
-                String s5 = measures.get(i);
-                String concat = s4.concat(s5);
-                strings.add(concat);
-            }
-            String salt = ingredients.get(0);
-            strings.add(salt);
-        }
-
-        return strings;
-    }
+    public List<String> getIngredients() { return ingredients; }
 
     public List<String> getMeasures() {
         return measures;
@@ -137,9 +114,9 @@ public class Drink implements Comparable<Drink> {
     public String toString() {
 
 
-        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients and measures: " + getIngredients()
-                + "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic + "\nGlass type: "
-                + glass + "\nDate of modification: " + dateModified + "\n";
+        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients: " + ingredients +
+                "\nMeasures: " + measures + "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
+                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
     }
 
     @Override
@@ -155,3 +132,23 @@ public class Drink implements Comparable<Drink> {
 //        }
 //        return sb.toString();
 //    }
+//List<String> strings = new ArrayList<>();
+//
+//        if (ingredients.size() == measures.size()) {
+//            System.out.println("jestesmy w ifie");
+//            for (int i = 0; i < ingredients.size(); i++) {
+//                String s = ingredients.get(i);
+//                String s1 = measures.get(i);
+//                String s3 = s.concat(s1);
+//                strings.add(s3);
+//            }
+//        } else {
+//            for (int i = 0; i < measures.size(); i++) {
+//                String s4 = ingredients.get(i + 1);
+//                String s5 = measures.get(i);
+//                String concat = s4.concat(s5);
+//                strings.add(concat);
+//            }
+//            String salt = ingredients.get(0);
+//            strings.add(salt);
+//        }
