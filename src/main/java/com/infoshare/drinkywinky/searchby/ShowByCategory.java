@@ -2,17 +2,14 @@ package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
-import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ShowByCategory {
@@ -29,14 +26,9 @@ public class ShowByCategory {
     private List<String> alphabeticalList;
     private Set<String> currentDefaultListOfDrinks;
 
-    public void alphabeticalScrollingMenu(Set<String> drinkList) {
-//        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
-//        countNumberOfMenuPages();
-//        toAlphabeticalList();
-        alphabeticalList = (List) drinkList;
+    public void alphabeticalScrollingMenu() {
+        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
-        ConfigLoader config = new ConfigLoader();
-        config.loadAppConfig();
         toAlphabeticalList();
 
         do {
@@ -95,10 +87,10 @@ public class ShowByCategory {
 
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
-            alphabeticalList.stream().sorted().collect(Collectors.toSet());
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
             Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
-            alphabeticalList.stream().sorted().collect(Collectors.toSet());
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
         }
     }
 

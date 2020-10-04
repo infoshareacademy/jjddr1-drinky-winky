@@ -3,10 +3,10 @@ package com.infoshare.drinkywinky.properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
-
-import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ConfigLoader {
     private Properties prop = null;
@@ -15,21 +15,19 @@ public class ConfigLoader {
     public static final String DATE_FORMAT_KEY = "date.format";
 
     public ConfigLoader loadAppConfig() {
-        AppConfig.recipeSortType = getProperty( RECIPE_SORT_TYPE_KEY,"ASC");
-        AppConfig.dateFormat = getProperty( DATE_FORMAT_KEY,"HH:mm:ss dd-MM-yyyy");
+        AppConfig.recipeSortType = getProperty(RECIPE_SORT_TYPE_KEY, "ASC");
+        AppConfig.dateFormat = getProperty(DATE_FORMAT_KEY, "HH:mm:ss dd-MM-yyyy");
 
         return null;
     }
 
     private String getProperty(String key, String defaultValue) {
         String result = null;
-        if (prop == null) {
-            loadProperties();
-        }
+        loadProperties();
         if (prop.getProperty(key) == null) {
             STDOUT.info("Wrong key: " + key + " in config file!  " + "\n" + "Set new default value: "
                     + defaultValue);
-            result = prop.getProperty(key, defaultValue);
+            result = (String) prop.get(key);
         } else {
             result = prop.getProperty(key);
         }

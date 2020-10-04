@@ -4,7 +4,6 @@ import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
-import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,13 +22,14 @@ public class ListOfDrinks {
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
-    private int pageNumber = 0;
-    private String in;
-    private int numberOfPages;
-    private List<String> alphabeticalList;
-    private List<String> currentDefaultListOfDrinks;
-    private int trigger;
     private static Object SORT_TYPE = AppConfig.recipeSortType;
+    private int pageNumber = 0;
+    private int numberOfPages;
+    private int trigger;
+    private String in;
+    private List<String> alphabeticalList;
+
+    private List<String> currentDefaultListOfDrinks;
 
     //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     public void alphabeticalScrollingMenu(List<String> drinkList) {
@@ -37,7 +37,7 @@ public class ListOfDrinks {
         countNumberOfMenuPages();
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
-        currentDefaultListOfDrinks = drinkList;
+        alphabeticalList = drinkList;
         countNumberOfMenuPages();
         toAlphabeticalList();
 
@@ -65,8 +65,6 @@ public class ListOfDrinks {
         } while (true);
     }
 
-
-    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void showPageChangeArrows() {
         STDOUT.info("│                Page {}/{}                  │\n", pageNumber + 1, numberOfPages);
         if (numberOfPages > 2 && pageNumber != 0 && pageNumber != numberOfPages - 1) {
@@ -80,7 +78,6 @@ public class ListOfDrinks {
         }
     }
 
-    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void fillingMenuByDrinks() {
         for (int i = (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE); i <= (NUMBER_OF_DRINKS_BY_PAGE + (pageNumber * NUMBER_OF_DRINKS_BY_PAGE)); i++) {
             if (i <= alphabeticalList.size()) {
@@ -95,7 +92,6 @@ public class ListOfDrinks {
         }
     }
 
-    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void countNumberOfMenuPages() {
         numberOfPages = alphabeticalList.size() / NUMBER_OF_DRINKS_BY_PAGE;
         if (alphabeticalList.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
@@ -104,14 +100,14 @@ public class ListOfDrinks {
     }
 
     private void toAlphabeticalList() {
-//        if (SORT_TYPE.equals("DESC")) {
-//            alphabeticalList.sort(Collections.reverseOrder());
-//            alphabeticalList = new ArrayList<>(alphabeticalList);
-//
-//        } else {
-            alphabeticalList.stream().sorted().collect(Collectors.toList());
+        if (SORT_TYPE.equals("DESC")) {
+            alphabeticalList.sort(Collections.reverseOrder());
+            alphabeticalList = new ArrayList<>(alphabeticalList);
+
+        } else {
+            alphabeticalList = alphabeticalList.stream().sorted().collect(Collectors.toList());
         }
-//    }
+    }
 
     //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void chooseTheOption() {

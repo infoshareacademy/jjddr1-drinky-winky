@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+
+import com.infoshare.drinkywinky.utils.Utils;
+import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.utils.DateFormatter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink implements Comparable<Drink> {
@@ -52,7 +56,6 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
-
     ) {
         this.id = id;
         this.name = name;
@@ -70,7 +73,8 @@ public class Drink implements Comparable<Drink> {
                  String alcoholic,
                  String dateModified,
                  String glass,
-                 List<String> ingredients
+                 List<String> ingredients,
+                 List<String> measures
     ) {
         this.id = id;
         this.name = name;
@@ -104,7 +108,7 @@ public class Drink implements Comparable<Drink> {
     }
 
     public String getDateModified() {
-        DateFormatter formatter = new DateFormatter();
+        DateFormatter formatter = new DateFormatter(ConfigLoader.DATE_FORMAT_KEY);
         formatter.getDateTime(dateModified);
         return formatter.getDateTime(dateModified);
     }
@@ -114,41 +118,19 @@ public class Drink implements Comparable<Drink> {
     }
 
     public List<String> getIngredients() {
-        List<String> strings = new ArrayList<>();
-
-        if (ingredients.size() == measures.size()) {
-            System.out.println("jestesmy w ifie");
-            for (int i = 0; i < ingredients.size(); i++) {
-                String s = ingredients.get(i);
-                String s1 = measures.get(i);
-                String s3 = s.concat(s1);
-                strings.add(s3);
-            }
-        } else {
-            for (int i = 0; i < measures.size(); i++) {
-                String s4 = ingredients.get(i + 1);
-                String s5 = measures.get(i);
-                String concat = s4.concat(s5);
-                strings.add(concat);
-            }
-            String salt = ingredients.get(0);
-            strings.add(salt);
-        }
-
-        return strings;
+        return ingredients;
     }
 
     public List<String> getMeasures() {
         return measures;
     }
 
+    // @DANIEL after second MERGE deleted DATE METHOD!!! Please fix it!! :) and delete this comment
     @Override
     public String toString() {
-        return "\nDrink name: " + name +
-                "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " + alcoholic +
-                "\nGlass type: " + glass + "\nDate of modification: "
-                + getDateModified() + "\n";
+        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " + Utils.getIngredientsWithMeasures(ingredients, measures) +
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
+                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
     }
 
     @Override
