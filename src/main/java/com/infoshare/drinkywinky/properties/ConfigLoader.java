@@ -3,7 +3,9 @@ package com.infoshare.drinkywinky.properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigLoader {
@@ -13,8 +15,9 @@ public class ConfigLoader {
     public static final String DATE_FORMAT_KEY = "date.format";
 
     public ConfigLoader loadAppConfig() {
-        AppConfig.recipeSortType = getProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-        AppConfig.dateFormat = getProperty(ConfigLoader.DATE_FORMAT_KEY, "yyyy-MM-dd HH:mm:ss");
+        AppConfig.recipeSortType = getProperty( RECIPE_SORT_TYPE_KEY,"ASC");
+        AppConfig.dateFormat = getProperty( DATE_FORMAT_KEY,"HH:mm:ss dd-MM-yyyy");
+
         return null;
     }
 
