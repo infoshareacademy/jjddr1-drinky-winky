@@ -2,8 +2,8 @@ package com.infoshare.drinkywinky.searchby;
 
 import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
-import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Collections;
@@ -24,17 +24,12 @@ public class ShowByCategory {
     private int numberOfPages;
     private int trigger;
     private String in;
-    private List<String> currentDefaultListOfDrinks;
+    private List<String> alphabeticalList;
     private Set<String> currentDefaultListOfDrinks;
 
-    public void alphabeticalScrollingMenu(Set<String> drinkList) {
-//        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
-//        countNumberOfMenuPages();
-//        toAlphabeticalList();
-        currentDefaultListOfDrinks =  drinkList;
+    public void alphabeticalScrollingMenu() {
+        currentDefaultListOfDrinks = Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList());
         countNumberOfMenuPages();
-        ConfigLoader config = new ConfigLoader();
-        config.loadAppConfig();
         toAlphabeticalList();
 
         do {
@@ -73,9 +68,9 @@ public class ShowByCategory {
     private void fillingMenuByCategories() {
         for (int i = (1 + pageNumber * NUMBER_OF_CATEGORIES_BY_PAGE); i <= (NUMBER_OF_CATEGORIES_BY_PAGE + (pageNumber * NUMBER_OF_CATEGORIES_BY_PAGE)); i++) {
             if (i <= currentDefaultListOfDrinks.size()) {
-                int numberOfSpaces = MENU_WIDTH_1 - Integer.toString(i).length() - currentDefaultListOfDrinks.get(i - 1).length();
+                int numberOfSpaces = MENU_WIDTH_1 - Integer.toString(i).length() - alphabeticalList.get(i - 1).length();
                 String whitespace = String.format("%1$" + numberOfSpaces + "s", "");
-                STDOUT.info("│   \u001b[33m{}.\u001b[0m {}{}│\n", i, currentDefaultListOfDrinks.get(i - 1), whitespace);
+                STDOUT.info("│   \u001b[33m{}.\u001b[0m {}{}│\n", i, alphabeticalList.get(i - 1), whitespace);
             } else {
                 int numberOfSpaces2 = MENU_WIDTH_2 - Integer.toString(i).length();
                 String whitespace = String.format("%1$" + numberOfSpaces2 + "s", "");
@@ -93,10 +88,10 @@ public class ShowByCategory {
 
     private void toAlphabeticalList() {
         if (SORT_TYPE.equals("DESC")) {
-            currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toSet());
-            Collections.sort(currentDefaultListOfDrinks, Collections.reverseOrder());
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
+            Collections.sort(alphabeticalList, Collections.reverseOrder());
         } else {
-            currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toSet());
+            alphabeticalList = currentDefaultListOfDrinks.stream().sorted().collect(Collectors.toList());
         }
     }
 
@@ -140,9 +135,9 @@ public class ShowByCategory {
     private void chooseSpecificCategory() {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_CATEGORIES_BY_PAGE))
                 && (Integer.parseInt(in) <=
-                (currentDefaultListOfDrinks.size()))) {
+                (alphabeticalList.size()))) {
 
-            String s = String.valueOf(Repository.getInstance().getDrinkByCategories(currentDefaultListOfDrinks.get(Integer.parseInt(in) - 1)));
+            String s = String.valueOf(Repository.getInstance().getDrinkByCategories(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
 
         }

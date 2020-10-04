@@ -43,7 +43,7 @@ public class SearchMenu {
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Search for a drink by category  \n");
-                    new ShowByCategory().alphabeticalScrollingMenu( Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList()));
+                    new ShowByCategory().alphabeticalScrollingMenu();
                     break;
                 case 4:
                     STDOUT.info(" Welcome to main menu \n");
