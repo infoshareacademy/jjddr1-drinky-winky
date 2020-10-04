@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.infoshare.drinkywinky.utils.Utils;
 
 import java.util.*;
 
@@ -51,7 +52,7 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("strAlcoholic") String alcoholic,
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
-                 ) {
+    ) {
 
         this.id = id;
         this.name = name;
@@ -110,12 +111,12 @@ public class Drink implements Comparable<Drink> {
         return measures;
     }
 
+
     @Override
     public String toString() {
 
-
-        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients: " + ingredients +
-                "\nMeasures: " + measures + "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
+        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " + Utils.getIngredientsWithMeasures(ingredients, measures) +
+                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
                 alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
     }
 
@@ -125,30 +126,3 @@ public class Drink implements Comparable<Drink> {
     }
 }
 
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder("The Social Security Numbers you entered are:\n");
-//        for (int i = 0; i < ingredients.size(); i++) {
-//            sb.append(ingredients[i]).append("\n");
-//        }
-//        return sb.toString();
-//    }
-//List<String> strings = new ArrayList<>();
-//
-//        if (ingredients.size() == measures.size()) {
-//            System.out.println("jestesmy w ifie");
-//            for (int i = 0; i < ingredients.size(); i++) {
-//                String s = ingredients.get(i);
-//                String s1 = measures.get(i);
-//                String s3 = s.concat(s1);
-//                strings.add(s3);
-//            }
-//        } else {
-//            for (int i = 0; i < measures.size(); i++) {
-//                String s4 = ingredients.get(i + 1);
-//                String s5 = measures.get(i);
-//                String concat = s4.concat(s5);
-//                strings.add(concat);
-//            }
-//            String salt = ingredients.get(0);
-//            strings.add(salt);
-//        }

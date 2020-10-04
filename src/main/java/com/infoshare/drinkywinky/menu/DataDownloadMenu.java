@@ -63,14 +63,14 @@ public class DataDownloadMenu {
 
         //created new Drink object for test
         Drink drink = new Drink(
-               id,
-               name,
-               category,
-               recipe,
-               alcoholic,
-               dateModified,
-               glass,
-               ingredientsList,
+                id,
+                name,
+                category,
+                recipe,
+                alcoholic,
+                dateModified,
+                glass,
+                ingredientsList,
                 measuresList
         );
 

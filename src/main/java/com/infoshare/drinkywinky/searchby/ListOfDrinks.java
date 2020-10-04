@@ -19,13 +19,13 @@ public class ListOfDrinks {
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
+    private static Object SORT_TYPE = AppConfig.recipeSortType;
     private int pageNumber = 0;
-    private String in;
     private int numberOfPages;
+    private int trigger;
+    private String in;
     private List<String> alphabeticalList;
     private List<String> currentDefaultListOfDrinks;
-    private int trigger;
-    private static Object SORT_TYPE = AppConfig.recipeSortType;
 
 
     public void alphabeticalScrollingMenu(List<String> drinkList) {
