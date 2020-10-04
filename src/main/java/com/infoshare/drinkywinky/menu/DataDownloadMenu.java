@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
 
+import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.DateFormatter;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
@@ -74,6 +75,7 @@ public class DataDownloadMenu {
                 measuresList
         );
 
+        Repository.getInstance().add(drink);
         //check new Drink object
         System.out.println(drink);
     }
