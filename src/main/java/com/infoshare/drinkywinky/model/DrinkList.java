@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -65,7 +66,7 @@ public class DrinkList {
                         collect(Collectors.toList());
     }
 
-    public List<Drink> getDrinkByMeasure(String measure){
+    public List<Drink> getDrinkByMeasure(String measure) {
         return allDrink
                 .stream()
                 .filter(e -> e.getMeasures().stream().anyMatch(i -> i.equalsIgnoreCase(measure)))

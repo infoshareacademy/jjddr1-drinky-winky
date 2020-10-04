@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.infoshare.drinkywinky.utils.Utils;
 
-import java.util.*;
+import com.infoshare.drinkywinky.utils.Utils;
+import com.infoshare.drinkywinky.properties.ConfigLoader;
+import com.infoshare.drinkywinky.utils.DateFormatter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drink implements Comparable<Drink> {
@@ -15,7 +19,7 @@ public class Drink implements Comparable<Drink> {
     private final String category;
     private final String recipe;
     private final String alcoholic;
-    private String dateModified;
+    private final String dateModified;
     private final String glass;
 
     private List<String> ingredients = new ArrayList<>();
@@ -53,7 +57,6 @@ public class Drink implements Comparable<Drink> {
                  @JsonProperty("dateModified") String dateModified,
                  @JsonProperty("strGlass") String glass
     ) {
-
         this.id = id;
         this.name = name;
         this.category = category;
@@ -63,8 +66,16 @@ public class Drink implements Comparable<Drink> {
         this.glass = glass;
     }
 
-    public Drink(String id, String name, String category, String recipe, String alcoholic, String dateModified, String glass, List<String> ingredients, List<String> measures) {
-
+    public Drink(String id,
+                 String name,
+                 String category,
+                 String recipe,
+                 String alcoholic,
+                 String dateModified,
+                 String glass,
+                 List<String> ingredients,
+                 List<String> measures
+    ) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -75,7 +86,6 @@ public class Drink implements Comparable<Drink> {
         this.glass = glass;
         this.measures = measures;
     }
-
 
     public String getId() {
         return id;
@@ -98,23 +108,26 @@ public class Drink implements Comparable<Drink> {
     }
 
     public String getDateModified() {
-        return dateModified;
+        DateFormatter formatter = new DateFormatter(ConfigLoader.DATE_FORMAT_KEY);
+        formatter.getDateTime(dateModified);
+        return formatter.getDateTime(dateModified);
     }
 
     public String getGlass() {
         return glass;
     }
 
-    public List<String> getIngredients() { return ingredients; }
+    public List<String> getIngredients() {
+        return ingredients;
+    }
 
     public List<String> getMeasures() {
         return measures;
     }
 
-
+    // @DANIEL after second MERGE deleted DATE METHOD!!! Please fix it!! :) and delete this comment
     @Override
     public String toString() {
-
         return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " + Utils.getIngredientsWithMeasures(ingredients, measures) +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
                 alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
@@ -125,4 +138,3 @@ public class Drink implements Comparable<Drink> {
         return name.compareToIgnoreCase(o.getName());
     }
 }
-
