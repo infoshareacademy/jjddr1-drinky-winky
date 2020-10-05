@@ -21,7 +21,7 @@ public class Repository {
     private static Repository INSTANCE = null;
     private static DrinkList drinkList;
     private static DrinkList favoriteDrinkList;
-    private static Object DATE_FORMAT = AppConfig.dateFormat;
+    private static final Object DATE_FORMAT = AppConfig.dateFormat;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
@@ -60,7 +60,6 @@ public class Repository {
 
     public void add(Drink drink) {
         drinkList.addDrink(drink);
-        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
         saveToFile(drinkList, USER_DATA_BASE_PATH_NAME);
     }
 
