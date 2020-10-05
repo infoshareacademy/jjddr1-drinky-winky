@@ -33,11 +33,11 @@ public class SearchMenu {
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for a drink by ingredient  \n");
-                    new ShowByIngredients().alphabeticalScrollingMenu();
+                    new ShowSubmenu().showSubmenuByIngredients();
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Search for a drink by category  \n");
-                    new ShowByCategory().alphabeticalScrollingMenu();
+                    new ShowSubmenu().showSubmenuByCategories();
                     break;
                 case 4:
                     STDOUT.info(" Welcome to main menu \n");
