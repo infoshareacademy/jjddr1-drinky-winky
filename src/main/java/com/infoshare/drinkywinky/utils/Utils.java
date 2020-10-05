@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.utils;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
+import com.infoshare.drinkywinky.properties.ConfigLoader;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -69,23 +70,22 @@ public class Utils {
      */
     public static List<String> getIngredientsWithMeasures(List<String> ingredients, List<String> measures) {
         List<String> listOfIngredientsWithMeasures = new ArrayList<>();
-
         if (ingredients.size() == measures.size()) {
             for (int i = 0; i < ingredients.size(); i++) {
                 String ingredientToConcat = ingredients.get(i);
                 String measureToConcat = measures.get(i);
-                String concat = ingredientToConcat.concat(" " + measureToConcat);
+                String concat = measureToConcat.concat(" " + ingredientToConcat);
                 listOfIngredientsWithMeasures.add(concat);
             }
         } else {
+                String salt = ingredients.get(0);
+                listOfIngredientsWithMeasures.add(salt);
             for (int i = 0; i < measures.size(); i++) {
                 String ingredientToConcat = ingredients.get(i + 1);
                 String measureToConcat = measures.get(i);
-                String concat = ingredientToConcat.concat(" " + measureToConcat);
+                String concat = measureToConcat.concat(" " + ingredientToConcat);
                 listOfIngredientsWithMeasures.add(concat);
             }
-            String salt = ingredients.get(0);
-            listOfIngredientsWithMeasures.add(salt);
         }
         return listOfIngredientsWithMeasures;
     }
