@@ -1,12 +1,10 @@
 package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
-
 import com.infoshare.drinkywinky.utils.DateFormatter;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +13,17 @@ public class DataDownloadMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
+
+    private static String id = Utils.getRandomId(7); //number of id char length
+    private static String dateModified = "2020.04.05"; //please fix this field
+    private static List<String> ingredientsList;
+    private static List<String> measuresList;
+    private static String name;
+    private static String category;
+    private static String alcoholic;
+    private static String recipe;
+    private static String glass;
+
     /**
      * @param userIngredients names of ingredients separate with coma
      * @return list containing the names of the ingredients
@@ -31,19 +40,19 @@ public class DataDownloadMenu {
         return Arrays.asList(userMeasures.split(",").clone());
     }
 
-    //test class only!!!
-    public static void main(String[] args) {
-        //fields should be private after test in MAIN CLASS
-        String id = Utils.getRandomId(7); //number of id char length;
-        String dateModified = String.valueOf(DateFormatter.formatter);
-        List<String> ingredientsList;
-        List<String> measuresList;
-        String name;
-        String category;
-        String alcoholic;
-        String recipe;
-        String glass;
+    Drink drink = new Drink(
+            id,
+            name,
+            category,
+            recipe,
+            alcoholic,
+            dateModified,
+            glass,
+            ingredientsList,
+            measuresList
+    );
 
+    public static void dataDownloadMenu() {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
 
@@ -69,20 +78,6 @@ public class DataDownloadMenu {
         STDOUT.info("Enter measures each separated with a com: \n");
         measuresList = addMeasures(SCANNER.nextLine());
 
-        //created new Drink object for test
-        Drink drink = new Drink(
-                id,
-                name,
-                category,
-                recipe,
-                alcoholic,
-                dateModified,
-                glass,
-                ingredientsList,
-                measuresList
-        );
-
-        //check new Drink object
-        System.out.println(drink);
     }
+
 }
