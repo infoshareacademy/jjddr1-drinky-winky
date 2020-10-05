@@ -52,19 +52,6 @@ public class Utils {
     }
 
     /**
-     * @param drinkList List<Drink>
-     * @return only measures of specific ingredient in each drink
-     */
-    public static Set<String> getNamesOfAllMeasures(DrinkList drinkList) {
-        Set<String> measures = new HashSet<>();
-        List<Drink> allDrink = drinkList.getAllDrink();
-        for (Drink measure : allDrink) {
-            measure.getMeasures().forEach(e -> measures.add(e.toLowerCase()));
-        }
-        return measures;
-    }
-
-    /**
      * @param length takes number from 0 to 40
      * @return a random number of the given length
      */

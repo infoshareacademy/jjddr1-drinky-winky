@@ -125,10 +125,10 @@ public class Drink implements Comparable<Drink> {
         return measures;
     }
 
-    // @DANIEL after second MERGE deleted DATE METHOD!!! Please fix it!! :) and delete this comment
     @Override
     public String toString() {
-        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " + Utils.getIngredientsWithMeasures(ingredients, measures) +
+        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " +
+                Utils.getIngredientsWithMeasures(ingredients, measures) +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
                 alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
     }
