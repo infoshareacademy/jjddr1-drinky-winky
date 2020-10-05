@@ -1,6 +1,5 @@
-package com.infoshare.drinkywinky.searchby;
+package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
@@ -98,14 +97,14 @@ public class SubmenuCreator {
     private void chooseTheOption() {
         in = SCANNER.next();
         trigger = 1;
-        changePageOfMenu();
+        changePageOfSubmenu();
         quitToMainMenu();
         if (trigger == 1) {
             chooseSpecificSubmenuElement();
         }
     }
 
-    private void changePageOfMenu() {
+    private void changePageOfSubmenu() {
         if (in.equalsIgnoreCase("N")) {
             if (pageNumber == numberOfPages - 1) {
                 STDOUT.info("\n\u001b[31m It's LAST page, you cannot move forward!\u001b[0m\n");

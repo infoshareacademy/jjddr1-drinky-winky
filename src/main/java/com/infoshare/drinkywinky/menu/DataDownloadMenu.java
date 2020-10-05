@@ -33,13 +33,13 @@ public class DataDownloadMenu {
         List<String> ingredientsList = new ArrayList<>();
         List<String> measuresList = new ArrayList<>();
 
-//        STDOUT.info("Fill ID: \n");
-//        String id = SCANNER.nextLine();
-        //fields should be private after test in MAIN CLASS
-        String id = Utils.getRandomId(7); //number of id char length;
-        String dateModified = String.valueOf(DateFormatter.formatter);
-        List<String> ingredientsList;
-        List<String> measuresList;
+        STDOUT.info("Fill ID: \n");
+        id = SCANNER.nextLine();
+//        fields should be private after test in MAIN CLASS
+//        String id = Utils.getRandomId(7); //number of id char length;
+//        String dateModified = String.valueOf(DateFormatter.formatter);
+//        List<String> ingredientsList;
+//        List<String> measuresList;
         String name;
         String category;
         String alcoholic;
