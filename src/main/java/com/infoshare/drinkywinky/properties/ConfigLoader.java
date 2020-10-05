@@ -27,9 +27,9 @@ public class ConfigLoader {
         if (prop.getProperty(key) == null) {
             STDOUT.info("Wrong key: " + key + " in config file!  " + "\n" + "Set new default value: "
                     + defaultValue);
-            result = (String) prop.get(key);
+            result = prop.getProperty(key,defaultValue);
         } else {
-            result = prop.getProperty(key);
+            result = (String) prop.get(key);
         }
         return result;
     }
