@@ -10,10 +10,25 @@ import java.util.List;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
+/**
+ * This class creates submenu for searching and printing as String
+ * specific {@class Drink(s)}.Instance(s) of {@class Drink} are searched
+ * depending on category of searching (e.g. names, categories or ingredients of drinks)
+ * chosen in higher-level menu (main menu). Submenu can be built by passing
+ * as a constructor parameter {List<String>}. Particular String elements of given List
+ * are displayed one above the other as simple column menu with associated order number.
+ * This specific assigned number allows to choose and print certain {@class Drink}
+ * in simple way.
+ * <p>
+ * In the case of long list with many elements, submenu become divided into a pages.
+ * This causes previewing whole submenu in comfortable way. Number of pages can be
+ * easily manipulated by determination one of the class field NUMBER_OF_ELEMENTS_BY_PAGE.
+ * Navigation between different pages is possible by clicking intuitive menu arrows.
+ */
 public class SubmenuCreator {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
-    public static final int NUMBER_OF_DRINKS_BY_PAGE = 7;
+    public static final int NUMBER_OF_ELEMENTS_BY_PAGE = 7;
     public static final String MENU_BUILDER = "│                                          │\n";
     public static final int MENU_WIDTH_1 = 37;
     public static final int MENU_WIDTH_2 = 33;
@@ -24,8 +39,23 @@ public class SubmenuCreator {
     private static Object SORT_TYPE = AppConfig.recipeSortType;
     private List<String> collectionOfSubmenuElements;
 
-    public SubmenuCreator(List<String> collectionOfSubmenuElements) {
-        this.collectionOfSubmenuElements = collectionOfSubmenuElements;
+    /**
+     * Constructor of SubmenuCreator with parameter {List<String>} is one and only
+     * public method available in this class. It invokes all internal class private methods
+     * allowing for building entire, fully functional submenu. Elements of given List
+     * are displayed one above the other as simple column menu with associated order number.
+     * Number of submenu pages is dependent on setting value one of the class
+     * field "NUMBER_OF_ELEMENTS_BY_PAGE".
+     *
+     * At the beginning constructor calls simple private countNumberOfMenuPages() method.
+     * Further drawSubmenuContent() method is called. The second one is more complex
+     * and invokes internally all the other private methods defined in class.
+     *
+     * @param listOfSubmenuElements List of String elements to be displayed in a structured
+     *                             way as a submenu catchphrases.
+     */
+    public SubmenuCreator(List<String> listOfSubmenuElements) {
+        this.collectionOfSubmenuElements = listOfSubmenuElements;
         //TODO -> DO I NEED 2 LINES BELOW? (Config Lines) HOW TO MAKE IT WORKING?
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
@@ -37,7 +67,7 @@ public class SubmenuCreator {
     private void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│ \u001b[33m CHOOSE NUMBER OF DRINK OR OTHER OPTION \u001b[0m │\n");
+            STDOUT.info("│  \u001b[33m CHOOSE PROPER NUMBER OR OTHER OPTION  \u001b[0m │\n");
             STDOUT.info(MENU_BUILDER);
 
             fillingSubmenuByElements();
@@ -60,9 +90,9 @@ public class SubmenuCreator {
     }
 
     private void countNumberOfMenuPages() {
-        numberOfPages = collectionOfSubmenuElements.size() / NUMBER_OF_DRINKS_BY_PAGE;
-        if (collectionOfSubmenuElements.size() % NUMBER_OF_DRINKS_BY_PAGE != 0) {
-            numberOfPages = collectionOfSubmenuElements.size() / NUMBER_OF_DRINKS_BY_PAGE + 1;
+        numberOfPages = collectionOfSubmenuElements.size() / NUMBER_OF_ELEMENTS_BY_PAGE;
+        if (collectionOfSubmenuElements.size() % NUMBER_OF_ELEMENTS_BY_PAGE != 0) {
+            numberOfPages = collectionOfSubmenuElements.size() / NUMBER_OF_ELEMENTS_BY_PAGE + 1;
         }
     }
 
@@ -81,7 +111,7 @@ public class SubmenuCreator {
 
 
     private void fillingSubmenuByElements() {
-        for (int i = (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE); i <= (NUMBER_OF_DRINKS_BY_PAGE + (pageNumber * NUMBER_OF_DRINKS_BY_PAGE)); i++) {
+        for (int i = (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE); i <= (NUMBER_OF_ELEMENTS_BY_PAGE + (pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)); i++) {
             if (i <= collectionOfSubmenuElements.size()) {
                 int numberOfSpaces = MENU_WIDTH_1 - Integer.toString(i).length() - collectionOfSubmenuElements.get(i - 1).length();
                 String whitespace = String.format("%1$" + numberOfSpaces + "s", "");
@@ -133,7 +163,7 @@ public class SubmenuCreator {
     }
 
     private void chooseSpecificSubmenuElement() {
-        if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE))
+        if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE))
                 && (Integer.parseInt(in) <=
                 (collectionOfSubmenuElements.size()))) {
 
