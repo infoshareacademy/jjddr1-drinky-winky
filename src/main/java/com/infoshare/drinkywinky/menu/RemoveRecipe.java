@@ -26,8 +26,34 @@ public class RemoveRecipe extends SubmenuCreator {
         super(listOfSubmenuElements);
     }
 
-    private void chooseTheOption(){
 
+    public void drawSubmenuContent() {
+        do {
+            STDOUT.info("\n┌──────────────────────────────────────────┐\n");
+            STDOUT.info("│  \u001b[33m CHOOSE NUMBER OF DRINK TO REMOVE  \u001b[0m     │\n");
+            STDOUT.info(MENU_BUILDER);
+
+            fillingSubmenuByElements();
+
+            STDOUT.info(MENU_BUILDER);
+
+            showPageChangeArrows();
+
+            STDOUT.info(MENU_BUILDER);
+            STDOUT.info(MENU_BUILDER);
+            STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
+            STDOUT.info("└──────────────────────────────────────────┘\n\n");
+
+            STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
+
+            //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
+            chooseTheOption();
+
+        } while (true);
+    }
+
+    public void chooseSpecificSubmenuElement() {
+        super.chooseSpecificSubmenuElement();
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
 
             STDOUT.info("You have chosen drink to remove: \n\n");
