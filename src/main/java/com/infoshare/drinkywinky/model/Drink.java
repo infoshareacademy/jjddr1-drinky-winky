@@ -129,7 +129,7 @@ public class Drink implements Comparable<Drink> {
         return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " +
                 Utils.getIngredientsWithMeasures(ingredients, measures) +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
-                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
+                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + getDateModified() + "\n";
     }
 
     @Override

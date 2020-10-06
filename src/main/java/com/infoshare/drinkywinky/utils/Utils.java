@@ -78,8 +78,8 @@ public class Utils {
                 listOfIngredientsWithMeasures.add(concat);
             }
         } else {
-                String salt = ingredients.get(0);
-                listOfIngredientsWithMeasures.add(salt);
+                String ingredientWithoutMeasure = ingredients.get(0);
+                listOfIngredientsWithMeasures.add(ingredientWithoutMeasure);
             for (int i = 0; i < measures.size(); i++) {
                 String ingredientToConcat = ingredients.get(i + 1);
                 String measureToConcat = measures.get(i);
