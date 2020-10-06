@@ -1,4 +1,4 @@
-package com.infoshare.drinkywinky.menu;
+package com.infoshare.drinkywinky.menu.managment;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.repositories.Repository;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class DataDownloadMenu {
+public class InputDataUser {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
     private static String id = Utils.getRandomId(7); //number of id char length

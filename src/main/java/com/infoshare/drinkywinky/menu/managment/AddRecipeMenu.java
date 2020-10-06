@@ -1,5 +1,7 @@
-package com.infoshare.drinkywinky.menu;
+package com.infoshare.drinkywinky.menu.managment;
 
+import com.infoshare.drinkywinky.menu.ChoiceMenu;
+import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
@@ -42,7 +44,7 @@ public class AddRecipeMenu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Add new drink  \n");
-                    new DataDownloadMenu().scannerInputFromUser();
+                    new InputDataUser().scannerInputFromUser();
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Remove drink  \n");

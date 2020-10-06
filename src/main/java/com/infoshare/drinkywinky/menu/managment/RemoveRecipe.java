@@ -1,5 +1,6 @@
-package com.infoshare.drinkywinky.menu;
+package com.infoshare.drinkywinky.menu.managment;
 
+import com.infoshare.drinkywinky.menu.SubmenuCreator;
 import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.util.List;
@@ -53,21 +54,22 @@ public class RemoveRecipe extends SubmenuCreator {
     }
 
     public void chooseSpecificSubmenuElement() {
-        super.chooseSpecificSubmenuElement();
+
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
 
             STDOUT.info("You have chosen drink to remove: \n\n");
-            STDOUT.info(String.valueOf(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1))) + "\n");
-            STDOUT.info("\nAre you sure, you want to remove this drink?\n");
-            STDOUT.info("Write \"Y\" if you want remove, or \"N\" if you want cancel operation.\n");
+            STDOUT.info(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)) + "\n");
+            STDOUT.warn("\nAre you sure, you want to remove this drink?\n\n");
+            STDOUT.info("Write \"Yes\" if you want remove, or \"No\" if you want cancel operation.\n\n");
             STDOUT.info(": ");
             String decision = SCANNER.next();
-            if (decision.equalsIgnoreCase("y")) {
+            if (decision.equalsIgnoreCase("yes")) {
                 Repository.getInstance().remove(Repository.getInstance().getDrinkByName2(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
                 STDOUT.info("Drink has been removed!\n");
                 new AddRecipeMenu().addRemoveRecipe();
-            } else if (decision.equalsIgnoreCase("n"))
-                new AddRecipeMenu().addRemoveRecipe();
+            } else if (decision.equalsIgnoreCase("no")){
+                STDOUT.info("Drink has not been removed!\n");
+                new AddRecipeMenu().addRemoveRecipe();}
             else {
                 STDOUT.info("Wrong character!\n");
 

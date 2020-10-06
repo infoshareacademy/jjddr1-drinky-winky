@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.menu.managment.AddRecipeMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Scanner;
