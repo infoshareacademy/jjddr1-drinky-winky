@@ -41,6 +41,7 @@ public class DataDownloadMenu {
         STDOUT.info("Enter measures each separated with a com: \n");
         measuresList = addMeasures(SCANNER.nextLine());
         addNewDrink();
+        id = Utils.getRandomId(7);
     }
 
     /**
