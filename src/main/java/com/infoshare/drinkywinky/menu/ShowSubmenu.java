@@ -19,4 +19,5 @@ public class ShowSubmenu {
     public void showSubmenuByCategories() {
         SubmenuCreator showByCategories = new SubmenuCreator(new ArrayList<>(Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList())));
     }
+
 }

@@ -46,13 +46,13 @@ public class SubmenuCreator {
      * are displayed one above the other as simple column menu with associated order number.
      * Number of submenu pages is dependent on setting value one of the class
      * field "NUMBER_OF_ELEMENTS_BY_PAGE".
-     *
+     * <p>
      * At the beginning constructor calls simple private countNumberOfMenuPages() method.
      * Further drawSubmenuContent() method is called. The second one is more complex
      * and invokes internally all the other private methods defined in class.
      *
      * @param listOfSubmenuElements List of String elements to be displayed in a structured
-     *                             way as a submenu catchphrases.
+     *                              way as a submenu catchphrases.
      */
     public SubmenuCreator(List<String> listOfSubmenuElements) {
         this.collectionOfSubmenuElements = listOfSubmenuElements;
@@ -166,9 +166,7 @@ public class SubmenuCreator {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE))
                 && (Integer.parseInt(in) <=
                 (collectionOfSubmenuElements.size()))) {
-
-            String s = String.valueOf(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
-            STDOUT.info(s);
+            STDOUT.info(String.valueOf(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1))));
 
         }
     }

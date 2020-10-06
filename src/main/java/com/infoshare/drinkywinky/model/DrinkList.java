@@ -72,6 +72,14 @@ public class DrinkList {
                 .filter(e -> e.getMeasures().stream().anyMatch(i -> i.equalsIgnoreCase(measure)))
                 .collect(Collectors.toList());
     }
+    public Drink getDrinkByName2(String name) {
+        for (Drink drink : allDrink) {
+            if (drink.getName().equals(name)) {
+                return drink;
+            }
+        }
+        return null;
+    }
 
     @Override
     public int hashCode() {
