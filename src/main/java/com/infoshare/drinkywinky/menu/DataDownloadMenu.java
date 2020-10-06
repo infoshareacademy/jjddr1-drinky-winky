@@ -17,6 +17,8 @@ public class DataDownloadMenu {
     private static String dateModified = "2020.04.05"; //please fix this field
     private static List<String> ingredientsList;
     private static List<String> measuresList;
+    private static List<String> strings1;
+    private static List<String> strings2;
     private static String name;
     private static String category;
     private static String alcoholic;
@@ -46,7 +48,8 @@ public class DataDownloadMenu {
      * @return list containing the names of the ingredients
      */
     private static List<String> addIngredients(String userIngredients) {
-        return Arrays.asList(userIngredients.split(",").clone());
+        strings1 = Arrays.asList(userIngredients.split(",").clone());
+        return strings1;
     }
 
     /**
@@ -54,8 +57,8 @@ public class DataDownloadMenu {
      * @return list containing the value of measures
      */
     private static List<String> addMeasures(String userMeasures) {
-        return Arrays.asList(userMeasures.split(",").clone());
-
+        strings2 = Arrays.asList(userMeasures.split(",").clone());
+        return strings2;
     }
 
     // WHAT IF USER INPUT DIFFERENT LETTER THAN Y/N?
