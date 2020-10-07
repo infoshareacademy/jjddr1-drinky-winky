@@ -27,44 +27,34 @@ public class RemoveRecipe extends SubmenuCreator {
         super(listOfSubmenuElements);
     }
 
-
     public void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[33m CHOOSE NUMBER OF DRINK TO REMOVE  \u001b[0m     │\n");
             STDOUT.info(MENU_BUILDER);
-
             fillingSubmenuByElements();
-
             STDOUT.info(MENU_BUILDER);
-
             showPageChangeArrows();
-
             STDOUT.info(MENU_BUILDER);
             STDOUT.info(MENU_BUILDER);
             STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
-
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
-
-            //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
             chooseTheOption();
-
         } while (true);
     }
 
     public void chooseSpecificSubmenuElement() {
 
-        if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
-
+        if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (collectionOfSubmenuElements.size())) {
             STDOUT.info("You have chosen drink to remove: \n\n");
-            STDOUT.info(Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)) + "\n");
+            STDOUT.info(Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(userChoiceInt - 1)) + "\n");
             STDOUT.warn("\nAre you sure, you want to remove this drink?\n\n");
             STDOUT.info("Write \"Yes\" if you want remove, or \"No\" if you want cancel operation.\n\n");
             STDOUT.info(": ");
             String decision = SCANNER.next();
             if (decision.equalsIgnoreCase("yes")) {
-                Repository.getInstance().remove(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
+                Repository.getInstance().remove(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(userChoiceInt - 1)));
                 STDOUT.info("Drink has been removed!\n");
                 new AddRecipeMenu().addRemoveRecipe();
             } else if (decision.equalsIgnoreCase("no")) {

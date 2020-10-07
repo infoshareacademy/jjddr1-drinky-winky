@@ -31,31 +31,22 @@ public class RemoveFavourite extends SubmenuCreator {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[33m CHOOSE DRINK TO REMOVE                \u001b[0m │\n");
             STDOUT.info(MENU_BUILDER);
-
             fillingSubmenuByElements();
-
             STDOUT.info(MENU_BUILDER);
-
             showPageChangeArrows();
-
             STDOUT.info(MENU_BUILDER);
             STDOUT.info(MENU_BUILDER);
             STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
-
             STDOUT.info("\nChoose the drink to remove from your favorites list, by entering the number.\n\n");
-
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
-
-            //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
             chooseTheOption();
-
         } while (true);
     }
-    public void chooseSpecificSubmenuElement() {
-        if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
 
-            Repository.getInstance().removeFavorite(Repository.getInstance().getFavouriteDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
+    public void chooseSpecificSubmenuElement() {
+        if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (userChoiceInt <= (collectionOfSubmenuElements.size()))) {
+            Repository.getInstance().removeFavorite(Repository.getInstance().getFavouriteDrinkByName(collectionOfSubmenuElements.get(userChoiceInt - 1)));
             STDOUT.info("\nDrink has been removed from favourite drink list. \n");
             new ManageFavourite().addRemoveRecipe();
         }
