@@ -29,11 +29,12 @@ public class DrinkList {
         allDrink.remove(drink);
     }
 
-    public List<Drink> getDrinkById(String id) {
-        return allDrink
-                .stream()
-                .filter(e -> e.getId().equals(id))
-                .collect(Collectors.toList());
+    public Drink getDrinkById(String id) {
+        for (Drink drink : allDrink)
+            if (drink.equals(id)) {
+                return drink;
+            }
+        return null;
     }
 
     public List<Drink> getDrinkByName(String name) {
@@ -41,6 +42,15 @@ public class DrinkList {
                 .stream()
                 .filter(e -> e.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
+    }
+
+    public Drink getDrinkByName2(String name) {
+        for (Drink drink : allDrink) {
+            if (drink.getName().equals(name)) {
+                return drink;
+            }
+        }
+        return null;
     }
 
     public Set<Drink> getDrinkByCategory(String category) {
@@ -55,21 +65,6 @@ public class DrinkList {
                 .stream()
                 .filter(e ->
                         e.getIngredients().stream().anyMatch(i -> i.equalsIgnoreCase(ingredient)))
-                .collect(Collectors.toList());
-    }
-
-    public List<Drink> getDrinkByRecipe(String recipe) {
-        return allDrink
-                .stream()
-                .filter(e -> e.getRecipe()
-                        .equalsIgnoreCase(recipe)).
-                        collect(Collectors.toList());
-    }
-
-    public List<Drink> getDrinkByMeasure(String measure) {
-        return allDrink
-                .stream()
-                .filter(e -> e.getMeasures().stream().anyMatch(i -> i.equalsIgnoreCase(measure)))
                 .collect(Collectors.toList());
     }
 

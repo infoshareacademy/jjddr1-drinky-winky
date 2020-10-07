@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-
 import com.infoshare.drinkywinky.utils.Utils;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.utils.DateFormatter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,7 +128,7 @@ public class Drink implements Comparable<Drink> {
         return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " +
                 Utils.getIngredientsWithMeasures(ingredients, measures) +
                 "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
-                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + dateModified + "\n";
+                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + getDateModified() + "\n";
     }
 
     @Override
