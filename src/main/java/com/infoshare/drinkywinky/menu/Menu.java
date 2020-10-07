@@ -46,6 +46,7 @@ public class Menu {
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Add/remove recipe  \n");
+                    new InputDataUser().scannerInputFromUser();
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Manage yours favorites \n");
