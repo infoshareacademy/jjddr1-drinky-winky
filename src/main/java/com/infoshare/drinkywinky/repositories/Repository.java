@@ -63,6 +63,10 @@ public class Repository {
         return drinkList.getDrinkByName(name);
     }
 
+    public Drink getFavouriteDrinkByName(String name){
+        return favoriteDrinkList.getDrinkByName(name);
+    }
+
     public static void sortList(DrinkList drinkList) {
         Collections.sort(drinkList.getAllDrink()); }
 
@@ -78,7 +82,7 @@ public class Repository {
 
     public void addFavorite(Drink drink) {
         favoriteDrinkList.addDrink(drink);
-        ((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());
+        /*((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());*/
         saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 

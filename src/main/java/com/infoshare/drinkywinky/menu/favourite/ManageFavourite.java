@@ -42,7 +42,7 @@ public class ManageFavourite {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Add new drink  \n");
-                    new ShowSubmenu().showSubmenuByNames();
+                    new AddFavourite(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Remove drink  \n");

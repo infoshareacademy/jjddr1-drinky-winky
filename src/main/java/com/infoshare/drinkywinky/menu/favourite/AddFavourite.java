@@ -54,6 +54,7 @@ public class AddFavourite extends SubmenuCreator {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
 
             Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
+
         }
     }
 }
