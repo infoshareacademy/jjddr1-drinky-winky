@@ -87,8 +87,8 @@ public class InputDataUser {
      * Method exits with isAlcoholic()
      */
     private static void ingredientInputFromUser() {
-        STDOUT.info("Enter an ingredient and press Enter." +
-                    "\nIf you're finished press Enter to quit.\n");
+        STDOUT.info("Input an ingredient and press Enter." +
+                    "\nIf you've finished press Enter to quit.\n");
         userInput = SCANNER.nextLine();
         if (userInput.equalsIgnoreCase("")) {
             isAlcoholic();
@@ -103,7 +103,8 @@ public class InputDataUser {
      * and concat it with ingredient from ingredientInputFromUser().
      */
     private static void measureInputFromUser() {
-        STDOUT.info("Enter a measurement." + "\nIf there is no measurement " +
+        STDOUT.info("Input a measurement and press Enter." +
+                    "\nIf there is no measurement " +
                     "press Enter to input next ingredient.\n");
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());
