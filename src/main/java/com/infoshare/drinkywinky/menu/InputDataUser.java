@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.utils.DateFormatter;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ public class InputDataUser {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static String userInput = "";
     private static String id = Utils.getRandomId(7); //number of id char length !!!!
-    private static String dateModified = "2020.04.05"; //please fix this field !!!!
+    private static String dateModified = String.valueOf(DateFormatter.formatter);
     private static List<String> ingredientsList = new ArrayList<>();
     private static List<String> measuresList = new ArrayList<>();
     private static String name;
@@ -80,7 +81,7 @@ public class InputDataUser {
 
     private static void ingredientInputFromUser() {
         STDOUT.info("Enter an ingredient. If you're finished press Enter." +
-                "\n If you add all to quit press Enter\n");
+                "\n --> If you add all to quit press Enter <-- \n");
         userInput = SCANNER.nextLine();
         if (userInput.equalsIgnoreCase("")) {
             isAlcoholic();
