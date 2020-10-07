@@ -1,7 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.searchby.ShowByCategory;
-import com.infoshare.drinkywinky.searchby.ShowByIngredients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

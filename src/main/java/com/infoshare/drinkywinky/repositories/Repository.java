@@ -34,9 +34,7 @@ public class Repository {
         return INSTANCE;
     }
 
-    public List<Drink> getDrinkById(String drinkId) {
-        return drinkList.getDrinkById(drinkId);
-    }
+    public Drink getDrinkById(String drinkId) { return drinkList.getDrinkById(drinkId); }
 
     public List<Drink> getDrinkByName(String drinkName) {
         return drinkList.getDrinkByName(drinkName);
@@ -46,9 +44,7 @@ public class Repository {
         return drinkList.getDrinkByCategory(category);
     }
 
-    public List<Drink> getListOfDrinkByIngredient(String ingredient) {
-        return drinkList.getDrinkByIngredients(ingredient);
-    }
+    public List<Drink> getListOfDrinkByIngredient(String ingredient) { return drinkList.getDrinkByIngredients(ingredient); }
 
     public DrinkList getDrinkList() {
         return drinkList;
@@ -59,8 +55,7 @@ public class Repository {
     }
 
     public static void sortList() {
-        Collections.sort(drinkList.getAllDrink());
-    }
+        Collections.sort(drinkList.getAllDrink()); }
 
     public void add(Drink drink) {
         drinkList.addDrink(drink);

@@ -10,11 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
-
 public class AddRecipeMenu {
-
-
-
 
     private static DrinkList drinkList;
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -23,11 +19,9 @@ public class AddRecipeMenu {
 
     public static void addRemoveRecipe() {
 
-
         int mainExitCode = 0;
 
         while (mainExitCode != 3) {
-
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m              ADD OR REMOVE  \u001b[0m           │\n");
@@ -44,7 +38,7 @@ public class AddRecipeMenu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Add new drink  \n");
-                    new InputDataUser().scannerInputFromUser();
+                    new InputDataUser().scannerInput();
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Remove drink  \n");
@@ -66,12 +60,7 @@ public class AddRecipeMenu {
                     STDOUT.info("└──────────────────────────────────────────┘\n");
                     STDOUT.info("\n");
                     break;
-
             }
         }
-
     }
-
-
-
 }

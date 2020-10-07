@@ -67,15 +67,12 @@ public class RemoveRecipe extends SubmenuCreator {
                 Repository.getInstance().remove(Repository.getInstance().getDrinkByName2(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
                 STDOUT.info("Drink has been removed!\n");
                 new AddRecipeMenu().addRemoveRecipe();
-            } else if (decision.equalsIgnoreCase("no")){
+            } else if (decision.equalsIgnoreCase("no")) {
                 STDOUT.info("Drink has not been removed!\n");
-                new AddRecipeMenu().addRemoveRecipe();}
-            else {
+                new AddRecipeMenu().addRemoveRecipe();
+            } else {
                 STDOUT.info("Wrong character!\n");
-
             }
         }
-
     }
-
 }
