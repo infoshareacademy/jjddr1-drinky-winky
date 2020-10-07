@@ -27,6 +27,12 @@ public class Utils {
                 .map(Drink::getName)
                 .collect(Collectors.toList());
     }
+    public static List<String> getNamesOfFavouriteDrinkList(DrinkList favoriteDrinkList) {
+        return favoriteDrinkList.getAllDrink()
+                .stream()
+                .map(Drink::getName)
+                .collect(Collectors.toList());
+    }
 
     /**
      * @param drinkList List<Drink>

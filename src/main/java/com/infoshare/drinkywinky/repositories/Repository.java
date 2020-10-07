@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -18,13 +19,14 @@ public class Repository {
     private static final String USER_DATA_BASE_PATH_NAME = "src/main/resources/drink list.json";
     private static final String FAVORITE_DRINK_LIST_PATH_NAME = "src/main/resources/favorite drink list.json";
     private static final String MESSAGE = "File is saved";
-    private static Repository INSTANCE = null;
-    private static DrinkList drinkList;
-    private static DrinkList favoriteDrinkList;
+    private static  Repository INSTANCE;
+    private DrinkList drinkList;
+    private DrinkList favoriteDrinkList;
     private static final Object DATE_FORMAT = AppConfig.dateFormat;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
+        favoriteDrinkList = readFile(FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
     public static Repository getInstance() {
@@ -36,8 +38,12 @@ public class Repository {
 
     public Drink getDrinkById(String drinkId) { return drinkList.getDrinkById(drinkId); }
 
-    public List<Drink> getDrinkByName(String drinkName) {
-        return drinkList.getDrinkByName(drinkName);
+    public List<Drink> getDrinkListByName(String drinkName) {
+        return drinkList.getDrinkListByName(drinkName);
+    }
+
+    public List<Drink> getFavouriteDrinkListByName(String drinkName) {
+        return favoriteDrinkList.getDrinkListByName(drinkName);
     }
 
     public Set<Drink> getDrinkByCategories(String category) {
@@ -49,12 +55,15 @@ public class Repository {
     public DrinkList getDrinkList() {
         return drinkList;
     }
-
-    public Drink getDrinkByName2(String name){
-        return drinkList.getDrinkByName2(name);
+    public DrinkList getFavouriteDrinkList() {
+        return favoriteDrinkList;
     }
 
-    public static void sortList() {
+    public Drink getDrinkByName(String name){
+        return drinkList.getDrinkByName(name);
+    }
+
+    public static void sortList(DrinkList drinkList) {
         Collections.sort(drinkList.getAllDrink()); }
 
     public void add(Drink drink) {
@@ -87,7 +96,7 @@ public class Repository {
         }
     }
 
-    public static String writeFavouriteDrink() {
+    public static String writeFavouriteDrink(DrinkList favoriteDrinkList) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File(FAVORITE_DRINK_LIST_PATH_NAME), favoriteDrinkList);

@@ -1,6 +1,7 @@
 package com.infoshare.drinkywinky.menu.favourite;
 
 import com.infoshare.drinkywinky.menu.SubmenuCreator;
+import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class AddFavourite extends SubmenuCreator {
     public AddFavourite(List<String> listOfSubmenuElements) {
         super(listOfSubmenuElements);
     }
+
     public void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
@@ -48,4 +50,10 @@ public class AddFavourite extends SubmenuCreator {
         } while (true);
     }
 
+    public void chooseSpecificSubmenuElement() {
+        if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
+
+            Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
+        }
+    }
 }

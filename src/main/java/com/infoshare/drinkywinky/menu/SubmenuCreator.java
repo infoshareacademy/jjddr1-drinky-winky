@@ -166,7 +166,7 @@ public class SubmenuCreator {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE))
                 && (Integer.parseInt(in) <=
                 (collectionOfSubmenuElements.size()))) {
-            STDOUT.info(String.valueOf(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1))));
+            STDOUT.info(String.valueOf(Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1))));
 
         }
     }

@@ -2,6 +2,7 @@ package com.infoshare.drinkywinky.menu.favourite;
 
 import com.infoshare.drinkywinky.menu.ChoiceMenu;
 import com.infoshare.drinkywinky.menu.Menu;
+import com.infoshare.drinkywinky.menu.ShowSubmenu;
 import com.infoshare.drinkywinky.menu.managment.InputDataUser;
 import com.infoshare.drinkywinky.menu.managment.RemoveRecipe;
 import com.infoshare.drinkywinky.model.DrinkList;
@@ -29,8 +30,8 @@ public class ManageFavourite {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
             STDOUT.info("│  \u001b[101m   ADD OR REMOVE FAVOURITE  \u001b[0m           │\n");
             STDOUT.info("│                                          │\n");
-            STDOUT.info("│   1. Add new recipe                      │\n");
-            STDOUT.info("│   2. Remove old recipe                   │\n");
+            STDOUT.info("│   1. Add new favourite drink             │\n");
+            STDOUT.info("│   2. Remove from favourite               │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│  \u001b[36m 3. TO MAIN MENU                   \u001b[0m     │\n");
@@ -41,11 +42,11 @@ public class ManageFavourite {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Add new drink  \n");
-                    new InputDataUser().scannerInputFromUser();
+                    new ShowSubmenu().showSubmenuByNames();
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Remove drink  \n");
-                    new RemoveRecipe(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
+                    new RemoveFavourite(Utils.getNamesOfFavouriteDrinkList(Repository.getInstance().getFavouriteDrinkList()));
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Back to menu  \n");

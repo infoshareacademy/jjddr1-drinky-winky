@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.menu.favourite.ManageFavourite;
 import com.infoshare.drinkywinky.menu.managment.AddRecipeMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ public class Menu {
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Manage yours favorites \n");
-                    new SearchMenu().secondMenu();
+                    new ManageFavourite().addRemoveRecipe();
                     break;
                 case 4:
                     STDOUT.info(" CHOSEN : 4. Edit configuration      \n");

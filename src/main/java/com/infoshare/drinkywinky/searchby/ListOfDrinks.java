@@ -157,7 +157,7 @@ public class ListOfDrinks {
                 && (Integer.parseInt(in) <=
                 (alphabeticalList.size()))) {
 
-            String s = String.valueOf(Repository.getInstance().getDrinkByName(alphabeticalList.get(Integer.parseInt(in) - 1)));
+            String s = String.valueOf(Repository.getInstance().getDrinkListByName(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
 
         }
