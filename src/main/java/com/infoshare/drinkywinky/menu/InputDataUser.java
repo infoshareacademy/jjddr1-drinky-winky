@@ -14,18 +14,17 @@ import java.util.Scanner;
 public class InputDataUser {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static String userInput = "";
-    private static String id = Utils.getRandomId(7); //number of id char length !!!!
-    private static String dateModified = String.valueOf(DateFormatter.formatter);
-    private static List<String> ingredientsList = new ArrayList<>();
-    private static List<String> measuresList = new ArrayList<>();
+    private static final String DATE_MODIFIED = String.valueOf(DateFormatter.formatter);
+    private static final List<String> INGREDIENTS = new ArrayList<>();
+    private static final List<String> MEASURES = new ArrayList<>();
+    private static String id = Utils.getRandomId(7); //number of id char length !!!
     private static String name;
     private static String category;
     private static String alcoholic;
     private static String recipe;
     private static String glass;
 
-    public static void scannerInputFromUser() {
+    public static void scannerInputUser() {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
         STDOUT.info("Enter CATEGORIES of a drink: \n");
@@ -34,8 +33,8 @@ public class InputDataUser {
         recipe = SCANNER.nextLine();
         STDOUT.info("Write the kind of GLASS: \n");
         glass = SCANNER.nextLine();
-        ingredientInputFromUser();
-        addNewDrink();
+        ingredientInput();
+        addDrink();
         id = Utils.getRandomId(7);
     }
 
@@ -44,8 +43,8 @@ public class InputDataUser {
      * @return list containing the names of the ingredients
      */
     private static List<String> addIngredients(String userIngredients) {
-        ingredientsList.add(userIngredients);
-        return ingredientsList;
+        INGREDIENTS.add(userIngredients);
+        return INGREDIENTS;
     }
 
     /**
@@ -53,8 +52,8 @@ public class InputDataUser {
      * @return list containing the value of measures
      */
     private static List<String> addMeasures(String userMeasures) {
-        measuresList.add(userMeasures);
-        return measuresList;
+        MEASURES.add(userMeasures);
+        return MEASURES;
     }
 
     private static void isAlcoholic() {
@@ -65,7 +64,7 @@ public class InputDataUser {
             alcoholic = "No-Alcoholic";
     }
 
-    private static void addNewDrink() {
+    private static void addDrink() {
         Repository.getInstance()
                 .add(new Drink(
                         id,
@@ -73,30 +72,32 @@ public class InputDataUser {
                         category,
                         recipe,
                         alcoholic,
-                        dateModified,
+                        DATE_MODIFIED,
                         glass,
-                        ingredientsList,
-                        measuresList));
+                        INGREDIENTS,
+                        MEASURES));
     }
 
-    private static void ingredientInputFromUser() {
-        STDOUT.info("Enter an ingredient. If you're finished press Enter." +
-                "\n --> If you add all to quit press Enter <-- \n");
-        userInput = SCANNER.nextLine();
+    private static void ingredientInput() {
+        STDOUT.info("Enter an ingredient and press Enter." +
+                "\n --> If you're finished press Enter to quit  <-- \n");
+        String userInput = SCANNER.nextLine();
         if (userInput.equalsIgnoreCase("")) {
             isAlcoholic();
         } else {
             addIngredients(userInput);
-            measureInputFromUser();
+            measureInput();
         }
     }
 
-    private static void measureInputFromUser() {
-        STDOUT.info("Enter measurement. If you're finished press Enter to input next ingredient.\n");
+    private static void measureInput() {
+        STDOUT.info("Enter an measurement and press Enter." +
+                "\n -->  If you're finished press Enter to quit  <-- \n");
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());
         }
-        ingredientInputFromUser();
+        ingredientInput();
     }
 }
+
 
