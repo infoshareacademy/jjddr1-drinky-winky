@@ -1,4 +1,4 @@
-package com.infoshare.drinkywinky.menu;
+package com.infoshare.drinkywinky.menu.managment;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.repositories.Repository;
@@ -24,7 +24,7 @@ public class InputDataUser {
     private static String recipe;
     private static String glass;
 
-    public static void scannerInputUser() {
+    public static void scannerInput() {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
         STDOUT.info("Enter CATEGORIES of a drink: \n");
@@ -99,5 +99,3 @@ public class InputDataUser {
         ingredientInput();
     }
 }
-
-
