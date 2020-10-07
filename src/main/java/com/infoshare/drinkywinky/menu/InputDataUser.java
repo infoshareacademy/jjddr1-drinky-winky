@@ -24,9 +24,6 @@ public class InputDataUser {
     private static String recipe;
     private static String glass;
 
-    /**
-     * User input from scanner all data needed to add a new drink to list.
-     */
     public static void scannerInputFromUser() {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
