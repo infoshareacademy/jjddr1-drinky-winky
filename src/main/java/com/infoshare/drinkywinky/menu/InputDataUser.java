@@ -103,8 +103,8 @@ public class InputDataUser {
      * and concat it with ingredient from ingredientInputFromUser().
      */
     private static void measureInputFromUser() {
-        STDOUT.info("Enter a measurement. " +
-                    "If you're finished press Enter to input next ingredient.\n");
+        STDOUT.info("Enter a measurement." + "\nIf there is no measurement " +
+                    "press Enter to input next ingredient.\n");
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());
         }
