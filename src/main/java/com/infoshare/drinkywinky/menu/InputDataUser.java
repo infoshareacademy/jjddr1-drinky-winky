@@ -24,6 +24,9 @@ public class InputDataUser {
     private static String recipe;
     private static String glass;
 
+    /**
+     * User input from scanner all data needed to add a new drink to list.
+     */
     public static void scannerInputFromUser() {
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
@@ -36,32 +39,6 @@ public class InputDataUser {
         ingredientInputFromUser();
         addNewDrink();
         id = Utils.getRandomId(7);
-    }
-
-    /**
-     * @param userIngredients names of ingredients separate with coma
-     * @return list containing the names of the ingredients
-     */
-    private static List<String> addIngredients(String userIngredients) {
-        ingredientsList.add(userIngredients);
-        return ingredientsList;
-    }
-
-    /**
-     * @param userMeasures names of measures separate with coma
-     * @return list containing the value of measures
-     */
-    private static List<String> addMeasures(String userMeasures) {
-        measuresList.add(userMeasures);
-        return measuresList;
-    }
-
-    private static void isAlcoholic() {
-        STDOUT.info("Is it ALCOHOLIC drink? Y/Yes or N/No \n");
-        if (SCANNER.nextLine().equalsIgnoreCase("y"))
-            alcoholic = "Alcoholic";
-        else
-            alcoholic = "No-Alcoholic";
     }
 
     private static void addNewDrink() {
@@ -78,9 +55,43 @@ public class InputDataUser {
                         measuresList));
     }
 
+    /**
+     * @param userIngredients names of ingredients
+     * @return list containing the names of the ingredients
+     */
+    private static List<String> addIngredients(String userIngredients) {
+        ingredientsList.add(userIngredients);
+        return ingredientsList;
+    }
+
+    /**
+     * @param userMeasures names of measures
+     * @return list containing the value of measures
+     */
+    private static List<String> addMeasures(String userMeasures) {
+        measuresList.add(userMeasures);
+        return measuresList;
+    }
+
+    /**
+     * User input from scanner whether the drink is alcoholic.
+     */
+    private static void isAlcoholic() {
+        STDOUT.info("Is it ALCOHOLIC drink? Y/Yes or N/No \n");
+        if (SCANNER.nextLine().equalsIgnoreCase("y"))
+            alcoholic = "Alcoholic";
+        else
+            alcoholic = "No-Alcoholic";
+    }
+
+    /**
+     * Method which allows user to input ingredients from scanner
+     * and concat it with measure from measureInputFromUser().
+     * Method exits with isAlcoholic()
+     */
     private static void ingredientInputFromUser() {
-        STDOUT.info("Enter an ingredient. If you're finished press Enter." +
-                "\n If you add all to quit press Enter\n");
+        STDOUT.info("Enter an ingredient and press Enter." +
+                    "\nIf you're finished press Enter to quit.\n");
         userInput = SCANNER.nextLine();
         if (userInput.equalsIgnoreCase("")) {
             isAlcoholic();
@@ -90,8 +101,13 @@ public class InputDataUser {
         }
     }
 
+    /**
+     * Method which allows user to input measure from scanner
+     * and concat it with ingredient from ingredientInputFromUser().
+     */
     private static void measureInputFromUser() {
-        STDOUT.info("Enter measurement. If you're finished press Enter to input next ingredient.\n");
+        STDOUT.info("Enter a measurement. " +
+                    "If you're finished press Enter to input next ingredient.\n");
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());
         }
