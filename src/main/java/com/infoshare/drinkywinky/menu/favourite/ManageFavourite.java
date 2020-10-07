@@ -28,11 +28,12 @@ public class ManageFavourite {
 
 
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m   ADD OR REMOVE FAVOURITE  \u001b[0m           │\n");
+            STDOUT.info("│  \u001b[101m   ADD OR REMOVE FAVOURITE  \u001b[0m            │\n");
             STDOUT.info("│                                          │\n");
-            STDOUT.info("│   1. Add new favourite drink             │\n");
-            STDOUT.info("│   2. Remove from favourite               │\n");
+            STDOUT.info("│   1. Show favourite drink list           │\n");
             STDOUT.info("│                                          │\n");
+            STDOUT.info("│   2. Add new favourite drink             │\n");
+            STDOUT.info("│   3. Remove from favourite               │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│  \u001b[36m 3. TO MAIN MENU                   \u001b[0m     │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n");
@@ -41,15 +42,19 @@ public class ManageFavourite {
 
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
-                    STDOUT.info(" CHOSEN : 1. Add new drink  \n");
-                    new AddFavourite(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
+                    STDOUT.info(" CHOSEN : 1. Show favourite drink list   \n");
+                    new Favourites(Utils.getNamesOfFavouriteDrinkList(Repository.getInstance().getFavouriteDrinkList()));
                     break;
                 case 2:
-                    STDOUT.info(" CHOSEN : 2. Remove drink  \n");
-                    new RemoveFavourite(Utils.getNamesOfFavouriteDrinkList(Repository.getInstance().getFavouriteDrinkList()));
+                    STDOUT.info(" CHOSEN : 2. Add new drink  \n");
+                    new AddFavourite(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
                     break;
                 case 3:
-                    STDOUT.info(" CHOSEN : 3. Back to menu  \n");
+                    STDOUT.info(" CHOSEN : 3. Remove drink  \n");
+                    new RemoveFavourite(Utils.getNamesOfFavouriteDrinkList(Repository.getInstance().getFavouriteDrinkList()));
+                    break;
+                case 4:
+                    STDOUT.info(" CHOSEN : 4. Back to menu  \n");
                     Menu.mainMenu();
                     mainExitCode = 3;
                     break;

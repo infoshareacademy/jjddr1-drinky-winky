@@ -5,8 +5,7 @@ import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.util.List;
 
-public class RemoveFavourite extends SubmenuCreator {
-
+public class Favourites extends SubmenuCreator {
     /**
      * Constructor of SubmenuCreator with parameter {List<String>} is one and only
      * public method available in this class. It invokes all internal class private methods
@@ -22,14 +21,14 @@ public class RemoveFavourite extends SubmenuCreator {
      * @param listOfSubmenuElements List of String elements to be displayed in a structured
      *                              way as a submenu catchphrases.
      */
-    public RemoveFavourite(List<String> listOfSubmenuElements) {
+    public Favourites(List<String> listOfSubmenuElements) {
         super(listOfSubmenuElements);
     }
 
     public void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[33m CHOOSE DRINK TO REMOVE                \u001b[0m │\n");
+            STDOUT.info("│  \u001b[33m FAVOURITE DRINK LIST                  \u001b[0m │\n");
             STDOUT.info(MENU_BUILDER);
 
             fillingSubmenuByElements();
@@ -43,8 +42,6 @@ public class RemoveFavourite extends SubmenuCreator {
             STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
 
-            STDOUT.info("\nChoose the drink to remove from your favorites list, by entering the number.\n\n");
-
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
 
             //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
@@ -52,12 +49,12 @@ public class RemoveFavourite extends SubmenuCreator {
 
         } while (true);
     }
+
     public void chooseSpecificSubmenuElement() {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
+            STDOUT.info(String.valueOf(Repository.getInstance().getFavouriteDrinkListByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1))));
 
-            Repository.getInstance().removeFavorite(Repository.getInstance().getFavouriteDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
-            STDOUT.info("\nDrink has been removed from favourite drink list. \n");
-            new ManageFavourite().addRemoveRecipe();
         }
     }
 }
+

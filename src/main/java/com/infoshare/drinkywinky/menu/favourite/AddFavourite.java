@@ -42,6 +42,8 @@ public class AddFavourite extends SubmenuCreator {
             STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
 
+            STDOUT.info("\nChoose the drink to add to your favorites list, by entering the number.\n\n");
+
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
 
             //TODO NULL POINTER EXCEPTION BY INPUT WRONG LETTER
@@ -51,10 +53,12 @@ public class AddFavourite extends SubmenuCreator {
     }
 
     public void chooseSpecificSubmenuElement() {
+
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && (Integer.parseInt(in) <= (collectionOfSubmenuElements.size()))) {
 
             Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(Integer.parseInt(in) - 1)));
-
+            STDOUT.info("\nDrink has been added to favourite drink list. \n");
+            new ManageFavourite().addRemoveRecipe();
         }
     }
 }
