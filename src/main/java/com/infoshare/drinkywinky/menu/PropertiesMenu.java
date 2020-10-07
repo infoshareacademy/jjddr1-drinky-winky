@@ -16,6 +16,7 @@ import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
+import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
 
 
 public class PropertiesMenu {
@@ -67,7 +68,6 @@ public class PropertiesMenu {
                         case 1:
                             STDOUT.info("ASC activated\n");
                             try {
-                                config.loadAppConfig();
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
@@ -82,7 +82,6 @@ public class PropertiesMenu {
                         default:
                             STDOUT.info("DESC activated\n");
                             try {
-                                config.loadAppConfig();
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream("./resources/config.properties");
@@ -98,28 +97,31 @@ public class PropertiesMenu {
                     break;
                 case 2:
                     config.loadAppConfig();
-
                     try {
                         STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
                         STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
-                        prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                        if (SORT_TYPE.equals("DESC")) {
+                        if (recipeSortType.equals("DESC")) {
+                            prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-                        } else if (SORT_TYPE.equals("ASC")) {
-                            prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-                        } else {
-                            STDOUT.info("Wrong data format. Please use as per instruction.\nyyyy - years, MM - months, dd - days, HH - hours, mm - minutes, ss - seconds\n");
-                            propertiesMenu();
-
+                            Menu.SCANNER.nextLine();
+                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
+                            prop.store(out, "File Saved");
+                            config.loadAppConfig();
+                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            break;
                         }
-                        Menu.SCANNER.nextLine();
-                        OutputStream out = new FileOutputStream("./resources/config.properties");
-                        prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
-                        prop.store(out, "File Saved");
-                        config.loadAppConfig();
-                        STDOUT.info("Chosen :" + dateFormat + "\n");
-                        break;
-
+                        if (recipeSortType.equals("ASC")) {
+                            prop.get(ConfigLoader.DATE_FORMAT_KEY);
+                            prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
+                            Menu.SCANNER.nextLine();
+                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
+                            prop.store(out, "File Saved");
+                            config.loadAppConfig();
+                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            break;
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

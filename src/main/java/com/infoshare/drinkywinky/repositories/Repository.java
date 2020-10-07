@@ -50,6 +50,10 @@ public class Repository {
         return drinkList;
     }
 
+    public Drink getDrinkByName2(String name){
+        return drinkList.getDrinkByName2(name);
+    }
+
     public static void sortList() {
         Collections.sort(drinkList.getAllDrink()); }
 

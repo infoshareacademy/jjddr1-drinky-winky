@@ -4,6 +4,7 @@ import com.infoshare.drinkywinky.menu.Menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+
+//TODO - WHOLE CLASS ListOfDrinks ALREADY REWRITTEN TO new CLASS SubmenuCreator. This class is intended to DELETE!
 
 public class ListOfDrinks {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
@@ -27,7 +30,12 @@ public class ListOfDrinks {
     private String in;
     private List<String> alphabeticalList;
 
+    private List<String> currentDefaultListOfDrinks;
+
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     public void alphabeticalScrollingMenu(List<String> drinkList) {
+        alphabeticalList = drinkList;
+        countNumberOfMenuPages();
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
         alphabeticalList = drinkList;
@@ -102,6 +110,7 @@ public class ListOfDrinks {
         }
     }
 
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void chooseTheOption() {
         in = SCANNER.next();
         trigger = 1;
@@ -112,6 +121,7 @@ public class ListOfDrinks {
         }
     }
 
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void changePageOfMenu() {
         if (in.equalsIgnoreCase("N")) {
             if (pageNumber == numberOfPages - 1) {
@@ -132,6 +142,7 @@ public class ListOfDrinks {
         }
     }
 
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void quitToMainMenu() {
         if (in.equalsIgnoreCase("X")) {
 
@@ -140,6 +151,7 @@ public class ListOfDrinks {
         }
     }
 
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
     private void chooseSpecificDrink() {
         if ((Integer.parseInt(in) >= (1 + pageNumber * NUMBER_OF_DRINKS_BY_PAGE))
                 && (Integer.parseInt(in) <=
@@ -147,6 +159,13 @@ public class ListOfDrinks {
 
             String s = String.valueOf(Repository.getInstance().getDrinkByName(alphabeticalList.get(Integer.parseInt(in) - 1)));
             STDOUT.info(s);
+
         }
+    }
+
+    //TODO - ALREADY REWRITTEN TO CLASS SubmenuCreator
+    public static void main(String[] args) {
+        ListOfDrinks list = new ListOfDrinks();
+        list.alphabeticalScrollingMenu(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
     }
 }

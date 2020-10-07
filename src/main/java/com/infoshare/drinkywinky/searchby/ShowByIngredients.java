@@ -28,6 +28,8 @@ public class ShowByIngredients {
 
     public void alphabeticalScrollingMenu() {
         currentDefaultListOfIngredients = (HashSet<String>) Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList());
+        System.out.println(currentDefaultListOfIngredients.toString());
+
         countNumberOfMenuPages();
         toAlphabeticalList();
 

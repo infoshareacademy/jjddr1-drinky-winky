@@ -1,5 +1,6 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.menu.managment.AddRecipeMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Scanner;
@@ -46,7 +47,7 @@ public class Menu {
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Add/remove recipe  \n");
-                    new InputDataUser().scannerInputFromUser();
+                    new AddRecipeMenu().addRemoveRecipe();
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Manage yours favorites \n");
