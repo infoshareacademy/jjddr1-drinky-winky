@@ -119,7 +119,7 @@ public class SubmenuCreator {
         Scanner inn = new Scanner(System.in);
         if (inn.hasNextInt()) {
             userChoiceInt = inn.nextInt();
-            if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (NUMBER_OF_ELEMENTS_BY_PAGE + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE))
+            if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (NUMBER_OF_ELEMENTS_BY_PAGE + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE) && userChoiceInt <= collectionOfSubmenuElements.size())
                 chooseSpecificSubmenuElement();
             else {
                 STDOUT.info("\n\u001b[31mNumber out of bounds!\nPlease write correct number!\u001b[0m\n");
@@ -158,21 +158,24 @@ public class SubmenuCreator {
     }
 
     protected void chooseSpecificSubmenuElement() {
-        if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (collectionOfSubmenuElements.size())) {
+        /**
+         * @param listSelectedByName List of ALL {@class Drink} objects isolated from updated database by the NAME pointed by user
+         * @param setSelectedByCategory Set of ALL {@class Drink} objects isolated from updated database by the CATEGORY pointed by user
+         * @param listSelectedByIngredients List of ALL {@class Drink} objects isolated from updated database by the INGREDIENT pointed by user
+         *
+         */
+        List<Drink> listSelectedByName = Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(userChoiceInt - 1));
+        Set<Drink> setSelectedByCategory = Repository.getInstance().getDrinkByCategories(collectionOfSubmenuElements.get(userChoiceInt - 1));
+        List<Drink> listSelectedByIngredients = Repository.getInstance().getListOfDrinkByIngredient(collectionOfSubmenuElements.get(userChoiceInt - 1));
 
-            List<Drink> n = Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(userChoiceInt - 1));
-            Set<Drink> c = Repository.getInstance().getDrinkByCategories(collectionOfSubmenuElements.get(userChoiceInt - 1));
-            List<Drink> i = Repository.getInstance().getListOfDrinkByIngredient(collectionOfSubmenuElements.get(userChoiceInt - 1));
-
-            if (!n.isEmpty()) {
-                STDOUT.info(String.valueOf(n));
-            }
-            if (!c.isEmpty()) {
-                STDOUT.info(String.valueOf(c));
-            }
-            if (!i.isEmpty()) {
-                STDOUT.info(String.valueOf(i));
-            }
+        if (!listSelectedByName.isEmpty()) {
+            STDOUT.info(String.valueOf(listSelectedByName));
+        }
+        if (!setSelectedByCategory.isEmpty()) {
+            STDOUT.info(String.valueOf(setSelectedByCategory));
+        }
+        if (!listSelectedByIngredients.isEmpty()) {
+            STDOUT.info(String.valueOf(listSelectedByIngredients));
         }
     }
 }
