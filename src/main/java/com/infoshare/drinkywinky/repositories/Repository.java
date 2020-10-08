@@ -7,9 +7,6 @@ import com.infoshare.drinkywinky.properties.AppConfig;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +16,7 @@ public class Repository {
     private static final String USER_DATA_BASE_PATH_NAME = "src/main/resources/drink list.json";
     private static final String FAVORITE_DRINK_LIST_PATH_NAME = "src/main/resources/favorite drink list.json";
     private static final String MESSAGE = "File is saved";
-    private static  Repository INSTANCE;
+    private static Repository INSTANCE;
     private DrinkList drinkList;
     private DrinkList favoriteDrinkList;
     private static final Object DATE_FORMAT = AppConfig.dateFormat;
@@ -36,7 +33,9 @@ public class Repository {
         return INSTANCE;
     }
 
-    public Drink getDrinkById(String drinkId) { return drinkList.getDrinkById(drinkId); }
+    public Drink getDrinkById(String drinkId) {
+        return drinkList.getDrinkById(drinkId);
+    }
 
     public List<Drink> getDrinkListByName(String drinkName) {
         return drinkList.getDrinkListByName(drinkName);
@@ -50,25 +49,29 @@ public class Repository {
         return drinkList.getDrinkByCategory(category);
     }
 
-    public List<Drink> getListOfDrinkByIngredient(String ingredient) { return drinkList.getDrinkByIngredients(ingredient); }
+    public List<Drink> getListOfDrinkByIngredient(String ingredient) {
+        return drinkList.getDrinkByIngredients(ingredient);
+    }
 
     public DrinkList getDrinkList() {
         return drinkList;
     }
+
     public DrinkList getFavouriteDrinkList() {
         return favoriteDrinkList;
     }
 
-    public Drink getDrinkByName(String name){
+    public Drink getDrinkByName(String name) {
         return drinkList.getDrinkByName(name);
     }
 
-    public Drink getFavouriteDrinkByName(String name){
+    public Drink getFavouriteDrinkByName(String name) {
         return favoriteDrinkList.getDrinkByName(name);
     }
 
     public static void sortList(DrinkList drinkList) {
-        Collections.sort(drinkList.getAllDrink()); }
+        Collections.sort(drinkList.getAllDrink());
+    }
 
     public void add(Drink drink) {
         drinkList.addDrink(drink);

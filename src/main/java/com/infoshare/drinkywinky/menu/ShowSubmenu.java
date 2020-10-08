@@ -1,6 +1,5 @@
 package com.infoshare.drinkywinky.menu;
 
-import com.infoshare.drinkywinky.menu.SubmenuCreator;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 

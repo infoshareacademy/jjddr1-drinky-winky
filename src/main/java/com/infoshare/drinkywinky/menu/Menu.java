@@ -4,6 +4,7 @@ import com.infoshare.drinkywinky.menu.favourite.ManageFavourite;
 import com.infoshare.drinkywinky.menu.managment.AddRecipeMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -70,17 +71,21 @@ public class Menu {
                     System.exit(0);
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
             }
         }
+    }
+
+    public static void WrongNumber() {
+        STDOUT.info("\n");
+        STDOUT.info("┌──────────────────────────────────────────┐\n");
+        STDOUT.info("│                                          │\n");
+        STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
+        STDOUT.info("│                                          │\n");
+        STDOUT.info("│               TRY AGAIN!                 │\n");
+        STDOUT.info("│                                          │\n");
+        STDOUT.info("└──────────────────────────────────────────┘\n");
+        STDOUT.info("\n");
     }
 }

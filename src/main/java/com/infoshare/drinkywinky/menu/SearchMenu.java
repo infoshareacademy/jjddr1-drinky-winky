@@ -3,6 +3,8 @@ package com.infoshare.drinkywinky.menu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
+
 public class SearchMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
@@ -44,15 +46,7 @@ public class SearchMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
             }
         }

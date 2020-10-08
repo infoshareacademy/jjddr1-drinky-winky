@@ -45,7 +45,7 @@ public class AddFavourite extends SubmenuCreator {
 
     public void chooseSpecificSubmenuElement() {
         if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (collectionOfSubmenuElements.size())) {
-            Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(userChoiceInt- 1)));
+            Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(userChoiceInt - 1)));
             STDOUT.info("\nDrink has been added to favourite drink list. \n");
             new ManageFavourite().addRemoveRecipe();
         }

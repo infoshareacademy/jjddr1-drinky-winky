@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
+import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
+
 public class AddRecipeMenu {
 
     private static DrinkList drinkList;
@@ -50,15 +52,7 @@ public class AddRecipeMenu {
                     mainExitCode = 3;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
             }
         }

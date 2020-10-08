@@ -1,17 +1,17 @@
 package com.infoshare.drinkywinky.menu;
 
 import com.infoshare.drinkywinky.model.Drink;
-import com.infoshare.drinkywinky.properties.AppConfig;
-import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+import static com.infoshare.drinkywinky.menu.PropertiesMenu.SORT_TYPE;
 
 /**
  * This class creates submenu for searching and printing as String
@@ -40,6 +40,11 @@ public class SubmenuCreator {
     protected List<String> collectionOfSubmenuElements;
     protected int userChoiceInt;
     protected String userChoiceString;
+    private static final String USER_DATA_BASE_PATH_NAME = "src/main/resources/drink list.json";
+
+    protected static Object getSortType() {
+        return SORT_TYPE;
+    }
 
     /**
      * Constructor of SubmenuCreator with parameter {List<String>} is one and only
@@ -58,8 +63,21 @@ public class SubmenuCreator {
      */
     public SubmenuCreator(List<String> listOfSubmenuElements) {
         this.collectionOfSubmenuElements = listOfSubmenuElements;
-        countNumberOfMenuPages();
-        drawSubmenuContent();
+        if (SORT_TYPE.equals("DESC")) {
+            listOfSubmenuElements.stream().sorted().collect(Collectors.toList());
+            listOfSubmenuElements.sort(Comparator.reverseOrder());
+            Repository.saveToFile(Repository.getInstance().getDrinkList(), USER_DATA_BASE_PATH_NAME);
+            countNumberOfMenuPages();
+            drawSubmenuContent();
+        }
+        if (SORT_TYPE.equals("ASC")) {
+            listOfSubmenuElements.stream().sorted().collect(Collectors.toList());
+            listOfSubmenuElements.sort(Comparator.naturalOrder());
+            Repository.saveToFile(Repository.getInstance().getDrinkList(), USER_DATA_BASE_PATH_NAME);
+            countNumberOfMenuPages();
+            drawSubmenuContent();
+
+        }
 
     }
 

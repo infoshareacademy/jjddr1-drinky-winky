@@ -2,9 +2,6 @@ package com.infoshare.drinkywinky.menu.favourite;
 
 import com.infoshare.drinkywinky.menu.ChoiceMenu;
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.menu.ShowSubmenu;
-import com.infoshare.drinkywinky.menu.managment.InputDataUser;
-import com.infoshare.drinkywinky.menu.managment.RemoveRecipe;
 import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
@@ -12,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
+
+import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
 
 public class ManageFavourite {
     private static DrinkList drinkList;
@@ -59,15 +58,7 @@ public class ManageFavourite {
                     mainExitCode = 3;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
 
             }
