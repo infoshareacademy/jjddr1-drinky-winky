@@ -30,16 +30,48 @@ import static com.infoshare.drinkywinky.menu.PropertiesMenu.SORT_TYPE;
  */
 public class SubmenuCreator {
 
-    protected static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    /**
+     * Assumed capacity of menu, that can be modified (it corresponds to number of lines in menu
+     * by one page). Value of this variable has a direct impact on variable numberOfPages.
+     */
     protected static final int NUMBER_OF_ELEMENTS_BY_PAGE = 7;
+    /**
+     * Variable of String type to represent repetitive part of submenu GUI.
+     */
     protected static final String MENU_BUILDER = "│                                          │\n";
+    /**
+     * Assumed width of viewing submenu GUI. This variable is used in lines
+     * filled by submenu element.
+     */
     private static final int MENU_WIDTH_1 = 37;
+    /**
+     * Assumed width of viewing submenu GUI. This variable is used in blank lines
+     * (not filled by submenu element).
+     */
     private static final int MENU_WIDTH_2 = 33;
+    /**
+     * Initial page number of submenu viewing.
+     */
     protected int pageNumber = 0;
+    /**
+     * Number of submenu pages. Variable corresponds directly to size of collectionOfSubmenuElements
+     * and setting variable NUMBER_OF_ELEMENTS_BY_PAGE.
+     */
     private int numberOfPages;
+    /**
+     * List of String elements forming submenu. Every element of the list is inserted to new line
+     * of submenu and represents single choice for the user.
+     */
     protected List<String> collectionOfSubmenuElements;
+    /**
+     * Variable represent value typed by the user of submenu if this value is Integer type.
+     */
     protected int userChoiceInt;
+    /**
+     * Variable represent value typed by the user of submenu if this value is String type.
+     */
     protected String userChoiceString;
+    protected static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final String USER_DATA_BASE_PATH_NAME = "src/main/resources/drink list.json";
 
     protected static Object getSortType() {
@@ -79,6 +111,9 @@ public class SubmenuCreator {
         }
     }
 
+    /**
+     * View in console GUI of the submenu.
+     */
     public void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
@@ -96,6 +131,10 @@ public class SubmenuCreator {
         } while (true);
     }
 
+    /**
+     * Method counts number of menu pages depending on setting field values:
+     * NUMBER_OF_ELEMENTS_BY_PAGE, number of pages and given size of collectionOfSubmenuElements.
+     */
     protected void countNumberOfMenuPages() {
         numberOfPages = collectionOfSubmenuElements.size() / NUMBER_OF_ELEMENTS_BY_PAGE;
         if (collectionOfSubmenuElements.size() % NUMBER_OF_ELEMENTS_BY_PAGE != 0) {
@@ -103,6 +142,10 @@ public class SubmenuCreator {
         }
     }
 
+    /**
+     * Viewing in submenu GUI arrows to show possibility of changing page in submenu.
+     * Arrows are showed only when numberOfPages is greater than one.
+     */
     protected void showPageChangeArrows() {
         STDOUT.info("│                Page {}/{}                  │\n", pageNumber + 1, numberOfPages);
         if (numberOfPages > 2 && pageNumber != 0 && pageNumber != numberOfPages - 1) {
@@ -116,6 +159,9 @@ public class SubmenuCreator {
         }
     }
 
+    /**
+     * Fill console GUI by the elements taken from collectionOfSubmenuElements.
+     */
     protected void fillingSubmenuByElements() {
         for (int i = (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE); i <= (NUMBER_OF_ELEMENTS_BY_PAGE + (pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)); i++) {
             if (i <= collectionOfSubmenuElements.size()) {
@@ -130,6 +176,9 @@ public class SubmenuCreator {
         }
     }
 
+    /**
+     * Runs other method from the class depending on possible choice of the user.
+     */
     protected void chooseTheOption() {
         Scanner inn = new Scanner(System.in);
         if (inn.hasNextInt()) {
