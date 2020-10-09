@@ -1,7 +1,13 @@
 package com.infoshare.drinkywinky.menu;
 
+import com.infoshare.drinkywinky.repositories.Repository;
+import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+
+import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
 
 public class SearchMenu {
 
@@ -27,15 +33,15 @@ public class SearchMenu {
             switch (ChoiceMenu.choiceMenu()) {
                 case 1:
                     STDOUT.info(" CHOSEN : 1. Search for a drink by name  \n");
-                    new ShowSubmenu().showSubmenuByNames();
+                    new SubmenuCreator(Utils.getNamesOfAllDrink(Repository.getInstance().getDrinkList()));
                     break;
                 case 2:
                     STDOUT.info(" CHOSEN : 2. Search for a drink by ingredient  \n");
-                    new ShowSubmenu().showSubmenuByIngredients();
+                    new SubmenuCreator(new ArrayList<>(Utils.getNamesOfAllIngredients(Repository.getInstance().getDrinkList())));
                     break;
                 case 3:
                     STDOUT.info(" CHOSEN : 3. Search for a drink by category  \n");
-                    new ShowSubmenu().showSubmenuByCategories();
+                    new SubmenuCreator(new ArrayList<>(Utils.getCategoryOfAllDrink(Repository.getInstance().getDrinkList())));
                     break;
                 case 4:
                     STDOUT.info(" Welcome to main menu \n");
@@ -44,15 +50,7 @@ public class SearchMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
             }
         }

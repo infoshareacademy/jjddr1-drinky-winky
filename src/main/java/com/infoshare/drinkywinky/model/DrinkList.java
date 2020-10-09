@@ -37,14 +37,14 @@ public class DrinkList {
         return null;
     }
 
-    public List<Drink> getDrinkByName(String name) {
+    public List<Drink> getDrinkListByName(String name) {
         return allDrink
                 .stream()
                 .filter(e -> e.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
 
-    public Drink getDrinkByName2(String name) {
+    public Drink getDrinkByName(String name) {
         for (Drink drink : allDrink) {
             if (drink.getName().equals(name)) {
                 return drink;

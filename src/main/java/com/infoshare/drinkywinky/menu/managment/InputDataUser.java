@@ -16,7 +16,7 @@ public class InputDataUser {
     private static final String DATE_MODIFIED = String.valueOf(DateFormatter.formatter);
     private static final List<String> INGREDIENTS = new ArrayList<>();
     private static final List<String> MEASURES = new ArrayList<>();
-    private static String id = Utils.getRandomId(7); //number of id char length !!!
+    private static String id = Utils.getRandomId(7);
     private static String name;
     private static String category;
     private static String alcoholic;
@@ -90,7 +90,7 @@ public class InputDataUser {
     }
 
     private static void measureInput() {
-        STDOUT.info("Enter an measurement and press Enter." +
+        STDOUT.info("Enter a measurement and press Enter." +
                 "\n -->  If you're finished press Enter to quit  <-- \n");
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());

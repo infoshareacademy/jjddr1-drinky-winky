@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.infoshare.drinkywinky.utils.Utils;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.utils.DateFormatter;
+import com.infoshare.drinkywinky.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,10 +126,10 @@ public class Drink implements Comparable<Drink> {
 
     @Override
     public String toString() {
-        return "\nDrink name: " + name + "\nCategory: " + category + "\nIngredients with measures: " +
+        return "\n\u001b[33mDrink name: \u001b[0m" + name + "\n\u001b[33mCategory: \u001b[0m" + category + "\n\u001b[33mIngredients with measures: \u001b[0m" +
                 Utils.getIngredientsWithMeasures(ingredients, measures) +
-                "\nID: " + id + "\nRecipe: \n" + recipe + "\nAlcoholic: " +
-                alcoholic + "\nGlass type: " + glass + "\nDate of modification: " + getDateModified() + "\n";
+                "\n\u001b[33mID: \u001b[0m" + id + "\n\u001b[33mRecipe: \n\u001b[0m" + recipe + "\n\u001b[33mAlcoholic: \u001b[0m" +
+                alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + getDateModified() + "\n";
     }
 
     @Override

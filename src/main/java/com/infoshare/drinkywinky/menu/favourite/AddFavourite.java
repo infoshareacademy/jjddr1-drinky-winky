@@ -1,13 +1,11 @@
-package com.infoshare.drinkywinky.menu.managment;
+package com.infoshare.drinkywinky.menu.favourite;
 
 import com.infoshare.drinkywinky.menu.SubmenuCreator;
 import com.infoshare.drinkywinky.repositories.Repository;
 
 import java.util.List;
 
-import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
-
-public class RemoveRecipe extends SubmenuCreator {
+public class AddFavourite extends SubmenuCreator {
     /**
      * Constructor of SubmenuCreator with parameter {List<String>} is one and only
      * public method available in this class. It invokes all internal class private methods
@@ -23,14 +21,14 @@ public class RemoveRecipe extends SubmenuCreator {
      * @param listOfSubmenuElements List of String elements to be displayed in a structured
      *                              way as a submenu catchphrases.
      */
-    public RemoveRecipe(List<String> listOfSubmenuElements) {
+    public AddFavourite(List<String> listOfSubmenuElements) {
         super(listOfSubmenuElements);
     }
 
     public void drawSubmenuContent() {
         do {
             STDOUT.info("\n┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[33m CHOOSE NUMBER OF DRINK TO REMOVE  \u001b[0m     │\n");
+            STDOUT.info("│  \u001b[33m CHOOSE DRINK AND ADD TO FAVOURITE     \u001b[0m │\n");
             STDOUT.info(MENU_BUILDER);
             fillingSubmenuByElements();
             STDOUT.info(MENU_BUILDER);
@@ -39,30 +37,17 @@ public class RemoveRecipe extends SubmenuCreator {
             STDOUT.info(MENU_BUILDER);
             STDOUT.info("│    Press \u001b[33mX\u001b[0m to return to the MAIN MENU    │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n\n");
+            STDOUT.info("\nChoose the drink to add to your favorites list, by entering the number.\n\n");
             STDOUT.info("\u001b[33mYOUR CHOICE: \u001b[0m");
             chooseTheOption();
         } while (true);
     }
 
     public void chooseSpecificSubmenuElement() {
-
         if ((userChoiceInt >= (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)) && userChoiceInt <= (collectionOfSubmenuElements.size())) {
-            STDOUT.info("You have chosen drink to remove: \n\n");
-            STDOUT.info(Repository.getInstance().getDrinkListByName(collectionOfSubmenuElements.get(userChoiceInt - 1)) + "\n");
-            STDOUT.warn("\nAre you sure, you want to remove this drink?\n\n");
-            STDOUT.info("Write \"Yes\" if you want remove, or \"No\" if you want cancel operation.\n\n");
-            STDOUT.info(": ");
-            String decision = SCANNER.next();
-            if (decision.equalsIgnoreCase("yes")) {
-                Repository.getInstance().remove(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(userChoiceInt - 1)));
-                STDOUT.info("Drink has been removed!\n");
-                new AddRecipeMenu().addRemoveRecipe();
-            } else if (decision.equalsIgnoreCase("no")) {
-                STDOUT.info("Drink has not been removed!\n");
-                new AddRecipeMenu().addRemoveRecipe();
-            } else {
-                STDOUT.info("Wrong character!\n");
-            }
+            Repository.getInstance().addFavorite(Repository.getInstance().getDrinkByName(collectionOfSubmenuElements.get(userChoiceInt - 1)));
+            STDOUT.info("\nDrink has been added to favourite drink list. \n");
+            new ManageFavourite().addRemoveRecipe();
         }
     }
 }
