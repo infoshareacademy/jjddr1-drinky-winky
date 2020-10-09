@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         /*
-         display main menu
+         display main menu11
         */
         new ConfigLoader().loadAppConfig();
         Menu.intro();

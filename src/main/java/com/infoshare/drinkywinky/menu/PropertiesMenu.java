@@ -3,7 +3,6 @@ package com.infoshare.drinkywinky.menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,12 +14,13 @@ import java.util.List;
 import java.util.Properties;
 
 import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
+import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
 import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
 import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
 
 
 public class PropertiesMenu {
-    private static Object SORT_TYPE = AppConfig.recipeSortType;
+    public static Object SORT_TYPE = AppConfig.recipeSortType;
     private static Object DATE_TYPE = dateFormat;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
@@ -29,8 +29,8 @@ public class PropertiesMenu {
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
             List<String> drink = new ArrayList<>();
-            STDOUT.info("FILE RESTORED.\n");
             Repository.loadDataBase();
+            STDOUT.info("FILE RESTORED.\n");
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
         } else {
             STDOUT.info("Returning to properties menu.\n");
@@ -70,7 +70,7 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("./resources/config.properties");
+                                OutputStream out = new FileOutputStream("src/main/resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
                                 prop.store(out, "File Saved");
@@ -84,7 +84,7 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("./resources/config.properties");
+                                OutputStream out = new FileOutputStream("src/main/resources/config.properties");
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
                                 prop.store(out, "File Saved");
@@ -104,7 +104,7 @@ public class PropertiesMenu {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            OutputStream out = new FileOutputStream("src/main/resources/config.properties");
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
                             prop.store(out, "File Saved");
                             config.loadAppConfig();
@@ -115,7 +115,7 @@ public class PropertiesMenu {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            OutputStream out = new FileOutputStream("src/main/resources/config.properties");
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
                             prop.store(out, "File Saved");
                             config.loadAppConfig();
@@ -141,15 +141,7 @@ public class PropertiesMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    WrongNumber();
                     break;
             }
         }
