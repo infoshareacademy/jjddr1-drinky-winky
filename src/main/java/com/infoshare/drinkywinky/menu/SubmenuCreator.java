@@ -76,9 +76,7 @@ public class SubmenuCreator {
             Repository.saveToFile(Repository.getInstance().getDrinkList(), USER_DATA_BASE_PATH_NAME);
             countNumberOfMenuPages();
             drawSubmenuContent();
-
         }
-
     }
 
     public void drawSubmenuContent() {
@@ -117,7 +115,6 @@ public class SubmenuCreator {
             STDOUT.info("│                         Next page -> \u001b[33mN\u001b[0m   │\n");
         }
     }
-
 
     protected void fillingSubmenuByElements() {
         for (int i = (1 + pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE); i <= (NUMBER_OF_ELEMENTS_BY_PAGE + (pageNumber * NUMBER_OF_ELEMENTS_BY_PAGE)); i++) {

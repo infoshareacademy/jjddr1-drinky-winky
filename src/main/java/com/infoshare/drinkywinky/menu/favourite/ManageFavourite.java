@@ -20,21 +20,18 @@ public class ManageFavourite {
 
     public static void addRemoveRecipe() {
 
-
         int mainExitCode = 0;
 
         while (mainExitCode != 3) {
-
-
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m   ADD OR REMOVE FAVOURITE  \u001b[0m            │\n");
+            STDOUT.info("│    \u001b[45m      ADD OR REMOVE FAVOURITE      \u001b[0m   │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   1. Show favourite drink list           │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   2. Add new favourite drink             │\n");
             STDOUT.info("│   3. Remove from favourite               │\n");
             STDOUT.info("│                                          │\n");
-            STDOUT.info("│  \u001b[36m 3. TO MAIN MENU                   \u001b[0m     │\n");
+            STDOUT.info("│  \u001b[36m 4. TO MAIN MENU                   \u001b[0m     │\n");
             STDOUT.info("└──────────────────────────────────────────┘\n");
             STDOUT.info("\n");
             STDOUT.info("CHOOSE NUMBER: ");
@@ -60,9 +57,7 @@ public class ManageFavourite {
                 default:
                     WrongNumber();
                     break;
-
             }
         }
-
     }
 }

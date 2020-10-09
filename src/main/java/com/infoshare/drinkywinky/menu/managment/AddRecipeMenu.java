@@ -2,20 +2,14 @@ package com.infoshare.drinkywinky.menu.managment;
 
 import com.infoshare.drinkywinky.menu.ChoiceMenu;
 import com.infoshare.drinkywinky.menu.Menu;
-import com.infoshare.drinkywinky.model.DrinkList;
 import com.infoshare.drinkywinky.repositories.Repository;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Scanner;
-
 import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
 
 public class AddRecipeMenu {
-
-    private static DrinkList drinkList;
-    private static final Scanner SCANNER = new Scanner(System.in);
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
@@ -24,9 +18,8 @@ public class AddRecipeMenu {
         int mainExitCode = 0;
 
         while (mainExitCode != 3) {
-
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m              ADD OR REMOVE  \u001b[0m           │\n");
+            STDOUT.info("│  \u001b[101m           ADD OR REMOVE              \u001b[0m  │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   1. Add new recipe                      │\n");
             STDOUT.info("│   2. Remove old recipe                   │\n");

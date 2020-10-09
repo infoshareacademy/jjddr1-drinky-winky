@@ -9,26 +9,25 @@ import org.slf4j.LoggerFactory;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
-import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
 import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
 import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
 
-
 public class PropertiesMenu {
+
+    public static final Scanner SCANNER = new Scanner(System.in);
     public static Object SORT_TYPE = AppConfig.recipeSortType;
-    private static Object DATE_TYPE = dateFormat;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    private static final String CONFIG_PATH = "src/main/resources/config.properties";
+    private static final String MESSAGE = "File saved!";
 
     public static void decision() {
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
-            List<String> drink = new ArrayList<>();
             Repository.loadDataBase();
             STDOUT.info("FILE RESTORED.\n");
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
@@ -41,12 +40,11 @@ public class PropertiesMenu {
     public static void propertiesMenu() {
         Properties prop = new Properties();
         ConfigLoader config = new ConfigLoader();
-        Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
 
         while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
+            STDOUT.info("│  \u001b[107m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   1. Sort by ASC / DESC                  │\n");
             STDOUT.info("│   2. Data Formatter                      │\n");
@@ -70,10 +68,10 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("src/main/resources/config.properties");
+                                OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
-                                prop.store(out, "File Saved");
+                                prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -84,10 +82,10 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("src/main/resources/config.properties");
+                                OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                                 prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
-                                prop.store(out, "File Saved");
+                                prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -104,22 +102,22 @@ public class PropertiesMenu {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("src/main/resources/config.properties");
+                            OutputStream out = new FileOutputStream(CONFIG_PATH);
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
-                            prop.store(out, "File Saved");
+                            prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            STDOUT.info("Chosen: {} \n", dateFormat);
                             break;
                         }
                         if (recipeSortType.equals("ASC")) {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("src/main/resources/config.properties");
+                            OutputStream out = new FileOutputStream(CONFIG_PATH);
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
-                            prop.store(out, "File Saved");
+                            prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            STDOUT.info("Chosen: {} \n", dateFormat);
                             break;
                         }
                     } catch (IOException e) {
