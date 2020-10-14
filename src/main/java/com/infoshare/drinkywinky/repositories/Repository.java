@@ -85,7 +85,6 @@ public class Repository {
 
     public void addFavorite(Drink drink) {
         favoriteDrinkList.addDrink(drink);
-        /*((DateTimeFormatter) DATE_FORMAT).format(LocalDateTime.now());*/
         saveToFile(favoriteDrinkList, FAVORITE_DRINK_LIST_PATH_NAME);
     }
 
