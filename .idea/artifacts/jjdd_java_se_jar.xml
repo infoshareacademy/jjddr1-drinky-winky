@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact name="jjdd-java-se:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jjdd_java_se_jar</output-path>
+    <root id="root">
+      <element id="archive" name="jjdd-java-se.jar">
+        <element id="module-output" name="jjdd-java-se" />
+      </element>
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.3" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.13.0" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.3" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.3" />
+      <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.13.0" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.30" />
+      <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.13.0" />
+      <element id="library" level="project" name="Maven: junit:junit:4.10" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.3.1" />
+    </root>
+  </artifact>
+</component>
