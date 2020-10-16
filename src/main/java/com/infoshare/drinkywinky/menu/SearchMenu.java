@@ -7,11 +7,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
-import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
+import static com.infoshare.drinkywinky.menu.Menu.wrongNumber;
 
 public class SearchMenu {
 
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+
+    SearchMenu() {
+    }
 
     public static void secondMenu() {
         int mainExitCode = 0;
@@ -50,7 +53,7 @@ public class SearchMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    WrongNumber();
+                    wrongNumber();
                     break;
             }
         }

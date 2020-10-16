@@ -12,17 +12,20 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.util.Scanner;
 
-import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
-import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
-import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
+import static com.infoshare.drinkywinky.menu.Menu.wrongNumber;
+import static com.infoshare.drinkywinky.properties.AppConfig.DATA_FORMAT;
+import static com.infoshare.drinkywinky.properties.AppConfig.RECIPE_SORT_TYPE;
 
 public class PropertiesMenu {
 
     public static final Scanner SCANNER = new Scanner(System.in);
-    public static Object SORT_TYPE = AppConfig.recipeSortType;
+    public static final Object SORT_TYPE = AppConfig.RECIPE_SORT_TYPE;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final String CONFIG_PATH = "src/main/resources/config.properties";
     private static final String MESSAGE = "File saved!";
+
+    PropertiesMenu() {
+    }
 
     public static void decision() {
         STDOUT.info("Are you sure to reset data base ?\n");
@@ -70,7 +73,7 @@ public class PropertiesMenu {
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, DATA_FORMAT);
                                 prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
@@ -84,7 +87,7 @@ public class PropertiesMenu {
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
                                 OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, DATA_FORMAT);
                                 prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
@@ -98,7 +101,7 @@ public class PropertiesMenu {
                     try {
                         STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
                         STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
-                        if (recipeSortType.equals("DESC")) {
+                        if (RECIPE_SORT_TYPE.equals("DESC")) {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                             Menu.SCANNER.nextLine();
@@ -106,10 +109,10 @@ public class PropertiesMenu {
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
                             prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen: {} \n", dateFormat);
+                            STDOUT.info("Chosen: {} \n", DATA_FORMAT);
                             break;
                         }
-                        if (recipeSortType.equals("ASC")) {
+                        if (RECIPE_SORT_TYPE.equals("ASC")) {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                             Menu.SCANNER.nextLine();
@@ -117,7 +120,7 @@ public class PropertiesMenu {
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
                             prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen: {} \n", dateFormat);
+                            STDOUT.info("Chosen: {} \n", DATA_FORMAT);
                             break;
                         }
                     } catch (IOException e) {
@@ -139,7 +142,7 @@ public class PropertiesMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    WrongNumber();
+                    wrongNumber();
                     break;
             }
         }

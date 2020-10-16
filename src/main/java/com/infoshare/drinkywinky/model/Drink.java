@@ -107,9 +107,7 @@ public class Drink implements Comparable<Drink> {
     }
 
     public String getDateModified() {
-        DateFormatter formatter = new DateFormatter(ConfigLoader.DATE_FORMAT_KEY);
-        formatter.getDateTime(dateModified);
-        return formatter.getDateTime(dateModified);
+        return dateModified;
     }
 
     public String getGlass() {
@@ -129,7 +127,7 @@ public class Drink implements Comparable<Drink> {
         return "\n\u001b[33mDrink name: \u001b[0m" + name + "\n\u001b[33mCategory: \u001b[0m" + category + "\n\u001b[33mIngredients with measures: \u001b[0m" +
                 Utils.getIngredientsWithMeasures(ingredients, measures) +
                 "\n\u001b[33mID: \u001b[0m" + id + "\n\u001b[33mRecipe: \n\u001b[0m" + recipe + "\n\u001b[33mAlcoholic: \u001b[0m" +
-                alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + getDateModified() + "\n";
+                alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + new DateFormatter().getDateTime() + "\n";
     }
 
     @Override

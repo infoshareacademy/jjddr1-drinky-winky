@@ -31,7 +31,7 @@ public class DrinkList {
 
     public Drink getDrinkById(String id) {
         for (Drink drink : allDrink)
-            if (drink.equals(id)) {
+            if (drink.getId().equals(id)) {
                 return drink;
             }
         return null;

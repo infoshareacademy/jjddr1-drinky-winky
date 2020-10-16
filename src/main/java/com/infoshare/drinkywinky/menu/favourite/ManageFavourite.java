@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
-import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
+import static com.infoshare.drinkywinky.menu.Menu.wrongNumber;
 
 public class ManageFavourite {
     private static DrinkList drinkList;
@@ -55,7 +55,7 @@ public class ManageFavourite {
                     mainExitCode = 3;
                     break;
                 default:
-                    WrongNumber();
+                    wrongNumber();
                     break;
             }
         }

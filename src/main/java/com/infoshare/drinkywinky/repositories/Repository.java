@@ -3,7 +3,6 @@ package com.infoshare.drinkywinky.repositories;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
-import com.infoshare.drinkywinky.properties.AppConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,9 +16,8 @@ public class Repository {
     private static final String FAVORITE_DRINK_LIST_PATH_NAME = "src/main/resources/favorite drink list.json";
     private static final String MESSAGE = "File is saved";
     private static Repository INSTANCE;
-    private DrinkList drinkList;
-    private DrinkList favoriteDrinkList;
-    private static final Object DATE_FORMAT = AppConfig.dateFormat;
+    private final DrinkList drinkList;
+    private final DrinkList favoriteDrinkList;
 
     public Repository() {
         drinkList = readFile(USER_DATA_BASE_PATH_NAME);
@@ -112,7 +110,7 @@ public class Repository {
         return MESSAGE;
     }
 
-    public static String loadDataBase() {
+    public static void loadDataBase() {
         DrinkList drinkList = Repository.readFile(DATA_BASE_PATH_NAME);
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -120,7 +118,6 @@ public class Repository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return MESSAGE;
     }
 
     static DrinkList readFile(String path) {

@@ -12,6 +12,9 @@ public class Menu {
     public static final Scanner SCANNER = new Scanner(System.in);
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
 
+    private Menu() {
+    }
+
     public static void intro() {
         STDOUT.info("┌──────────────────────────────────────────┐\n");
         STDOUT.info("│                                          │\n");
@@ -71,13 +74,13 @@ public class Menu {
                     System.exit(0);
                     break;
                 default:
-                    WrongNumber();
+                    wrongNumber();
                     break;
             }
         }
     }
 
-    public static void WrongNumber() {
+    public static void wrongNumber() {
         STDOUT.info("\n");
         STDOUT.info("┌──────────────────────────────────────────┐\n");
         STDOUT.info("│                                          │\n");

@@ -7,7 +7,7 @@ import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.infoshare.drinkywinky.menu.Menu.WrongNumber;
+import static com.infoshare.drinkywinky.menu.Menu.wrongNumber;
 
 public class AddRecipeMenu {
 
@@ -45,7 +45,7 @@ public class AddRecipeMenu {
                     mainExitCode = 3;
                     break;
                 default:
-                    WrongNumber();
+                    wrongNumber();
                     break;
             }
         }
