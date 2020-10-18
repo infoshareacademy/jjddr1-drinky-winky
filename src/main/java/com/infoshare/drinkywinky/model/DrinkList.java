@@ -2,8 +2,10 @@ package com.infoshare.drinkywinky.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DrinkList {
@@ -27,25 +29,35 @@ public class DrinkList {
         allDrink.remove(drink);
     }
 
-    public List<Drink> getDrinkById(String id) {
-        return allDrink
-                .stream()
-                .filter(e -> e.getId().equals(id))
-                .collect(Collectors.toList());
+    public Drink getDrinkById(String id) {
+        for (Drink drink : allDrink)
+            if (drink.getId().equals(id)) {
+                return drink;
+            }
+        return null;
     }
 
-    public List<Drink> getDrinkByName(String name) {
+    public List<Drink> getDrinkListByName(String name) {
         return allDrink
                 .stream()
                 .filter(e -> e.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
 
-    public List<Drink> getDrinkByCategory(String category) {
+    public Drink getDrinkByName(String name) {
+        for (Drink drink : allDrink) {
+            if (drink.getName().equals(name)) {
+                return drink;
+            }
+        }
+        return null;
+    }
+
+    public Set<Drink> getDrinkByCategory(String category) {
         return allDrink
                 .stream()
                 .filter(e -> e.getCategory().equalsIgnoreCase(category))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     public List<Drink> getDrinkByIngredients(String ingredient) {
@@ -54,14 +66,6 @@ public class DrinkList {
                 .filter(e ->
                         e.getIngredients().stream().anyMatch(i -> i.equalsIgnoreCase(ingredient)))
                 .collect(Collectors.toList());
-    }
-
-    public List<Drink> getDrinkByRecipe(String recipe) {
-        return allDrink
-                .stream()
-                .filter(e -> e.getRecipe()
-                        .equalsIgnoreCase(recipe)).
-                        collect(Collectors.toList());
     }
 
     @Override
