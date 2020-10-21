@@ -1,60 +1,48 @@
 package com.infoshare.model;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.infoshare.drinkywinky.utils.DateFormatter;
-import com.infoshare.drinkywinky.utils.Utils;
 
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Drink implements Comparable<Drink> {
+    @Id
+    @GeneratedValue
     private final String id;
+    @Column
     private final String name;
+    @Column
     private final String category;
+    @Column
     private final String recipe;
+    @Column
     private final String alcoholic;
+    @Column
     private final String dateModified;
+    @Column
     private final String glass;
+
 
     private List<String> ingredients = new ArrayList<>();
     private List<String> measures = new ArrayList<>();
 
-    @JsonAlias({"strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7"})
-    public String getFakeIngredient() {
-        return null;
-    }
 
-    @JsonSetter()
-    public void setFakeIngredient(String ingredient) {
-        if (ingredient != null) {
-            ingredients.add(ingredient);
-        }
-    }
+//    public void setFakeMeasure(String measure) {
+//        if (measure != null) {
+//            measures.add(measure);
+//        }
+//    }
 
-    @JsonAlias({"strMeasure1", "strMeasure2", "strMeasure3", "strMeasure4", "strMeasure5", "strMeasure6", "strMeasure7"})
-    public String getFakeMeasure() {
-        return null;
-    }
-
-    @JsonSetter()
-    public void setFakeMeasure(String measure) {
-        if (measure != null) {
-            measures.add(measure);
-        }
-    }
-
-    public Drink(@JsonProperty("idDrink") String id,
-                 @JsonProperty("strDrink") String name,
-                 @JsonProperty("strCategory") String category,
-                 @JsonProperty("strInstructions") String recipe,
-                 @JsonProperty("strAlcoholic") String alcoholic,
-                 @JsonProperty("dateModified") String dateModified,
-                 @JsonProperty("strGlass") String glass
-    ) {
+    public Drink(String id,
+                 String name,
+                 String category,
+                 String recipe,
+                 String alcoholic,
+                 String dateModified,
+                 String glass) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -72,8 +60,7 @@ public class Drink implements Comparable<Drink> {
                  String dateModified,
                  String glass,
                  List<String> ingredients,
-                 List<String> measures
-    ) {
+                 List<String> measures ) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -124,9 +111,9 @@ public class Drink implements Comparable<Drink> {
     @Override
     public String toString() {
         return "\n\u001b[33mDrink name: \u001b[0m" + name + "\n\u001b[33mCategory: \u001b[0m" + category + "\n\u001b[33mIngredients with measures: \u001b[0m" +
-                Utils.getIngredientsWithMeasures(ingredients, measures) +
+                ingredients +
                 "\n\u001b[33mID: \u001b[0m" + id + "\n\u001b[33mRecipe: \n\u001b[0m" + recipe + "\n\u001b[33mAlcoholic: \u001b[0m" +
-                alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + new DateFormatter().getDateTime() + "\n";
+                alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + dateModified + "\n";
     }
 
     @Override
