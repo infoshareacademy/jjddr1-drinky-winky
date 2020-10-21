@@ -6,6 +6,9 @@ import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
 
 public class ChoiceMenu {
 
+    private ChoiceMenu() {
+    }
+
     public static int choiceMenu() {
         int result = 0;
 

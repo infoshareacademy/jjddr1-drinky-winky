@@ -1,6 +1,10 @@
 package com.infoshare.drinkywinky.properties;
 
 public class AppConfig {
-    public static Object recipeSortType;
-    public static String dateFormat;
+
+    public static Object RECIPE_SORT_TYPE;
+    public static String DATA_FORMAT;
+
+    AppConfig() {
+    }
 }

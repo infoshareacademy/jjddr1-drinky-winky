@@ -2,19 +2,18 @@ package com.infoshare.drinkywinky.utils;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
-import com.infoshare.drinkywinky.properties.ConfigLoader;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Utils {
 
-    public Utils() {
+    private Utils() {
     }
 
     /**
@@ -23,6 +22,13 @@ public class Utils {
      */
     public static List<String> getNamesOfAllDrink(DrinkList drinkList) {
         return drinkList.getAllDrink()
+                .stream()
+                .map(Drink::getName)
+                .collect(Collectors.toList());
+    }
+
+    public static List<String> getNamesOfFavouriteDrinkList(DrinkList favoriteDrinkList) {
+        return favoriteDrinkList.getAllDrink()
                 .stream()
                 .map(Drink::getName)
                 .collect(Collectors.toList());
@@ -78,8 +84,8 @@ public class Utils {
                 listOfIngredientsWithMeasures.add(concat);
             }
         } else {
-                String ingredientWithoutMeasure = ingredients.get(0);
-                listOfIngredientsWithMeasures.add(ingredientWithoutMeasure);
+            String ingredientWithoutMeasure = ingredients.get(0);
+            listOfIngredientsWithMeasures.add(ingredientWithoutMeasure);
             for (int i = 0; i < measures.size(); i++) {
                 String ingredientToConcat = ingredients.get(i + 1);
                 String measureToConcat = measures.get(i);

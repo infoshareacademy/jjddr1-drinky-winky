@@ -31,20 +31,20 @@ public class DrinkList {
 
     public Drink getDrinkById(String id) {
         for (Drink drink : allDrink)
-            if (drink.equals(id)) {
+            if (drink.getId().equals(id)) {
                 return drink;
             }
         return null;
     }
 
-    public List<Drink> getDrinkByName(String name) {
+    public List<Drink> getDrinkListByName(String name) {
         return allDrink
                 .stream()
                 .filter(e -> e.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
 
-    public Drink getDrinkByName2(String name) {
+    public Drink getDrinkByName(String name) {
         for (Drink drink : allDrink) {
             if (drink.getName().equals(name)) {
                 return drink;

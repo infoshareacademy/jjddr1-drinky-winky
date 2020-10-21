@@ -3,34 +3,36 @@ package com.infoshare.drinkywinky.menu;
 import com.infoshare.drinkywinky.properties.AppConfig;
 import com.infoshare.drinkywinky.properties.ConfigLoader;
 import com.infoshare.drinkywinky.repositories.Repository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
-import static com.infoshare.drinkywinky.menu.Menu.SCANNER;
-import static com.infoshare.drinkywinky.properties.AppConfig.dateFormat;
-import static com.infoshare.drinkywinky.properties.AppConfig.recipeSortType;
-
+import static com.infoshare.drinkywinky.menu.Menu.wrongNumber;
+import static com.infoshare.drinkywinky.properties.AppConfig.DATA_FORMAT;
+import static com.infoshare.drinkywinky.properties.AppConfig.RECIPE_SORT_TYPE;
 
 public class PropertiesMenu {
-    private static Object SORT_TYPE = AppConfig.recipeSortType;
-    private static Object DATE_TYPE = dateFormat;
+
+    public static final Scanner SCANNER = new Scanner(System.in);
+    public static final Object SORT_TYPE = AppConfig.RECIPE_SORT_TYPE;
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
+    private static final String CONFIG_PATH = "src/main/resources/config.properties";
+    private static final String MESSAGE = "File saved!";
+
+    PropertiesMenu() {
+    }
 
     public static void decision() {
         STDOUT.info("Are you sure to reset data base ?\n");
         String answer = SCANNER.nextLine();
         if (answer.equalsIgnoreCase("yes")) {
-            List<String> drink = new ArrayList<>();
-            STDOUT.info("FILE RESTORED.\n");
             Repository.loadDataBase();
+            STDOUT.info("FILE RESTORED.\n");
             STDOUT.info("PLEASE WAIT RESTARTING PROGRAM TO GET UPDATED.\n");
         } else {
             STDOUT.info("Returning to properties menu.\n");
@@ -41,12 +43,11 @@ public class PropertiesMenu {
     public static void propertiesMenu() {
         Properties prop = new Properties();
         ConfigLoader config = new ConfigLoader();
-        Object SORT_TYPE = AppConfig.recipeSortType;
         int mainExitCode = 0;
 
         while (mainExitCode != 4) {
             STDOUT.info("┌──────────────────────────────────────────┐\n");
-            STDOUT.info("│  \u001b[101m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
+            STDOUT.info("│  \u001b[107m      CHOOSE OPTION FROM MENU       \u001b[0m    │\n");
             STDOUT.info("│                                          │\n");
             STDOUT.info("│   1. Sort by ASC / DESC                  │\n");
             STDOUT.info("│   2. Data Formatter                      │\n");
@@ -70,10 +71,10 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("./resources/config.properties");
+                                OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
-                                prop.store(out, "File Saved");
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, DATA_FORMAT);
+                                prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -84,10 +85,10 @@ public class PropertiesMenu {
                             try {
                                 prop.get(ConfigLoader.DATE_FORMAT_KEY);
                                 prop.get(ConfigLoader.RECIPE_SORT_TYPE_KEY);
-                                OutputStream out = new FileOutputStream("./resources/config.properties");
+                                OutputStream out = new FileOutputStream(CONFIG_PATH);
                                 prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
-                                prop.put(ConfigLoader.DATE_FORMAT_KEY, dateFormat);
-                                prop.store(out, "File Saved");
+                                prop.put(ConfigLoader.DATE_FORMAT_KEY, DATA_FORMAT);
+                                prop.store(out, MESSAGE);
                                 config.loadAppConfig();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -100,26 +101,26 @@ public class PropertiesMenu {
                     try {
                         STDOUT.info(" CHOSEN : 2. Date Formatter  \n");
                         STDOUT.info(" Please enter new date format :\ndefault : date.format=yyyy-MM-dd HH:mm:ss\n");
-                        if (recipeSortType.equals("DESC")) {
+                        if (RECIPE_SORT_TYPE.equals("DESC")) {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "DESC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            OutputStream out = new FileOutputStream(CONFIG_PATH);
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
-                            prop.store(out, "File Saved");
+                            prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            STDOUT.info("Chosen: {} \n", DATA_FORMAT);
                             break;
                         }
-                        if (recipeSortType.equals("ASC")) {
+                        if (RECIPE_SORT_TYPE.equals("ASC")) {
                             prop.get(ConfigLoader.DATE_FORMAT_KEY);
                             prop.setProperty(ConfigLoader.RECIPE_SORT_TYPE_KEY, "ASC");
                             Menu.SCANNER.nextLine();
-                            OutputStream out = new FileOutputStream("./resources/config.properties");
+                            OutputStream out = new FileOutputStream(CONFIG_PATH);
                             prop.put(ConfigLoader.DATE_FORMAT_KEY, Menu.SCANNER.nextLine());
-                            prop.store(out, "File Saved");
+                            prop.store(out, MESSAGE);
                             config.loadAppConfig();
-                            STDOUT.info("Chosen :" + dateFormat + "\n");
+                            STDOUT.info("Chosen: {} \n", DATA_FORMAT);
                             break;
                         }
                     } catch (IOException e) {
@@ -141,15 +142,7 @@ public class PropertiesMenu {
                     mainExitCode = 4;
                     break;
                 default:
-                    STDOUT.info("\n");
-                    STDOUT.info("┌──────────────────────────────────────────┐\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│       \u001b[31mYOU HAVE ENTERED WRONG NUMBER! \u001b[0m    │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("│               TRY AGAIN!                 │\n");
-                    STDOUT.info("│                                          │\n");
-                    STDOUT.info("└──────────────────────────────────────────┘\n");
-                    STDOUT.info("\n");
+                    wrongNumber();
                     break;
             }
         }

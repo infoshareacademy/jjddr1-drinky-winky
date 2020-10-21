@@ -7,16 +7,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateFormatter {
-    public static DateTimeFormatter formatter;
-    private String dateTime;
 
-    public DateFormatter(String dateFormatKey) {
+    private final String dateTime;
+
+    public DateFormatter() {
         ConfigLoader config = new ConfigLoader();
         config.loadAppConfig();
-        this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(AppConfig.dateFormat));
+        this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(AppConfig.DATA_FORMAT));
     }
 
-    public String getDateTime(String dateModified) {
-        return this.dateTime;
+    public String getDateTime() {
+        return dateTime;
     }
 }
