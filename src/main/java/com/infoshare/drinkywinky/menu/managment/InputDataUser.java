@@ -2,10 +2,11 @@ package com.infoshare.drinkywinky.menu.managment;
 
 import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.repositories.Repository;
-import com.infoshare.drinkywinky.utils.DateFormatter;
 import com.infoshare.drinkywinky.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class InputDataUser {
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String DATE_MODIFIED = String.valueOf(DateFormatter.formatter);
+    private static final String DATE_MODIFIED = String.valueOf(LocalDateTime.now());
     private static final List<String> INGREDIENTS = new ArrayList<>();
     private static final List<String> MEASURES = new ArrayList<>();
     private static String id = Utils.getRandomId(7);
@@ -22,6 +23,9 @@ public class InputDataUser {
     private static String alcoholic;
     private static String recipe;
     private static String glass;
+
+    InputDataUser() {
+    }
 
     public static void scannerInput() {
         STDOUT.info("Enter drink NAME: \n");
@@ -39,20 +43,16 @@ public class InputDataUser {
 
     /**
      * @param userIngredients names of ingredients separate with coma
-     * @return list containing the names of the ingredients
      */
-    private static List<String> addIngredients(String userIngredients) {
+    private static void addIngredients(String userIngredients) {
         INGREDIENTS.add(userIngredients);
-        return INGREDIENTS;
     }
 
     /**
      * @param userMeasures names of measures separate with coma
-     * @return list containing the value of measures
      */
-    private static List<String> addMeasures(String userMeasures) {
+    private static void addMeasures(String userMeasures) {
         MEASURES.add(userMeasures);
-        return MEASURES;
     }
 
     private static void isAlcoholic() {
