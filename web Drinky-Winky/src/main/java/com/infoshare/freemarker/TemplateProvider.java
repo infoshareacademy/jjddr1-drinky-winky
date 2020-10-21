@@ -16,7 +16,7 @@ public class TemplateProvider {
   private Configuration configuration;
 
   @Inject
-  private com.isa.usersengine.freemarker.ConfigProvider configProvider;
+  private com.infoshare.freemarker.ConfigProvider configProvider;
 
   public Template getTemplate(ServletContext servletContext, String templateName)
       throws IOException {
