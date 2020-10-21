@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table
-public class Drink implements Comparable<Drink> {
+public class Drink {
     @Id
     @GeneratedValue
     private final String id;
@@ -116,8 +116,4 @@ public class Drink implements Comparable<Drink> {
                 alcoholic + "\n\u001b[33mGlass type: \u001b[0m" + glass + "\n\u001b[33mDate of modification: \u001b[0m" + dateModified + "\n";
     }
 
-    @Override
-    public int compareTo(Drink o) {
-        return name.compareToIgnoreCase(o.getName());
-    }
 }
