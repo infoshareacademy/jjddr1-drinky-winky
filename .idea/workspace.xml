@@ -3,78 +3,12 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac5ba09e-aede-4583-8608-83e9a654d725" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Drinky_Winky_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Drinky_Winky_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/webApp_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/webApp_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_13_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_13_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/console Drinky-Winky/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/src/main/java/com/infoshare/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/target/classes/com/infoshare/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/target/classes/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/target/classes/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/web Drinky-Winky.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web Drinky-Winky/webApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/ChoiceMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/ChoiceMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/PropertiesMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/PropertiesMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/SearchMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/SearchMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/SubmenuCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/SubmenuCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/favourite/AddFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/favourite/AddFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/favourite/Favourites.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/favourite/Favourites.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/favourite/ManageFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/favourite/ManageFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/favourite/RemoveFavourite.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/favourite/RemoveFavourite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/managment/AddRecipeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/AddRecipeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/menu/managment/RemoveRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/RemoveRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/model/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/model/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/model/DrinkList.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/model/DrinkList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/properties/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/properties/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/properties/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/properties/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/repositories/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/repositories/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/utils/DateFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/utils/DateFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infoshare/drinkywinky/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/drink list.json" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/drink list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/favorite drink list.json" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/favorite drink list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/console Drinky-Winky/src/main/resources/search.json" afterDir="false" />
-    </list>
+    <list default="true" id="ac5ba09e-aede-4583-8608-83e9a654d725" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -244,6 +178,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
