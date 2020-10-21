@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Drinky-Winky:war exploded">
+    <output-path>$PROJECT_DIR$/web Drinky-Winky/target/web Drinky-Winky</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>Drinky-Winky</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="webApp" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/web Drinky-Winky/target/web Drinky-Winky/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="webApp/web/Web" />
+    </root>
+  </artifact>
+</component>
