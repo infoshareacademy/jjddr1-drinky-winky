@@ -1,16 +1,12 @@
-# Compiled class file
+
 *.class
 
-# Log file
 *.log
 
-# BlueJ files
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
 *.jar
 *.war
 *.nar
@@ -22,12 +18,5 @@
 
 .idea/
 target/
-.gitignore
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-!/src/main/resources/config.properties
-!/src/main/resources/drink list.json
-!/src/main/resources/favorite drink list.json
-!/src/main/resources/search.json
