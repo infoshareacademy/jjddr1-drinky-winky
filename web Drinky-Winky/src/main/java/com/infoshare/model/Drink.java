@@ -1,7 +1,6 @@
 package com.infoshare.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,7 +9,7 @@ public class Drink {
 
     @Id
     @GeneratedValue
-    private Integer id;    // <--- changed to Integer originally was String
+    private Long id;
     @Column
     private String name;
     @Column
@@ -24,15 +23,15 @@ public class Drink {
     @Column
     private String glass;
 
-    //TODO what kind of relation beetwen those lists? one to one?
-//    List<Drink> ingredients;
-//    List<Drink> measures;
+    @OneToMany(mappedBy = "drink", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ingredient> ingredients;
+
 
 
     public Drink() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -60,7 +59,7 @@ public class Drink {
         return glass;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

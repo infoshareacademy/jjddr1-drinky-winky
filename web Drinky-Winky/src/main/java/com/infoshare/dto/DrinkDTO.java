@@ -2,33 +2,26 @@ package com.infoshare.dto;
 
 
 import com.infoshare.model.Drink;
+import com.infoshare.model.Ingredient;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class DrinkDTO {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String category;
     private String recipe;
     private String alcoholic;
     private String dateModified;
     private String glass;
-    //    List<Drink> ingredients;
-//    List<Drink> measures;
+    private List<Ingredient> ingredients;
 
 
     public DrinkDTO() {
     }
 
-    public DrinkDTO(String name, String category, String recipe, String alcoholic, String dateModified, String glass) {
-        this.name = name;
-        this.category = category;
-        this.recipe = recipe;
-        this.alcoholic = alcoholic;
-        this.dateModified = dateModified;
-        this.glass = glass;
-    }
 
     public static DrinkDTO createDTOFromModel(@NotNull Drink drink) {
         DrinkDTO drinkDTO = new DrinkDTO();
@@ -54,11 +47,11 @@ public class DrinkDTO {
         return drink;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
