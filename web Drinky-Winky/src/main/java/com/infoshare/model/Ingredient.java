@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 
 @Entity
-@Table
 public class Ingredient {
     @Id
     @GeneratedValue

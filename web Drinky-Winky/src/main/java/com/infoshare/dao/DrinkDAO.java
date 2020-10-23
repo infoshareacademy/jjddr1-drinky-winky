@@ -6,7 +6,6 @@ import com.infoshare.model.Drink;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class DrinkDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
+    //<---- TODO w jaki sposob unikac null, servlet moze spr czy id jest poprawny, wyjatek zamiast null (np illegal state) badz optional od drink
     public Drink findById(Long id) {
         return entityManager.find(Drink.class, id);
     }
@@ -29,7 +29,7 @@ public class DrinkDAO {
     public Drink edit(Long id, DrinkDTO drinkDTO) {
         Drink toEdit = entityManager.find(Drink.class, id);
         if (toEdit != null) {
-            toEdit.setDrinkName(drinkDTO.getName());
+            toEdit.setDrinkName(drinkDTO.getDrinkName());
             toEdit.setIngredients(drinkDTO.getIngredients());
             entityManager.merge(toEdit);
             return toEdit;

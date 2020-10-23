@@ -1,55 +1,55 @@
-//package com.infoshare.dao.robocze;
+//package com.infoshare.dao;
 //
+//
+//import com.infoshare.dto.RecipeDTO;
+//import com.infoshare.model.Recipe;
+//import javax.ejb.Stateless;
+//import javax.persistence.EntityManager;
+//import javax.persistence.PersistenceContext;
+//import javax.persistence.TypedQuery;
+//import java.util.List;
+//
+//@Stateless
 //public class RecipeDAO {
-//    @Stateless
-//    public class IngredientDaoBean {
-//        @PersistenceContext
-//        EntityManager entityManager;
 //
-//        public void loadIngredient(List<Ingredient> ingredients) {
-//            ingredients.stream().forEach(i->entityManager.persist(i));
-//        }
+//    @PersistenceContext
+//    EntityManager entityManager;
 //
-//        public void addIngredient(Ingredient ingredient) {
-//            entityManager.persist(ingredient);
-//        }
+//    public Recipe findById(Long id) {
+//        return entityManager.find(Recipe.class, id);
+//    }
 //
-//        public Ingredient editIngredient(Ingredient ingredient) {
-//            return entityManager.merge(ingredient);
-//        }
+//    public RecipeDTO saveDrink(RecipeDTO recipeDTO) {
+//        Recipe recipe = RecipeDTO.createModelFromRecipeDTO(recipeDTO);
+//        entityManager.persist(recipe);
+//        return RecipeDTO.createRecipeDTOFromModel(recipe);
+//    }
 //
-//        public Ingredient getIngredientByName(String name) {
-//            return entityManager.find(Ingredient.class, name);
+//    public Recipe edit(Long id, Recipe recipe) {
+//        Recipe toEdit = entityManager.find(Recipe.class, id);
+//        if (toEdit != null) {
+//            toEdit.setId(recipe.getId());
+//            toEdit.setRecipeName(recipe.getRecipeName());
+//            toEdit.setGlass(recipe.getGlass());
+//            toEdit.setIsAlcoholic(recipe.getIsAlcoholic());
+//            toEdit.setDateModified(recipe.getDateModified());
+//            entityManager.merge(toEdit);
+//            return toEdit;
 //        }
+//        return null;
+//    }
 //
-//        public Ingredient getIngredientById(Long id) {
-//            return entityManager.find(Ingredient.class, id);
+//    public boolean remove(Long id) {
+//        Recipe toRemove = entityManager.find(Recipe.class, id);
+//        if (toRemove != null) {
+//            entityManager.remove(toRemove);
+//            return true;
 //        }
+//        return false;
+//    }
 //
-//        public void deleteCategoryById(Long id) {
-//            Ingredient ingredient = getIngredientById(id);
-//            if (ingredient != null) {
-//                entityManager.remove(ingredient);
-//            }
-//        }
-//        public Ingredient findIngredient(String name) {
-//            Query query = entityManager.createNamedQuery("Ingredient.findIngredientByName");
-//            query.setParameter("name", name);
-//            return (Ingredient) query.getSingleResult();
-//        }
-//        public List<String> findIngredientsByLiveSearch(String nameChars) {
-//            Query query = entityManager.createNamedQuery("Ingredient.findIngredientByLiveSearch");
-//            query.setParameter("nameChars", "%" + nameChars + "%");
-//            return query.getResultList();
-//        }
-//        public List<String> getIngredientsList() {
-//            Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
-//            return query.getResultList();
-//        }
-//
-//        public List<Ingredient> getIngredientsByName( List<String> names){
-//            Query queryIngredient = entityManager.createNamedQuery("Ingredient.findIngredientByName");
-//            queryIngredient.setParameter("names", names);
-//            return queryIngredient.getResultList();
-//        }
+//    public List<Recipe> getRecipeList() {
+//        TypedQuery<Recipe> query = entityManager.createQuery("SELECT r FROM Recipe r", Recipe.class);
+//        return query.getResultList();
+//    }
 //}
