@@ -16,13 +16,24 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("drinkName");
         DrinkDTO drinkDTO = new DrinkDTO();
+        drinkDTO.setDrinkName("voda");
+        drinkDTO.setCategoryName("Oridin");
+        drinkDTO.setGlass("glass");
+
         PrintWriter printWriter = resp.getWriter();
         printWriter.println(String.format("Drink saved: %s",drinkDTO.toString()));
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("drinkName");
+        DrinkDTO drinkDTO = new DrinkDTO();
+        drinkDTO.setDrinkName("voda");
+        drinkDTO.setCategoryName("Oridin");
+        drinkDTO.setGlass("glass");
 
+        PrintWriter printWriter = resp.getWriter();
+        printWriter.println(String.format("Drink saved: %s",drinkDTO.toString()));
     }
 }
 
