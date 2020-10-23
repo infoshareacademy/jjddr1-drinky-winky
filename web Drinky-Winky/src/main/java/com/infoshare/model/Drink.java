@@ -10,81 +10,35 @@ public class Drink {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
-    private String name;
-    @Column
-    private String category;
-    @Column
-    private String recipe;
-    @Column
-    private String alcoholic;
-    @Column
-    private String dateModified;
-    @Column
-    private String glass;
+    @Column(name = "name", unique = true, length = 100)
+    private String drinkName;
 
     @OneToMany(mappedBy = "drink", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ingredient> ingredients;
 
 
-
-    public Drink() {
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getRecipe() {
-        return recipe;
-    }
-
-    public String getAlcoholic() {
-        return alcoholic;
-    }
-
-    public String getDateModified() {
-        return dateModified;
-    }
-
-    public String getGlass() {
-        return glass;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDrinkName() {
+        return drinkName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDrinkName(String drinkName) {
+        this.drinkName = drinkName;
     }
 
-    public void setRecipe(String recipe) {
-        this.recipe = recipe;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setAlcoholic(String alcoholic) {
-        this.alcoholic = alcoholic;
-    }
-
-    public void setDateModified(String dateModified) {
-        this.dateModified = dateModified;
-    }
-
-    public void setGlass(String glass) {
-        this.glass = glass;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
 

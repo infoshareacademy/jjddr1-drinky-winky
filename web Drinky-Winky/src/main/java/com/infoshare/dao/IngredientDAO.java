@@ -10,11 +10,11 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
-public class IngredientsDAO {
+public class IngredientDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Ingredient findById(Integer id) {
+    public Ingredient findById(Long id) {
         return entityManager.find(Ingredient.class, id);
     }
 
@@ -24,7 +24,7 @@ public class IngredientsDAO {
         return IngredientDTO.createIngredientsDTOFromModel(ingredient);
     }
 
-    public Ingredient edit(Integer id, Ingredient ingredient) {
+    public Ingredient edit(Long id, Ingredient ingredient) {
         Ingredient toEdit = entityManager.find(Ingredient.class, id);
         if (toEdit != null) {
             toEdit.setId(ingredient.getId());
@@ -36,7 +36,7 @@ public class IngredientsDAO {
         return null;
     }
 
-    public boolean remove(Integer id) {
+    public boolean remove(Long id) {
         Ingredient toRemove = entityManager.find(Ingredient.class, id);
         if (toRemove != null) {
             entityManager.remove(toRemove);

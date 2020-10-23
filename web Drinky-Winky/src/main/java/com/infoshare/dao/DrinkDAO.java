@@ -16,7 +16,7 @@ public class DrinkDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Drink findById(Integer id) {
+    public Drink findById(Long id) {
         return entityManager.find(Drink.class, id);
     }
 
@@ -26,22 +26,18 @@ public class DrinkDAO {
         return DrinkDTO.createDTOFromModel(drink);
     }
 
-    public Drink edit(Integer id, DrinkDTO drinkDTO) {
+    public Drink edit(Long id, DrinkDTO drinkDTO) {
         Drink toEdit = entityManager.find(Drink.class, id);
         if (toEdit != null) {
-            toEdit.setName(drinkDTO.getName());
-            toEdit.setCategory(drinkDTO.getCategory());
-            toEdit.setRecipe(drinkDTO.getRecipe());
-            toEdit.setAlcoholic(drinkDTO.getAlcoholic());
-            toEdit.setDateModified(drinkDTO.getDateModified());
-            toEdit.setGlass(drinkDTO.getGlass());
+            toEdit.setDrinkName(drinkDTO.getName());
+            toEdit.setIngredients(drinkDTO.getIngredients());
             entityManager.merge(toEdit);
             return toEdit;
         }
         return null;
     }
 
-    public boolean remove(Integer id) {
+    public boolean remove(Long id) {
         Drink toRemove = entityManager.find(Drink.class, id);
         if (toRemove != null) {
             entityManager.remove(toRemove);
@@ -50,7 +46,7 @@ public class DrinkDAO {
         return false;
     }
 
-    public List<Drink> getAll() {
+    public List<Drink> getDrinkList() {
         TypedQuery<Drink> query = entityManager.createQuery("SELECT d FROM Drink d", Drink.class);
         return query.getResultList();
     }
