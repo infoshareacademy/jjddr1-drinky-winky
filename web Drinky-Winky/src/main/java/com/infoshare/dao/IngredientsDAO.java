@@ -1,6 +1,6 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.IngredientsDTO;
+import com.infoshare.dto.IngredientDTO;
 import com.infoshare.model.Ingredient;
 
 import javax.ejb.Stateless;
@@ -18,10 +18,10 @@ public class IngredientsDAO {
         return entityManager.find(Ingredient.class, id);
     }
 
-    public IngredientsDTO saveDrink(IngredientsDTO ingredientsDTO) {
-        Ingredient ingredient = IngredientsDTO.createModelFromIngredientsDTO(ingredientsDTO);
+    public IngredientDTO saveDrink(IngredientDTO ingredientDTO) {
+        Ingredient ingredient = IngredientDTO.createModelFromIngredientsDTO(ingredientDTO);
         entityManager.persist(ingredient);
-        return IngredientsDTO.createIngredientsDTOFromModel(ingredient);
+        return IngredientDTO.createIngredientsDTOFromModel(ingredient);
     }
 
     public Ingredient edit(Integer id, Ingredient ingredient) {
