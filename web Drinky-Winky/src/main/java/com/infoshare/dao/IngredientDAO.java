@@ -24,12 +24,12 @@ public class IngredientDAO {
         return IngredientDTO.createIngredientsDTOFromModel(ingredient);
     }
 
-    public Ingredient edit(Long id, Ingredient ingredient) {
+    public Ingredient edit(Long id, IngredientDTO ingredientDTO) {
         Ingredient toEdit = entityManager.find(Ingredient.class, id);
         if (toEdit != null) {
-            toEdit.setId(ingredient.getId());
-            toEdit.setIngredientName(ingredient.getIngredientName());
-            toEdit.setMeasurement(ingredient.getMeasurement());
+            toEdit.setId(ingredientDTO.getId());
+            toEdit.setIngredientName(ingredientDTO.getIngredientName());
+            toEdit.setMeasurement(ingredientDTO.getMeasurement());
             entityManager.merge(toEdit);
             return toEdit;
         }

@@ -5,7 +5,7 @@ import com.infoshare.model.Ingredient;
 import javax.validation.constraints.NotNull;
 
 public class IngredientDTO {
-    private String id;
+    private Long id;
     private String ingredientName;
     private String measurement;
 
@@ -38,6 +38,14 @@ public class IngredientDTO {
 
     public void setMeasurement(String measurement) {
         this.measurement = measurement;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public IngredientDTO() {
