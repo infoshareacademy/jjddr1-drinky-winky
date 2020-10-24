@@ -7,6 +7,7 @@ import com.infoshare.drinkywinky.properties.ConfigLoader;
 public class Main {
 
     public static void main(String[] args) {
+
         /*
          display main menu
         */
