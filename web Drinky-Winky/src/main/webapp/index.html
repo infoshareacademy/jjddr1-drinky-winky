@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Drinky-Winky WebApp</title>
 
+    <!-- css -->
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <link src="https://use.fontawesome.com/releases/v5.6.0/css/all.css">
 
@@ -26,7 +27,8 @@
             <li><a href="#quotes">Przepisy</a></li>
             <li><a href="#gallery">Galeria</a></li>
             <li><a href="#contact">Kontakt</a></li>
-            <li><a href="#"><i class="fa fa-fw fa-user"></i> Login</a></li>
+            <li><a href="#add">Add_Drink</a></li>
+            <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
         </ul>
@@ -47,6 +49,13 @@
         <p class="section-intro">Aplikacja powstała jako... bla bla bla...</p>
     </div>
 </section>
+
+
+<section class="about">
+
+    <!-- REJESTRACJA   -->
+</section>
+
 
 <section class="features" id="features">
     <div class="container">
@@ -144,8 +153,8 @@
                             <td>Measures</td>
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input type="text" ng-model="item.ingredient"></td>
-                            <td><input type="text" ng-model="item.measure"></td>
+                            <td><input type="text" name="ingredient" ng-model="item.ingredient"></td>
+                            <td><input type="text" name="measure" ng-model="item.measure"></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
                             </td>
@@ -202,6 +211,25 @@
         </figure>
     </div>
 </section>
+
+
+<section class="about" id="logs">
+    <div class="container">
+        <h2 class="section-title">LOGOWANIE</h2>
+        <form method="post" action="/log" enctype="multipart/form-data" id="log">
+            <label for="login"> Login: </label>
+            <input style="float: none" type="text" id="login" name="login"></br></br>
+            <label for="password"> Password: </label>
+            <input style="float: none" type="password" id="password" name="password"></br></br>
+
+            <div class="upload-btn-wrapper" style="float: none">
+                <input class="btn2" type="submit" name="save" value="save"/><br/><br/>
+            </div>
+
+        </form>
+    </div>
+</section>
+
 
 <section class="contact" id="contact">
     <div class="container">

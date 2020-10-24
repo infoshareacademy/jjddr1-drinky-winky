@@ -408,8 +408,9 @@ input {
     font-size: 20px;
     font-weight: bold;
 }
+
 .btn2:hover {
-    background-color: #eb0000;
+    background-color: #ff5252;
     color: #fff;
     transition: all 0.7s;
 }
