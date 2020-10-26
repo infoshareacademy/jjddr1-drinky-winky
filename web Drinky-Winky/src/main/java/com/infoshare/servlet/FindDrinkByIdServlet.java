@@ -14,14 +14,15 @@ import java.io.PrintWriter;
 @WebServlet("/FindDrinkById")
 public class FindDrinkByIdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String requestParameter = request.getParameter("id");
+        Long id = Long.valueOf(requestParameter);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestParameter = request.getParameter("id");
         Long id = Long.valueOf(requestParameter);
         DrinkService drinkService = new DrinkService();
-        Drink foundDrink = drinkService.findById(id);
+        Drink foundDrink = drinkService.findDrinkById(id);
 
         PrintWriter printWriter = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");

@@ -19,9 +19,7 @@ public class DrinkDTO {
     private String ingredientName;
     private List<Ingredient> ingredients;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;

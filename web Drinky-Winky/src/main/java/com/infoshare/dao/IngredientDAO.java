@@ -14,20 +14,23 @@ public class IngredientDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Ingredient findById(Long id) {
+    public Ingredient findIngredientById(Long id) {
         return entityManager.find(Ingredient.class, id);
     }
 
-    public IngredientDTO saveDrink(IngredientDTO ingredientDTO) {
+    public Ingredient findIngredientByName(String name){
+        return entityManager.find(Ingredient.class, name);
+    }
+
+    public IngredientDTO saveIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.createModelFromIngredientsDTO(ingredientDTO);
         entityManager.persist(ingredient);
         return IngredientDTO.createIngredientsDTOFromModel(ingredient);
     }
 
-    public Ingredient edit(Long id, IngredientDTO ingredientDTO) {
+    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
         Ingredient toEdit = entityManager.find(Ingredient.class, id);
         if (toEdit != null) {
-            toEdit.setId(ingredientDTO.getId());
             toEdit.setIngredientName(ingredientDTO.getIngredientName());
             toEdit.setMeasurement(ingredientDTO.getMeasurement());
             entityManager.merge(toEdit);
@@ -36,7 +39,7 @@ public class IngredientDAO {
         return null;
     }
 
-    public boolean remove(Long id) {
+    public boolean removeIngredient(Long id) {
         Ingredient toRemove = entityManager.find(Ingredient.class, id);
         if (toRemove != null) {
             entityManager.remove(toRemove);
@@ -45,7 +48,7 @@ public class IngredientDAO {
         return false;
     }
 
-    public List<Ingredient> getAll() {
+    public List<Ingredient> getListOfIngredients() {
         TypedQuery<Ingredient> query = entityManager.createQuery("SELECT d FROM Drink d", Ingredient.class);
         return query.getResultList();
     }
