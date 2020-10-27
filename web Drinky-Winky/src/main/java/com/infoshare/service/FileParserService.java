@@ -35,11 +35,11 @@ public class FileParserService {
     private CategoryDao categoryDao;
 
     public Object parseDataToDatabase(File json) {
-        List<DrinkAPI> drinkAPIS = parserService.parseFile(json);
+        List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
             Category category = Optional
-                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getRecipeCategory())).orElse(()->categoryMapper.mapCategory(drinkAPI));
-            category.getDrinkList().add(DrinkMapper.mapDrink(drinkAPI,category));
+                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getRecipeCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+            category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI,category));
             categoryDao.updateCategory(category);
         }
         logger.info("file was parsed");

@@ -12,29 +12,30 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-
 @RequestScoped
-public class FileUploadService {
+public class FileUpload {
+private static String SETTINGS_FILE = "settings.properites";
+private static String UPLOAD_KEY = "Upload.Path";
 
-    private static String SETTINGS_FILE = "settings.properties";
-    private static String UPLOAD_KEY = "Upload.Path";
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     public File uploadFile(Part filePart) throws IOException, RecipeUploadedFileNotFound {
+        logger.info("Json file uploaded");
+
         String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         java.io.File file = new File(getUploadFilesPath() + filename);
         Files.deleteIfExists(file.toPath());
 
-        InputStream inputStream = filePart.getInputStream();
-        Files.copy(inputStream, file.toPath());
-        logger.info("Json file uploaded");
+        InputStream fileContent = filePart.getInputStream();
+        Files.copy(fileContent, file.toPath());
         return file;
     }
 
     public String getUploadFilesPath() throws IOException {
+        logger.info("Getting json file path");
         Properties settings = new Properties();
         settings.load(Thread.currentThread().getContextClassLoader().getResource(SETTINGS_FILE).openStream());
-        logger.info("Getting json file path");
         return settings.getProperty(UPLOAD_KEY);
     }
+
 }
