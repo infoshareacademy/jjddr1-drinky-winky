@@ -17,6 +17,7 @@ public class NewDrinkServlet extends HttpServlet {
     @Inject
     DrinkService drinkService;
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,8 +27,11 @@ public class NewDrinkServlet extends HttpServlet {
         String name = request.getParameter("name");
         String recipe = request.getParameter("recipe");
 
+
         DrinkDto drinkDto = new DrinkDto(name, category, glass, alcohol, recipe);
         drinkService.saveDrink(drinkDto);
+
+
 
     }
 }

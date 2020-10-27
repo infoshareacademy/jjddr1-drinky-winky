@@ -4,18 +4,8 @@
     <meta charset="utf-8">
     <title>Drinky-Winky WebApp</title>
 
-<#--    <!-- css &ndash;&gt;-->
-<#--    <link href="styles/style.css" rel="stylesheet" type="text/css">-->
-<#--    <link src="https://use.fontawesome.com/releases/v5.6.0/css/all.css">-->
-<#--    <link href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" rel="stylesheet" type="text/css">-->
-<#--    <link href="https://unpkg.com/flickity@2/dist/flickity.min.css" rel="stylesheet" type="text/css">-->
-<#--    <link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet" type="text/css">-->
     <#include "css.ftlh">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular/10.2.0/core.umd.min.js"></script>
-    <script src="scripts/controller.js"></script>
-
+    <#include "js-head.ftlh">
 
 </head>
 <body ng-controller="formCtrl">
@@ -145,7 +135,8 @@
                     <label style="float: right"> <input type="radio" name="alcoholic" value="No"> No </label>
                     <label style="float: right"> <input type="radio" name="alcoholic" value="Yes"> Yes </label> <br/>
 
-                    Recipe: <textarea type="text" name="recipe" style="width: 185px; height: 120px; float: right"></textarea><br/>
+                    Recipe: <textarea type="text" name="recipe"
+                                      style="width: 185px; height: 120px; float: right"></textarea><br/>
 
 
                     <table>
