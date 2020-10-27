@@ -39,6 +39,14 @@ public class Drink {
         this.name = name;
     }
 
+    public Drink(String name, String category, String glass, String alcohol, String recipe) {
+        this.name = name;
+        this.category = category;
+        this.glass = glass;
+        this.alcohol = alcohol;
+        this.recipe = recipe;
+    }
+
     public Integer getId() {
         return id;
     }

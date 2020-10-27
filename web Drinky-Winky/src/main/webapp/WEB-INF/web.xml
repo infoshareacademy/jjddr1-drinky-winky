@@ -16,7 +16,7 @@
 
   <servlet>
     <servlet-name>DrinkServlet</servlet-name>
-    <servlet-class>com.infoshare.DrinkServlet</servlet-class>
+    <servlet-class>com.infoshare.servlet.DrinkServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DrinkServlet</servlet-name>

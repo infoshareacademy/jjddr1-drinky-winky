@@ -1,4 +1,4 @@
-package com.infoshare;
+package com.infoshare.servlet;
 
 import com.infoshare.model.Drink;
 import freemarker.template.Configuration;
