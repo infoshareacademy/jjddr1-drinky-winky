@@ -121,7 +121,7 @@
 
         <figure>
 
-            <form method="post" action="/user" enctype="multipart/form-data" id="mySelect">
+            <form method="post" action="NewDrinkServlet" id="mySelect">
 
                 <fieldset>
 
@@ -228,18 +228,13 @@
         <h2 class="section-title">CONTACT</h2>
         <ul class="social-links">
             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter-square"></i></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
             <li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
         </ul>
     </div>
 </section>
 
-<footer class="page-footer">
-    <div class="container">
-        <p>@Wojciech Rozwałka, @Daniel Łaga, @Radosław Piwowarczyk, @Tomasz Moroz, @Bartosz Ficek</p>
-        <p>Made with ♥ by <a href="https://infoshareacademy.com/" target="_blank">INFOSHARE ACADEMY</a></p>
-    </div>
-</footer>
+<#include "footer.ftlh">
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="scripts/main.js"></script>

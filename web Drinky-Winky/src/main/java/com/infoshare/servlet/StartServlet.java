@@ -6,24 +6,25 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-
-public class DrinkServlet extends HttpServlet {
+@WebServlet("/StartServlet")
+public class StartServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static final String TEMPLATE_DIR = "WEB-INF/template";
     private Configuration cfg;
 
-    public DrinkServlet() {
+    public StartServlet() {
     }
 
     @Override
@@ -40,15 +41,10 @@ public class DrinkServlet extends HttpServlet {
 
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Map<String, Object> root = new HashMap<>();
-        root.put("drinks", Drink.getDrink());
+        root.put("drinks", null);
 
         Template template = cfg.getTemplate("index.ftlh");
         Writer out = response.getWriter();
@@ -58,7 +54,5 @@ public class DrinkServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-
-
     }
 }
