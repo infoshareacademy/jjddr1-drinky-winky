@@ -10,7 +10,7 @@ import java.util.List;
 public class Category {
 
     @Id
-    @Column(name = "id");
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -18,7 +18,7 @@ public class Category {
     @NotNull
     private String name;
 
-    @OneToMany(mapped = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {
