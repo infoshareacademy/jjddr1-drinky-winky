@@ -1,4 +1,4 @@
 package com.infoshare.model;
 
-public class Drink {
+public class User {
 }

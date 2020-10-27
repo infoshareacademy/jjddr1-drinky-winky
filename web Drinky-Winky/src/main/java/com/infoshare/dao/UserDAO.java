@@ -1,4 +1,4 @@
 package com.infoshare.dao;
 
-public class DrinkDAO {
+public class UserDAO {
 }

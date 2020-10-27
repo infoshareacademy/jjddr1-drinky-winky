@@ -11,4 +11,12 @@
     <user>root</user>
     <password>toor</password>
   </data-source>
+  <servlet>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>com.infoshare.servlet.Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/servlet</url-pattern>
+  </servlet-mapping>
 </web-app>
