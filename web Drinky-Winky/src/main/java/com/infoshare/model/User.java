@@ -34,6 +34,10 @@ public class User {
     @NotNull
     private String password;
 
+    @Column(name = "e-mail")
+    @NotNull
+    private String email;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_favourite_recipe",
@@ -96,5 +100,12 @@ public class User {
 
     public void setDrinkList(List<Drink> drinkList) {
         this.drinkList = drinkList;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

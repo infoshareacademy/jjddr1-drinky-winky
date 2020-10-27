@@ -19,7 +19,7 @@ private static String UPLOAD_KEY = "Upload.Path";
 
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
-    public File uploadFile(Part filePart) throws IOException, RecipeUploadedFileNotFound {
+    public File uploadFile(Part filePart) throws IOException {
         logger.info("Json file uploaded");
 
         String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
