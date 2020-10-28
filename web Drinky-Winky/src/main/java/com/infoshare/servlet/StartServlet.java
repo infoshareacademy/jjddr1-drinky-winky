@@ -42,17 +42,31 @@ public class StartServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("drinks", null);
+//        root.put("save", "yes");
 
-        Template template = cfg.getTemplate("index.ftlh");
-        Writer out = response.getWriter();
+        if (request.getParameter("save").equals("YES")) {
+            Template template = cfg.getTemplate("index.ftlh");
+            Writer out = response.getWriter();
 
-        try {
-            template.process(root, out);
-        } catch (TemplateException e) {
-            e.printStackTrace();
+            try {
+                template.process(root, out);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Template template = cfg.getTemplate("say-goodbye.ftlh");
+            Writer out = response.getWriter();
+
+            try {
+                template.process(root, out);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 }

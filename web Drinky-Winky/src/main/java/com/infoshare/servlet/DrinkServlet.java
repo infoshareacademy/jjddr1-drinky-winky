@@ -46,6 +46,7 @@ public class DrinkServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
         root.put("drinks", Drink.getDrink());

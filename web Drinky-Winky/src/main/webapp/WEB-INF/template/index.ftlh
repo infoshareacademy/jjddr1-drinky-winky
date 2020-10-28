@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl" ng-app="agendaEditor">
 <head>
-    <meta charset="utf-8">
-    <title>Drinky-Winky WebApp</title>
 
     <#include "css.ftlh">
     <#include "js-head.ftlh">
+
+    <meta charset="utf-8">
+    <title>Drinky-Winky WebApp</title>
 
 </head>
 <body ng-controller="formCtrl">
@@ -132,8 +133,8 @@
                     Category: <input type="text" name="category"/><br/>
                     Glass: <input type="text" name="glass"/><br/>
                     Alcoholic:
-                    <label style="float: right"> <input type="radio" name="alcoholic" value="No"> No </label>
-                    <label style="float: right"> <input type="radio" name="alcoholic" value="Yes"> Yes </label> <br/>
+                    <label style="float: right"> <input type="radio" name="alcohol" value="No"> No </label>
+                    <label style="float: right"> <input type="radio" name="alcohol" value="Yes"> Yes </label> <br/>
 
                     Recipe: <textarea type="text" name="recipe"
                                       style="width: 185px; height: 120px; float: right"></textarea><br/>

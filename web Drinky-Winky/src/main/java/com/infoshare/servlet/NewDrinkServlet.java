@@ -20,6 +20,7 @@ public class NewDrinkServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
         String alcohol = request.getParameter("alcohol");
         String category = request.getParameter("category");
