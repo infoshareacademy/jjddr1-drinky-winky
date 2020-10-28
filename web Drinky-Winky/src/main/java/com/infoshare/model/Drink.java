@@ -5,9 +5,19 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "Drink.getDrinkList",
+                query = "SELECT r FROM Drink r"),
+        @NamedQuery(
+                name = Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT,
+                query = "SELECT r.name FROM Drink r  JOIN r.ingredientList i WHERE r.category IN :categories AND  (i.name IN (:names))")
+})
 @Entity
 @Table(name = "drink")
 public class Drink {
+
+    public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
 
     @Id
     @Column(name = "id")

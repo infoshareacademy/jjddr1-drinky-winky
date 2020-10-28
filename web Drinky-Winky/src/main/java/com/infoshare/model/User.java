@@ -5,6 +5,16 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@NamedQueries({
+        @NamedQuery(
+                name = "User.findUserByName",
+                query = "SELECT u FROM User u WHERE u.name like :name"),
+        @NamedQuery(
+                name = "User.getUserList",
+                query = "SELECT u FROM User u")
+})
+
 @Entity
 @Table(name = "user")
 public class User {
