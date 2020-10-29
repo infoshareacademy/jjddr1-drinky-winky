@@ -6,6 +6,7 @@ import com.infoshare.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class DrinkDTO {
     private Long id;
@@ -20,6 +21,21 @@ public class DrinkDTO {
     private Category category;
     private List<Ingredient> ingredientList = new ArrayList<>();
     private List<User> users = new ArrayList<>();
+
+    public static Function<DrinkDTO, DrinkDao>
+
+    public static Function<PersonDTO, Person> DTOtoPerson = new Function<PersonDTO, Person>() {
+        @Override
+        public Person apply(PersonDTO personDTO) {
+            return new Person(personDTO.getId(), personDTO.getName(), personDTO.getLastName(), personDTO.getBirthdate());
+        }
+    };
+    public static Function<Person, PersonDTO> PersonToDTO = new Function<Person, PersonDTO>() {
+        @Override
+        public PersonDTO apply(Person person) {
+            return new PersonDTO(person.getName(), person.getLastName(), person.getBirthdate());
+        }
+    };
 
     public Long getId() {
         return id;
