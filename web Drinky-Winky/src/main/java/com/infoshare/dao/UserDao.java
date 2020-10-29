@@ -1,7 +1,5 @@
 package com.infoshare.dao;
 
-import jdk.jshell.spi.ExecutionControl;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,32 +7,38 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
-public class User {
+public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void save(User user) { entityManager.persist(user);}
+    public void save(UserDao user) {
+        entityManager.persist(user);
+    }
 
-    public User updateUser(User user) { return entityManager.merge(user); }
+    public UserDao updateUser(UserDao user) {
+        return entityManager.merge(user);
+    }
 
-    public User getUserById(Long id) { return entityManager.find(User.class, id);}
+    public UserDao getUserById(Long id) {
+        return entityManager.find(UserDao.class, id);
+    }
 
     public void deleteUserById(Long id) {
-        User user = getUserById(id);
-        if ( user != null) {
+        UserDao user = getUserById(id);
+        if (user != null) {
             entityManager.remove(user);
         }
     }
 
-    public List<User> getUserList() {
+    public List<UserDao> getUserList() {
         Query query = entityManager.createNamedQuery("User.getUserList");
         return query.getResultList();
     }
 
-    public User findUserByName(String name) {
+    public UserDao findUserByName(String name) {
         Query query = entityManager.createNamedQuery("User.findUserByName");
         query.setParameter("name", name);
-        return (User) query.getResultList().stream().findFirst().orElse(null);
+        return (UserDao) query.getResultList().stream().findFirst().orElse(null);
     }
 
 }

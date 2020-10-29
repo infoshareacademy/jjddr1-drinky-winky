@@ -50,8 +50,8 @@ public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
 
         drinkApi.setId(tree.get("idDrink").asLong());
         drinkApi.setName(tree.get("strDrink").asText());
-        drinkApi.setInstruction(tree.get("strInstructions").asText());
-        drinkApi.setRecipeCategory(tree.get("strCategory").asText());
+        drinkApi.setRecipe(tree.get("strInstructions").asText());
+        drinkApi.setCategory(tree.get("strCategory").asText());
         drinkApi.setDrinkType(tree.get("strAlcoholic").asText());
         drinkApi.setGlassType(tree.get("strGlass").asText());
         drinkApi.setModificationDate(tree.get("dateModified").asText());

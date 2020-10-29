@@ -23,7 +23,7 @@ private IngredientMapper ingredientMapper;
         drink.setName(drinkAPI.getName());
         drink.setDrinkType(drinkAPI.getDrinkType());
         drink.setGlassType(drinkAPI.getGlassType());
-        drink.setRecipe(drinkAPI.getInstruction());
+        drink.setRecipe(drinkAPI.getRecipe());
         drink.getIngredientList().addAll(ingredientMapper.mapIngredients(drinkAPI));
         drink.setModificationDate(drinkAPI.getModificationDate());
         drink.setImageUrl(drinkAPI.getImageUrl());

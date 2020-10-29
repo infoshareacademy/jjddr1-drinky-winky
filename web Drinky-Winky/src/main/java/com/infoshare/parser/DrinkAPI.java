@@ -21,9 +21,9 @@ public class DrinkAPI {
     @JsonProperty("strDrink")
     private String name;
     @JsonProperty("strInstructions")
-    private String instruction;
+    private String recipe;
     @JsonProperty("strCategory")
-    private String recipeCategory;
+    private String category;
     @JsonProperty("strAlcoholic")
     private String drinkType;
     @JsonProperty("strGlass")
@@ -51,20 +51,20 @@ public class DrinkAPI {
         this.name = name;
     }
 
-    public String getInstruction() {
-        return instruction;
+    public String getRecipe() {
+        return recipe;
     }
 
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
     }
 
-    public String getRecipeCategory() {
-        return recipeCategory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setRecipeCategory(String recipeCategory) {
-        this.recipeCategory = recipeCategory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDrinkType() {
@@ -112,8 +112,8 @@ public class DrinkAPI {
         return "RecipeApi{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", instruction='" + instruction + '\'' +
-                ", recipeCategory='" + recipeCategory + '\'' +
+                ", instruction='" + recipe + '\'' +
+                ", recipeCategory='" + category + '\'' +
                 ", drinkType='" + drinkType + '\'' +
                 ", glassType='" + glassType + '\'' +
                 ", modificationDate='" + modificationDate + '\'' +

@@ -38,7 +38,7 @@ public class FileParserService {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
             Category category = Optional
-                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getRecipeCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
             category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI,category));
             categoryDao.updateCategory(category);
         }

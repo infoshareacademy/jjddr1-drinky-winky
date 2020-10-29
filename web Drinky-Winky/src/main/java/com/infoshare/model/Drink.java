@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @NamedQueries({
         @NamedQuery(
                 name = "Drink.getDrinkList",
@@ -13,8 +14,10 @@ import java.util.List;
                 name = Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT,
                 query = "SELECT r.name FROM Drink r  JOIN r.ingredientList i WHERE r.category IN :categories AND  (i.name IN (:names))")
 })
+
+
 @Entity
-@Table(name = "drink")
+@Table
 public class Drink {
 
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
@@ -23,7 +26,7 @@ public class Drink {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", unique = true, length = 100)
+    @Column(name = "name", length = 100)
     @NotNull
     private String name;
 
@@ -47,7 +50,7 @@ public class Drink {
     @NotNull
     private String glassType;
 
-    @Column(name = "date of modification")
+    @Column(name = "date_of_modification")
     @NotNull
     private String modificationDate;
 

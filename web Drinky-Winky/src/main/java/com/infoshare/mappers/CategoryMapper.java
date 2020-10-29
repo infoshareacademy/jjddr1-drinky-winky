@@ -14,7 +14,7 @@ public class CategoryMapper {
 
     public Category mapCategory(DrinkAPI drinkAPI) {
         Category category = new Category();
-        category.setName(drinkAPI.getRecipeCategory());
+        category.setName(drinkAPI.getCategory());
         logger.info("Category was mapped");
         return category;
     }
