@@ -11,4 +11,8 @@
     <user>root</user>
     <password>toor</password>
   </data-source>
+  <!-- Disable resteasy-spring module/integration in jboss(wildfly-16.0.0.Final) --> <context-param>
+  <param-name>org.jboss.as.jaxrs.enableSpringIntegration</param-name>
+  <param-value>false</param-value>
+</context-param>
 </web-app>
