@@ -33,13 +33,13 @@ public class IngredientDao {
             entityManager.remove(ingredient);
         }
     }
-    public Ingredient findIngredient(String name) {
-        Query query = entityManager.createNamedQuery("SELECT FROM Ingredient i WHERE i.name=:name");
-        query.setParameter("name",name);
+    public Ingredient findIngredient(String names) {
+        Query query = entityManager.createNamedQuery("Ingredient.findIngredientByName");
+        query.setParameter("names",names);
         return (Ingredient) query.getSingleResult();
     }
     public List<String> getIngredientsList() {
-        Query query = entityManager.createNamedQuery("Ingredient.getCategoryList");
+        Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
         return query.getResultList();
     }
 }
