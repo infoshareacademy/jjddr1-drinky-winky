@@ -1,6 +1,7 @@
 package com.infoshare.dto;
 
 import com.infoshare.model.Category;
+import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
 import com.infoshare.model.User;
 
@@ -22,20 +23,43 @@ public class DrinkDTO {
     private List<Ingredient> ingredientList = new ArrayList<>();
     private List<User> users = new ArrayList<>();
 
-    public static Function<DrinkDTO, DrinkDao>
 
-    public static Function<PersonDTO, Person> DTOtoPerson = new Function<PersonDTO, Person>() {
+    public static Function<DrinkDTO, Drink> DtoToDrink = new Function<DrinkDTO, Drink>() {
         @Override
-        public Person apply(PersonDTO personDTO) {
-            return new Person(personDTO.getId(), personDTO.getName(), personDTO.getLastName(), personDTO.getBirthdate());
+        public Drink apply(DrinkDTO drinkDTO) {
+            return new Drink(drinkDTO.getName(), drinkDTO.getCustom(), drinkDTO.getApproved(), drinkDTO.getRecipe(),
+                            drinkDTO.getDrinkType(), drinkDTO.getGlassType(), drinkDTO.getModificationDate(),
+                            drinkDTO.getImageUrl(), drinkDTO.getCategory(), drinkDTO.getIngredientList(),
+                            drinkDTO.getUsers());
         }
     };
-    public static Function<Person, PersonDTO> PersonToDTO = new Function<Person, PersonDTO>() {
+
+    public static Function<Drink, DrinkDTO> DrinkToDto = new Function<Drink, DrinkDTO>() {
         @Override
-        public PersonDTO apply(Person person) {
-            return new PersonDTO(person.getName(), person.getLastName(), person.getBirthdate());
+        public DrinkDTO apply(Drink drink) {
+            return new DrinkDTO(drink.getName(), drink.getCustom(), drink.getApproved(), drink.getRecipe(),
+                                drink.getDrinkType(), drink.getGlassType(), drink.getModificationDate(),
+                                drink.getImageUrl(), drink.getCategory(), drink.getIngredientList(),
+                                drink.getUsers());
         }
     };
+
+
+    public DrinkDTO(String name, Boolean isCustom, Boolean isApproved, String recipe, String drinkType, String glassType,
+                    String modificationDate, String imageUrl, Category category, List<Ingredient> ingredientList,
+                    List<User> users) {
+        this.name = name;
+        this.isCustom = isCustom;
+        this.isApproved = isApproved;
+        this.recipe = recipe;
+        this.drinkType = drinkType;
+        this.glassType = glassType;
+        this.modificationDate = modificationDate;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.ingredientList = ingredientList;
+        this.users = users;
+    }
 
     public Long getId() {
         return id;

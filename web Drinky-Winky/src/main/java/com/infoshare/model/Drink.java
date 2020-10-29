@@ -59,19 +59,38 @@ public class Drink {
     private String imageUrl;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable( name = "category_id")
+    @JoinTable(name = "category_id")
     private Category category;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "drink_to_ingredient",
-            joinColumns = {@JoinColumn(name = "drink_id",referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ingredient_id",referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")}
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "drinkList")
     private List<User> users = new ArrayList<>();
+
+    public Drink() {
+    }
+
+    public Drink(@NotNull String name, @NotNull Boolean isCustom, @NotNull Boolean isApproved, @NotNull String recipe,
+                 @NotNull String drinkType, @NotNull String glassType, @NotNull String modificationDate,
+                 @NotNull String imageUrl, Category category, List<Ingredient> ingredientList, List<User> users) {
+        this.name = name;
+        this.isCustom = isCustom;
+        this.isApproved = isApproved;
+        this.recipe = recipe;
+        this.drinkType = drinkType;
+        this.glassType = glassType;
+        this.modificationDate = modificationDate;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.ingredientList = ingredientList;
+        this.users = users;
+    }
 
     public Long getId() {
         return id;
