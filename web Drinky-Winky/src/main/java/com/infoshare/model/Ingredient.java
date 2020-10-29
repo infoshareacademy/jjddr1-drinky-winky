@@ -34,6 +34,14 @@ public class Ingredient {
     @ManyToMany(mappedBy = "ingredientList")
     private List<Drink> drinkList = new ArrayList<>();
 
+    public Ingredient() {
+    }
+
+    public Ingredient(@NotNull String name, @NotNull String measure, List<Drink> drinkList) {
+        this.name = name;
+        this.measure = measure;
+        this.drinkList = drinkList;
+    }
 
     public Long getId() {
         return id;

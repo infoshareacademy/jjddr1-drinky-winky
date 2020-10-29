@@ -1,8 +1,11 @@
 package com.infoshare.dto;
 
 
+import com.infoshare.model.User;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class UserDTO {
 
@@ -15,6 +18,37 @@ public class UserDTO {
     private String email;
     private List<DrinkDTO> drinkDTOS = new ArrayList<>();
 
+    public UserDTO() {
+    }
+
+    public UserDTO(Long id, String name, String surname, String userType, String login, String password, String email) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.userType = userType;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+
+
+    public static Function<UserDTO, User> DtoToUser = new Function<UserDTO, User>() {
+        @Override
+        public User apply(UserDTO userDTO) {
+            return new User(userDTO.getId(),userDTO.getName(), userDTO.getSurname(), userDTO.getUserType(), userDTO.getLogin(),
+                            userDTO.getPassword(),userDTO.getEmail());
+        }
+    };
+
+    public static Function<User, UserDTO> UserToDto = new Function<User, UserDTO>() {
+        @Override
+        public UserDTO apply(User user) {
+            return new UserDTO(user.getName(), user.getSurname(), user.getUserType(), user.getLogin(),
+                                user.getPassword(), user.getEmail());
+        }
+    };
+
     public String getEmail() {
         return email;
     }
@@ -22,8 +56,6 @@ public class UserDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
     public Long getId() {
         return id;

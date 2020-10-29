@@ -32,7 +32,7 @@ public class User {
     @NotNull
     private String surname;
 
-    @Column(name=  "user_type")
+    @Column(name = "user_type")
     @NotNull
     private String userType;
 
@@ -48,12 +48,28 @@ public class User {
     @NotNull
     private String email;
 
+    public User() {
+    }
+
+    public User(Long id, @NotNull String name, @NotNull String surname, @NotNull String userType, @NotNull String login, @NotNull String password, @NotNull String email, List<Drink> drinkList) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.userType = userType;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.drinkList = drinkList;
+    }
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_favourite_recipe",
-            joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name= "drink_id",referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
+
+
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {
@@ -115,6 +131,7 @@ public class User {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
