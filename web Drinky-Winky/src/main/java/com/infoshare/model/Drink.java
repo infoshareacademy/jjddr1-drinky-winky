@@ -38,7 +38,7 @@ public class Drink {
     @NotNull
     private Boolean isApproved;
 
-    @Column(name = "recipe", length = 512)
+    @Column(name = "recipe", length = 5000)
     @NotNull
     private String recipe;
 
@@ -54,7 +54,7 @@ public class Drink {
     @NotNull
     private String modificationDate;
 
-    @Column(name = "image_url", length = 512)
+    @Column(name = "image_url", length = 1024)
     @NotNull
     private String imageUrl;
 
