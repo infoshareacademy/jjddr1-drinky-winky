@@ -24,41 +24,37 @@ public class DrinkDTO {
     private List<User> users = new ArrayList<>();
 
 
-    public static Function<DrinkDTO, Drink> DtoToDrink = new Function<DrinkDTO, Drink>() {
-        @Override
-        public Drink apply(DrinkDTO drinkDTO) {
-            return new Drink(drinkDTO.getName(), drinkDTO.getCustom(), drinkDTO.getApproved(), drinkDTO.getRecipe(),
-                            drinkDTO.getDrinkType(), drinkDTO.getGlassType(), drinkDTO.getModificationDate(),
-                            drinkDTO.getImageUrl(), drinkDTO.getCategory(), drinkDTO.getIngredientList(),
-                            drinkDTO.getUsers());
-        }
-    };
+    public DrinkDTO drinkToDTO(Drink drink) {
+        DrinkDTO drinkDTO = new DrinkDTO();
+        drinkDTO.setId(drink.getId());
+        drinkDTO.setName(drink.getName());
+        drinkDTO.setCustom(drink.getCustom());
+        drinkDTO.setApproved(drink.getApproved());
+        drinkDTO.setRecipe(drink.getRecipe());
+        drinkDTO.setDrinkType(drink.getDrinkType());
+        drinkDTO.setGlassType(drink.getGlassType());
+        drinkDTO.setModificationDate(drink.getModificationDate());
+        drinkDTO.setImageUrl(drink.getImageUrl());
+        drinkDTO.setCategory(drink.getCategory());
+        drinkDTO.setIngredientList(drink.getIngredientList());
+        drinkDTO.setUsers(drink.getUsers());
+        return drinkDTO;
+    }
 
-    public static Function<Drink, DrinkDTO> DrinkToDto = new Function<Drink, DrinkDTO>() {
-        @Override
-        public DrinkDTO apply(Drink drink) {
-            return new DrinkDTO(drink.getName(), drink.getCustom(), drink.getApproved(), drink.getRecipe(),
-                                drink.getDrinkType(), drink.getGlassType(), drink.getModificationDate(),
-                                drink.getImageUrl(), drink.getCategory(), drink.getIngredientList(),
-                                drink.getUsers());
-        }
-    };
-
-
-    public DrinkDTO(String name, Boolean isCustom, Boolean isApproved, String recipe, String drinkType, String glassType,
-                    String modificationDate, String imageUrl, Category category, List<Ingredient> ingredientList,
-                    List<User> users) {
-        this.name = name;
-        this.isCustom = isCustom;
-        this.isApproved = isApproved;
-        this.recipe = recipe;
-        this.drinkType = drinkType;
-        this.glassType = glassType;
-        this.modificationDate = modificationDate;
-        this.imageUrl = imageUrl;
-        this.category = category;
-        this.ingredientList = ingredientList;
-        this.users = users;
+    public Drink DtoToDrink(DrinkDTO drinkDTO) {
+        Drink drink = new Drink();
+        drink.setName(drinkDTO.getName());
+        drink.setCustom(drinkDTO.getCustom());
+        drink.setApproved(drinkDTO.getApproved());
+        drink.setRecipe(drinkDTO.getRecipe());
+        drink.setDrinkType(drinkDTO.getDrinkType());
+        drink.setGlassType(drinkDTO.getGlassType());
+        drink.setModificationDate(drinkDTO.getModificationDate());
+        drink.setImageUrl(drinkDTO.getImageUrl());
+        drink.setCategory(drinkDTO.getCategory());
+        drink.setIngredientList(drinkDTO.getIngredientList());
+        drink.setUsers(drinkDTO.getUsers());
+        return drink;
     }
 
     public Long getId() {

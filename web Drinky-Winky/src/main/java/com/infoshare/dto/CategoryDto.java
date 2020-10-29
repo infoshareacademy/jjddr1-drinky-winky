@@ -13,23 +13,17 @@ public class CategoryDto {
     private String name;
     private List<DrinkDTO> drinkDTOS = new ArrayList<>();
 
-    public static Function<CategoryDto, Category> DtoToCategory = new Function<CategoryDto, Category>() {
-        @Override
-        public Category apply(CategoryDto categoryDto) {
-            return new Category(categoryDto.getName(), categoryDto.getDrinkDTOS());
-        }
-    };
+    public CategoryDto categoryToDto(Category category){
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setId(category.getId());
+        categoryDto.setName(category.getName());
+        return categoryDto;
+    }
 
-    public static Function<Category, CategoryDto> CategoryToDto = new Function<Category, CategoryDto>() {
-        @Override
-        public CategoryDto apply(Category category) {
-            return new CategoryDto(category.getName(), category.getDrinkList());
-        }
-    };
-
-    public CategoryDto(String name, List<DrinkDTO> drinkDTOS) {
-        this.name = name;
-        this.drinkDTOS = drinkDTOS;
+    public Category dtoToCategory (CategoryDto categoryDto){
+        Category category = new Category();
+        category.setName(categoryDto.getName());
+        return category;
     }
 
     public Long getId() {

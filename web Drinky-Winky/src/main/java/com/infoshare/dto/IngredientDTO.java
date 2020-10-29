@@ -1,37 +1,38 @@
 package com.infoshare.dto;
 
 import com.infoshare.model.Ingredient;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+
 
 public class IngredientDTO {
 
     private Long id;
     private String name;
+    private String measure;
     private List<DrinkDTO> drinkDTOS = new ArrayList<>();
 
-    public static Function<IngredientDTO, Ingredient> DtoToIngredient = new Function<IngredientDTO, Ingredient>() {
-        @Override
-        public Ingredient apply(IngredientDTO ingredientDTO) {
-            return new Ingredient(ingredientDTO.getName(), ingredientDTO.getDrinkDTOS());
-        }
-    };
-
-    public static Function<Ingredient, IngredientDTO> IngredientToDto = new Function<Ingredient, IngredientDTO>() {
-        @Override
-        public IngredientDTO apply(Ingredient ingredient) {
-            return new IngredientDTO(ingredient.getName(), ingredient.getDrinkList());
-        }
-    };
-
-    public IngredientDTO() {
+    public IngredientDTO ingredientToDto(Ingredient ingredient){
+        IngredientDTO ingredientDTO = new IngredientDTO();
+        ingredientDTO.setId(ingredient.getId());
+        ingredientDTO.setName(ingredient.getName());
+        ingredientDTO.setMeasure(ingredient.getMeasure());
+        return ingredientDTO;
     }
 
-    public IngredientDTO(String name, List<DrinkDTO> drinkDTOS) {
-        this.name = name;
-        this.drinkDTOS = drinkDTOS;
+    public Ingredient dtoToIngredient (IngredientDTO ingredientDTO){
+        Ingredient ingredient = new Ingredient();
+        ingredient.setName(ingredientDTO.getName());
+        ingredient.setMeasure(ingredientDTO.getMeasure());
+        return ingredient;
+    }
+
+    public String getMeasure() {
+        return measure;
+    }
+
+    public void setMeasure(String measure) {
+        this.measure = measure;
     }
 
     public Long getId() {

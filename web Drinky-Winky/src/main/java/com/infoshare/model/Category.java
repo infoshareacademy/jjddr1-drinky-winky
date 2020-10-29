@@ -39,14 +39,6 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
 
-    public Category() {
-    }
-
-    public Category(@NotNull String name, List<Drink> drinkList) {
-        this.name = name;
-        this.drinkList = drinkList;
-    }
-
     public Long getId() {
         return id;
     }
