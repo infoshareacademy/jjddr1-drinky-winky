@@ -2,7 +2,9 @@ package com.infoshare.service;
 
 import com.infoshare.dao.IngredientDao;
 import com.infoshare.dto.IngredientDTO;
+import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
+import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,12 +24,12 @@ public class IngredientService {
     }
 
     public void addIngredient(IngredientDTO ingredientDTO) {
-        ingredientDao.addIngredient(ingredientDTO);
-        logger.info("Ingredient has been added");
-    }
+        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+        ingredientDao.addIngredient(ingredient);   }
 
-    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
-        return ingredientDao.editIngredient(id, ingredientDTO);
+    public void editIngredient(IngredientDTO ingredientDTO) {
+        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+        IngredientDTO.ingredientToDto(ingredient);
     }
 
     public Ingredient getIngredientByName(String name) {

@@ -14,22 +14,13 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void save(UserDTO userDTO) {
-        User user = UserDTO.dtoToUser(userDTO);
+    public User saveUser(User user) {
         entityManager.persist(user);
+        return user;
     }
 
-    public User updateUser(Long id, UserDTO userDTO) {
-        User userToUpdate = entityManager.find(User.class, id);
-        if (userToUpdate != null) {
-            userToUpdate.setName(userDTO.getName());
-            userToUpdate.setSurname(userDTO.getSurname());
-            userToUpdate.setUserType(userDTO.getUserType());
-            userToUpdate.setLogin(userDTO.getLogin());
-            userToUpdate.setPassword(userDTO.getPassword());
-            userToUpdate.setEmail(userDTO.getEmail());
-        }
-        return entityManager.merge(userToUpdate);
+    public User updateUser(User user) {
+        return entityManager.merge(user);
     }
 
     public User getUserById(Long id) {
@@ -55,3 +46,11 @@ public class UserDao {
     }
 
 }
+
+// if (userToUpdate != null) {
+//         userToUpdate.setName(userDTO.getName());
+//         userToUpdate.setSurname(userDTO.getSurname());
+//         userToUpdate.setUserType(userDTO.getUserType());
+//         userToUpdate.setLogin(userDTO.getLogin());
+//         userToUpdate.setPassword(userDTO.getPassword());
+//         userToUpdate.setEmail(userDTO.getEmail());

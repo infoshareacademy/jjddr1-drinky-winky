@@ -1,8 +1,12 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.DrinkDao;
+import com.infoshare.dto.CategoryDto;
 import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.IngredientDTO;
+import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
+import com.infoshare.model.Ingredient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,26 +23,22 @@ public class DrinkService {
 
     public void loadDrinks(List<Drink> drinks) {
         drinkDao.loadDrink(drinks);
-        logger.info("Drinks list has been loaded");
     }
 
     public void addDrink(DrinkDTO drinkDTO) {
-        drinkDao.addDrink(drinkDTO);
-        logger.info("Drink has been saved");
-    }
+        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+        drinkDao.addDrink(drink); }
 
-    public Drink editDrink(Long id, DrinkDTO drinkDTO) {
-        logger.info("Drink updated.");
-        return drinkDao.editDrink(id, drinkDTO);
+    public void editDrink(DrinkDTO drinkDTO) {
+        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+        DrinkDTO.drinkToDTO(drink);
     }
 
     public Drink getDrinkByName(String name) {
-        logger.info("Get drink by name");
         return drinkDao.getDrinkByName(name);
     }
 
     public Drink getDrinkById(Long id) {
-        logger.info("Get drink by id");
         return drinkDao.getDrinkById(id);
     }
 
@@ -48,7 +48,6 @@ public class DrinkService {
     }
 
     public List<Drink> getRecipesList() {
-        logger.info("Get drinks list");
         return drinkDao.getDrinkList();
     }
 

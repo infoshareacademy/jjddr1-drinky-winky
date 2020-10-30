@@ -4,6 +4,8 @@ import com.infoshare.dao.CategoryDao;
 import com.infoshare.dto.CategoryDto;
 import com.infoshare.mappers.CategoryMapper;
 import com.infoshare.mappers.DrinkMapper;
+import com.infoshare.model.Category;
+import com.infoshare.model.Drink;
 import com.infoshare.parser.DrinkAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,14 +36,16 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
+    @Inject
+    private Drink drink;
+
     public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
-            CategoryDto category = CategoryDto.categoryToDto(Optional
-                                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() ->
-                                    categoryMapper.mapCategory(drinkAPI)));
-                                    category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI, CategoryDto.dtoToCategory(category)));
-                                    categoryDao.updateCategory(category.getId(), category);
+            Category category = Optional
+                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+            category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI,category));
+            categoryDao.updateCategory(category);
         }
         logger.info("file was parsed");
         return null;

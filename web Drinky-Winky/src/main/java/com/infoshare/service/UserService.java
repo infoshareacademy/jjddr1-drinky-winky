@@ -19,18 +19,19 @@ public class UserService {
     private UserDao userDao;
 
     public void saveUser(UserDTO userDTO) {
-        userDao.save(userDTO);
+        User user = UserDTO.dtoToUser(userDTO);
+        userDao.saveUser(user);
     }
 
-    public User updateUser(Long id, UserDTO userDTO) {
-        return userDao.updateUser(id, userDTO);
+    public void updateUser(UserDTO userDTO) {
+        userDao.updateUser(UserDTO.dtoToUser(userDTO));
     }
 
-    public User getUserById(Long id){
+    public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 
-    public void deleteUserById(Long id){
+    public void deleteUserById(Long id) {
         userDao.deleteUserById(id);
     }
 }

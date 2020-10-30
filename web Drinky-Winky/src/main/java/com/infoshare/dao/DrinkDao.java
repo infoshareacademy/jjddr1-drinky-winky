@@ -1,9 +1,10 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.DrinkDTO;
+
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,27 +24,14 @@ public class DrinkDao {
         }
     }
 
-    public void addDrink(DrinkDTO drinkDto) {
-        Drink drink = DrinkDTO.DtoToDrink(drinkDto);
+    public Drink addDrink(Drink drink) {
         entityManager.persist(drink);
+        return drink;
     }
 
-    public Drink editDrink(Long id, DrinkDTO drinkDTO) {
-        Drink drinkToUpdate = entityManager.find(Drink.class, id);
-        if (drinkToUpdate != null) {
-            drinkToUpdate.setName(drinkDTO.getName());
-            drinkToUpdate.setCustom(drinkDTO.getCustom());
-            drinkToUpdate.setApproved(drinkDTO.getApproved());
-            drinkToUpdate.setRecipe(drinkDTO.getRecipe());
-            drinkToUpdate.setDrinkType(drinkDTO.getDrinkType());
-            drinkToUpdate.setGlassType(drinkDTO.getGlassType());
-            drinkToUpdate.setModificationDate(drinkDTO.getModificationDate());
-            drinkToUpdate.setImageUrl(drinkDTO.getImageUrl());
-            drinkToUpdate.setCategory(drinkDTO.getCategory());
-            drinkToUpdate.setIngredientList(drinkDTO.getIngredientList());
-            drinkToUpdate.setUsers(drinkDTO.getUsers());
-        }
-        return entityManager.merge(drinkToUpdate);
+    public Drink editDrink(Drink drink) {
+        entityManager.merge(drink);
+        return drink;
     }
 
     public Drink getDrinkByName(String name) {
@@ -83,3 +71,15 @@ public class DrinkDao {
 
     }
 }
+//      if (drinkToUpdate != null) {
+//              drinkToUpdate.setName(drinkDTO.getName());
+//              drinkToUpdate.setCustom(drinkDTO.getCustom());
+//              drinkToUpdate.setApproved(drinkDTO.getApproved());
+//              drinkToUpdate.setRecipe(drinkDTO.getRecipe());
+//              drinkToUpdate.setDrinkType(drinkDTO.getDrinkType());
+//              drinkToUpdate.setGlassType(drinkDTO.getGlassType());
+//              drinkToUpdate.setModificationDate(drinkDTO.getModificationDate());
+//              drinkToUpdate.setImageUrl(drinkDTO.getImageUrl());
+//              drinkToUpdate.setCategory(drinkDTO.getCategory());
+//              drinkToUpdate.setIngredientList(drinkDTO.getIngredientList());
+//              drinkToUpdate.setUsers(drinkDTO.getUsers());

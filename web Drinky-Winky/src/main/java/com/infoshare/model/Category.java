@@ -1,12 +1,12 @@
 package com.infoshare.model;
 
-import com.infoshare.dto.DrinkDTO;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+
 
 
 @NamedQueries({

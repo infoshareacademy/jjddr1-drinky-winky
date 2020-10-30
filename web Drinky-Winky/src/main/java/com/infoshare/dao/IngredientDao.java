@@ -23,18 +23,14 @@ public class IngredientDao {
         }
     }
 
-    public void addIngredient(IngredientDTO ingredientDTO) {
-        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+    public Ingredient addIngredient(Ingredient ingredient) {
         entityManager.persist(ingredient);
+        return ingredient;
     }
 
-    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
-        Ingredient ingredientToUpdate = entityManager.find(Ingredient.class, id);
-        if (ingredientToUpdate != null) {
-            ingredientToUpdate.setMeasure(ingredientDTO.getMeasure());
-            ingredientToUpdate.setName(ingredientDTO.getName());
-        }
-        return entityManager.merge(ingredientToUpdate);
+    public Ingredient editIngredient(Ingredient ingredient) {
+        entityManager.merge(ingredient);
+        return ingredient;
     }
 
     public Ingredient getIngredientByName(String name) {
