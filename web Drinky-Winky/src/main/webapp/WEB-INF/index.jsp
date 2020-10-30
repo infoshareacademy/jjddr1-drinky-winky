@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +14,8 @@
     </div>
 </div>
 <div class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
-    <form id="form-upload" action="/json-upload" method="post"enctype="multipart/form-data">
-        <input type ="file" name="drinks">
+    <form id="form-upload" action="/json-upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="drinks">
         <button type="submit" class="btn btn-secondary">Upload</button>
     </form>
 </div>
