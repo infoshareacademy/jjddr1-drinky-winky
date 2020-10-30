@@ -1,5 +1,6 @@
 package com.infoshare.dao;
 
+
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
@@ -23,12 +24,14 @@ public class DrinkDao {
         }
     }
 
-    public void addDrink(Drink drink) {
+    public Drink addDrink(Drink drink) {
         entityManager.persist(drink);
+        return drink;
     }
 
     public Drink editDrink(Drink drink) {
-        return entityManager.merge(drink);
+        entityManager.merge(drink);
+        return drink;
     }
 
     public Drink getDrinkByName(String name) {
@@ -63,9 +66,21 @@ public class DrinkDao {
         Query drinkQuery = entityManager.createQuery(Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT);
         drinkQuery.setParameter("categories", categories);
         drinkQuery.setParameter("names", names);
+
         return drinkQuery.getResultList();
     }
 
-//    public List<String> randomDrinkUrlSearcher(List<Drink> drinkList, String image_url, String name) {
+    }
 
-}
+//      if (drinkToUpdate != null) {
+//              drinkToUpdate.setName(drinkDTO.getName());
+//              drinkToUpdate.setCustom(drinkDTO.getCustom());
+//              drinkToUpdate.setApproved(drinkDTO.getApproved());
+//              drinkToUpdate.setRecipe(drinkDTO.getRecipe());
+//              drinkToUpdate.setDrinkType(drinkDTO.getDrinkType());
+//              drinkToUpdate.setGlassType(drinkDTO.getGlassType());
+//              drinkToUpdate.setModificationDate(drinkDTO.getModificationDate());
+//              drinkToUpdate.setImageUrl(drinkDTO.getImageUrl());
+//              drinkToUpdate.setCategory(drinkDTO.getCategory());
+//              drinkToUpdate.setIngredientList(drinkDTO.getIngredientList());
+//              drinkToUpdate.setUsers(drinkDTO.getUsers());

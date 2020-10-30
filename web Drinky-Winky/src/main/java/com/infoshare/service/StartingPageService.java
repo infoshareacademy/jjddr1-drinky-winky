@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RequestScoped
-public class StartingPageService {
+public class  StartingPageService {
     @Inject
     DrinkService drinkService;
 

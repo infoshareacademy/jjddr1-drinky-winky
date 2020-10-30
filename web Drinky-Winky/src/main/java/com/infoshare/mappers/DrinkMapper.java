@@ -1,5 +1,6 @@
 package com.infoshare.mappers;
 
+import com.infoshare.dto.CategoryDto;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.parser.DrinkAPI;
