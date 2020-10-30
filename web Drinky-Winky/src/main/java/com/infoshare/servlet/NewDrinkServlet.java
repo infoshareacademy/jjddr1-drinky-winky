@@ -1,6 +1,5 @@
 package com.infoshare.servlet;
 
-import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 
 import javax.inject.Inject;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @WebServlet("/NewDrinkServlet")
 public class NewDrinkServlet extends HttpServlet {
@@ -17,21 +17,23 @@ public class NewDrinkServlet extends HttpServlet {
     @Inject
     DrinkService drinkService;
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String alcohol = request.getParameter("alcohol");
-        String category = request.getParameter("category");
-        String glass = request.getParameter("glass");
         String name = request.getParameter("name");
+        Boolean isCustom = true;
+        Boolean isApproved = true;
         String recipe = request.getParameter("recipe");
+        String drinkType = request.getParameter("drinkType");
+        String glassType = request.getParameter("glassType");
+        String modificationDate = LocalDate.now().toString();
+        String imageUrl = request.getParameter("imageUrl");
 
+        String category = request.getParameter("category");
 
-        Drink drink = new Drink(name, recipe, alcohol, glass);
-        drinkService.editDrink(drink);
-
+        String ingredient = request.getParameter("ingredient");
+        String measure = request.getParameter("measure");
 
     }
 }
