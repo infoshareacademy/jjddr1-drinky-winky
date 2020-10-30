@@ -24,7 +24,7 @@ public class DrinkDTO {
     private List<User> users = new ArrayList<>();
 
 
-    public DrinkDTO drinkToDTO(Drink drink) {
+    public static DrinkDTO drinkToDTO(Drink drink) {
         DrinkDTO drinkDTO = new DrinkDTO();
         drinkDTO.setId(drink.getId());
         drinkDTO.setName(drink.getName());
@@ -41,7 +41,7 @@ public class DrinkDTO {
         return drinkDTO;
     }
 
-    public Drink DtoToDrink(DrinkDTO drinkDTO) {
+    public static Drink DtoToDrink(DrinkDTO drinkDTO) {
         Drink drink = new Drink();
         drink.setName(drinkDTO.getName());
         drink.setCustom(drinkDTO.getCustom());

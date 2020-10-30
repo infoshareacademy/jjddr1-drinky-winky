@@ -12,7 +12,7 @@ public class IngredientDTO {
     private String measure;
     private List<DrinkDTO> drinkDTOS = new ArrayList<>();
 
-    public IngredientDTO ingredientToDto(Ingredient ingredient){
+    public static IngredientDTO ingredientToDto(Ingredient ingredient){
         IngredientDTO ingredientDTO = new IngredientDTO();
         ingredientDTO.setId(ingredient.getId());
         ingredientDTO.setName(ingredient.getName());
@@ -20,7 +20,7 @@ public class IngredientDTO {
         return ingredientDTO;
     }
 
-    public Ingredient dtoToIngredient (IngredientDTO ingredientDTO){
+    public static Ingredient dtoToIngredient (IngredientDTO ingredientDTO){
         Ingredient ingredient = new Ingredient();
         ingredient.setName(ingredientDTO.getName());
         ingredient.setMeasure(ingredientDTO.getMeasure());

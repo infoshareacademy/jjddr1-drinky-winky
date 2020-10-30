@@ -16,7 +16,7 @@ public class UserDTO {
     private String email;
     private List<DrinkDTO> drinkDTOS = new ArrayList<>();
 
-    public UserDTO userToDto (User user){
+    public static UserDTO userToDto (User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
@@ -27,7 +27,7 @@ public class UserDTO {
         return userDTO;
     }
 
-    public User dtoToUser (UserDTO userDTO){
+    public static User dtoToUser (UserDTO userDTO){
         User user = new User();
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());

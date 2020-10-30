@@ -1,6 +1,9 @@
 package com.infoshare.dao;
 
+import com.infoshare.dto.CategoryDto;
+import com.infoshare.dto.IngredientDTO;
 import com.infoshare.model.Category;
+import com.infoshare.model.Ingredient;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,12 +17,27 @@ public class CategoryDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void save(Category category) {
+
+    public void saveCategory(CategoryDto categorydto) {
+        Category category = CategoryDto.dtoToCategory(categorydto);
         entityManager.persist(category);
     }
 
-    public Category updateCategory(Category category) {
-        return entityManager.merge(category);
+    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
+        Ingredient ingredientToUpdate = entityManager.find(Ingredient.class, id);
+        if (ingredientToUpdate != null) {
+            ingredientToUpdate.setMeasure(ingredientDTO.getMeasure());
+            ingredientToUpdate.setName(ingredientDTO.getName());
+        }
+        return entityManager.merge(ingredientToUpdate);
+    }
+
+    public Category updateCategory(CategoryDto categoryDto) {
+        Category categoryToUpdate = entityManager.find(Category.class, categoryDto);
+        if (categoryToUpdate != null) {
+            categoryToUpdate.setName(categoryDto.getName());
+        }
+        return entityManager.merge(categoryToUpdate);
     }
 
     public Category getCategoryById(Long id) {

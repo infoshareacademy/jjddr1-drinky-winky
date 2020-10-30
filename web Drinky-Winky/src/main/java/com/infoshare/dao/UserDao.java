@@ -1,5 +1,8 @@
 package com.infoshare.dao;
 
+import com.infoshare.dto.UserDTO;
+import com.infoshare.model.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,34 +14,44 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void save(UserDao user) {
+    public void save(UserDTO userDTO) {
+        User user = UserDTO.dtoToUser(userDTO);
         entityManager.persist(user);
     }
 
-    public UserDao updateUser(UserDao user) {
-        return entityManager.merge(user);
+    public User updateUser(Long id, UserDTO userDTO) {
+        User userToUpdate = entityManager.find(User.class, id);
+        if (userToUpdate != null) {
+            userToUpdate.setName(userDTO.getName());
+            userToUpdate.setSurname(userDTO.getSurname());
+            userToUpdate.setUserType(userDTO.getUserType());
+            userToUpdate.setLogin(userDTO.getLogin());
+            userToUpdate.setPassword(userDTO.getPassword());
+            userToUpdate.setEmail(userDTO.getEmail());
+        }
+        return entityManager.merge(userToUpdate);
     }
 
-    public UserDao getUserById(Long id) {
-        return entityManager.find(UserDao.class, id);
+    public User getUserById(Long id) {
+        return entityManager.find(User.class, id);
     }
 
     public void deleteUserById(Long id) {
-        UserDao user = getUserById(id);
+        User user = getUserById(id);
         if (user != null) {
             entityManager.remove(user);
         }
     }
 
-    public List<UserDao> getUserList() {
+    public List<User> getUserList() {
         Query query = entityManager.createNamedQuery("User.getUserList");
         return query.getResultList();
     }
 
-    public UserDao findUserByName(String name) {
+    public User findUserByName(String name) {
         Query query = entityManager.createNamedQuery("User.findUserByName");
         query.setParameter("name", name);
-        return (UserDao) query.getResultList().stream().findFirst().orElse(null);
+        return (User) query.getResultList().stream().findFirst().orElse(null);
     }
 
 }

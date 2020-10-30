@@ -1,6 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
+import com.infoshare.dto.CategoryDto;
 import com.infoshare.mappers.CategoryMapper;
 import com.infoshare.mappers.DrinkMapper;
 import com.infoshare.model.Category;
@@ -37,10 +38,11 @@ public class FileParserService {
     public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
-            Category category = Optional
-                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
-            category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI,category));
-            categoryDao.updateCategory(category);
+            CategoryDto category = CategoryDto.categoryToDto(Optional
+                                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() ->
+                                    categoryMapper.mapCategory(drinkAPI)));
+                                    category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI, category));
+                                    categoryDao.updateCategory(category);
         }
         logger.info("file was parsed");
         return null;

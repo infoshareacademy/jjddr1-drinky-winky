@@ -1,6 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.DrinkDao;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +21,13 @@ public class DrinkService {
         drinkDao.loadDrink(drinks);
         logger.info("Drinks list has been loaded");
     }
-    public void addDrink(Drink drink) {
-        drinkDao.addDrink(drink);
+    public void addDrink(DrinkDTO drinkDTO) {
+        drinkDao.addDrink(drinkDTO);
         logger.info("Drink has been saved");
     }
-    public Drink editDrink(Drink drink) {
+    public Drink editDrink(DrinkDTO drinkDTO) {
         logger.info("Drink updated.");
-        return drinkDao.editDrink(drink);
+        return drinkDao.editDrink(drinkDTO);
     }
     public Drink getDrinkByName(String name) {
         logger.info("Get drink by name");

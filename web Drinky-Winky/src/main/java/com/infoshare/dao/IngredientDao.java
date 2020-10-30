@@ -1,6 +1,9 @@
 package com.infoshare.dao;
 
+import com.infoshare.dto.IngredientDTO;
+import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
+import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,25 +22,42 @@ public class IngredientDao {
             entityManager.persist(ingredient);
         }
     }
-    public void addIngredient(Ingredient ingredient) { entityManager.persist(ingredient);}
 
-    public Ingredient editIngredient( Ingredient ingredient) { return entityManager.merge(ingredient); }
+    public void addIngredient(IngredientDTO ingredientDTO) {
+        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+        entityManager.persist(ingredient);
+    }
 
-    public Ingredient getIngredientByName(String name) { return entityManager.find(Ingredient.class, name);}
+    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
+        Ingredient ingredientToUpdate = entityManager.find(Ingredient.class, id);
+        if (ingredientToUpdate != null) {
+            ingredientToUpdate.setMeasure(ingredientDTO.getMeasure());
+            ingredientToUpdate.setName(ingredientDTO.getName());
+        }
+        return entityManager.merge(ingredientToUpdate);
+    }
 
-    public Ingredient getIngredientById(Long id) { return entityManager.find(Ingredient.class, id);}
+    public Ingredient getIngredientByName(String name) {
+        return entityManager.find(Ingredient.class, name);
+    }
 
-    public void deleteCategoryById(Long id) {
+    public Ingredient getIngredientById(Long id) {
+        return entityManager.find(Ingredient.class, id);
+    }
+
+    public void deleteIngredientById(Long id) {
         Ingredient ingredient = getIngredientById(id);
-        if ( ingredient != null) {
+        if (ingredient != null) {
             entityManager.remove(ingredient);
         }
     }
+
     public Ingredient findIngredient(String names) {
         Query query = entityManager.createNamedQuery("Ingredient.findIngredientByName");
-        query.setParameter("names",names);
+        query.setParameter("names", names);
         return (Ingredient) query.getSingleResult();
     }
+
     public List<String> getIngredientsList() {
         Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
         return query.getResultList();

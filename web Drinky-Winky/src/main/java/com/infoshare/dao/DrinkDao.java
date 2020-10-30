@@ -1,9 +1,9 @@
 package com.infoshare.dao;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,26 +23,50 @@ public class DrinkDao {
         }
     }
 
-    public void addDrink(Drink drink) {entityManager.persist(drink);}
+    public void addDrink(DrinkDTO drinkDto) {
+        Drink drink = DrinkDTO.DtoToDrink(drinkDto);
+        entityManager.persist(drink);
+    }
 
-    public Drink editDrink(Drink drink) { return entityManager.merge(drink);}
+    public Drink editDrink(DrinkDTO drinkDTO) {
+        Drink drinkToUpdate = entityManager.find(Drink.class, drinkDTO);
+        if (drinkToUpdate != null) {
+            drinkToUpdate.setName(drinkDTO.getName());
+            drinkToUpdate.setCustom(drinkDTO.getCustom());
+            drinkToUpdate.setApproved(drinkDTO.getApproved());
+            drinkToUpdate.setRecipe(drinkDTO.getRecipe());
+            drinkToUpdate.setDrinkType(drinkDTO.getDrinkType());
+            drinkToUpdate.setGlassType(drinkDTO.getGlassType());
+            drinkToUpdate.setModificationDate(drinkDTO.getModificationDate());
+            drinkToUpdate.setImageUrl(drinkDTO.getImageUrl());
+            drinkToUpdate.setCategory(drinkDTO.getCategory());
+            drinkToUpdate.setIngredientList(drinkDTO.getIngredientList());
+            drinkToUpdate.setUsers(drinkDTO.getUsers());
+        }
+        return entityManager.merge(drinkToUpdate);
+    }
 
-    public Drink getDrinkByName(String name) { return entityManager.find(Drink.class, name);}
+    public Drink getDrinkByName(String name) {
+        return entityManager.find(Drink.class, name);
+    }
 
-    public Drink getDrinkById(Long id) { return entityManager.find(Drink.class, id);}
+    public Drink getDrinkById(Long id) {
+        return entityManager.find(Drink.class, id);
+    }
 
     public void deleteRecipeById(Long id) {
         Drink drink = getDrinkById(id);
-        if ( drink != null) {
+        if (drink != null) {
             entityManager.remove(drink);
         }
     }
+
     public List<Drink> getDrinkList() {
         Query query = entityManager.createNamedQuery("Drink.getDrinkList");
         return query.getResultList();
     }
 
-    public List<String> findDrinkByCategoryIdAndIngredient ( List<Long> ids, List<String> names) {
+    public List<String> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
 
         Query query = entityManager.createNamedQuery("Category.findCategoryById");
         query.setParameter("ids", ids);
