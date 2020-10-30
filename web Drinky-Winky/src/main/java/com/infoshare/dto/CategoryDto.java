@@ -17,12 +17,14 @@ public class CategoryDto {
         CategoryDto categoryDto = new CategoryDto();
         categoryDto.setId(category.getId());
         categoryDto.setName(category.getName());
+        categoryDto.setDrinkList(category.getDrinkList());
         return categoryDto;
     }
 
     public static Category dtoToCategory(CategoryDto categoryDto) {
         Category category = new Category();
         category.setName(categoryDto.getName());
+        category.setDrinkList(categoryDto.getDrinkList());
         return category;
     }
 
