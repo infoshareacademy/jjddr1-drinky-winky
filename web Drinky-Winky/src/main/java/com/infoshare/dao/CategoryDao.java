@@ -18,22 +18,13 @@ public class CategoryDao {
     EntityManager entityManager;
 
 
-    public void saveCategory(CategoryDto categorydto) {
-        Category category = CategoryDto.dtoToCategory(categorydto);
+    public void saveCategory(CategoryDto categoryDto) {
+        Category category = CategoryDto.dtoToCategory(categoryDto);
         entityManager.persist(category);
     }
 
-    public Ingredient editIngredient(Long id, IngredientDTO ingredientDTO) {
-        Ingredient ingredientToUpdate = entityManager.find(Ingredient.class, id);
-        if (ingredientToUpdate != null) {
-            ingredientToUpdate.setMeasure(ingredientDTO.getMeasure());
-            ingredientToUpdate.setName(ingredientDTO.getName());
-        }
-        return entityManager.merge(ingredientToUpdate);
-    }
-
-    public Category updateCategory(CategoryDto categoryDto) {
-        Category categoryToUpdate = entityManager.find(Category.class, categoryDto);
+    public CategoryDto updateCategory(Long id, CategoryDto categoryDto) {
+        CategoryDto categoryToUpdate = entityManager.find(CategoryDto.class, id);
         if (categoryToUpdate != null) {
             categoryToUpdate.setName(categoryDto.getName());
         }

@@ -19,8 +19,9 @@ public class CategoryService {
     private CategoryDao categoryDao;
 
     public void save(CategoryDto categoryDto) { categoryDao.saveCategory(categoryDto); }
-    public Category updateCategory(CategoryDto categoryDto) {
-        return categoryDao.updateCategory(categoryDto);
+
+    public CategoryDto updateCategory(Long id, CategoryDto categoryDto) {
+        return categoryDao.updateCategory(id, categoryDto);
     }
 
     public Category getCategoryById(Long id) {

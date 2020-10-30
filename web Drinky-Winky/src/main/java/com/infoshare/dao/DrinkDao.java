@@ -28,8 +28,8 @@ public class DrinkDao {
         entityManager.persist(drink);
     }
 
-    public Drink editDrink(DrinkDTO drinkDTO) {
-        Drink drinkToUpdate = entityManager.find(Drink.class, drinkDTO);
+    public Drink editDrink(Long id, DrinkDTO drinkDTO) {
+        Drink drinkToUpdate = entityManager.find(Drink.class, id);
         if (drinkToUpdate != null) {
             drinkToUpdate.setName(drinkDTO.getName());
             drinkToUpdate.setCustom(drinkDTO.getCustom());

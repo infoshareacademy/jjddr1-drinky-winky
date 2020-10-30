@@ -1,5 +1,7 @@
 package com.infoshare.model;
 
+import com.infoshare.dto.CategoryDto;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
