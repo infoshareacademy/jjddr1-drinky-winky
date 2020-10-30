@@ -36,9 +36,6 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
-    @Inject
-    private Drink drink;
-
     public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
