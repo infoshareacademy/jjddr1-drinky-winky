@@ -23,26 +23,35 @@ public class DrinkDao {
         }
     }
 
-    public void addDrink(Drink drink) {entityManager.persist(drink);}
+    public void addDrink(Drink drink) {
+        entityManager.persist(drink);
+    }
 
-    public Drink editDrink(Drink drink) { return entityManager.merge(drink);}
+    public Drink editDrink(Drink drink) {
+        return entityManager.merge(drink);
+    }
 
-    public Drink getDrinkByName(String name) { return entityManager.find(Drink.class, name);}
+    public Drink getDrinkByName(String name) {
+        return entityManager.find(Drink.class, name);
+    }
 
-    public Drink getDrinkById(Long id) { return entityManager.find(Drink.class, id);}
+    public Drink getDrinkById(Long id) {
+        return entityManager.find(Drink.class, id);
+    }
 
     public void deleteRecipeById(Long id) {
         Drink drink = getDrinkById(id);
-        if ( drink != null) {
+        if (drink != null) {
             entityManager.remove(drink);
         }
     }
+
     public List<Drink> getDrinkList() {
         Query query = entityManager.createNamedQuery("Drink.getDrinkList");
         return query.getResultList();
     }
 
-    public List<String> findDrinkByCategoryIdAndIngredient ( List<Long> ids, List<String> names) {
+    public List<String> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
 
         Query query = entityManager.createNamedQuery("Category.findCategoryById");
         query.setParameter("ids", ids);
@@ -54,8 +63,9 @@ public class DrinkDao {
         Query drinkQuery = entityManager.createQuery(Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT);
         drinkQuery.setParameter("categories", categories);
         drinkQuery.setParameter("names", names);
-
         return drinkQuery.getResultList();
-
     }
+
+//    public List<String> randomDrinkUrlSearcher(List<Drink> drinkList, String image_url, String name) {
+
 }

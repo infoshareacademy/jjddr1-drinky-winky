@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@NamedQueries({
+@NamedQueries(value = {
         @NamedQuery(
                 name = "Drink.getDrinkList",
                 query = "SELECT r FROM Drink r"),
