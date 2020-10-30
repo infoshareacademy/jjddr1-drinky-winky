@@ -1,6 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDto;
+import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 
 import javax.inject.Inject;
@@ -29,9 +29,8 @@ public class NewDrinkServlet extends HttpServlet {
         String recipe = request.getParameter("recipe");
 
 
-        DrinkDto drinkDto = new DrinkDto(name, category, glass, alcohol, recipe);
-//        drinkService.saveDrink(drinkDto);
-
+        Drink drink = new Drink(name, recipe, alcohol, glass);
+        drinkService.editDrink(drink);
 
 
     }

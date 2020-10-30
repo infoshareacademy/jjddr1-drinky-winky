@@ -23,6 +23,7 @@ public class Drink {
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private Long id;
 
@@ -72,6 +73,17 @@ public class Drink {
 
     @ManyToMany(mappedBy = "drinkList")
     private List<User> users = new ArrayList<>();
+
+    public Drink() {
+    }
+
+    public Drink(@NotNull String name, @NotNull String recipe, @NotNull String drinkType, @NotNull String glassType) {
+        this.name = name;
+        this.recipe = recipe;
+        this.drinkType = drinkType;
+        this.glassType = glassType;
+
+    }
 
     public Long getId() {
         return id;
