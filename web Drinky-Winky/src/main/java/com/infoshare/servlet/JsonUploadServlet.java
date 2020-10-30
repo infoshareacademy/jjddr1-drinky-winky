@@ -19,11 +19,11 @@ import java.io.IOException;
 
 @MultipartConfig
 @WebServlet("/json-upload")
-public class Servlet extends HttpServlet {
+public class JsonUploadServlet extends HttpServlet {
 
     @Inject
     private FileDataHandler fileDataHandler;
-    Logger logger = LoggerFactory.getLogger(Servlet.class);
+    Logger logger = LoggerFactory.getLogger(com.infoshareacademy.servlet.JsonUploadServlet.class);
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
