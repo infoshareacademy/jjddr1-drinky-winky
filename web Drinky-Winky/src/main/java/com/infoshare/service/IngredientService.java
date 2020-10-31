@@ -29,7 +29,7 @@ public class IngredientService {
 
     public void editIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
-        IngredientDTO.ingredientToDto(ingredient);
+        ingredientDao.editIngredient(ingredient);
     }
 
     public Ingredient getIngredientByName(String name) {

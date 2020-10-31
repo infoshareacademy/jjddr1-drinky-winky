@@ -2,9 +2,7 @@ package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
 import com.infoshare.dto.CategoryDto;
-import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
-import com.infoshare.model.Drink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,9 +22,10 @@ public class CategoryService {
         Category category = CategoryDto.dtoToCategory(categoryDto);
         categoryDao.saveCategory(category);
     }
+
     public void updateCategory(CategoryDto categoryDto) {
-      Category category = CategoryDto.dtoToCategory(categoryDto);
-      CategoryDto.categoryToDto(category);
+        Category category = CategoryDto.dtoToCategory(categoryDto);
+        categoryDao.updateCategory(category);
     }
 
     public Category getCategoryById(Long id) {
