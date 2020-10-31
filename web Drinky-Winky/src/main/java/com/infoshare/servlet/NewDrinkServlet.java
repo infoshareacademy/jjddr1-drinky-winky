@@ -2,7 +2,6 @@ package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
-import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
 import com.infoshare.service.DrinkDeserializer;
 import com.infoshare.service.DrinkService;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,9 +24,6 @@ public class NewDrinkServlet extends HttpServlet {
     @Inject
     DrinkService drinkService;
 
-    @Inject
-    DrinkDeserializer drinkDeserializer;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,11 +34,9 @@ public class NewDrinkServlet extends HttpServlet {
         String recipe = request.getParameter("recipe");
         String drinkType = request.getParameter("drinkType");
         String glassType = request.getParameter("glassType");
-        String modificationDate = LocalDateTime.now().toString();
+        String modificationDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME).toString();
         String imageUrl = request.getParameter("imageUrl");
-
         String category = request.getParameter("category");
-
         String ingredient = request.getParameter("ingredient");
         String measure = request.getParameter("measure");
 
@@ -52,14 +45,6 @@ public class NewDrinkServlet extends HttpServlet {
 
         List<Ingredient> ingredient1 = new ArrayList<>();
         Ingredient ingredient2 = new Ingredient();
-        ingredient2.setName(ingredient);
-        ingredient2.setMeasure(measure);
-        ingredient2.setName(ingredient);
-        ingredient2.setMeasure(measure);
-        ingredient2.setName(ingredient);
-        ingredient2.setMeasure(measure);
-        ingredient2.setName(ingredient);
-        ingredient2.setMeasure(measure);
         ingredient2.setName(ingredient);
         ingredient2.setMeasure(measure);
         ingredient1.add(ingredient2);

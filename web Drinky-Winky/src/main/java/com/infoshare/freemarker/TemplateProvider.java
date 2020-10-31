@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 @RequestScoped
 public class TemplateProvider {
 
-    private final String TEMPLATE_DIRECTORY_PATH = "WEB-INF/templates";
+    private final String TEMPLATE_DIRECTORY_PATH = "WEB-INF/template";
     private Configuration configuration;
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
