@@ -12,14 +12,18 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(
                 name = "Category.findCategoryByName",
-                query = "SELECT c FROM Category c WHERE c.name like :name"),
+                query = "SELECT distinct c FROM Category c WHERE c.name like :name"),
 
         @NamedQuery(
                 name = "Category.findCategoryById",
                 query = "SELECT c FROM Category c WHERE c.id in :ids"),
         @NamedQuery(
                 name = "Category.getCategoryList",
-                query = "SELECT DISTINCT c FROM Category c")
+                query = "SELECT DISTINCT c FROM Category c"),
+        @NamedQuery(
+                name = "Category.getCategoryIds",
+                query = " SELECT c.id FROM Category c"
+        )
 })
 
 

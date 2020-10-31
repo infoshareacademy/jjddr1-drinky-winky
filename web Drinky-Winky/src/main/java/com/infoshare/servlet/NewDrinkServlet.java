@@ -4,6 +4,7 @@ import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
+import com.infoshare.service.DrinkDeserializer;
 import com.infoshare.service.DrinkService;
 
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,9 @@ public class NewDrinkServlet extends HttpServlet {
 
     @Inject
     DrinkService drinkService;
+
+    @Inject
+    DrinkDeserializer drinkDeserializer;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +52,14 @@ public class NewDrinkServlet extends HttpServlet {
 
         List<Ingredient> ingredient1 = new ArrayList<>();
         Ingredient ingredient2 = new Ingredient();
+        ingredient2.setName(ingredient);
+        ingredient2.setMeasure(measure);
+        ingredient2.setName(ingredient);
+        ingredient2.setMeasure(measure);
+        ingredient2.setName(ingredient);
+        ingredient2.setMeasure(measure);
+        ingredient2.setName(ingredient);
+        ingredient2.setMeasure(measure);
         ingredient2.setName(ingredient);
         ingredient2.setMeasure(measure);
         ingredient1.add(ingredient2);
