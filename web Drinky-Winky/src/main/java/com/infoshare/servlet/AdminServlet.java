@@ -20,6 +20,7 @@ public class AdminServlet extends HttpServlet {
     @Inject
     TemplateProvider templateProvider;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");

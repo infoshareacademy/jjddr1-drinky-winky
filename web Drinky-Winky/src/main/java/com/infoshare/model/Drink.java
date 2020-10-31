@@ -1,14 +1,12 @@
 package com.infoshare.model;
 
-import com.infoshare.dto.CategoryDto;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@NamedQueries({
+@NamedQueries(value = {
         @NamedQuery(
                 name = "Drink.getDrinkList",
                 query = "SELECT r FROM Drink r"),
@@ -25,6 +23,7 @@ public class Drink {
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private Long id;
 
@@ -40,7 +39,7 @@ public class Drink {
     @NotNull
     private Boolean isApproved;
 
-    @Column(name = "recipe", length = 512)
+    @Column(name = "recipe", length = 5000)
     @NotNull
     private String recipe;
 
@@ -56,7 +55,7 @@ public class Drink {
     @NotNull
     private String modificationDate;
 
-    @Column(name = "image_url", length = 512)
+    @Column(name = "image_url", length = 1024)
     @NotNull
     private String imageUrl;
 
@@ -67,8 +66,8 @@ public class Drink {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "drink_to_ingredient",
-            joinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "drink_id",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id",referencedColumnName = "id")}
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
 
@@ -92,6 +91,14 @@ public class Drink {
         this.category = category;
         this.ingredientList = ingredientList;
         this.users = users;
+    }
+
+    public Drink(@NotNull String name, @NotNull String recipe, @NotNull String drinkType, @NotNull String glassType) {
+        this.name = name;
+        this.recipe = recipe;
+        this.drinkType = drinkType;
+        this.glassType = glassType;
+
     }
 
     public Long getId() {

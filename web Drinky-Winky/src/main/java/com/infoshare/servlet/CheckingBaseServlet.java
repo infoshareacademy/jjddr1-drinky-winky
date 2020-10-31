@@ -50,9 +50,8 @@ public class CheckingBaseServlet extends HttpServlet {
         List<Category> categoriesList = categoryService.getCategoriesList();
         Integer lastPageNumber = startingPageService.getLastNumberPage(allDrinks);
         List<String> ingredientList = ingredientService.getIngredientsList();
-        List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s ->Long.parseLong(s)).collect(Collectors.toList());
+        List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s -> Long.parseLong(s)).collect(Collectors.toList());
         List<String> checkedCategoriesAndIngredient = drinkService.findDrinkByCategoryIdAndIngredient(paredToLongCategoriesList, checkedIngredientsList);
-
 
 
     }

@@ -68,9 +68,10 @@ public class DrinkDao {
         drinkQuery.setParameter("names", names);
 
         return drinkQuery.getResultList();
+    }
 
     }
-}
+
 //      if (drinkToUpdate != null) {
 //              drinkToUpdate.setName(drinkDTO.getName());
 //              drinkToUpdate.setCustom(drinkDTO.getCustom());

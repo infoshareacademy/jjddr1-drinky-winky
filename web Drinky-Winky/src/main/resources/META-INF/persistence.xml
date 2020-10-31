@@ -4,13 +4,13 @@
     <persistence-unit name="default" transaction-type="JTA">
         <jta-data-source>java:ds/webApp</jta-data-source>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
-            <property name="hibernate.connection.characterEncoding" value="UTF 8" />
-            <property name="hibernate.cache.use_query_cache" value="false" />
-
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.connection.characterEncoding" value="UTF 8"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            <property name="hibernate.generate_statistics" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
