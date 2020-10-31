@@ -14,8 +14,10 @@ public class CategoryDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void save(Category category) {
+
+    public Category saveCategory(Category category) {
         entityManager.persist(category);
+        return category;
     }
 
     public Category updateCategory(Category category) {

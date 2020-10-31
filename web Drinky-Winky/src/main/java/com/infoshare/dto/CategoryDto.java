@@ -1,13 +1,32 @@
 package com.infoshare.dto;
 
+import com.infoshare.model.Category;
+import com.infoshare.model.Drink;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CategoryDto {
 
     private Long id;
     private String name;
-    private List<DrinkDTO> drinkDTOS = new ArrayList<>();
+    private List<Drink> drinkList = new ArrayList<>();
+
+    public static CategoryDto categoryToDto(Category category) {
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setId(category.getId());
+        categoryDto.setName(category.getName());
+        categoryDto.setDrinkList(category.getDrinkList());
+        return categoryDto;
+    }
+
+    public static Category dtoToCategory(CategoryDto categoryDto) {
+        Category category = new Category();
+        category.setName(categoryDto.getName());
+        category.setDrinkList(categoryDto.getDrinkList());
+        return category;
+    }
 
     public Long getId() {
         return id;
@@ -25,11 +44,11 @@ public class CategoryDto {
         this.name = name;
     }
 
-    public List<DrinkDTO> getDrinkDTOS() {
-        return drinkDTOS;
+    public List<Drink> getDrinkList() {
+        return drinkList;
     }
 
-    public void setDrinkDTOS(List<DrinkDTO> drinkDTOS) {
-        this.drinkDTOS = drinkDTOS;
+    public void setDrinkList(List<Drink> drinkList) {
+        this.drinkList = drinkList;
     }
 }

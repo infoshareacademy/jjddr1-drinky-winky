@@ -32,7 +32,7 @@ public class User {
     @NotNull
     private String surname;
 
-    @Column(name=  "user_type")
+    @Column(name = "user_type")
     @NotNull
     private String userType;
 
@@ -51,9 +51,10 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_favourite_recipe",
-            joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name= "drink_id",referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
+
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {
@@ -115,6 +116,7 @@ public class User {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
