@@ -31,7 +31,7 @@ private IngredientMapper ingredientMapper;
         drink.setCategory(category);
         drink.setCustom(false);
         drink.setApproved(true);
-        logger.info("Drink is mapped");
+        logger.info("Drink " + drink.getName() +" mapped");
         return drink;
     }
 }

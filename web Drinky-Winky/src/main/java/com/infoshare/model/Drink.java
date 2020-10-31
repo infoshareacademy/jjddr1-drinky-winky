@@ -27,7 +27,7 @@ public class Drink {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name", unique = true, length = 100)
     @NotNull
     private String name;
 

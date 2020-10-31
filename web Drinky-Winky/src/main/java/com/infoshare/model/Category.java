@@ -19,7 +19,7 @@ import java.util.List;
                 query = "SELECT c FROM Category c WHERE c.id in :ids"),
         @NamedQuery(
                 name = "Category.getCategoryList",
-                query = "SELECT c FROM Category c")
+                query = "SELECT DISTINCT c FROM Category c")
 })
 
 
@@ -32,7 +32,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", unique = true,length = 50)
+    @Column(name = "name", length = 50)
     @NotNull
     private String name;
 

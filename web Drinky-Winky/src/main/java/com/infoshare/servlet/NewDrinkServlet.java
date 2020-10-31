@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class NewDrinkServlet extends HttpServlet {
         String recipe = request.getParameter("recipe");
         String drinkType = request.getParameter("drinkType");
         String glassType = request.getParameter("glassType");
-        String modificationDate = LocalDate.now().toString();
+        String modificationDate = LocalDateTime.now().toString();
         String imageUrl = request.getParameter("imageUrl");
 
         String category = request.getParameter("category");
