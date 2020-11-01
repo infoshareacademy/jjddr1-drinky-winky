@@ -25,6 +25,7 @@ public class SingleDrinkViewServlet extends HttpServlet {
     @Inject
     private BfTemplateProvider templateProvider;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String paramId = request.getParameter("id");
@@ -32,16 +33,18 @@ public class SingleDrinkViewServlet extends HttpServlet {
         if (paramId == null || paramId.isBlank()) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-        Template template = templateProvider.getTemplate(getServletContext(),"index.ftlh");
-        Map<String,Object> model = new HashMap<>();
+        Map<String,Object> drinkModel = new HashMap<>();
 
         Long id = Long.valueOf(paramId);
-        drinkService.getDrinkById(id);
+
+        drinkModel.put("drink", drinkService.getDrinkById(id));
+
+        Template template = templateProvider.getTemplate(getServletContext(),"singleDrink.ftlh");
 
         PrintWriter printWriter = response.getWriter();
 
         try {
-            template.process(model, printWriter);
+            template.process(drinkModel, printWriter);
         } catch (TemplateException e) {
             e.printStackTrace();
         }
