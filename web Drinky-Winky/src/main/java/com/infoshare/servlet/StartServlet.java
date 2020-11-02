@@ -15,7 +15,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/StartServlet")
+@WebServlet("/Start-servlet")
 public class StartServlet extends HttpServlet {
 
     @Inject
@@ -27,7 +27,7 @@ public class StartServlet extends HttpServlet {
         Map<String, Object> root = new HashMap<>();
 
         if (request.getParameter("save").equals("YES")) {
-            Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
             Writer out = response.getWriter();
 
             try {
@@ -36,7 +36,7 @@ public class StartServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            response.sendRedirect("/SayGoodbyeServlet");
+            response.sendRedirect("/Say-goodbye");
         }
     }
 }

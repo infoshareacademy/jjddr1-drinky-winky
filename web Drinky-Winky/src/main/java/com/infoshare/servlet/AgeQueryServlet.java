@@ -15,7 +15,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/AgeQueryServlet")
+@WebServlet("/Age-query")
 public class AgeQueryServlet extends HttpServlet {
 
     @Inject

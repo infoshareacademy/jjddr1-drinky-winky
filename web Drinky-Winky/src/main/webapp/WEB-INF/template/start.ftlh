@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <#include "css.ftlh">
+    <#include "js-head.ftlh">
+
+    <meta charset="utf-8">
+    <title>Drinky-Winky WebApp</title>
+
+</head>
+<body>
+
+<nav class="navigation">
+    <div class="container">
+        <ul>
+            <li><a href="#about">O aplikacji</a></li>
+            <li><a href="#features">Drinki</a></li>
+            <li><a href="#quotes">Przepisy</a></li>
+            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+
+            <form method="get" action="NavigationServlet">
+                <input type="submit" name="navigator" value="admin"/>
+            </form>
+
+            <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
+            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+                   onblur="this.placeholder='Search...'">
+        </ul>
+    </div>
+</nav>
+
+<section class="splash">
+    <div class="page-intro">
+        <h1 class="main-title">WITAJ W NASZEJ APLIKACJI</h1>
+        <h2 class="main-subtitle">DRINKY-WINKY</h2>
+        <a class="btn btn-solid" href="#about">CLICK ME</a>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">COŚ O DRINKY-WINKY</h2>
+        <p class="section-intro">Aplikacja powstała jako... bla bla bla...</p>
+    </div>
+</section>
+
+
+<section class="about">
+
+    <!-- REJESTRACJA   -->
+</section>
+
+
+<#include "features.ftlh">
+
+<section class="statement">
+    <div class="container">
+        <p>Chluśniem bo uśniem</p>
+    </div>
+</section>
+
+<#include "quotes.ftlh">
+
+<#include "gallery.ftlh">
+
+<#include "log.ftlh">
+
+<#include "contact.ftlh">
+
+<#include "footer.ftlh">
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+</html>

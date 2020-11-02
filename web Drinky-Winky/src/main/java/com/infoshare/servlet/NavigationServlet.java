@@ -15,7 +15,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/NavigationServlet")
+@WebServlet("/Navigation-servlet")
 public class NavigationServlet extends HttpServlet {
 
     @Inject

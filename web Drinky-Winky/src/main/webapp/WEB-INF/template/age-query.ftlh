@@ -17,7 +17,7 @@
         <h2 class="main-subtitle">ENTRY 18+</h2>
 
 
-        <form method="get" action="StartServlet">
+        <form method="get" action="Start-servlet">
 
             <div style="display: flex; flex-direction: row;">
                 <input style="margin: auto; display: block; float: none;" class="btn btn-solid" type="submit"

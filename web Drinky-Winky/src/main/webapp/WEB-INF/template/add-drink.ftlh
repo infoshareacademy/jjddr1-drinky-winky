@@ -21,7 +21,7 @@
 
         <figure>
 
-            <form method="post" action="NewDrinkServlet" id="mySelect">
+            <form method="post" action="New-drink" id="mySelect">
 
                 <fieldset>
 
