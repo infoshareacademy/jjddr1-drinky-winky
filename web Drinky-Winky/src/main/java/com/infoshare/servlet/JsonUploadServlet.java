@@ -26,8 +26,8 @@ public class JsonUploadServlet extends HttpServlet {
     Logger logger = LoggerFactory.getLogger(com.infoshareacademy.servlet.JsonUploadServlet.class);
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Part jsonFile = req.getPart("drinks");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Part jsonFile = request.getPart("drinks");
         String fileUrl = "";
         try {
             fileUrl = "/drinks/" + fileDataHandler.dataUploadHandler(jsonFile);
@@ -36,9 +36,9 @@ public class JsonUploadServlet extends HttpServlet {
         }
         Drink drink = new Drink();
         drink.setImageUrl(fileUrl);
-        resp.getWriter().println("File successful uploaded!");
-    }
 
+        response.sendRedirect("Admin");
+    }
 }
 
 

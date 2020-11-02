@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.service.CategoryService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,18 +21,21 @@ public class AdminServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
+    @Inject
+    CategoryService categoryService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        Map<String, Object> root = new HashMap<>();
+        root.put("categories", categoryService.getCategoriesList());
+
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
+        Writer out = response.getWriter();
 
-        Map<String, Object> dataModel = new HashMap<>();
-
-        PrintWriter writer = response.getWriter();
         try {
-            template.process(dataModel, writer);
+            template.process(root, out);
         } catch (TemplateException e) {
             e.printStackTrace();
         }
