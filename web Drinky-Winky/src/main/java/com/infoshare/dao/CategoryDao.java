@@ -38,5 +38,16 @@ public class CategoryDao {
         query.setParameter("name", name);
         return (Category) query.getResultList().stream().findFirst().orElse(null);
     }
+
+    public String[] getCategoryIds() {
+        Query query = entityManager.createNamedQuery("Category.getCategoryIds");
+
+        List<Long> ListaIds = query.getResultList();
+        String[] tablica = new String[ListaIds.size()];
+        for (int i = 0; i < ListaIds.size(); i++) {
+            tablica[i] = ListaIds.get(i).toString();
+        }
+        return tablica;
+    }
 }
 

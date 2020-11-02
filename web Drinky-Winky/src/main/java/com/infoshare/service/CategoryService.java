@@ -40,4 +40,8 @@ public class CategoryService {
         return categoryDao.findCategoryByName(name);
     }
 
+    public String[] getCategoryIds() {
+        return categoryDao.getCategoryIds();
+    }
+
 }
