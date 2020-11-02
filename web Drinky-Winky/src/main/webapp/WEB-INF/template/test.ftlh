@@ -5,14 +5,14 @@
 </head>
 <body>
 <#list drinks>
-    <#items as drinks>
-        <p> ${drinks.name}</p>
+    <#items as drink>
+        <p> ${drink.name}</p>
 
     </#items>
 </#list>
 <#list categories>All categories
-    <#items as categories>
-        <p>${categories.name}</p>
+    <#items as categorie>
+        <p>${categorie.name}</p>
     </#items>
 </#list>
 All checked recipies and ingredients

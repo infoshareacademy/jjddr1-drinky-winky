@@ -62,10 +62,10 @@ public class CheckingBaseServlet extends HttpServlet {
         List<Drink> drinkListPerPage = startingPageService.getDrinksPerPage(pageNo, checkedCategoriesAndIngredient);
         Integer lastPageNumber = startingPageService.getLastNumberPage(checkedCategoriesAndIngredient);
 
-        Template template = templateProvider.getTemplate((getServletContext()), "index.ftlh");
+        Template template = templateProvider.getTemplate((getServletContext()), "test.ftlh");
         Map<String, Object> model = new HashMap<>();
         if (drinkList != null || drinkList.isEmpty() || categoriesList != null || categoriesList.isEmpty() || checkedCategoriesAndIngredient != null || checkedCategoriesAndIngredient.isEmpty()) {
-            model.put("drinkListPerPage", drinkListPerPage);
+            model.put("drinks", drinkListPerPage);
             model.put("pageNumber", pageNo);
             model.put("lastPageNumber", lastPageNumber);
             model.put("categoryList", categoriesList);
