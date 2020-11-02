@@ -11,15 +11,19 @@ import java.util.List;
                 name = "Drink.getDrinkList",
                 query = "SELECT r FROM Drink r"),
         @NamedQuery(
+                name = Drink.GET_RECIPE_BY_CATEGORY,
+                query = "SELECT r FROM Drink r where r.category IN :categories order by r.name ASC "
+        ),
+        @NamedQuery(
                 name = Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT,
-                query = "SELECT r.name FROM Drink r  JOIN r.ingredientList i WHERE r.category IN :categories AND  (i.name IN (:names))")
+                query = "SELECT r FROM Drink r JOIN r.ingredientList i WHERE r.category IN :categories AND ( i.name IN :ingredients) GROUP BY r HAVING COUNT(distinct i.name)=:namesLenght order by r.name ASC ")
 })
 
 
 @Entity
 @Table
 public class Drink {
-
+    public static final String GET_RECIPE_BY_CATEGORY = "Drink.findDrinkByCategory";
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
 
     @Id
@@ -27,7 +31,7 @@ public class Drink {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name", unique = true, length = 100)
     @NotNull
     private String name;
 

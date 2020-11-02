@@ -1,12 +1,8 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.DrinkDao;
-import com.infoshare.dto.CategoryDto;
 import com.infoshare.dto.DrinkDTO;
-import com.infoshare.dto.IngredientDTO;
-import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
-import com.infoshare.model.Ingredient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +23,8 @@ public class DrinkService {
 
     public void addDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.addDrink(drink); }
+        drinkDao.addDrink(drink);
+    }
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
