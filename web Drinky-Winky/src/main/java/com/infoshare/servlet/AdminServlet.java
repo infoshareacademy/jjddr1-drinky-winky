@@ -15,22 +15,24 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/admin")
+@WebServlet("/Admin")
 public class AdminServlet extends HttpServlet {
+
     @Inject
     TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
 
         Map<String, Object> dataModel = new HashMap<>();
 
         PrintWriter writer = response.getWriter();
-        try{
+        try {
             template.process(dataModel, writer);
-        }catch ( TemplateException e) {
+        } catch (TemplateException e) {
             e.printStackTrace();
         }
     }

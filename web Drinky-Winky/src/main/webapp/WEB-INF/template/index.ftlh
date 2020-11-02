@@ -25,6 +25,10 @@
             <input type="submit" name="navigator" value="add-drink"/>
             </form>
 
+            <form method="get" action="NavigationServlet">
+                <input type="submit" name="navigator" value="admin"/>
+            </form>
+
             <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
