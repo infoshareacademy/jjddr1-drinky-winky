@@ -24,7 +24,7 @@ public class IngredientMapper {
             ingredient.setMeasure(i.getValue());
             ingredients.add(ingredient);
         });
-        logger.info("Ingredients are added.");
+        logger.info("Ingredients " + drinkAPI.toString()+ " added.");
         return ingredients;
 
     }

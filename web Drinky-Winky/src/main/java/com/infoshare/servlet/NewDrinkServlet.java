@@ -2,8 +2,8 @@ package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
-import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
+import com.infoshare.service.DrinkDeserializer;
 import com.infoshare.service.DrinkService;
 
 import javax.inject.Inject;
@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +34,9 @@ public class NewDrinkServlet extends HttpServlet {
         String recipe = request.getParameter("recipe");
         String drinkType = request.getParameter("drinkType");
         String glassType = request.getParameter("glassType");
-        String modificationDate = LocalDate.now().toString();
+        String modificationDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME).toString();
         String imageUrl = request.getParameter("imageUrl");
-
         String category = request.getParameter("category");
-
         String ingredient = request.getParameter("ingredient");
         String measure = request.getParameter("measure");
 
