@@ -22,7 +22,7 @@ import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-@WebServlet("/drinks")
+@WebServlet("/Drinks")
 public class CheckingBaseServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(CheckingBaseServlet.class.getName());
     @Inject

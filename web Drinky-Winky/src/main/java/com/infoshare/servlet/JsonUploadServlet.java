@@ -18,7 +18,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 
 @MultipartConfig
-@WebServlet("/json-upload")
+@WebServlet("/Json-upload")
 public class JsonUploadServlet extends HttpServlet {
 
     @Inject

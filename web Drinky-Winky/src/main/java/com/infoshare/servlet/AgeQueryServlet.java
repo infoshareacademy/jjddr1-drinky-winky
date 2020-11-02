@@ -15,8 +15,8 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/StartServlet")
-public class StartServlet extends HttpServlet {
+@WebServlet("/AgeQueryServlet")
+public class AgeQueryServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
@@ -26,17 +26,13 @@ public class StartServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
 
-        if (request.getParameter("save").equals("YES")) {
-            Template template = templateProvider.getTemplate(getServletContext(), "index.ftlh");
-            Writer out = response.getWriter();
+        Template template = templateProvider.getTemplate(getServletContext(), "age-query.ftlh");
+        Writer out = response.getWriter();
 
-            try {
-                template.process(root, out);
-            } catch (TemplateException e) {
-                e.printStackTrace();
-            }
-        } else {
-            response.sendRedirect("/SayGoodbyeServlet");
+        try {
+            template.process(root, out);
+        } catch (TemplateException e) {
+            e.printStackTrace();
         }
     }
 }

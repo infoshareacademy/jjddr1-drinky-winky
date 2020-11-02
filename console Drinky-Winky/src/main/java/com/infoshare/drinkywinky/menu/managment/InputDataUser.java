@@ -24,10 +24,23 @@ public class InputDataUser {
     private static String recipe;
     private static String glass;
 
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/InputDataUser.java
+    /**
+     * User input from scanner all data needed to add a new drink to list.
+     */
+    public static void scannerInputFromUser() {
+=======
+=======
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
     InputDataUser() {
     }
 
     public static void scannerInput() {
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+>>>>>>> dde148f55ee45f71fe5c3e21a924e3b8866f135b:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+=======
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
         STDOUT.info("Enter drink NAME: \n");
         name = SCANNER.nextLine();
         STDOUT.info("Enter CATEGORIES of a drink: \n");
@@ -42,14 +55,32 @@ public class InputDataUser {
     }
 
     /**
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/InputDataUser.java
+     * @param userIngredients names of ingredients
+     * @return list containing the names of the ingredients
+=======
      * @param userIngredients names of ingredients separate with coma
+>>>>>>> dde148f55ee45f71fe5c3e21a924e3b8866f135b:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+=======
+     * @param userIngredients names of ingredients separate with coma
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
      */
     private static void addIngredients(String userIngredients) {
         INGREDIENTS.add(userIngredients);
     }
 
     /**
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/InputDataUser.java
+     * @param userMeasures names of measures
+     * @return list containing the value of measures
+=======
      * @param userMeasures names of measures separate with coma
+>>>>>>> dde148f55ee45f71fe5c3e21a924e3b8866f135b:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+=======
+     * @param userMeasures names of measures separate with coma
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
      */
     private static void addMeasures(String userMeasures) {
         MEASURES.add(userMeasures);
@@ -63,6 +94,20 @@ public class InputDataUser {
             alcoholic = "No-Alcoholic";
     }
 
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/InputDataUser.java
+    /**
+     * Method which allows user to input ingredients from scanner
+     * and concat it with measure from measureInputFromUser().
+     * Method exits with isAlcoholic()
+     */
+    private static void ingredientInputFromUser() {
+        STDOUT.info("Enter an ingredient and press Enter." +
+                    "\nIf you're finished press Enter to quit.\n");
+        userInput = SCANNER.nextLine();
+=======
+=======
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
     private static void addDrink() {
         Repository.getInstance()
                 .add(new Drink(
@@ -81,6 +126,10 @@ public class InputDataUser {
         STDOUT.info("Enter an ingredient and press Enter." +
                 "\n --> If you're finished press Enter to quit  <-- \n");
         String userInput = SCANNER.nextLine();
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+>>>>>>> dde148f55ee45f71fe5c3e21a924e3b8866f135b:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+=======
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
         if (userInput.equalsIgnoreCase("")) {
             isAlcoholic();
         } else {
@@ -89,9 +138,25 @@ public class InputDataUser {
         }
     }
 
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+<<<<<<< HEAD:src/main/java/com/infoshare/drinkywinky/menu/InputDataUser.java
+    /**
+     * Method which allows user to input measure from scanner
+     * and concat it with ingredient from ingredientInputFromUser().
+     */
+    private static void measureInputFromUser() {
+        STDOUT.info("Enter a measurement. " +
+                    "If you're finished press Enter to input next ingredient.\n");
+=======
     private static void measureInput() {
         STDOUT.info("Enter a measurement and press Enter." +
                 "\n -->  If you're finished press Enter to quit  <-- \n");
+>>>>>>> dde148f55ee45f71fe5c3e21a924e3b8866f135b:src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
+=======
+    private static void measureInput() {
+        STDOUT.info("Enter a measurement and press Enter." +
+                "\n -->  If you're finished press Enter to quit  <-- \n");
+>>>>>>> 87c6f0d8d4025ef20557e4df0b9fb3d20acb5275:console Drinky-Winky/src/main/java/com/infoshare/drinkywinky/menu/managment/InputDataUser.java
         if (SCANNER.hasNextLine()) {
             addMeasures(SCANNER.nextLine());
         }

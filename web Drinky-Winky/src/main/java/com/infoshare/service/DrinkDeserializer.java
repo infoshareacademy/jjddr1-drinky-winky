@@ -73,7 +73,7 @@ public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
         return drinkApi;
     }
 
-    private String getNewDatePattern() throws IOException {
+    public String getNewDatePattern() throws IOException {
         Properties settings = new Properties();
         settings.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(SETTINGS_FILE_NAME)).openStream());
         String dateFormat = settings.getProperty(DATE_FORMAT);

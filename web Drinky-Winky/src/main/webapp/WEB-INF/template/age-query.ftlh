@@ -2,9 +2,9 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Start</title>
+    <title>Age-Query</title>
 
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <#include "css.ftlh">
 
 </head>
 <body>
