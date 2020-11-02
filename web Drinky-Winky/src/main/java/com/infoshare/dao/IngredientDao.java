@@ -54,8 +54,18 @@ public class IngredientDao {
         return (Ingredient) query.getSingleResult();
     }
 
-    public List<String> getIngredientsList() {
+    public List<Ingredient> getIngredientsList() {
         Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
         return query.getResultList();
+    }
+
+    public String[] getIngredientListName() {
+        Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
+        List<String> lista = query.getResultList();
+        String[] tab1 = new String[lista.size()];
+        for (int i = 0; i < lista.size() ; i++) {
+            tab1[i] = lista.get(i);
+        }
+        return tab1;
     }
 }

@@ -21,5 +21,10 @@ All checked recipies and ingredients
         <p>${checkedCategoriesAndIngredients}</p>
     </#items>
 </#list>
+<#list ingredientList>Ingredients
+    <#items as ingredient>
+        <p>${ingredient.name}</p>
+    </#items>
+</#list>
 </body>
 </html>
