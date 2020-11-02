@@ -61,5 +61,7 @@ public class NewDrinkServlet extends HttpServlet {
         drinkDTO.setIngredientList(ingredientList);
 
         drinkService.addDrink(drinkDTO);
+
+        response.sendRedirect("Admin");
     }
 }

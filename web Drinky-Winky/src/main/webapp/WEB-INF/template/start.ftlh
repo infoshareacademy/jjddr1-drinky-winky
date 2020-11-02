@@ -20,11 +20,10 @@
             <li><a href="#gallery">Galeria</a></li>
             <li><a href="#contact">Kontakt</a></li>
 
-            <form method="get" action="NavigationServlet">
+            <form method="get" action="Navigation-servlet">
                 <input type="submit" name="navigator" value="admin"/>
             </form>
 
-            <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
         </ul>
@@ -64,8 +63,6 @@
 <#include "quotes.ftlh">
 
 <#include "gallery.ftlh">
-
-<#include "log.ftlh">
 
 <#include "contact.ftlh">
 

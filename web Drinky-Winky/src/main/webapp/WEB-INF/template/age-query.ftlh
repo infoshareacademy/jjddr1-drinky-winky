@@ -16,14 +16,13 @@
         <h1 class="main-title">THE SITE CONTAINS CONTENT FOR PEOPLE OVER 18+</h1>
         <h2 class="main-subtitle">ENTRY 18+</h2>
 
-
-        <form method="get" action="Start-servlet">
+        <form method="get" action="Adult-check">
 
             <div style="display: flex; flex-direction: row;">
-                <input style="margin: auto; display: block; float: none;" class="btn btn-solid" type="submit"
-                       name="save" value="YES"/>
-                <input style="margin: auto; display: block; float: none;" class="btn btn-solid" type="submit"
-                       name="save" value="NO"/>
+                <input src="Start" style="margin: auto; display: block; float: none;" class="btn btn-solid" type="submit"
+                       name="age" value="18+"/>
+                <input src="Say-goodbye" style="margin: auto; display: block; float: none;" class="btn btn-solid" type="submit"
+                       name="age" value="NO"/>
             </div>
 
         </form>
