@@ -54,7 +54,17 @@ public class DrinkDao {
         return query.getResultList();
     }
 
-    public List<String> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
+    public List<Drink> findDrinkByCategoryId(List<Long> ids) {
+        Query query = entityManager.createNamedQuery("Category.findCategoryById");
+        query.setParameter("ids", ids);
+        List<Category> categories = query.getResultList();
+
+        Query recipeQuery = entityManager.createNamedQuery(Drink.GET_RECIPE_BY_CATEGORY);
+        recipeQuery.setParameter("categories", categories);
+        return recipeQuery.getResultList();
+    }
+
+    public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
 
         Query query = entityManager.createNamedQuery("Category.findCategoryById");
         query.setParameter("ids", ids);
@@ -62,11 +72,12 @@ public class DrinkDao {
         Query queryIngredient = entityManager.createNamedQuery("Ingredient.findIngredientByName");
         queryIngredient.setParameter("names", names);
         List<Ingredient> ingredients = queryIngredient.getResultList();
+        long namesLenght = (names).size();
 
         Query drinkQuery = entityManager.createQuery(Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT);
         drinkQuery.setParameter("categories", categories);
         drinkQuery.setParameter("names", names);
-
+        drinkQuery.setParameter("namesLength", namesLenght);
         return drinkQuery.getResultList();
     }
 

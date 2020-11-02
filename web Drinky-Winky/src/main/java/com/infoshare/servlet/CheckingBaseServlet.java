@@ -45,14 +45,24 @@ public class CheckingBaseServlet extends HttpServlet {
         List<String> checkedListOptions = Optional.ofNullable(Arrays.asList(request.getParameterValues("listOptions[]"))).orElse(Arrays.asList("emptyString"));
 
         Integer pageNo = Integer.parseInt(pageNumber);
-        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo);
+        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getRecipesList());
         List<Drink> allDrinks = startingPageService.getDrinkByFilterOption(checkedListOptions.get(0));
         List<Category> categoriesList = categoryService.getCategoriesList();
-        Integer lastPageNumber = startingPageService.getLastNumberPage(allDrinks);
+
         List<String> ingredientList = ingredientService.getIngredientsList();
         List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s -> Long.parseLong(s)).collect(Collectors.toList());
-        List<String> checkedCategoriesAndIngredient = drinkService.findDrinkByCategoryIdAndIngredient(paredToLongCategoriesList, checkedIngredientsList);
+        List<Drink> checkedCategoriesAndIngredient;
+        if ( checkedIngredientsList.size() == 0 || checkedIngredientsList == null || checkedIngredientsList.isEmpty()) {
+            checkedCategoriesAndIngredient = drinkService.findRecipeByCategoryId(paredToLongCategoriesList);
+        } else {
+            checkedCategoriesAndIngredient = drinkService.findDrinkByCategoryIdAndIngredient(paredToLongCategoriesList, checkedIngredientsList);
+        }
 
+        List<Drink> drinkListPerPage = startingPageService.getDrinksPerPage(pageNo,checkedCategoriesAndIngredient);
+        Integer lastPageNumber = startingPageService.getLastNumberPage(checkedCategoriesAndIngredient);
 
+        Template template = templateProvider.getTemplate((getServletContext()), "index.ftlh");
+        Map<String,Object> model = new HashMap<>();
+        if ( drinkList != null || drinkList.isEmpty() || categoriesList != null, categoriesList.isEmpty(), checkedCategoriesAndIngredient != null, checkedCategoriesAndIngredient.isEmpty(), )
     }
 }

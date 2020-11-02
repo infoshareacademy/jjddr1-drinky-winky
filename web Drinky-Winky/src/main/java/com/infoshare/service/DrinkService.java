@@ -48,7 +48,11 @@ public class DrinkService {
         return drinkDao.getDrinkList();
     }
 
-    public List<String> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
+    public List<Drink> findRecipeByCategoryId(List<Long> ids) {
+        return drinkDao.findDrinkByCategoryId(ids);
+    }
+
+    public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
     }
 }
