@@ -55,12 +55,30 @@
 
 
                     Name: <input type="text" name="name" required/><br/>
-                    Category: <input type="text" name="category" required/><br/>
+
+                    <label for="category-choice">Category: <input list="categories" id="category-choice" type="text"
+                                                                  name="category" required/><br/></label>
+
+                    <datalist id="categories">
+                        <#if categories??>
+                            <#list categories>
+                                <ul>
+                                    <#items as category>
+                                    <option value="${category.getName()}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
+
                     Glass: <input type="text" name="glassType" required/><br/>
                     <label> Image <input type="url" name="imageUrl" required/><br/></label>
                     Alcoholic:
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic" required> No </label>
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required> Yes </label>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic" required> No
+                    </label>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required> Yes
+                    </label>
                     <br/>
 
                     Recipe: <textarea type="text" name="recipe"

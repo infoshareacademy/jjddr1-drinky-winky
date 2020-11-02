@@ -6,7 +6,6 @@
             <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
             <li><a href="Age-query">Age query</a></li>
             <li><a href="Start">Start</a></li>
-            <li><a href="Category-list">Category</a></li>
 
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
