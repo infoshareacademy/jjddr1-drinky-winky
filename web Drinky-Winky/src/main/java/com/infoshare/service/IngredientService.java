@@ -49,7 +49,7 @@ public class IngredientService {
         return ingredientDao.findIngredient(name);
     }
 
-    public List<String> getIngredientsList() {
+    public List<Ingredient> getIngredientsList() {
         return ingredientDao.getIngredientsList();
     }
 }

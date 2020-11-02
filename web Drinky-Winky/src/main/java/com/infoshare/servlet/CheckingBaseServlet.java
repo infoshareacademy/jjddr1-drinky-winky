@@ -3,6 +3,7 @@ package com.infoshare.servlet;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
+import com.infoshare.model.Ingredient;
 import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.IngredientService;
@@ -50,7 +51,7 @@ public class CheckingBaseServlet extends HttpServlet {
         List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getRecipesList());
         List<Category> categoriesList = categoryService.getCategoriesList();
 
-        List<String> ingredientList = ingredientService.getIngredientsList();
+        List<Ingredient> ingredientList = ingredientService.getIngredientsList();
         List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s -> Long.parseLong(s)).collect(Collectors.toList());
         List<Drink> checkedCategoriesAndIngredient;
         if (checkedIngredientsList.size() == 0 || checkedIngredientsList == null || checkedIngredientsList.isEmpty()) {

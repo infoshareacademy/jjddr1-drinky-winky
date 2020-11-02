@@ -2,6 +2,8 @@ package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.CategoryService;
+import com.infoshare.service.DrinkService;
+import com.infoshare.service.IngredientService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -23,13 +25,20 @@ public class AdminServlet extends HttpServlet {
     TemplateProvider templateProvider;
     @Inject
     CategoryService categoryService;
+    @Inject
+    DrinkService drinkService;
+    @Inject
+    IngredientService ingredientService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
+        root.put("names", drinkService.getRecipesList());
         root.put("categories", categoryService.getCategoriesList());
+        root.put("glasses", drinkService.getRecipesList());
+        root.put("ingredients",ingredientService.getIngredientsList());
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
         Writer out = response.getWriter();

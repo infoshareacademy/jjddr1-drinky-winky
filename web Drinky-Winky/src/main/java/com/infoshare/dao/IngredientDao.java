@@ -1,9 +1,6 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.IngredientDTO;
-import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
-import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -54,7 +51,7 @@ public class IngredientDao {
         return (Ingredient) query.getSingleResult();
     }
 
-    public List<String> getIngredientsList() {
+    public List<Ingredient> getIngredientsList() {
         Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
         return query.getResultList();
     }
