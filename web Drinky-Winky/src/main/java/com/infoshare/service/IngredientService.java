@@ -2,9 +2,7 @@ package com.infoshare.service;
 
 import com.infoshare.dao.IngredientDao;
 import com.infoshare.dto.IngredientDTO;
-import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
-import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
