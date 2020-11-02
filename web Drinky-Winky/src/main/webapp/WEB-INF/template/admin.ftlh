@@ -54,17 +54,17 @@
                     <legend> Fill all fields</legend>
 
 
-                    Name: <input type="text" name="name"/><br/>
-                    Category: <input type="text" name="category"/><br/>
-                    Glass: <input type="text" name="glassType"/><br/>
-                    <label> Image <input type="text" name="imageUrl"/><br/></label>
+                    Name: <input type="text" name="name" required/><br/>
+                    Category: <input type="text" name="category" required/><br/>
+                    Glass: <input type="text" name="glassType" required/><br/>
+                    <label> Image <input type="url" name="imageUrl" required/><br/></label>
                     Alcoholic:
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic"> No </label>
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic"> Yes </label>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic" required> No </label>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required> Yes </label>
                     <br/>
 
                     Recipe: <textarea type="text" name="recipe"
-                                      style="width: 185px; height: 120px; float: right"></textarea><br/>
+                                      style="width: 185px; height: 120px; float: right" required></textarea><br/>
 
 
                     <table>
@@ -73,8 +73,8 @@
                             <td>Measures</td>
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input type="text" name="ingredient" ng-model="item.ingredient"></td>
-                            <td><input type="text" name="measure" ng-model="item.measure"></td>
+                            <td><input type="text" name="ingredient" ng-model="item.ingredient" required></td>
+                            <td><input type="text" name="measure" ng-model="item.measure" required></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
                             </td>
