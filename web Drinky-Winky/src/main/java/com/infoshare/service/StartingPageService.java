@@ -14,7 +14,7 @@ public class  StartingPageService {
     DrinkService drinkService;
 
     public List<Drink> getDrinksPerPage(int pageNumber, List<Drink> filterList) {
-        int pageSize = 7;
+        int pageSize = 25;
 
         if (pageSize <= 0 || pageNumber <= 0) {
             throw new IllegalArgumentException("Invalid page size : " + pageSize);
