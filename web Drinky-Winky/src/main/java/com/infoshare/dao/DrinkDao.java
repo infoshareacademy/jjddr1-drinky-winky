@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 
@@ -35,7 +36,9 @@ public class DrinkDao {
     }
 
     public Drink getDrinkByName(String name) {
-        return entityManager.find(Drink.class, name);
+        Query query = entityManager.createQuery("SELECT r FROM Drink r WHERE r.name = :name ", Drink.class);
+        query.setParameter("name", name);
+        return (Drink) query.getSingleResult();
     }
 
     public Drink getDrinkById(Long id) {
@@ -44,6 +47,13 @@ public class DrinkDao {
 
     public void deleteRecipeById(Long id) {
         Drink drink = getDrinkById(id);
+        if (drink != null) {
+            entityManager.remove(drink);
+        }
+    }
+
+    public void deleteRecipeByName(String name) {
+        Drink drink = getDrinkByName(name);
         if (drink != null) {
             entityManager.remove(drink);
         }
@@ -81,7 +91,7 @@ public class DrinkDao {
         return drinkQuery.getResultList();
     }
 
-    }
+}
 
 //      if (drinkToUpdate != null) {
 //              drinkToUpdate.setName(drinkDTO.getName());

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RequestScoped
@@ -31,8 +32,13 @@ public class DrinkService {
         DrinkDTO.drinkToDTO(drink);
     }
 
-    public Drink getDrinkByName(String name) {
-        return drinkDao.getDrinkByName(name);
+    @Transactional
+    public DrinkDTO getDrinkByName(String name) {
+        Drink drinkByName = drinkDao.getDrinkByName(name);
+        if (drinkByName != null) {
+            return DrinkDTO.drinkToDTO(drinkByName);
+        }
+        return null;
     }
 
     public Drink getDrinkById(Long id) {
@@ -41,7 +47,13 @@ public class DrinkService {
 
     public void deleteRecipeById(Long id) {
         drinkDao.deleteRecipeById(id);
-        logger.info("Category has been deleted");
+        logger.info("Drink has been deleted");
+    }
+
+    @Transactional
+    public void deleteRecipeByName(String name) {
+        drinkDao.deleteRecipeByName(name);
+        logger.info("Drink has been deleted");
     }
 
     public List<Drink> getRecipesList() {

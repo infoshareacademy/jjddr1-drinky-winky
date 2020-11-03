@@ -48,7 +48,7 @@ public class User {
     @NotNull
     private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_favourite_recipe",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

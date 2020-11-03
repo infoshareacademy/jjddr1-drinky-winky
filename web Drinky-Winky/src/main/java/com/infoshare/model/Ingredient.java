@@ -31,7 +31,7 @@ public class Ingredient {
     @NotNull
     private String measure;
 
-    @ManyToMany(mappedBy = "ingredientList")
+    @ManyToMany(mappedBy = "ingredientList", fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {
