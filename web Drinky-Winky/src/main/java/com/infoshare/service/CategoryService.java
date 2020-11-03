@@ -10,6 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestScoped
 public class CategoryService {
@@ -33,8 +34,12 @@ public class CategoryService {
         return categoryDao.getCategoryById(id);
     }
 
-    public List<Category> getCategoriesList() {
-        return categoryDao.getCategoriesList();
+    @Transactional
+    public List<CategoryDto> getCategoriesList() {
+        return categoryDao.getCategoriesList()
+                .stream()
+                .map(CategoryDto::categoryToDto)
+                .collect(Collectors.toList());
     }
 
     @Transactional

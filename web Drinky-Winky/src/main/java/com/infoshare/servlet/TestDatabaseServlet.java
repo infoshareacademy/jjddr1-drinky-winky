@@ -24,11 +24,11 @@ public class TestDatabaseServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DrinkDTO bora_bora = drinkService.getDrinkByName("Bora Bora");
-        List<Drink> recipesList = drinkService.getDrinkList();
+        List<DrinkDTO> recipesList = drinkService.getDrinkList();
         DrinkDTO drinkById = drinkService.getDrinkById(4l);
 
-        List<Drink> bijou = recipesList.stream().filter(drink -> drink.getName().equals("Bijou")).collect(Collectors.toList());
-        Drink dryn = bijou.get(0);
+        List<DrinkDTO> bijou = recipesList.stream().filter(drink -> drink.getName().equals("Bijou")).collect(Collectors.toList());
+        DrinkDTO dryn = bijou.get(0);
         drinkService.deleteDrinkById(dryn.getId());
 
 

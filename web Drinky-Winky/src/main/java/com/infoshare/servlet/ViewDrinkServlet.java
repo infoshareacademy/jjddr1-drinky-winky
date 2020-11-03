@@ -1,5 +1,6 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
@@ -32,9 +33,9 @@ public class ViewDrinkServlet extends HttpServlet {
         Map<String, Object> root = new HashMap<>();
         root.put("names", drinkService.getDrinkList());
 
-        List<Drink> recipesList = drinkService.getDrinkList();
+        List<DrinkDTO> recipesList = drinkService.getDrinkList();
 
-        for(Drink drink:recipesList){
+        for(DrinkDTO drink:recipesList){
             root.put("ing",drink.getIngredientList());
         }
 

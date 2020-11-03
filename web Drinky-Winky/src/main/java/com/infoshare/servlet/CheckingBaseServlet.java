@@ -1,5 +1,8 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.CategoryDto;
+import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.IngredientDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
@@ -47,10 +50,10 @@ public class CheckingBaseServlet extends HttpServlet {
         List<String> checkedIngredientsList = Arrays.asList(getParamterersList(request, "ingredients[]", new String[]{}));
 
         Integer pageNo = Integer.parseInt(pageNumber.get(0));
-        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getDrinkList());
-        List<Category> categoriesList = categoryService.getCategoriesList();
+//        List<DrinkDTO> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getDrinkList());
+        List<CategoryDto> categoriesList = categoryService.getCategoriesList();
 
-        List<Ingredient> ingredientList = ingredientService.getIngredientsList();
+        List<IngredientDTO> ingredientList = ingredientService.getIngredientsList();
         List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s -> Long.parseLong(s)).collect(Collectors.toList());
         List<Drink> checkedCategoriesAndIngredient;
         if (checkedIngredientsList.size() == 0 || checkedIngredientsList == null || checkedIngredientsList.isEmpty()) {
@@ -64,15 +67,15 @@ public class CheckingBaseServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate((getServletContext()), "test.ftlh");
         Map<String, Object> model = new HashMap<>();
-        if (drinkList != null || drinkList.isEmpty() || categoriesList != null || categoriesList.isEmpty() || checkedCategoriesAndIngredient != null || checkedCategoriesAndIngredient.isEmpty()) {
-            model.put("drinks", drinkListPerPage);
-            model.put("pageNumber", pageNo);
-            model.put("lastPageNumber", lastPageNumber);
-            model.put("categoryList", categoriesList);
-            model.put("categoryListChecked", checkedCategoriesList);
-            model.put("ingredientList", ingredientList);
-            model.put("ingredientListChecked", checkedIngredientsList);
-        }
+//        if (drinkList != null || drinkList.isEmpty() || categoriesList != null || categoriesList.isEmpty() || checkedCategoriesAndIngredient != null || checkedCategoriesAndIngredient.isEmpty()) {
+//            model.put("drinks", drinkListPerPage);
+//            model.put("pageNumber", pageNo);
+//            model.put("lastPageNumber", lastPageNumber);
+//            model.put("categoryList", categoriesList);
+//            model.put("categoryListChecked", checkedCategoriesList);
+//            model.put("ingredientList", ingredientList);
+//            model.put("ingredientListChecked", checkedIngredientsList);
+//        }
         try {
             template.process(model, response.getWriter());
         } catch (TemplateException e) {

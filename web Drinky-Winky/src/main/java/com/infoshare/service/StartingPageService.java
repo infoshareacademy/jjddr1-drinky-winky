@@ -1,5 +1,6 @@
 package com.infoshare.service;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
 
 import javax.enterprise.context.RequestScoped;
@@ -31,8 +32,8 @@ public class  StartingPageService {
         return (drinkList.size() + pageSize - 1) / pageSize;
     }
 
-    public List<Drink> getDrinkByFilterOption(String filterOption) {
-        List<Drink> result = new ArrayList<>();
+    public List<DrinkDTO> getDrinkByFilterOption(String filterOption) {
+        List<DrinkDTO> result = new ArrayList<>();
         String allDrinks = "All Drinks";
         if (filterOption == allDrinks) {
             result = drinkService.getDrinkList();

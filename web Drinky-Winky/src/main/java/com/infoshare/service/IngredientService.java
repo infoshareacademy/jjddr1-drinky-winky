@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestScoped
 public class IngredientService {
@@ -20,7 +21,8 @@ public class IngredientService {
 
     public void addIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
-        ingredientDao.addIngredient(ingredient);   }
+        ingredientDao.addIngredient(ingredient);
+    }
 
     public void editIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
@@ -40,8 +42,11 @@ public class IngredientService {
         ingredientDao.deleteIngredientById(id);
     }
 
-    public List<Ingredient> getIngredientsList() {
-        return ingredientDao.getIngredientsList();
+    public List<IngredientDTO> getIngredientsList() {
+        return ingredientDao.getIngredientsList()
+                .stream()
+                .map(IngredientDTO::ingredientToDto)
+                .collect(Collectors.toList());
     }
 }
 
