@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
 
     <#include "css.ftlh">
@@ -24,12 +23,14 @@
                     <h2 class="text-primary">Drink:</h2>
                     <h3 class="text-danger">${drink.getName()}</h3>
                 </div>
+                <h6>Id: ${drink.getId()} </h6>
                 <br>
-                <h4>Autor: ${drink.getName()} </h4>
-                <h4>Epoka: ${drink.getName()} </h4>
-                <h4>Wersja audio: ${drink.getName()}</h4>
-                <h4>Rodzaj: ${drink.getName()}</h4>
-                <h4>Typ literatury: ${drink.getName()}</h4>
+<#--                <h4>Kategoria: ${drink.getCategory()} </h4>-->
+                <h4>Rodzaj: ${drink.getDrinkType()} </h4>
+                <h4>Szklanka: ${drink.getGlassType()} </h4>
+                <h4>Przepis: ${drink.getRecipe()} </h4>
+                <h4>Data modyfikacji: ${drink.getModificationDate()} </h4>
+                <h4>Photo URL: ${drink.getImageUrl()} </h4>
             </div>
         </div>
     </div>
