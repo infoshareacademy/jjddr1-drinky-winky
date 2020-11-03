@@ -19,22 +19,9 @@ public class RemoveDrinkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-//        String name = request.getParameter("name");
+        String name = request.getParameter("name");
 
-        drinkService.deleteDrinkById(1l);
-        drinkService.deleteDrinkById(5l);
-        drinkService.deleteDrinkById(10l);
-        drinkService.deleteDrinkById(15l);
-        drinkService.deleteDrinkById(20l);
-
-//        drinkService.deleteRecipeById(drinkService
-//                .getRecipesList()
-//                .stream()
-//                .filter(drink ->
-//                        drink.getName()
-//                                .equals(name))
-//                .collect(Collectors.toList())
-//                .get(0).getId());
+        drinkService.deleteDrinkByName(name);
 
         response.sendRedirect("Admin");
     }

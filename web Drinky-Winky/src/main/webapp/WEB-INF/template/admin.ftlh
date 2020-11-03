@@ -176,7 +176,7 @@
                 <fieldset>
                     <legend> Choose drink to remove </legend>
 
-                    <label for="names-choice">Name: <input list="names" id="names-choice" type="text" name="name"
+                    <label for="names-choice">Name: <br/><input list="names" id="names-choice" type="text" name="name"
                                                            required/><br/></label>
 
                     <datalist id="names">
@@ -192,7 +192,7 @@
                     </datalist>
 
                     <div class="upload-btn-wrapper">
-                        <input class="btn2" type="submit"/><br/><br/>
+                        <input class="btn2" type="submit" value="delete"/><br/><br/>
                     </div>
 
                 </fieldset>
