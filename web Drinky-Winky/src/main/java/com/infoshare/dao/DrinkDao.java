@@ -19,12 +19,6 @@ public class DrinkDao {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void loadDrink(List<Drink> drinkList) {
-        for (Drink drink : drinkList) {
-            entityManager.persist(drink);
-        }
-    }
-
     public Drink addDrink(Drink drink) {
         entityManager.persist(drink);
         return drink;
@@ -36,23 +30,23 @@ public class DrinkDao {
     }
 
     public Drink getDrinkByName(String name) {
-        Query query = entityManager.createQuery("SELECT r FROM Drink r WHERE r.name = :name ", Drink.class);
+        TypedQuery<Drink> query = entityManager.createNamedQuery(Drink.GET_DRINK_BY_NAME, Drink.class);
         query.setParameter("name", name);
-        return (Drink) query.getSingleResult();
+        return query.getSingleResult();
     }
 
     public Drink getDrinkById(Long id) {
         return entityManager.find(Drink.class, id);
     }
 
-    public void deleteRecipeById(Long id) {
+    public void deleteDrinkById(Long id) {
         Drink drink = getDrinkById(id);
         if (drink != null) {
             entityManager.remove(drink);
         }
     }
 
-    public void deleteRecipeByName(String name) {
+    public void deleteDrinkByName(String name) {
         Drink drink = getDrinkByName(name);
         if (drink != null) {
             entityManager.remove(drink);
@@ -60,7 +54,7 @@ public class DrinkDao {
     }
 
     public List<Drink> getDrinkList() {
-        Query query = entityManager.createNamedQuery("Drink.getDrinkList");
+        TypedQuery<Drink> query = entityManager.createNamedQuery(Drink.GET_DRINK_LIST, Drink.class);
         return query.getResultList();
     }
 

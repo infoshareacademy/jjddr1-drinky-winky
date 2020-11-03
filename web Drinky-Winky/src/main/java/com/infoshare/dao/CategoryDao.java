@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -29,18 +30,18 @@ public class CategoryDao {
     }
 
     public List<Category> getCategoriesList() {
-        Query query = entityManager.createNamedQuery("Category.getCategoryList");
-        return query.getResultList();
+        return entityManager.createNamedQuery(Category.GET_CATEGORY_LIST, Category.class).getResultList();
     }
 
+    //Daniel CHECK THIS
     public Category findCategoryByName(String name) {
-        Query query = entityManager.createNamedQuery("Category.findCategoryByName");
+        TypedQuery<Category> query = entityManager.createNamedQuery(Category.FIND_CATEGORY_BY_NAME, Category.class);
         query.setParameter("name", name);
-        return (Category) query.getResultList().stream().findFirst().orElse(null);
+        return query.getResultList().stream().findFirst().orElse(null);
     }
 
     public String[] getCategoryIds() {
-        Query query = entityManager.createNamedQuery("Category.getCategoryIds");
+        Query query = entityManager.createNamedQuery(Category.GET_CATEGORY_IDS);
 
         List<Long> ListaIds = query.getResultList();
         String[] tablica = new String[ListaIds.size()];

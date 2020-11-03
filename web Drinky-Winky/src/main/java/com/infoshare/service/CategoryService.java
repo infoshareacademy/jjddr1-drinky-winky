@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RequestScoped
@@ -36,6 +37,7 @@ public class CategoryService {
         return categoryDao.getCategoriesList();
     }
 
+    @Transactional
     public Category findCategoryByName(String name) {
         return categoryDao.findCategoryByName(name);
     }

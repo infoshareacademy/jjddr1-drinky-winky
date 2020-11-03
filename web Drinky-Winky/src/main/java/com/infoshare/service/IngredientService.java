@@ -18,11 +18,6 @@ public class IngredientService {
     @Inject
     private IngredientDao ingredientDao;
 
-    public void loadIngredient(List<Ingredient> ingredients) {
-        ingredientDao.loadIngredient(ingredients);
-        logger.info("List of has been loaded");
-    }
-
     public void addIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
         ingredientDao.addIngredient(ingredient);   }
@@ -43,10 +38,6 @@ public class IngredientService {
 
     public void deleteCategoryById(Long id) {
         ingredientDao.deleteIngredientById(id);
-    }
-
-    public Ingredient findIngredient(String name) {
-        return ingredientDao.findIngredient(name);
     }
 
     public List<Ingredient> getIngredientsList() {

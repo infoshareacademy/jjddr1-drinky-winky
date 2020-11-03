@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -48,7 +47,7 @@ public class CheckingBaseServlet extends HttpServlet {
         List<String> checkedIngredientsList = Arrays.asList(getParamterersList(request, "ingredients[]", new String[]{}));
 
         Integer pageNo = Integer.parseInt(pageNumber.get(0));
-        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getRecipesList());
+        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getDrinkList());
         List<Category> categoriesList = categoryService.getCategoriesList();
 
         List<Ingredient> ingredientList = ingredientService.getIngredientsList();

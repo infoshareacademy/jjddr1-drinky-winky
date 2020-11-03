@@ -30,9 +30,9 @@ public class ViewDrinkServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getRecipesList());
+        root.put("names", drinkService.getDrinkList());
 
-        List<Drink> recipesList = drinkService.getRecipesList();
+        List<Drink> recipesList = drinkService.getDrinkList();
 
         for(Drink drink:recipesList){
             root.put("ing",drink.getIngredientList());

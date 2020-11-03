@@ -35,7 +35,7 @@ public class  StartingPageService {
         List<Drink> result = new ArrayList<>();
         String allDrinks = "All Drinks";
         if (filterOption == allDrinks) {
-            result = drinkService.getRecipesList();
+            result = drinkService.getDrinkList();
         }
         return result;
     }
