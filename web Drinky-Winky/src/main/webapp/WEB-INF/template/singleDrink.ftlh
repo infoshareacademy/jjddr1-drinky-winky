@@ -15,9 +15,6 @@
 
     <div class="container">
         <div class="center-block">
-<#--            <div class="col-lg-4">-->
-<#--                <img src="${book.cover!}" class="img-fluid" alt="Okładka">-->
-<#--            </div>-->
             <div class="col-lg-8, text-left">
                 <div class="text-center">
                     <h2 class="text-primary">Drink:</h2>
@@ -30,7 +27,7 @@
                 <h4>Szklanka: ${drink.getGlassType()} </h4>
                 <h4>Przepis: ${drink.getRecipe()} </h4>
                 <h4>Data modyfikacji: ${drink.getModificationDate()} </h4>
-                <h4>Photo URL: ${drink.getImageUrl()} </h4>
+                <img src="${drink.getImageUrl()}" alt="Zdjecie drinka"/>
             </div>
         </div>
     </div>
