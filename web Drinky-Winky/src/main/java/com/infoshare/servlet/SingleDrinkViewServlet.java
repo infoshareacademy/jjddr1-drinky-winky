@@ -48,7 +48,7 @@ public class SingleDrinkViewServlet extends HttpServlet {
         drinkModel.put("ingredient",ingredientService.getIngredientById(id));
         drinkModel.put("ingrList",ingredientService.getIngredientsList().get(0));
 
-//        List<Ingredient> ingredientList = drinkService.getDrinkById(id).getIngredientList();
+//        List<Ingredient> ingredientList = drinkService.getDrinkById(id).getIngredientList();;
 
         Template template = templateProvider.getTemplate(getServletContext(),"singleDrink.ftlh");
 
