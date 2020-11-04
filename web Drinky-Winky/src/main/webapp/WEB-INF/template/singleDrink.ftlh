@@ -26,12 +26,13 @@
                 <h4>Rodzaj: ${drink.getDrinkType()} </h4>
                 <h4>Szklanka: ${drink.getGlassType()} </h4>
                 <h4>Przepis: ${drink.getRecipe()} </h4>
-                <h4>Przepis: ${ingredient.getName()} </h4>
-                <#list ingrList>
+                <h4>Skladniki:</h4>
+
+                <#list ingredients>
                     <ul>
-                        <#items as ingr>
+                        <#items as ing>
                             <li>
-                                <h4>${ingr.getName()}</h4>
+                                <h4>${ing.getName()} - ${ing.getMeasure()}</h4>
                             </li>
                         </#items>
                     </ul>
