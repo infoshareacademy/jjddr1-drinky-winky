@@ -8,38 +8,27 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-@Transactional
 @RequestScoped
 public class DrinkService {
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @EJB
     DrinkDao drinkDao;
-    @Inject
-    MessageService messageService;
 
-    public DrinkDTO addDrink(DrinkDTO drinkDTO) {
-        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
-            Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-            messageService.leaveMessage(1L, "Drink was added!");
-            return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
-        } else {
-            messageService.leaveMessage(1L, "Nothing has happened, please change name.");
-            return null;
-        }
+    public void addDrink(DrinkDTO drinkDTO) {
+        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+        drinkDao.addDrink(drink);
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.editDrink(drink);
-    }
+        drinkDao.editDrink(drink); }
 
+    @Transactional
     public DrinkDTO getDrinkByName(String name) {
         Drink drinkByName = drinkDao.getDrinkByName(name);
         if (drinkByName != null) {
@@ -48,6 +37,7 @@ public class DrinkService {
         return null;
     }
 
+    @Transactional
     public DrinkDTO getDrinkById(Long id) {
         Drink drinkById = drinkDao.getDrinkById(id);
         if (drinkById != null) {
@@ -56,13 +46,13 @@ public class DrinkService {
         return null;
     }
 
+    @Transactional
     public void deleteDrinkById(Long id) {
-        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
-            drinkDao.deleteDrinkById(id);
-            logger.info("Drink has been deleted");
-        }
+        drinkDao.deleteDrinkById(id);
+        logger.info("Drink has been deleted");
     }
 
+    @Transactional
     public void deleteDrinkByName(String name) {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
             drinkDao.deleteDrinkByName(name);
@@ -73,6 +63,7 @@ public class DrinkService {
         }
     }
 
+    @Transactional
     public List<DrinkDTO> getDrinkList() {
         return drinkDao.getDrinkList()
                 .stream()
@@ -105,4 +96,17 @@ public class DrinkService {
                 .collect(Collectors.toSet());
     }
 
+    public List<DrinkDTO> getDrinkByFirstTreeChars(String drinkSearch) {
+        if (drinkSearch != null) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO d : drinkList) {
+                if (d.getName().toLowerCase().startsWith(drinkSearch)) {
+                    found.add(d);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
 }
