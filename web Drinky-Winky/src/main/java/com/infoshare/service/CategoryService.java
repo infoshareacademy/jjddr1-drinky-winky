@@ -27,7 +27,7 @@ public class CategoryService {
 
     public void updateCategory(CategoryDto categoryDto) {
         Category category = CategoryDto.dtoToCategory(categoryDto);
-        CategoryDto.categoryToDto(category);
+        categoryDao.updateCategory(category);
     }
 
     public Category getCategoryById(Long id) {
@@ -38,7 +38,7 @@ public class CategoryService {
     public List<CategoryDto> getCategoriesList() {
         return categoryDao.getCategoriesList()
                 .stream()
-                .map(CategoryDto::categoryToDto)
+                .map(category -> CategoryDto.categoryToDto(category))
                 .collect(Collectors.toList());
     }
 

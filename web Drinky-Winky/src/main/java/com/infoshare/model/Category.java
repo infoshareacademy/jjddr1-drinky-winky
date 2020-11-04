@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @NamedQueries({
         @NamedQuery(
                 name = Category.FIND_CATEGORY_BY_NAME,

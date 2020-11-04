@@ -1,6 +1,6 @@
 <section class="quotes" id="quotes">
     <div class="container">
-        <h2 class="section-title">PRZEPISY</h2>
+        <h2 class="section-title">RECIPES</h2>
         <div class="quotes-wrapper">
             <article class="quote">
                 <blockquote>

@@ -26,8 +26,7 @@ public class DrinkService {
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        DrinkDTO.drinkToDTO(drink);
-    }
+        drinkDao.editDrink(drink); }
 
     @Transactional
     public DrinkDTO getDrinkByName(String name) {

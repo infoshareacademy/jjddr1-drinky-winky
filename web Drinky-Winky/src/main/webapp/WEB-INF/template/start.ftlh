@@ -14,11 +14,11 @@
 <nav class="navigation">
     <div class="container">
         <ul>
-            <li><a href="#about">O aplikacji</a></li>
-            <li><a href="#features">Drinki</a></li>
-            <li><a href="#quotes">Przepisy</a></li>
-            <li><a href="#gallery">Galeria</a></li>
-            <li><a href="#contact">Kontakt</a></li>
+            <li><a href="#about">About application</a></li>
+            <li><a href="#features">Drinks</a></li>
+            <li><a href="#quotes">Recipes</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contacts</a></li>
 
             <form method="get" action="Navigation-servlet">
                 <input type="submit" name="navigator" value="admin"/>
@@ -32,7 +32,7 @@
 
 <section class="splash">
     <div class="page-intro">
-        <h1 class="main-title">WITAJ W NASZEJ APLIKACJI</h1>
+        <h1 class="main-title">Welcome to our Drinks Library!</h1>
         <h2 class="main-subtitle">DRINKY-WINKY</h2>
         <a class="btn btn-solid" href="#about">CLICK ME</a>
     </div>
@@ -40,8 +40,11 @@
 
 <section class="about" id="about">
     <div class="container">
-        <h2 class="section-title">COŚ O DRINKY-WINKY</h2>
-        <p class="section-intro">Aplikacja powstała jako... bla bla bla...</p>
+        <h2 class="section-title">
+                                We're group of 5 guys with passion to programming and what you can see in the picture :D</h2>
+        <p class="section-intro">This App was created as a group project during java bootcamp.<br> It's purpose is to create
+                                an interactive drinks library with many functions.</br> In our search-engine you can choose
+                                from verity of recipes or even add your own.</p>
     </div>
 </section>
 
@@ -56,7 +59,7 @@
 
 <section class="statement">
     <div class="container">
-        <p>Chluśniem bo uśniem</p>
+        <p>Drink or not to drink.. that is the question</p>
     </div>
 </section>
 
