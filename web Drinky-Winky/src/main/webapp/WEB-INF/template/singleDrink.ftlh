@@ -26,8 +26,17 @@
                 <h4>Rodzaj: ${drink.getDrinkType()} </h4>
                 <h4>Szklanka: ${drink.getGlassType()} </h4>
                 <h4>Przepis: ${drink.getRecipe()} </h4>
-                <h4>Data modyfikacji: ${drink.getModificationDate()} </h4>
+<#--                <#list drink>-->
+<#--                    <ul>-->
+<#--                        <#items as ingr>-->
+<#--                            <li>-->
+<#--                                <h4>${ingr.getName()}</h4>-->
+<#--                            </li>-->
+<#--                        </#items>-->
+<#--                    </ul>-->
+<#--                </#list>-->
                 <img src="${drink.getImageUrl()}" alt="Zdjecie drinka"/>
+                <h4>Data modyfikacji: ${drink.getModificationDate()} </h4>
             </div>
         </div>
     </div>
