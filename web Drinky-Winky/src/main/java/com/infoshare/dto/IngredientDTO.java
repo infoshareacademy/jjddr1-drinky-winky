@@ -1,25 +1,18 @@
 package com.infoshare.dto;
 
-import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class IngredientDTO {
 
     private Long id;
     private String name;
     private String measure;
-    private List<Drink> drinkDTOS = new ArrayList<>();
 
     public static IngredientDTO ingredientToDto(Ingredient ingredient) {
         IngredientDTO ingredientDTO = new IngredientDTO();
         ingredientDTO.setId(ingredient.getId());
         ingredientDTO.setName(ingredient.getName());
         ingredientDTO.setMeasure(ingredient.getMeasure());
-        ingredientDTO.setDrinkDTOS(ingredient.getDrinkList());
         return ingredientDTO;
     }
 
@@ -54,7 +47,4 @@ public class IngredientDTO {
         this.name = name;
     }
 
-    public List<Drink> getDrinkDTOS() { return drinkDTOS; }
-
-    public void setDrinkDTOS(List<Drink> drinkDTOS) { this.drinkDTOS = drinkDTOS; }
 }
