@@ -32,7 +32,7 @@
 
 <section class="splash">
     <div class="page-intro">
-        <h1 class="main-title">Welcome to our application!</h1>
+        <h1 class="main-title">Welcome to our Drinks Library!</h1>
         <h2 class="main-subtitle">DRINKY-WINKY</h2>
         <a class="btn btn-solid" href="#about">CLICK ME</a>
     </div>
@@ -43,7 +43,7 @@
         <h2 class="section-title">
                                 We're group of 5 guys with passion to programming and what you can see in the picture :D</h2>
         <p class="section-intro">This App was created as a group project during java bootcamp.<br> It's purpose is to create
-                                an interactive drinks </br>library with many functions. In our search-engine you can choose
+                                an interactive drinks library with many functions.</br> In our search-engine you can choose
                                 from verity of recipes or even add your own.</p>
     </div>
 </section>
