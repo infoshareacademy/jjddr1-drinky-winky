@@ -7,16 +7,19 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
-                name = "User.findUserByName",
-                query = "SELECT u FROM User u WHERE u.name like :name"),
+                name = User.FIND_USER_BY_NAME ,
+                query = "SELECT distinct u FROM User u WHERE u.name like :name"),
         @NamedQuery(
-                name = "User.getUserList",
+                name = User.FIND_USER_LIST,
                 query = "SELECT u FROM User u")
 })
 
 @Entity
 @Table(name = "user")
 public class User {
+
+    public static final String FIND_USER_BY_NAME = "Drink.findDrinkByCategory";
+    public static final String FIND_USER_LIST = "Drink.findDrinkByCategory";
 
     @Id
     @Column(name = "id")
@@ -50,7 +53,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
 
-    private List<Drink> drinkList = new ArrayList<>();
+    private List<Drink> favouriteDrinkList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -100,12 +103,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Drink> getDrinkList() {
-        return drinkList;
+    public List<Drink> getFavouriteDrinkList() {
+        return favouriteDrinkList;
     }
 
-    public void setDrinkList(List<Drink> drinkList) {
-        this.drinkList = drinkList;
+    public void setFavouriteDrinkList(List<Drink> favouriteDrinkList) {
+        this.favouriteDrinkList = favouriteDrinkList;
     }
-
 }
