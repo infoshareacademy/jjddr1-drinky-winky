@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestScoped
 public class DrinkService {
@@ -16,10 +18,6 @@ public class DrinkService {
 
     @EJB
     DrinkDao drinkDao;
-
-    public void loadDrinks(List<Drink> drinks) {
-        drinkDao.loadDrink(drinks);
-    }
 
     public void addDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
@@ -31,24 +29,49 @@ public class DrinkService {
         DrinkDTO.drinkToDTO(drink);
     }
 
-    public Drink getDrinkByName(String name) {
-        return drinkDao.getDrinkByName(name);
+    @Transactional
+    public DrinkDTO getDrinkByName(String name) {
+        Drink drinkByName = drinkDao.getDrinkByName(name);
+        if (drinkByName != null) {
+            return DrinkDTO.drinkToDTO(drinkByName);
+        }
+        return null;
     }
 
-    public Drink getDrinkById(Long id) {
-        return drinkDao.getDrinkById(id);
+    @Transactional
+    public DrinkDTO getDrinkById(Long id) {
+        Drink drinkById = drinkDao.getDrinkById(id);
+        if (drinkById != null) {
+            return DrinkDTO.drinkToDTO(drinkById);
+        }
+        return null;
     }
 
-    public void deleteRecipeById(Long id) {
-        drinkDao.deleteRecipeById(id);
-        logger.info("Category has been deleted");
+    @Transactional
+    public void deleteDrinkById(Long id) {
+        drinkDao.deleteDrinkById(id);
+        logger.info("Drink has been deleted");
     }
 
-    public List<Drink> getRecipesList() {
-        return drinkDao.getDrinkList();
+    @Transactional
+    public void deleteDrinkByName(String name) {
+        drinkDao.deleteDrinkByName(name);
+        logger.info("Drink has been deleted");
     }
 
-    public List<String> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
+    @Transactional
+    public List<DrinkDTO> getDrinkList() {
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(DrinkDTO::drinkToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<Drink> findRecipeByCategoryId(List<Long> ids) {
+        return drinkDao.findDrinkByCategoryId(ids);
+    }
+
+    public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
     }
 }

@@ -5,10 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @NamedQueries(value = {
         @NamedQuery(
-                name = "Drink.getDrinkList",
+                name = Drink.GET_DRINK_LIST,
                 query = "SELECT r FROM Drink r"),
         @NamedQuery(
                 name = Drink.GET_RECIPE_BY_CATEGORY,
@@ -16,15 +15,20 @@ import java.util.List;
         ),
         @NamedQuery(
                 name = Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT,
-                query = "SELECT r FROM Drink r JOIN r.ingredientList i WHERE r.category IN :categories AND ( i.name IN :ingredients) GROUP BY r HAVING COUNT(distinct i.name)=:namesLenght order by r.name ASC ")
+                query = "SELECT r FROM Drink r JOIN r.ingredientList i WHERE r.category IN :categories AND ( i.name IN :ingredients) GROUP BY r HAVING COUNT(distinct i.name)=:namesLenght order by r.name ASC "),
+        @NamedQuery(
+                name = Drink.GET_DRINK_BY_NAME,
+                query = "SELECT r FROM Drink r WHERE r.name = :name "
+        )
 })
-
 
 @Entity
 @Table
 public class Drink {
     public static final String GET_RECIPE_BY_CATEGORY = "Drink.findDrinkByCategory";
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
+    public static final String GET_DRINK_BY_NAME = "Drink.getDrinkByName";
+    public static final String GET_DRINK_LIST = "Drink.getDrinkList";
 
     @Id
     @GeneratedValue
@@ -63,19 +67,19 @@ public class Drink {
     @NotNull
     private String imageUrl;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "category_id")
     private Category category;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "drink_to_ingredient",
-            joinColumns = {@JoinColumn(name = "drink_id",referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ingredient_id",referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")}
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "drinkList")
+    @ManyToMany(mappedBy = "drinkList", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<User> users = new ArrayList<>();
 
     public Drink() {

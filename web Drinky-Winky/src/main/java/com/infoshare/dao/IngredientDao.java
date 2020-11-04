@@ -1,14 +1,12 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.IngredientDTO;
-import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
-import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -16,12 +14,6 @@ public class IngredientDao {
 
     @PersistenceContext
     EntityManager entityManager;
-
-    public void loadIngredient(List<Ingredient> ingredients) {
-        for (Ingredient ingredient : ingredients) {
-            entityManager.persist(ingredient);
-        }
-    }
 
     public Ingredient addIngredient(Ingredient ingredient) {
         entityManager.persist(ingredient);
@@ -34,7 +26,9 @@ public class IngredientDao {
     }
 
     public Ingredient getIngredientByName(String name) {
-        return entityManager.find(Ingredient.class, name);
+        TypedQuery<Ingredient> query = entityManager.createQuery(Ingredient.FIND_INGREDIENT_BY_NAME, Ingredient.class);
+        query.setParameter("name", name);
+        return query.getSingleResult();
     }
 
     public Ingredient getIngredientById(Long id) {
@@ -48,14 +42,8 @@ public class IngredientDao {
         }
     }
 
-    public Ingredient findIngredient(String names) {
-        Query query = entityManager.createNamedQuery("Ingredient.findIngredientByName");
-        query.setParameter("names", names);
-        return (Ingredient) query.getSingleResult();
-    }
-
-    public List<String> getIngredientsList() {
-        Query query = entityManager.createNamedQuery("Ingredient.getIngredientList");
+    public List<Ingredient> getIngredientsList() {
+        Query query = entityManager.createNamedQuery(Ingredient.GET_INGREDIENT_LIST);
         return query.getResultList();
     }
 }

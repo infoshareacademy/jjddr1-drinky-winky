@@ -1,9 +1,9 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.service.CategoryService;
+import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
-import com.infoshare.service.IngredientService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -16,31 +16,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@WebServlet("/Admin")
-public class AdminServlet extends HttpServlet {
+@WebServlet("/View-drink")
+public class ViewDrinkServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
     @Inject
-    CategoryService categoryService;
-    @Inject
     DrinkService drinkService;
-    @Inject
-    IngredientService ingredientService;
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
         root.put("names", drinkService.getDrinkList());
-        root.put("categories", categoryService.getCategoriesList());
-        root.put("glasses", drinkService.getDrinkList());
-//        root.put("ingredients",ingredientService.getIngredientsList());
 
-        Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
+        List<DrinkDTO> recipesList = drinkService.getDrinkList();
+
+        for(DrinkDTO drink:recipesList){
+            root.put("ing",drink.getIngredientList());
+        }
+
+        Template template = templateProvider.getTemplate(getServletContext(), "view.ftlh");
         Writer out = response.getWriter();
 
         try {

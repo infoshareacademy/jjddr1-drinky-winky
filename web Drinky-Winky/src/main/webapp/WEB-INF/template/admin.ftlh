@@ -45,16 +45,27 @@
             <figcaption>Alcohol Only 18+</figcaption>
         </figure>
 
+
         <figure>
-
             <form method="post" action="New-drink" id="mySelect">
-
                 <fieldset>
-
                     <legend> Fill all fields</legend>
 
+                    <label for="names-choice">Name: <input list="names" id="names-choice" type="text" name="name"
+                                                           placeholder="*name should be unique"
+                                                           required/><br/></label>
 
-                    Name: <input type="text" name="name" required/><br/>
+                    <datalist id="names">
+                        <#if names??>
+                            <#list names>
+                                <ul>
+                                    <#items as name>
+                                    <option value="${name.getName()}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
 
                     <label for="category-choice">Category: <input list="categories" id="category-choice" type="text"
                                                                   name="category" required/><br/></label>
@@ -71,19 +82,32 @@
                         </#if>
                     </datalist>
 
+                    <label for="glass-choice">Glass: <input list="glasses" id="glass-choice" type="text"
+                                                            name="glassType" required/><br/></label>
 
-                    Glass: <input type="text" name="glassType" required/><br/>
-                    <label> Image <input type="url" name="imageUrl" required/><br/></label>
+                    <datalist id="glasses">
+                        <#if glasses??>
+                            <#list glasses>
+                                <ul>
+                                    <#items as glass>
+                                    <option value="${glass.getGlassType()}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
+                    <label for="image-choice"> Image <input id="image-choice" type="url" name="imageUrl" required/><br/></label>
+
                     Alcoholic:
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic" required> No
-                    </label>
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required> Yes
-                    </label>
-                    <br/>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic"
+                                                        required> No </label>
+                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required>
+                        Yes</label><br/>
 
-                    Recipe: <textarea type="text" name="recipe"
-                                      style="width: 185px; height: 120px; float: right" required></textarea><br/>
-
+                    <label for="recipe-choice">Recipe: <textarea id="recipe-choice" type="text" name="recipe"
+                                                                 style="width: 185px; height: 120px; float: right"
+                                                                 required></textarea></label><br/>
 
                     <table>
                         <tr>
@@ -123,11 +147,59 @@
 
 
         <figure class="add-drink"></figure>
-
     </div>
 </section>
 
 <#include "log.ftlh">
+
+
+
+
+
+
+
+<#--REMOVE DRINK VIEW-->
+<section class="add" id="remove">
+    <h2 class="section-title">REMOVE DRINK</h2>
+    <div class="gallery-wrapper">
+
+        <figure class="add-drink"></figure>
+        <figure class="gallery-item">
+            <img src="https://img.wonderhowto.com/img/original/31/78/63586557575482/0/635865575754823178.jpg"
+                 alt="image">
+<#--            <figcaption>${name.getName()}</figcaption>-->
+        </figure>
+
+
+        <figure>
+            <form method="post" action="Remove-drink" id="mySelect">
+                <fieldset>
+                    <legend> Choose drink to remove </legend>
+
+                    <label for="names-choice">Name: <br/><input list="names" id="names-choice" type="text" name="name"
+                                                           required/><br/></label>
+
+                    <datalist id="names">
+                        <#if names??>
+                            <#list names>
+                                <ul>
+                                    <#items as name>
+                                    <option value="${name.getName()}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
+                    <div class="upload-btn-wrapper">
+                        <input class="btn2" type="submit" value="delete"/><br/><br/>
+                    </div>
+
+                </fieldset>
+            </form>
+        </figure>
+    </div>
+</section>
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
