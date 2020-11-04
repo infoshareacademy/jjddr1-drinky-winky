@@ -46,4 +46,8 @@ public class IngredientDao {
         Query query = entityManager.createNamedQuery(Ingredient.GET_INGREDIENT_LIST);
         return query.getResultList();
     }
+
+    public List<Ingredient> getIngredientsListNyDrinkName(String name){
+        return null;
+    }
 }

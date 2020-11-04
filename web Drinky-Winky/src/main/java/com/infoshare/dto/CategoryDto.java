@@ -11,20 +11,18 @@ public class CategoryDto {
 
     private Long id;
     private String name;
-    private List<Drink> drinkList = new ArrayList<>();
+
 
     public static CategoryDto categoryToDto(Category category) {
         CategoryDto categoryDto = new CategoryDto();
         categoryDto.setId(category.getId());
         categoryDto.setName(category.getName());
-        categoryDto.setDrinkList(category.getDrinkList());
         return categoryDto;
     }
 
     public static Category dtoToCategory(CategoryDto categoryDto) {
         Category category = new Category();
         category.setName(categoryDto.getName());
-        category.setDrinkList(categoryDto.getDrinkList());
         return category;
     }
 
@@ -44,11 +42,5 @@ public class CategoryDto {
         this.name = name;
     }
 
-    public List<Drink> getDrinkList() {
-        return drinkList;
-    }
 
-    public void setDrinkList(List<Drink> drinkList) {
-        this.drinkList = drinkList;
-    }
 }
