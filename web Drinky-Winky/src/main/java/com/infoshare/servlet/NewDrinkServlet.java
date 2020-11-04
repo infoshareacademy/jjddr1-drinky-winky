@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/NewDrinkServlet")
+@WebServlet("/New-drink")
 public class NewDrinkServlet extends HttpServlet {
 
     @Inject
@@ -61,5 +61,7 @@ public class NewDrinkServlet extends HttpServlet {
         drinkDTO.setIngredientList(ingredientList);
 
         drinkService.addDrink(drinkDTO);
+
+        response.sendRedirect("Admin");
     }
 }

@@ -1,5 +1,6 @@
 package com.infoshare.service;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,20 +14,17 @@ public class  StartingPageService {
     @Inject
     DrinkService drinkService;
 
-    public List<Drink> getDrinksPerPage(int pageNumber) {
-
-        List<Drink> result = new ArrayList<>();
-        List<Drink> drinkList = drinkService.getRecipesList();
+    public List<Drink> getDrinksPerPage(int pageNumber, List<Drink> filterList) {
         int pageSize = 7;
 
         if (pageSize <= 0 || pageNumber <= 0) {
             throw new IllegalArgumentException("Invalid page size : " + pageSize);
         }
         int fromIndex = (pageNumber - 1) * pageSize;
-        if (drinkList == null || drinkList.size() < fromIndex) {
+        if (filterList == null || filterList.size() < fromIndex) {
             return Collections.emptyList();
         }
-        return drinkList.subList(fromIndex, Math.min(fromIndex + pageSize, drinkList.size()));
+        return filterList.subList(fromIndex, Math.min(fromIndex + pageSize, filterList.size()));
     }
 
     public Integer getLastNumberPage(List<Drink> drinkList) {
@@ -34,11 +32,11 @@ public class  StartingPageService {
         return (drinkList.size() + pageSize - 1) / pageSize;
     }
 
-    public List<Drink> getDrinkByFilterOption(String filterOption) {
-        List<Drink> result = new ArrayList<>();
+    public List<DrinkDTO> getDrinkByFilterOption(String filterOption) {
+        List<DrinkDTO> result = new ArrayList<>();
         String allDrinks = "All Drinks";
         if (filterOption == allDrinks) {
-            result = drinkService.getRecipesList();
+            result = drinkService.getDrinkList();
         }
         return result;
     }

@@ -15,7 +15,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/SayGoodbyeServlet")
+@WebServlet("/Say-goodbye")
 public class SayGoodbyeServlet extends HttpServlet {
 
     @Inject

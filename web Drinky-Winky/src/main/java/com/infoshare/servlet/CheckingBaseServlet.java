@@ -1,8 +1,12 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.CategoryDto;
+import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.IngredientDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
+import com.infoshare.model.Ingredient;
 import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.IngredientService;
@@ -12,12 +16,12 @@ import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -38,21 +42,51 @@ public class CheckingBaseServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pageNumber = Optional.ofNullable(request.getParameter("page")).orElse("1");
 
-        List<String> checkedCategoriesList = Optional.ofNullable(Arrays.asList(request.getParameterValues("categories[]"))).orElse(Arrays.asList("-1"));
-        List<String> checkedIngredientsList = Optional.ofNullable(Arrays.asList(request.getParameterValues("ingredients[]"))).orElse(Arrays.asList("emptyString"));
-        List<String> checkedListOptions = Optional.ofNullable(Arrays.asList(request.getParameterValues("listOptions[]"))).orElse(Arrays.asList("emptyString"));
+        String[] allCheckedCategoriesList = categoryService.getCategoryIds();
 
-        Integer pageNo = Integer.parseInt(pageNumber);
-        List<Drink> drinkList = startingPageService.getDrinksPerPage(pageNo);
-        List<Drink> allDrinks = startingPageService.getDrinkByFilterOption(checkedListOptions.get(0));
-        List<Category> categoriesList = categoryService.getCategoriesList();
-        Integer lastPageNumber = startingPageService.getLastNumberPage(allDrinks);
-        List<String> ingredientList = ingredientService.getIngredientsList();
+        List<String> pageNumber = Arrays.asList(getParamterersList(request, "page", new String[]{"1"}));
+        List<String> checkedCategoriesList = Arrays.asList(getParamterersList(request, "categories[]", allCheckedCategoriesList));
+        List<String> checkedIngredientsList = Arrays.asList(getParamterersList(request, "ingredients[]", new String[]{}));
+
+        Integer pageNo = Integer.parseInt(pageNumber.get(0));
+//        List<DrinkDTO> drinkList = startingPageService.getDrinksPerPage(pageNo, drinkService.getDrinkList());
+        List<CategoryDto> categoriesList = categoryService.getCategoriesList();
+
+        List<IngredientDTO> ingredientList = ingredientService.getIngredientsList();
         List<Long> paredToLongCategoriesList = checkedCategoriesList.stream().map(s -> Long.parseLong(s)).collect(Collectors.toList());
-        List<String> checkedCategoriesAndIngredient = drinkService.findDrinkByCategoryIdAndIngredient(paredToLongCategoriesList, checkedIngredientsList);
+        List<Drink> checkedCategoriesAndIngredient;
+        if (checkedIngredientsList.size() == 0 || checkedIngredientsList == null || checkedIngredientsList.isEmpty()) {
+            checkedCategoriesAndIngredient = drinkService.findRecipeByCategoryId(paredToLongCategoriesList);
+        } else {
+            checkedCategoriesAndIngredient = drinkService.findDrinkByCategoryIdAndIngredient(paredToLongCategoriesList, checkedIngredientsList);
+        }
 
+        List<Drink> drinkListPerPage = startingPageService.getDrinksPerPage(pageNo, checkedCategoriesAndIngredient);
+        Integer lastPageNumber = startingPageService.getLastNumberPage(checkedCategoriesAndIngredient);
 
+        Template template = templateProvider.getTemplate((getServletContext()), "test.ftlh");
+        Map<String, Object> model = new HashMap<>();
+//        if (drinkList != null || drinkList.isEmpty() || categoriesList != null || categoriesList.isEmpty() || checkedCategoriesAndIngredient != null || checkedCategoriesAndIngredient.isEmpty()) {
+//            model.put("drinks", drinkListPerPage);
+//            model.put("pageNumber", pageNo);
+//            model.put("lastPageNumber", lastPageNumber);
+//            model.put("categoryList", categoriesList);
+//            model.put("categoryListChecked", checkedCategoriesList);
+//            model.put("ingredientList", ingredientList);
+//            model.put("ingredientListChecked", checkedIngredientsList);
+//        }
+        try {
+            template.process(model, response.getWriter());
+        } catch (TemplateException e) {
+            logger.severe(e.getMessage());
+        }
     }
+        public static String[] getParamterersList(ServletRequest request, String paramName, String[] defaultValue) {
+            if (request.getParameterValues(paramName) != null) {
+                return request.getParameterValues(paramName);
+            } else {
+                return defaultValue;
+            }
+        }
 }

@@ -15,8 +15,8 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/Age-query")
-public class AgeQueryServlet extends HttpServlet {
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
@@ -26,7 +26,7 @@ public class AgeQueryServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
 
-        Template template = templateProvider.getTemplate(getServletContext(), "age-query.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "log.ftlh");
         Writer out = response.getWriter();
 
         try {

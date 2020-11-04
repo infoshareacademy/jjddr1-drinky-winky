@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestScoped
 public class IngredientService {
@@ -16,14 +17,10 @@ public class IngredientService {
     @Inject
     private IngredientDao ingredientDao;
 
-    public void loadIngredient(List<Ingredient> ingredients) {
-        ingredientDao.loadIngredient(ingredients);
-        logger.info("List of has been loaded");
-    }
-
     public void addIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
-        ingredientDao.addIngredient(ingredient);   }
+        ingredientDao.addIngredient(ingredient);
+    }
 
     public void editIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
@@ -43,12 +40,11 @@ public class IngredientService {
         ingredientDao.deleteIngredientById(id);
     }
 
-    public Ingredient findIngredient(String name) {
-        return ingredientDao.findIngredient(name);
-    }
-
-    public List<String> getIngredientsList() {
-        return ingredientDao.getIngredientsList();
+    public List<IngredientDTO> getIngredientsList() {
+        return ingredientDao.getIngredientsList()
+                .stream()
+                .map(IngredientDTO::ingredientToDto)
+                .collect(Collectors.toList());
     }
 }
 

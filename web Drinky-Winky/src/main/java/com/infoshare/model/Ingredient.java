@@ -6,24 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedQueries({
-@NamedQuery(
-        name = "Ingredient.findIngredientByName",
-        query = "SELECT distinct i.name FROM Ingredient i WHERE i.name in :names"),
-@NamedQuery(
-        name = "Ingredient.getIngredientList",
-        query = "SELECT distinct i.name FROM Ingredient i")
+        @NamedQuery(
+                name = Ingredient.FIND_INGREDIENT_BY_NAME,
+                query = "SELECT distinct i.name FROM Ingredient i WHERE i.name in :names"),
+        @NamedQuery(
+                name = Ingredient.GET_INGREDIENT_LIST,
+                query = "SELECT distinct i.name FROM Ingredient i")
 })
 
 @Entity
-@Table(name = "ingredient", indexes = {@Index(name = "idx_name",columnList = "name")})
+@Table(name = "ingredient", indexes = {@Index(name = "idx_name", columnList = "name")})
 public class Ingredient {
+
+    public static final String FIND_INGREDIENT_BY_NAME = "Ingredient.findIngredientByName";
+    public static final String GET_INGREDIENT_LIST = "Ingredient.getIngredientList";
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name ="name", length = 100)
+    @Column(name = "name", length = 100)
     @NotNull
     private String name;
 
@@ -31,7 +34,7 @@ public class Ingredient {
     @NotNull
     private String measure;
 
-    @ManyToMany(mappedBy = "ingredientList")
+    @ManyToMany(mappedBy = "ingredientList",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {
