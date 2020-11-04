@@ -2,20 +2,20 @@ package com.infoshare.service;
 
 import com.infoshare.dao.IngredientDao;
 import com.infoshare.dto.IngredientDTO;
-import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Ingredient;
-import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequestScoped
 public class IngredientService {
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
+
     @Inject
     private IngredientDao ingredientDao;
 
@@ -26,7 +26,7 @@ public class IngredientService {
 
     public void editIngredient(IngredientDTO ingredientDTO) {
         Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
-        IngredientDTO.ingredientToDto(ingredient);
+        ingredientDao.editIngredient(ingredient);
     }
 
     public Ingredient getIngredientByName(String name) {
@@ -42,6 +42,8 @@ public class IngredientService {
         ingredientDao.deleteIngredientById(id);
     }
 
+
+    @Transactional
     public List<IngredientDTO> getIngredientsList() {
         return ingredientDao.getIngredientsList()
                 .stream()

@@ -8,9 +8,7 @@
     <data-source>
         <name>java:ds/webApp</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:3307/DrinkData?useLegacyDatetimeCode=false&amp;
-            serverTimezone=Europe/Warsaw
-        </url>
+        <url>jdbc:mysql://0.0.0.0:3307/DrinkData?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
         <user>root</user>
         <password>toor</password>
     </data-source>

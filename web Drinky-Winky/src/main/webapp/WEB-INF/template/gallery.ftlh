@@ -1,5 +1,5 @@
 <section class="gallery" id="gallery">
-    <h2 class="section-title">GALERIA</h2>
+    <h2 class="section-title">GALLERY</h2>
     <div class="gallery-wrapper">
         <figure class="gallery-item">
             <img src="https://naszedrinki.pl/wp-content/uploads/2013/12/margarita.jpg" alt="image">

@@ -1,10 +1,8 @@
 package com.infoshare.dao;
 
-
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
