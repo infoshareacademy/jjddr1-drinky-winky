@@ -42,6 +42,7 @@ public class SingleDrinkViewServlet extends HttpServlet {
             Long id = Long.valueOf(paramId);
             DrinkDTO drinkDTO = drinkService.getDrinkById(id);
             drinkModel.put("drink", drinkDTO);
+            drinkModel.put("category", drinkDTO);
             drinkModel.put("ingredients", drinkDTO.getIngredientList());
             Template template = templateProvider.getTemplate(getServletContext(), "singleDrink.ftlh");
             PrintWriter printWriter = response.getWriter();
