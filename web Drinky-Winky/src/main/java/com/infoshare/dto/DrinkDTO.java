@@ -164,5 +164,23 @@ public class DrinkDTO {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    @Override
+    public String toString() {
+        return "DrinkDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isCustom=" + isCustom +
+                ", isApproved=" + isApproved +
+                ", recipe='" + recipe + '\'' +
+                ", drinkType='" + drinkType + '\'' +
+                ", glassType='" + glassType + '\'' +
+                ", modificationDate='" + modificationDate + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", ingredientList=" + ingredientList +
+                ", users=" + users +
+                '}';
+    }
 }
 

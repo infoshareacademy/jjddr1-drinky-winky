@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,5 +73,19 @@ public class DrinkService {
 
     public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
+    }
+
+    public List<DrinkDTO> getDrinkByFirstTreeChars(String drinkSearch) {
+        if (drinkSearch != null) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO d : drinkList) {
+                if (d.getName().toLowerCase().startsWith(drinkSearch)) {
+                    found.add(d);
+                }
+            }
+            return found;
+        }
+        return null;
     }
 }

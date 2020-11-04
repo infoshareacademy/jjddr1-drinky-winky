@@ -1,0 +1,11 @@
+<html>
+<body>
+
+<form action="search-drink" method="post">
+    <label for="drinkSearchPost">Drink Search:</label> <input type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*Find drink by name">
+
+    <button type="submit">Find</button>
+</form>
+
+</body>
+</html>
