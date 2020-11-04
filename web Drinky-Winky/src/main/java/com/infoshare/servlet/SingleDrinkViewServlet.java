@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.BfTemplateProvider;
+import com.infoshare.model.Ingredient;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/single")
@@ -39,6 +41,8 @@ public class SingleDrinkViewServlet extends HttpServlet {
         Long id = Long.valueOf(paramId);
 
         drinkModel.put("drink", drinkService.getDrinkById(id));
+
+//        List<Ingredient> ingredientList = drinkService.getDrinkById(id).getIngredientList();
 
         Template template = templateProvider.getTemplate(getServletContext(),"singleDrink.ftlh");
 
