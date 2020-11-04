@@ -43,8 +43,6 @@ public class User {
     @NotNull
     private String password;
 
-
-
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_favourite_recipe",

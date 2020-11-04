@@ -2,8 +2,6 @@ package com.infoshare.dto;
 
 import com.infoshare.model.Ingredient;
 
-
-
 public class IngredientDTO {
 
     private Long id;

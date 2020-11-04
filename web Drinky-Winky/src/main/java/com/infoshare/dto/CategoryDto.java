@@ -1,17 +1,11 @@
 package com.infoshare.dto;
 
 import com.infoshare.model.Category;
-import com.infoshare.model.Drink;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class CategoryDto {
 
     private Long id;
     private String name;
-
 
     public static CategoryDto categoryToDto(Category category) {
         CategoryDto categoryDto = new CategoryDto();
@@ -41,6 +35,5 @@ public class CategoryDto {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

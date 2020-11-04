@@ -82,6 +82,7 @@
                         </#if>
                     </datalist>
 
+
                     <label for="glass-choice">Glass: <input list="glasses" id="glass-choice" type="text"
                                                             name="glassType" required/><br/></label>
 
@@ -96,6 +97,27 @@
                             </#list>
                         </#if>
                     </datalist>
+
+
+
+                    <label for="ingredients-choice">Ingredients: <input list="ingredients"
+                                                                        id="ingredients-choice"
+                                                                        type="text"
+                                                                        name="ingredients"
+                                                                        required/><br/></label>
+
+                    <datalist id="ingredients">
+                        <#if ingredients??>
+                            <#list ingredients>
+                                <ul>
+                                    <#items as ingredient>
+                                    <option value="${ingredient.getName()}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
 
                     <label for="image-choice"> Image <input id="image-choice" type="url" name="imageUrl" required/><br/></label>
 
@@ -167,17 +189,17 @@
         <figure class="gallery-item">
             <img src="https://img.wonderhowto.com/img/original/31/78/63586557575482/0/635865575754823178.jpg"
                  alt="image">
-<#--            <figcaption>${name.getName()}</figcaption>-->
+            <#--            <figcaption>${name.getName()}</figcaption>-->
         </figure>
 
 
         <figure>
             <form method="post" action="Remove-drink" id="mySelect">
                 <fieldset>
-                    <legend> Choose drink to remove </legend>
+                    <legend> Choose a drink to remove</legend>
 
                     <label for="names-choice">Name: <br/><input list="names" id="names-choice" type="text" name="name"
-                                                           required/><br/></label>
+                                                                required/><br/></label>
 
                     <datalist id="names">
                         <#if names??>

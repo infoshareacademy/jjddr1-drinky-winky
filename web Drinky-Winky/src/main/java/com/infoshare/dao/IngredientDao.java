@@ -1,5 +1,6 @@
 package com.infoshare.dao;
 
+import com.infoshare.model.Category;
 import com.infoshare.model.Ingredient;
 
 import javax.ejb.Stateless;
@@ -43,11 +44,12 @@ public class IngredientDao {
     }
 
     public List<Ingredient> getIngredientsList() {
-        Query query = entityManager.createNamedQuery(Ingredient.GET_INGREDIENT_LIST);
-        return query.getResultList();
+        return entityManager.createNamedQuery(Ingredient.GET_INGREDIENT_LIST, Ingredient.class).getResultList();
+
     }
 
     public List<Ingredient> getIngredientsListNyDrinkName(String name){
         return null;
     }
+
 }

@@ -8,12 +8,14 @@ import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequestScoped
 public class IngredientService {
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
+
     @Inject
     private IngredientDao ingredientDao;
 
@@ -40,6 +42,8 @@ public class IngredientService {
         ingredientDao.deleteIngredientById(id);
     }
 
+
+    @Transactional
     public List<IngredientDTO> getIngredientsList() {
         return ingredientDao.getIngredientsList()
                 .stream()

@@ -11,8 +11,6 @@ public class UserDTO {
     private String login;
     private String password;
 
-
-
     public static UserDTO userToDto (User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
@@ -32,8 +30,6 @@ public class UserDTO {
         user.setPassword(userDTO.getPassword());
         return user;
     }
-
-
 
     public Long getId() {
         return id;
