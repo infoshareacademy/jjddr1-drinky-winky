@@ -3,6 +3,7 @@ package com.infoshare.servlet;
 import com.infoshare.freemarker.BfTemplateProvider;
 import com.infoshare.model.Ingredient;
 import com.infoshare.service.DrinkService;
+import com.infoshare.service.IngredientService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -25,6 +26,9 @@ public class SingleDrinkViewServlet extends HttpServlet {
     private DrinkService drinkService;
 
     @Inject
+    private IngredientService ingredientService;
+
+    @Inject
     private BfTemplateProvider templateProvider;
 
     @Override
@@ -41,6 +45,8 @@ public class SingleDrinkViewServlet extends HttpServlet {
         Long id = Long.valueOf(paramId);
 
         drinkModel.put("drink", drinkService.getDrinkById(id));
+        drinkModel.put("ingredient",ingredientService.getIngredientById(id));
+        drinkModel.put("ingrList",ingredientService.getIngredientsList().get(0));
 
 //        List<Ingredient> ingredientList = drinkService.getDrinkById(id).getIngredientList();
 

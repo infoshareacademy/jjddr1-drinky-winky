@@ -1,4 +1,4 @@
-package com.infoshareacademy.servlet;
+package com.infoshare.servlet;
 
 
 import com.infoshare.model.Drink;
@@ -23,7 +23,7 @@ public class JsonUploadServlet extends HttpServlet {
 
     @Inject
     private FileDataHandler fileDataHandler;
-    Logger logger = LoggerFactory.getLogger(com.infoshareacademy.servlet.JsonUploadServlet.class);
+    Logger logger = LoggerFactory.getLogger(com.infoshare.servlet.JsonUploadServlet.class);
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
