@@ -1,7 +1,6 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
-import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
@@ -11,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @RequestScoped
@@ -39,9 +39,15 @@ public class UserService {
         return null;
 
     }
+
     @Transactional
     public void deleteUserById(Long id) {
         userDao.deleteUserById(id);
+    }
+
+    //TODO change to DTO
+    public List<Drink> getFavouriteList() {
+        return userDao.getFavouriteDrinkList();
     }
 
 

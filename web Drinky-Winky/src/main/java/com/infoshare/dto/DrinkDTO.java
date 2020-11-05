@@ -2,7 +2,6 @@ package com.infoshare.dto;
 
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
-import com.infoshare.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class DrinkDTO {
     private String imageUrl;
     private CategoryDto category;
     private List<IngredientDTO> ingredientList;
-    private List<User> users;
+
 
 
     public static DrinkDTO drinkToDTO(Drink drink) {
@@ -41,7 +40,6 @@ public class DrinkDTO {
             ingredientDTOList.add(ingredientDTO);
                 });
         drinkDTO.setIngredientList(ingredientDTOList);
-        drinkDTO.setUsers(drink.getUsers());
         return drinkDTO;
     }
 
@@ -63,8 +61,6 @@ public class DrinkDTO {
             ingredientList.add(ingredient);
         });
         drink.setIngredientList(ingredientList);
-
-        drink.setUsers(drinkDTO.getUsers());
         return drink;
     }
 
@@ -156,12 +152,5 @@ public class DrinkDTO {
         this.ingredientList = ingredientList;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }
 
