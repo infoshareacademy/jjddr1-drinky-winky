@@ -6,7 +6,8 @@ import com.infoshare.service.DrinkService;
 import javax.inject.Inject;
 import java.util.List;
 
-public class utils {
+
+public class Utils {
 
     @Inject
     DrinkService drinkService;
