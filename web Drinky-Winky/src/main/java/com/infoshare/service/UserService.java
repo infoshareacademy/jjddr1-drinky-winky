@@ -1,13 +1,16 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
+import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.transaction.Transactional;
 
 
 @RequestScoped
@@ -27,11 +30,19 @@ public class UserService {
         userDao.updateUser(UserDTO.dtoToUser(userDTO));
     }
 
-    public User getUserById(Long id) {
-        return userDao.getUserById(id);
-    }
+    @Transactional
+    public UserDTO getUserById(Long id) {
+        User userByID = userDao.getUserById(id);
+        if (userByID != null) {
+            return UserDTO.userToDto(userByID);
+        }
+        return null;
 
+    }
+    @Transactional
     public void deleteUserById(Long id) {
         userDao.deleteUserById(id);
     }
+
+
 }

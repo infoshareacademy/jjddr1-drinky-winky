@@ -19,7 +19,7 @@ public class DrinkDTO {
     private String imageUrl;
     private CategoryDto category;
     private List<IngredientDTO> ingredientList;
-    private List<User> users = new ArrayList<>();
+    private List<User> users;
 
 
     public static DrinkDTO drinkToDTO(Drink drink) {
@@ -41,7 +41,6 @@ public class DrinkDTO {
             ingredientDTOList.add(ingredientDTO);
                 });
         drinkDTO.setIngredientList(ingredientDTOList);
-
         drinkDTO.setUsers(drink.getUsers());
         return drinkDTO;
     }
