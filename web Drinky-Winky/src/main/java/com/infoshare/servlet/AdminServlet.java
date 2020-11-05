@@ -40,6 +40,7 @@ public class AdminServlet extends HttpServlet {
         root.put("glasses", drinkService.getDrinkList());
         root.put("ingredients",ingredientService.getIngredientsList());
 
+
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");
         Writer out = response.getWriter();
 

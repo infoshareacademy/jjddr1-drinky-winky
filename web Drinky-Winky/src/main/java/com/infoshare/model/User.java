@@ -18,8 +18,8 @@ import java.util.List;
 @Table(name = "user")
 public class User {
 
-    public static final String FIND_USER_BY_NAME = "Drink.findDrinkByCategory";
-    public static final String FIND_USER_LIST = "Drink.findDrinkByCategory";
+    public static final String FIND_USER_BY_NAME = "User.findUserByName";
+    public static final String FIND_USER_LIST = "User.getUserList";
 
     @Id
     @Column(name = "id")
