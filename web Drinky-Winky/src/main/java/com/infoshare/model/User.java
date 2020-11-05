@@ -52,7 +52,6 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
-
     private List<Drink> favouriteDrinkList = new ArrayList<>();
 
     public Long getId() {

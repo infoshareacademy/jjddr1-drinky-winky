@@ -2,6 +2,7 @@ package com.infoshare.dao;
 
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Category;
+import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
@@ -39,6 +40,11 @@ public class UserDao {
 
     public List<User> getUserList() {
         return entityManager.createNamedQuery(User.FIND_USER_LIST, User.class).getResultList();
+    }
+
+    //Todo query to make
+    public List<Drink> getFavouriteDrinkList (){
+        return null;
     }
 
     public User findUserByName(String name) {

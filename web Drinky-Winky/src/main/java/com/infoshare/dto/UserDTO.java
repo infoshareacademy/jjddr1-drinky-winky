@@ -1,6 +1,7 @@
 package com.infoshare.dto;
 
 import com.infoshare.model.User;
+import java.util.List;
 
 public class UserDTO {
 
@@ -10,6 +11,8 @@ public class UserDTO {
     private String userType;
     private String login;
     private String password;
+    private List<DrinkDTO> favouriteDrinkList;
+
 
     public static UserDTO userToDto (User user){
         UserDTO userDTO = new UserDTO();
@@ -18,6 +21,7 @@ public class UserDTO {
         userDTO.setUserType(user.getUserType());
         userDTO.setLogin(user.getLogin());
         userDTO.setPassword(user.getPassword());
+
         return userDTO;
     }
 
