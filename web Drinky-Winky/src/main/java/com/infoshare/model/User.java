@@ -12,14 +12,18 @@ import java.util.List;
         @NamedQuery(
                 name = User.FIND_USER_LIST,
                 query = "SELECT u FROM User u")
-})
 
+})
+//        @NamedQuery(
+//                name = User.GET_FAVOURITE_LIST,
+//                query = "SELECT u.favouriteDrinkList FROM User u JOIN u.favouriteDrinkList r WHERE r.id=u.id")
 @Entity
 @Table(name = "user")
 public class User {
 
-    public static final String FIND_USER_BY_NAME = "Drink.findDrinkByCategory";
-    public static final String FIND_USER_LIST = "Drink.findDrinkByCategory";
+    public static final String FIND_USER_BY_NAME = "User.findUserByName";
+    public static final String FIND_USER_LIST = "User.getUserList";
+    public static final String GET_FAVOURITE_LIST = "User.getFavouritesList";
 
     @Id
     @Column(name = "id")
@@ -48,7 +52,7 @@ public class User {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "user_favourite_recipe",
+            name = "user_favourite_drink",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
