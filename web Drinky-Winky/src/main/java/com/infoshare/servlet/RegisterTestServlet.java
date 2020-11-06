@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
-@WebServlet("/logpage")
-public class LoggingTestServlet extends HttpServlet {
+@WebServlet("/register")
+public class RegisterTestServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher rd = request.getRequestDispatcher("logging.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
         rd.forward(request,response);
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
+        user.setName(request.getParameter("name"));
+        user.setSurname(request.getParameter("surname"));
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("password"));
 
