@@ -17,7 +17,9 @@ public class Utils {
 
         int fromIndex = (request - 1) * size;
         int toIndex = request * size - 1;
-
+        if (toIndex > drinkService.getDrinkList().size()) {
+            toIndex = drinkService.getDrinkList().size();
+        }
         return drinkService.getDrinkList().subList(fromIndex, toIndex);
     }
 
