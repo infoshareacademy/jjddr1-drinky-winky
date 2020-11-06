@@ -28,17 +28,12 @@ public class AddFavouriteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-
-
         String name = request.getParameter("name");
 
         DrinkDTO drinkByName = drinkService.getDrinkByName(name);
 
-        UserDTO userById = userService.getUserById(1l);
-        userById.addFavouriteDrink(drinkByName);
-        userById.setName("Siara2");
+        userService.saveFavDrink(1L,1L);
 
-        userService.updateUser(userById);
 
     }
 }
