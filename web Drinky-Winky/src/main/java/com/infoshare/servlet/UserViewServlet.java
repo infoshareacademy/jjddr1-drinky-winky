@@ -27,8 +27,10 @@ public class UserViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+
+
         Map<String, Object> root = new HashMap<>();
-        root.put("drinkList", drinkService.getDrinkList()/*getRequestDrinkList(2,4)*/);
+        root.put("drinkList", drinkService.getRequestDrinkList(1,12));
 
         Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
         Writer out = response.getWriter();

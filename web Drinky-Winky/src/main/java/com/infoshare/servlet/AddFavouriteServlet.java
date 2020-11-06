@@ -36,6 +36,7 @@ public class AddFavouriteServlet extends HttpServlet {
 
         UserDTO userById = userService.getUserById(1l);
         userById.addFavouriteDrink(drinkByName);
+        userById.setName("Siara2");
 
         userService.updateUser(userById);
 

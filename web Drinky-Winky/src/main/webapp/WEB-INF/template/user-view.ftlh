@@ -13,6 +13,7 @@
 <nav class="navigation">
     <div class="container">
         <ul>
+            <li><a href="#load">Welcome</a></li>
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
@@ -36,6 +37,17 @@
     </div>
 </nav>
 
+<section class="splash" id="load"
+         style="background-image: url('https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?cs=srgb&dl=pexels-toni-cuenca-616836.jpg&fm=jpg');">
+
+    <div class="page-intro">
+        <div class="container">
+            <h1 class="main-title">Welcome user</h1>
+        </div>
+    </div>
+
+</section>
+
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>
@@ -50,7 +62,7 @@
             <#list drinkList>
                 <#items as drink>
 
-                    <figure class="gallery-item">
+                    <figure class="gallery-item" style="padding: 5px">
                         <img src= ${drink.getImageUrl()} alt="image">
                         <figcaption>${drink.getName()}</figcaption>
                     </figure>
