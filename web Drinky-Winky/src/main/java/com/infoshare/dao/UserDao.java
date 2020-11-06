@@ -1,14 +1,11 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.UserDTO;
-import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -37,14 +34,13 @@ public class UserDao {
         }
     }
 
-
     public List<User> getUserList() {
         return entityManager.createNamedQuery(User.FIND_USER_LIST, User.class).getResultList();
     }
 
     //Todo query to make
-    public List<Drink> getFavouriteDrinkList (){
-        return null;
+    public List<Drink> getFavouriteDrinkList() {
+        return entityManager.createNamedQuery(User.GET_FAVOURITE_LIST, Drink.class).getResultList();
     }
 
     public User findUserByName(String name) {

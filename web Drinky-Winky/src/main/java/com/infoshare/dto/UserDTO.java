@@ -16,14 +16,6 @@ public class UserDTO {
     private String password;
     private List<DrinkDTO> favouriteDrinkList;
 
-    public List<DrinkDTO> getFavouriteDrinkList() {
-        return favouriteDrinkList;
-    }
-
-    public void setFavouriteDrinkList(List<DrinkDTO> favouriteDrinkList) {
-        this.favouriteDrinkList = favouriteDrinkList;
-    }
-
     public static UserDTO userToDto(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
@@ -103,4 +95,11 @@ public class UserDTO {
         this.password = password;
     }
 
+    public List<DrinkDTO> getFavouriteDrinkList() {
+        return favouriteDrinkList;
+    }
+
+    public void setFavouriteDrinkList(List<DrinkDTO> favouriteDrinkList) {
+        this.favouriteDrinkList = favouriteDrinkList;
+    }
 }
