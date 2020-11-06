@@ -3,10 +3,11 @@ package com.infoshare.utils;
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.service.DrinkService;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
 
-
+@RequestScoped
 public class Utils {
 
     @Inject
