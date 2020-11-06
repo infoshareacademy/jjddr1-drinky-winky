@@ -37,7 +37,6 @@ public class UserService {
             return UserDTO.userToDto(userByID);
         }
         return null;
-
     }
 
     @Transactional
@@ -50,5 +49,11 @@ public class UserService {
         return userDao.getFavouriteDrinkList();
     }
 
-
+    public UserDTO findUserByLogin(String login) {
+        User userByLogin = userDao.findUserByLogin(login);
+        if (userByLogin != null) {
+            return UserDTO.userToDto(userByLogin);
+        }
+        return null;
+    }
 }
