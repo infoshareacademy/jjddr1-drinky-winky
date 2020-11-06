@@ -20,7 +20,7 @@ public class DrinkService {
     DrinkDao drinkDao;
 
     public void addDrink(DrinkDTO drinkDTO) {
-        if (!drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
+        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkDao.addDrink(drink);
         }

@@ -27,6 +27,9 @@ public class FileParserService {
     @Inject
     private ParserService parserService;
 
+    @Inject
+    private DrinkService drinkService;
+
     @EJB
     private DrinkMapper drinkMapper;
 
@@ -36,13 +39,19 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
+
+
     public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         for (DrinkAPI drinkAPI : drinkAPIS) {
-            Category category = Optional
-                    .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
-            category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI,category));
-            categoryDao.updateCategory(category);
+
+            if (drinkService.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkAPI.getName()))) {
+
+                Category category = Optional
+                        .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+                category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI, category));
+                categoryDao.updateCategory(category);
+            }
         }
         logger.info("file was parsed");
         return null;
