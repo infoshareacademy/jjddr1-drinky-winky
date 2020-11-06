@@ -26,7 +26,8 @@ public class DrinkService {
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.editDrink(drink); }
+        drinkDao.editDrink(drink);
+    }
 
     @Transactional
     public DrinkDTO getDrinkByName(String name) {
@@ -70,7 +71,11 @@ public class DrinkService {
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
 
         int fromIndex = (request - 1) * size;
-        int toIndex = request * size - 1;
+        int toIndex = request * size;
+
+        if (toIndex > drinkDao.getDrinkList().size()) {
+            toIndex = drinkDao.getDrinkList().size();
+        }
 
         return drinkDao.getDrinkList()
                 .stream()

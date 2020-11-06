@@ -19,8 +19,8 @@ public class UserDao {
         return user;
     }
 
-    public User updateUser(User user) {
-        return entityManager.merge(user);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
     public User getUserById(Long id) {

@@ -3,7 +3,6 @@
 <head>
 
     <#include "css.ftlh">
-    <#--    <#include "js-head.ftlh">-->
 
     <meta charset="utf-8">
     <title>Welcome <#--${user.getName()}--></title>

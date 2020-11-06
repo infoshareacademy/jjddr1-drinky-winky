@@ -21,6 +21,7 @@ public class UserService {
     @EJB
     private UserDao userDao;
 
+    @Transactional
     public void saveUser(UserDTO userDTO) {
         User user = UserDTO.dtoToUser(userDTO);
         userDao.saveUser(user);

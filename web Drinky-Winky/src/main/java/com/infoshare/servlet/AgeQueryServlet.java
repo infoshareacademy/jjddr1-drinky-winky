@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.utils.Utils;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -20,9 +21,14 @@ public class AgeQueryServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
+    @Inject
+    Utils utils;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        //create Siara Boss user
+        utils.createRandomUserDto();
 
         Map<String, Object> root = new HashMap<>();
 
