@@ -49,6 +49,7 @@ public class UserService {
         return userDao.getFavouriteDrinkList();
     }
 
+    @Transactional
     public UserDTO findUserByLogin(String login) {
         User userByLogin = userDao.findUserByLogin(login);
         if (userByLogin != null) {
