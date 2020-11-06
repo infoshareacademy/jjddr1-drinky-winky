@@ -23,6 +23,7 @@
     </div>
 </nav>
 
+
 <section class="gallery" id="gallery">
     <h2 class="section-title">Drink list</h2>
     <div class="gallery-wrapper">
