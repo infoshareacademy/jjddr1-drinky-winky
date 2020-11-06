@@ -66,6 +66,19 @@ public class DrinkService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public List<DrinkDTO> getRequestDrinkList(int request, int size) {
+
+        int fromIndex = (request - 1) * size;
+        int toIndex = request * size - 1;
+
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(DrinkDTO::drinkToDTO)
+                .collect(Collectors.toList())
+                .subList(fromIndex, toIndex);
+    }
+
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {
         return drinkDao.findDrinkByCategoryId(ids);
     }

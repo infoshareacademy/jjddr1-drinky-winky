@@ -1,7 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.utils.Utils;
+import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -21,18 +21,14 @@ public class UserViewServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
-//    @Inject
-//    DrinkService drinkService;
-//    Utils utils = new Utils();
     @Inject
-    Utils utils;
+    DrinkService drinkService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
-
-        root.put("drinkList", utils.getRequestDrinkList(4,5));
+        root.put("drinkList", drinkService.getDrinkList()/*getRequestDrinkList(2,4)*/);
 
         Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
         Writer out = response.getWriter();

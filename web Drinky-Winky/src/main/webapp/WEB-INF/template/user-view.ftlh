@@ -3,6 +3,7 @@
 <head>
 
     <#include "css.ftlh">
+    <#--    <#include "js-head.ftlh">-->
 
     <meta charset="utf-8">
     <title>Welcome <#--${user.getName()}--></title>
@@ -17,12 +18,30 @@
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'">
+            <input list="drinklist" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+                   onblur="this.placeholder='Search...'" required>
+
+            <datalist id="drinklist">
+                <#if drinkList??>
+                    <#list drinkList>
+                        <ul>
+                            <#items as drink>
+                            <option value="${drink.getName()}">
+                                </#items>
+                        </ul>
+                    </#list>
+                </#if>
+            </datalist>
+
         </ul>
     </div>
 </nav>
 
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
 
 <section class="gallery" id="gallery">
     <h2 class="section-title">Drink list</h2>
@@ -54,6 +73,9 @@
 
 <#include "contact.ftlh">
 <#include "footer.ftlh">
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
 
 </body>
 </html>

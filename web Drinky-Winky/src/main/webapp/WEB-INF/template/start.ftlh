@@ -25,10 +25,6 @@
                 <input type="submit" name="navigator" value="user"/>
             </form>
 
-
-
-            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'">
         </ul>
     </div>
 </nav>
