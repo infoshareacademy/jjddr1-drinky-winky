@@ -37,7 +37,7 @@
         <figure>
             <form method="post" action="Category-list" id="mySelect">
                 <fieldset>
-                    <legend> Choose category to view</legend>
+                    <legend> Choose Drink to view</legend>
 
                     <label for="names-choice">Name: <br/><input list="nameofcategories" id="names-choice" type="text" name="name"
                                                                 required/><br/></label>

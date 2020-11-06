@@ -1,5 +1,6 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Drink;
 import com.infoshare.service.CategoryService;
@@ -52,7 +53,8 @@ public class CategoryListServlet1 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         String nameCategory = request.getParameter("name");
-        List<Drink> drinkByCategoryName = drinkService.findDrinkByCategoryName(nameCategory);
-        response.sendRedirect("/Category-list");
+        List<DrinkDTO> drinkByCategoryName = drinkService.getDrinkListByCategoryName(nameCategory);
+        request.setAttribute("categoryname", drinkByCategoryName);
+       response.sendRedirect("/Category-list");
     }
 }

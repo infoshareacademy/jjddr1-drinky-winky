@@ -2,7 +2,6 @@ package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
 import com.infoshare.dao.DrinkDao;
-import com.infoshare.dto.CategoryDto;
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
 import org.slf4j.Logger;
@@ -22,7 +21,7 @@ public class DrinkService {
     DrinkDao drinkDao;
 
     @EJB
-    CategoryDao categoryDaoo;
+    CategoryDao categoryDao;
 
     public void addDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
@@ -72,6 +71,12 @@ public class DrinkService {
     }
 
     @Transactional
+    public List<DrinkDTO>  getDrinkListByCategoryName(String name) {
+        return getDrinkList().stream().filter(drinkDTO -> drinkDTO.getName().equals(name)).collect(Collectors.toList());
+//                .stream().map(DrinkDTO::drinkToDTO).collect(Collectors.toList());
+    }
+
+    @Transactional
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
 
         int fromIndex = (request - 1) * size;
@@ -88,7 +93,8 @@ public class DrinkService {
         return drinkDao.findDrinkByCategoryId(ids);
     }
 
-    public List<Drink> findDrinkByCategoryName(String name) { return categoryDaoo.findCategoryByNames(name);}
+    public Object findDrinkByCategoryName(String name) {
+        return categoryDao.findCategoryByNames(name);}
 
     public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
