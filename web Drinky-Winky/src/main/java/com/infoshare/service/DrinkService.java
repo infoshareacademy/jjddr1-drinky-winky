@@ -1,6 +1,8 @@
 package com.infoshare.service;
 
+import com.infoshare.dao.CategoryDao;
 import com.infoshare.dao.DrinkDao;
+import com.infoshare.dto.CategoryDto;
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
 import org.slf4j.Logger;
@@ -18,6 +20,9 @@ public class DrinkService {
 
     @EJB
     DrinkDao drinkDao;
+
+    @EJB
+    CategoryDao categoryDaoo;
 
     public void addDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
@@ -82,6 +87,8 @@ public class DrinkService {
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {
         return drinkDao.findDrinkByCategoryId(ids);
     }
+
+    public List<Drink> findDrinkByCategoryName(String name) { return categoryDaoo.findCategoryByNames(name);}
 
     public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);

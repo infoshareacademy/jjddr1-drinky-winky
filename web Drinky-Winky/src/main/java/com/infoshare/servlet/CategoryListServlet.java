@@ -25,8 +25,10 @@ public class CategoryListServlet extends HttpServlet {
     CategoryService categoryService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+
         Map<String, Object> root = new HashMap<>();
-        root.put("categories", categoryService.getCategoriesList());
+        root.put("nameofcategories", categoryService.getCategoryNameList(name));
 
         Template template = templateProvider.getTemplate(getServletContext(), "category.ftlh");
         Writer out = response.getWriter();

@@ -1,6 +1,7 @@
 package com.infoshare.dao;
 
 import com.infoshare.model.Category;
+import com.infoshare.model.Drink;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -34,10 +35,17 @@ public class CategoryDao {
     }
 
     //Daniel CHECK THIS
+
     public Category findCategoryByName(String name) {
         TypedQuery<Category> query = entityManager.createNamedQuery(Category.FIND_CATEGORY_BY_NAME, Category.class);
         query.setParameter("name", name);
         return query.getResultList().stream().findFirst().orElse(null);
+    }
+
+    public List<Drink> findCategoryByNames(String name) {
+        TypedQuery<Category> query = entityManager.createNamedQuery(Category.FIND_DRINKS_BY_CATEGORY_NAME, Category.class);
+        query.setParameter("name", name);
+        return (List<Drink>) query.getResultList().stream().findFirst().orElse(null);
     }
 
     public String[] getCategoryIds() {

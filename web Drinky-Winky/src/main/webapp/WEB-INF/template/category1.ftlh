@@ -55,7 +55,7 @@
                     </datalist>
 
                     <div class="upload-btn-wrapper">
-                        <input class="btn2" type="submit" value="Show"/><br/><br/>
+                        <input class="btn2" type="submit" value="Search"/><br/><br/>
                     </div>
 
                 </fieldset>

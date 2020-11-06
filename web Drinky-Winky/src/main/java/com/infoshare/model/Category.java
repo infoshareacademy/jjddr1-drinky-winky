@@ -21,8 +21,10 @@ import java.util.List;
                 query = "SELECT DISTINCT c FROM Category c"),
         @NamedQuery(
                 name = Category.GET_CATEGORY_IDS,
-                query = " SELECT c.id FROM Category c"
-        )
+                query = " SELECT c.id FROM Category c"),
+        @NamedQuery(
+                name = Category.FIND_DRINKS_BY_CATEGORY_NAME,
+                query = " SELECT distinct m.name FROM Category u, Drink m JOIN u.drinkList r WHERE r.id=u.id")
 })
 
 @Entity
@@ -33,6 +35,7 @@ public class Category {
     public static final String FIND_CATEGORY_BY_ID = "Category.findCategoryById";
     public static final String GET_CATEGORY_LIST = "Category.getCategoryList";
     public static final String GET_CATEGORY_IDS = "Category.getCategoryIds";
+    public static final String FIND_DRINKS_BY_CATEGORY_NAME = "Category.getDrinksListByCategoryName";
 
     @Id
     @Column(name = "id")

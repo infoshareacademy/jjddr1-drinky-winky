@@ -1,20 +1,24 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.model.Drink;
 import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/Category-list1")
@@ -24,6 +28,8 @@ public class CategoryListServlet1 extends HttpServlet {
     TemplateProvider templateProvider;
     @Inject
     CategoryService categoryService;
+    @Inject
+    DrinkService drinkService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -39,5 +45,14 @@ public class CategoryListServlet1 extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(false);
+        String nameCategory = request.getParameter("name");
+        List<Drink> drinkByCategoryName = drinkService.findDrinkByCategoryName(nameCategory);
+        response.sendRedirect("/Category-list");
     }
 }
