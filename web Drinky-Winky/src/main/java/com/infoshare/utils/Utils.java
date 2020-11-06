@@ -16,7 +16,7 @@ public class Utils {
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
 
         int fromIndex = (request - 1) * size;
-        int toIndex = request * size - 1;
+        int toIndex = request * size;
         if (toIndex > drinkService.getDrinkList().size()) {
             toIndex = drinkService.getDrinkList().size();
         }

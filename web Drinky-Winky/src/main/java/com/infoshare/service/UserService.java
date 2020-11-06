@@ -1,6 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
@@ -46,9 +47,11 @@ public class UserService {
     }
 
     //TODO change to DTO
-    public List<Drink> getFavouriteList() {
-        return userDao.getFavouriteDrinkList();
-    }
+//    public List<DrinkDTO> getFavouriteList() {
+//        List<Drink> favouriteDrinkList = userDao.getFavouriteDrinkList();
+//        return DrinkDTO.drinkToDTO(favouriteDrinkList);
+
+//    }
 
 
 }
