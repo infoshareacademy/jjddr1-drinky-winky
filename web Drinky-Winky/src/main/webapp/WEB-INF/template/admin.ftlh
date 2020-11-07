@@ -56,8 +56,8 @@
                                                            required/><br/></label>
 
                     <datalist id="names">
-                        <#if names??>
-                            <#list names>
+                        <#if drinks??>
+                            <#list drinks>
                                 <ul>
                                     <#items as name>
                                     <option value="${name.getName()}">
@@ -91,7 +91,7 @@
                             <#list glasses>
                                 <ul>
                                     <#items as glass>
-                                    <option value="${glass.getGlassType()}">
+                                    <option value="${glass}">
                                         </#items>
                                 </ul>
                             </#list>
@@ -111,7 +111,7 @@
                             <#list ingredients>
                                 <ul>
                                     <#items as ingredient>
-                                    <option value="${ingredient.getName()}">
+                                    <option value="${ingredient}">
                                         </#items>
                                 </ul>
                             </#list>
@@ -137,7 +137,7 @@
                             <td>Measures</td>
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input type="text" name="ingredient" ng-model="item.ingredient" required></td>
+                            <td><input list="ingredients" type="text" name="ingredient" ng-model="item.ingredient" required></td>
                             <td><input type="text" name="measure" ng-model="item.measure" required></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
@@ -202,8 +202,8 @@
                                                                 required/><br/></label>
 
                     <datalist id="names">
-                        <#if names??>
-                            <#list names>
+                        <#if drinks??>
+                            <#list drinks>
                                 <ul>
                                     <#items as name>
                                     <option value="${name.getName()}">

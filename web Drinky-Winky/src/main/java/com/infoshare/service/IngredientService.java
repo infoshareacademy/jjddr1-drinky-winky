@@ -9,7 +9,10 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -49,6 +52,14 @@ public class IngredientService {
                 .stream()
                 .map(IngredientDTO::ingredientToDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public Set<String> getUniqueIngredientsNameList() {
+        return ingredientDao.getIngredientsList()
+                .stream()
+                .map(Ingredient::getName)
+                .collect(Collectors.toSet());
     }
 }
 

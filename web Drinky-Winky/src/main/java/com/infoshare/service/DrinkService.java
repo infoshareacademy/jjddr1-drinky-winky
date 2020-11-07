@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -88,6 +89,14 @@ public class DrinkService {
                 .map(DrinkDTO::drinkToDTO)
                 .collect(Collectors.toList())
                 .subList(fromIndex, toIndex);
+    }
+
+    @Transactional
+    public Set<String> getUniqueGlassesNameList() {
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(Drink::getGlassType)
+                .collect(Collectors.toSet());
     }
 
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {

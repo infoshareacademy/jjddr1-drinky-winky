@@ -12,8 +12,8 @@
                    onblur="this.placeholder='Search...'" required>
 
             <datalist id="names">
-                <#if names??>
-                    <#list names>
+                <#if drinks??>
+                    <#list drinks>
                         <ul>
                             <#items as name>
                             <option value="${name.getName()}">
