@@ -54,7 +54,8 @@ public class CategoryListServlet1 extends HttpServlet {
         HttpSession session = request.getSession(false);
         String nameCategory = request.getParameter("name");
         List<DrinkDTO> drinkByCategoryName = drinkService.getDrinkListByCategoryName(nameCategory);
-        request.setAttribute("categoryname", drinkByCategoryName);
-       response.sendRedirect("/Category-list");
+        RequestDispatcher rd=request.getRequestDispatcher("/Category-list");
+        rd.forward(request, response);
+
     }
 }

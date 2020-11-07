@@ -44,7 +44,7 @@ public class CategoryDao {
     public Object findCategoryByNames(String name) {
         Query query = entityManager.createNamedQuery(Category.FIND_DRINKS_BY_CATEGORY_NAME, Category.class);
         query.setParameter("name", name);
-        return query.getResultList().stream().findFirst().orElse(null);
+        return query.getResultList();
     }
 
     public String[] getCategoryIds() {

@@ -72,8 +72,8 @@ public class DrinkService {
 
     @Transactional
     public List<DrinkDTO>  getDrinkListByCategoryName(String name) {
-        return getDrinkList().stream().filter(drinkDTO -> drinkDTO.getName().equals(name)).collect(Collectors.toList());
-//                .stream().map(DrinkDTO::drinkToDTO).collect(Collectors.toList());
+        return getDrinkList().stream().filter(drinkDTO -> drinkDTO.getCategory().getName().equals(name)).collect(Collectors.toList());
+//
     }
 
     @Transactional

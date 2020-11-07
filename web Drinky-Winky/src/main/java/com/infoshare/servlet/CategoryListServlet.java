@@ -32,9 +32,9 @@ public class CategoryListServlet extends HttpServlet {
     DrinkService drinkService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
+        String name = request.getParameter("categoryname");
         Map<String, Object> root = new HashMap<>();
-        root.put("categories", categoryDao.findCategoryByNames(name));
+        root.put("categories", drinkService.getDrinkListByCategoryName(name));
 
         Template template = templateProvider.getTemplate(getServletContext(), "category.ftlh");
         Writer out = response.getWriter();
