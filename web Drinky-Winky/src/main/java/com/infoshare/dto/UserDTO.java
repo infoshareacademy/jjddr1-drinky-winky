@@ -45,6 +45,7 @@ public class UserDTO {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkList.add(drink);
         });
+        user.setFavouriteDrinkList(drinkList);
         return user;
     }
 

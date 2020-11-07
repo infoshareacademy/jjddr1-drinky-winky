@@ -23,9 +23,12 @@ public class UserService {
 
     @Transactional
     public void saveUser(UserDTO userDTO) {
-        User user = UserDTO.dtoToUser(userDTO);
-        userDao.saveUser(user);
+        if (userDao.getUserList().stream().noneMatch(user -> user.getName().equals(userDTO.getName()))) {
+            User user = UserDTO.dtoToUser(userDTO);
+            userDao.saveUser(user);
+        }
     }
+
 
     public void updateUser(UserDTO userDTO) {
         userDao.updateUser(UserDTO.dtoToUser(userDTO));
