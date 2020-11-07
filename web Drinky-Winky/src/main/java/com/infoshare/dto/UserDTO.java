@@ -20,6 +20,7 @@ public class UserDTO {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
+        userDTO.setSurname(user.getSurname());
         userDTO.setUserType(user.getUserType());
         userDTO.setLogin(user.getLogin());
         userDTO.setPassword(user.getPassword());
@@ -44,7 +45,12 @@ public class UserDTO {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkList.add(drink);
         });
+        user.setFavouriteDrinkList(drinkList);
         return user;
+    }
+
+    public void addFavouriteDrink(DrinkDTO drinkDTO){
+        favouriteDrinkList.add(drinkDTO);
     }
 
     public Long getId() {

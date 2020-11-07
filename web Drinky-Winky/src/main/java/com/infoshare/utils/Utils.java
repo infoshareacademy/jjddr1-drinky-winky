@@ -1,26 +1,30 @@
 package com.infoshare.utils;
 
-import com.infoshare.dto.DrinkDTO;
-import com.infoshare.service.DrinkService;
+import com.infoshare.dto.UserDTO;
+import com.infoshare.model.User;
+import com.infoshare.service.UserService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import java.util.List;
 
 @RequestScoped
 public class Utils {
 
     @Inject
-    DrinkService drinkService;
+    UserService userService;
 
-    public List<DrinkDTO> getRequestDrinkList(int request, int size) {
+    public void createRandomUserDto() {
 
-        int fromIndex = (request - 1) * size;
-        int toIndex = request * size;
-        if (toIndex > drinkService.getDrinkList().size()) {
-            toIndex = drinkService.getDrinkList().size();
-        }
-        return drinkService.getDrinkList().subList(fromIndex, toIndex);
+        //chwilowy user do testu
+        User user = new User();
+        user.setId(1l);
+        user.setLogin("login");
+        user.setPassword("pass");
+        user.setName("Stefan");
+        user.setSurname("Siara");
+        user.setUserType("Boss");
+        UserDTO userDTO = UserDTO.userToDto(user);
+        userService.saveUser(userDTO);
     }
 
 }

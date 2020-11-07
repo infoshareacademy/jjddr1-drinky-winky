@@ -13,16 +13,46 @@
 <nav class="navigation">
     <div class="container">
         <ul>
+            <li><a href="#load">Welcome</a></li>
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'">
+            <input list="drinklist" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+                   onblur="this.placeholder='Search...'" required>
+
+            <datalist id="drinklist">
+                <#if drinkList??>
+                    <#list drinkList>
+                        <ul>
+                            <#items as drink>
+                            <option value="${drink.getName()}">
+                                </#items>
+                        </ul>
+                    </#list>
+                </#if>
+            </datalist>
+
         </ul>
     </div>
 </nav>
 
+<section class="splash" id="load"
+         style="background-image: url('https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?cs=srgb&dl=pexels-toni-cuenca-616836.jpg&fm=jpg');">
+
+    <div class="page-intro">
+        <div class="container">
+            <h1 class="main-title">Welcome user</h1>
+        </div>
+    </div>
+
+</section>
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
 
 <section class="gallery" id="gallery">
     <h2 class="section-title">Drink list</h2>
@@ -32,7 +62,7 @@
             <#list drinkList>
                 <#items as drink>
 
-                    <figure class="gallery-item">
+                    <figure class="gallery-item" style="padding: 5px">
                         <img src= ${drink.getImageUrl()} alt="image">
                         <figcaption>${drink.getName()}</figcaption>
                     </figure>
@@ -54,6 +84,9 @@
 
 <#include "contact.ftlh">
 <#include "footer.ftlh">
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
 
 </body>
 </html>

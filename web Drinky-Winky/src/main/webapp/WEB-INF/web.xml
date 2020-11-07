@@ -4,7 +4,7 @@
          version="4.0">
 
     <display-name>Archetype Created Web Application</display-name>
-
+    <session-config></session-config>
     <data-source>
         <name>java:ds/webApp</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>

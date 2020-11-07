@@ -7,9 +7,7 @@ import freemarker.template.TemplateException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -26,6 +24,12 @@ public class LoginServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
 
+        String login = request.getParameter("login");
+        HttpSession session = request.getSession();
+        session.setAttribute("login", login);
+        //setting session to expiry in 10s
+        session.setMaxInactiveInterval(10);
+
         Template template = templateProvider.getTemplate(getServletContext(), "log.ftlh");
         Writer out = response.getWriter();
 
@@ -35,4 +39,29 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 }
+
+
+//        String login = request.getParameter("login");
+//        String password = request.getParameter("password");
+//
+//        if (login.equals(login) && password.equals("password")) {
+//            HttpSession session = request.getSession();
+//            session.setAttribute("login", login);
+//
+//            //setting session to expiry in 30 mins
+//            session.setMaxInactiveInterval(30 * 60);
+//
+//            Cookie userName = new Cookie("login", login);
+//            userName.setMaxAge(30 * 60);
+//            response.addCookie(userName);
+//
+//            response.sendRedirect("/User-view");
+//        } else {
+//            response.sendRedirect("log");
+//        }

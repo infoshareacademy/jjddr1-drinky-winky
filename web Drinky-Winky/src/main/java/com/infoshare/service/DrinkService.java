@@ -20,13 +20,16 @@ public class DrinkService {
     DrinkDao drinkDao;
 
     public void addDrink(DrinkDTO drinkDTO) {
-        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.addDrink(drink);
+//        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
+            Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+            drinkDao.addDrink(drink);
+//        }
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.editDrink(drink); }
+        drinkDao.editDrink(drink);
+    }
 
     @Transactional
     public DrinkDTO getDrinkByName(String name) {
@@ -64,6 +67,23 @@ public class DrinkService {
                 .stream()
                 .map(DrinkDTO::drinkToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<DrinkDTO> getRequestDrinkList(int request, int size) {
+
+        int fromIndex = (request - 1) * size;
+        int toIndex = request * size;
+
+        if (toIndex > drinkDao.getDrinkList().size()) {
+            toIndex = drinkDao.getDrinkList().size();
+        }
+
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(DrinkDTO::drinkToDTO)
+                .collect(Collectors.toList())
+                .subList(fromIndex, toIndex);
     }
 
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {
