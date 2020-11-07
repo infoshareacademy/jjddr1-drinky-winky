@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <#include "css.ftlh">
@@ -63,8 +63,8 @@
                 <#items as drink>
 
                     <figure class="gallery-item" style="padding: 5px">
-                        <img src= ${drink.getImageUrl()} alt="image">
-                        <figcaption>${drink.getName()}</figcaption>
+                        <img src=${drink.getImageUrl()} alt="image">
+                        <a href="http://localhost:8080/single?id=${drink.getName()}"> <figcaption>${drink.getName()}</figcaption></a>
                     </figure>
 
                 </#items>

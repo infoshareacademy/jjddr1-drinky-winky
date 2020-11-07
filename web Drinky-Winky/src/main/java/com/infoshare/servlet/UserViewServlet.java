@@ -30,7 +30,7 @@ public class UserViewServlet extends HttpServlet {
 
 
         Map<String, Object> root = new HashMap<>();
-        root.put("drinkList", drinkService.getRequestDrinkList(1,12));
+        root.put("drinkList", drinkService.getRequestDrinkList(1,8));
 
         Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
         Writer out = response.getWriter();
