@@ -64,7 +64,7 @@
 
                     <figure class="gallery-item" style="padding: 5px">
                         <img src=${drink.getImageUrl()} alt="image">
-                        <a href="http://localhost:8080/single?id=${drink.getName()}">
+                        <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
                             <figcaption>${drink.getName()}</figcaption>
                         </a>
                     </figure>

@@ -10,27 +10,34 @@
 </head>
 <body>
 
-<#list names>
-    <ul>
-        <#items as name>
-            <li>
-                ${name.getName()}
-                ${name.getModificationDate()}
+<div>
+    ${drink.getName()}<br/>
+    ${drink.getRecipe()}<br/>
+    ${drink.getDrinkType()}<br/>
+    ${drink.getGlassType()}<br/>
+    ${drink.getModificationDate()}<br/>
+    ${drink.getCategory().getName()}<br/>
+</div>
 
-                <#list ing>
-                    <ul>
-                        <#items as name>
-                        <li>
-                            ${name.getName()}
-                            </#items>
-                    </ul>
-                </#list>
+<div>
+    <figure class="gallery-item" style="padding: 5px">
+        <img src="${drink.getImageUrl()}" alt="image"><br/>
+        <figcaption>${drink.getName()}</figcaption>
+    </figure>
+</div>
 
-
-            </li>
-        </#items>
-    </ul>
-</#list>
+<div>
+    <#list ingredients>
+        <ul>
+            <#items as ingredient>
+                <li>
+                    ${ingredient.getName()}
+                    ${ingredient.getMeasure()}
+                </li>
+            </#items>
+        </ul>
+    </#list>
+</div>
 
 </body>
 </html>

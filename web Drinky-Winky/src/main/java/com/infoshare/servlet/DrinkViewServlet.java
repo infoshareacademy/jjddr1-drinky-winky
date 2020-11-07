@@ -1,5 +1,6 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
@@ -27,8 +28,11 @@ public class DrinkViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        DrinkDTO drink = drinkService.getDrinkByName(request.getParameter("name"));
+
         Map<String, Object> root = new HashMap<>();
-        root.put("drink", drinkService.getDrinkByName(request.getParameter("name")));
+        root.put("drink", drink);
+        root.put("ingredients",drink.getIngredientList());
 
         Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");
         Writer out = response.getWriter();
