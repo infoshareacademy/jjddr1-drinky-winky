@@ -1,8 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -16,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@WebServlet("/View-drink")
-public class ViewDrinkServlet extends HttpServlet {
+@WebServlet("/Drink-view")
+public class DrinkViewServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
@@ -31,15 +28,9 @@ public class ViewDrinkServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getDrinkList());
+        root.put("drink", drinkService.getDrinkByName(request.getParameter("name")));
 
-        List<DrinkDTO> recipesList = drinkService.getDrinkList();
-
-        for(DrinkDTO drink:recipesList){
-            root.put("ing",drink.getIngredientList());
-        }
-
-        Template template = templateProvider.getTemplate(getServletContext(), "view.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");
         Writer out = response.getWriter();
 
         try {

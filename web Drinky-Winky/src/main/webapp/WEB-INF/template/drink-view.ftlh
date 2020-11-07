@@ -1,6 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-    <title>View DRINK</title>
+
+    <#include "css.ftlh">
+
+    <meta charset="utf-8">
+    <title>${drink.getName()}</title>
+
 </head>
 <body>
 
@@ -14,9 +20,9 @@
                 <#list ing>
                     <ul>
                         <#items as name>
-                            <li>
-                                ${name.getName()}
-                        </#items>
+                        <li>
+                            ${name.getName()}
+                            </#items>
                     </ul>
                 </#list>
 

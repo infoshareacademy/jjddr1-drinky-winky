@@ -18,12 +18,12 @@
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <input list="drinklist" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+            <input list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'" required>
 
-            <datalist id="drinklist">
-                <#if drinkList??>
-                    <#list drinkList>
+            <datalist id="allDrink">
+                <#if allDrik??>
+                    <#list allDrink>
                         <ul>
                             <#items as drink>
                             <option value="${drink.getName()}">
@@ -64,7 +64,9 @@
 
                     <figure class="gallery-item" style="padding: 5px">
                         <img src=${drink.getImageUrl()} alt="image">
-                        <a href="http://localhost:8080/single?id=${drink.getName()}"> <figcaption>${drink.getName()}</figcaption></a>
+                        <a href="http://localhost:8080/single?id=${drink.getName()}">
+                            <figcaption>${drink.getName()}</figcaption>
+                        </a>
                     </figure>
 
                 </#items>
