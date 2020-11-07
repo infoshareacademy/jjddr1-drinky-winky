@@ -74,6 +74,14 @@
     </div>
 </section>
 
+<#include "add-favourite.ftlh">
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
+
 <#include "about.ftlh">
 
 <section class="statement">
