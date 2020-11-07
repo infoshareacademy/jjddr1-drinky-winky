@@ -28,6 +28,7 @@ public class UserDao {
             userToUpdate.setUserType(user.getUserType());
             userToUpdate.setLogin(user.getLogin());
             userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setFavouriteDrinkList(user.getFavouriteDrinkList());
             entityManager.merge(userToUpdate);
         }
     }

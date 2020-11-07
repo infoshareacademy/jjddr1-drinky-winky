@@ -31,9 +31,7 @@ public class UserService {
 
 
     public void updateUser(UserDTO userDTO, Long id) {
-//        if (userDao.getUserList().stream().noneMatch(user -> user.getName().equals(userDTO.getName()))) {
         userDao.updateUser(UserDTO.dtoToUser(userDTO), id);
-//        }
     }
 
     @Transactional
