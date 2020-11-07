@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
         String login = request.getParameter("login");
         HttpSession session = request.getSession();
-        session.setAttribute("login", login);
+        String login1 = (String) session.getAttribute("login");
         //setting session to expiry in 10s
         session.setMaxInactiveInterval(10);
 
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 //        String login = request.getParameter("login");
 //        String password = request.getParameter("password");
 //
-//        if (login.equals(login) && password.equals("password")) {
+
 //            HttpSession session = request.getSession();
 //            session.setAttribute("login", login);
 //

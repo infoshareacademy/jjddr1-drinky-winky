@@ -42,7 +42,7 @@ public class User {
 //    @NotNull
     private String userType;
 
-    @Column(name = "login")
+    @Column(name = "login", unique = true)
 //    @NotNull
     private String login;
 
