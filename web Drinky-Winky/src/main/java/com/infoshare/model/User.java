@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
-                name = User.FIND_USER_BY_NAME ,
+                name = User.FIND_USER_BY_NAME,
                 query = "SELECT distinct u FROM User u WHERE u.name like :name"),
         @NamedQuery(
                 name = User.FIND_USER_BY_LOGIN ,

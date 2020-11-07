@@ -28,7 +28,7 @@ public class LoggingTestServlet extends HttpServlet {
         user.setPassword(request.getParameter("password"));
 
         PrintWriter printWriter = response.getWriter();
-        printWriter.write("<!DOCTYPE html><html><body>"+user+"</body></html>");
+        printWriter.write("<!DOCTYPE html><html><body>"+user.getLogin()+ " " + user.getPassword() + "</body></html>");
 
     }
 }
