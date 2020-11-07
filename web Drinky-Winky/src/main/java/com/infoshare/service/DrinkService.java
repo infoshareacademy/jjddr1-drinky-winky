@@ -51,14 +51,18 @@ public class DrinkService {
 
     @Transactional
     public void deleteDrinkById(Long id) {
-        drinkDao.deleteDrinkById(id);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
+            drinkDao.deleteDrinkById(id);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
     public void deleteDrinkByName(String name) {
-        drinkDao.deleteDrinkByName(name);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
+            drinkDao.deleteDrinkByName(name);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
