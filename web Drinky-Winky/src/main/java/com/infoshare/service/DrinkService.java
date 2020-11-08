@@ -20,11 +20,13 @@ public class DrinkService {
     @EJB
     DrinkDao drinkDao;
 
-    public void addDrink(DrinkDTO drinkDTO) {
+    public String addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkDao.addDrink(drink);
+            return "SUCCESS! THE DRINK HAS BEEN ADDED";
         }
+        return "SOMETHING WENT WRONG! THE DRINK WITH THAT NAME ALREADY EXIST";
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
