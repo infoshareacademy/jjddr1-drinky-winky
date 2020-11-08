@@ -17,8 +17,8 @@ public class MessageService {
         return MessageDto.messageToDto.apply(messageDao.getMessage(id));
     }
 
-    public void setMessage(Message message){
-        messageDao.setMessage(message);
+    public void setMessage(MessageDto messageDto){
+        messageDao.setMessage(MessageDto.dtoToMessage.apply(messageDto));
     }
 
 }
