@@ -72,4 +72,5 @@ public class Category {
     public void setDrinkList(List<Drink> drinkList) {
         this.drinkList = drinkList;
     }
+
 }

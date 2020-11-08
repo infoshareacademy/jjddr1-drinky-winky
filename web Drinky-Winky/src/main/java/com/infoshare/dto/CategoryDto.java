@@ -36,4 +36,10 @@ public class CategoryDto {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

@@ -96,17 +96,21 @@ public class DrinkService {
                 .collect(Collectors.toSet());
     }
 
-    public List<DrinkDTO> getDrinkByFirstTreeChars(String drinkSearch) {
+    public List<Drink> getDrinkByFirstTreeChars(String drinkSearch) {
         if (drinkSearch != null) {
-            List<DrinkDTO> found = new ArrayList<>();
-            List<DrinkDTO> drinkList = getDrinkList();
-            for (DrinkDTO d : drinkList) {
-                if (d.getName().toLowerCase().startsWith(drinkSearch)) {
-                    found.add(d);
+            List<Drink> found = new ArrayList<>();
+            List<Drink> drinkList = drinkDao.getDrinkList();
+            for (Drink foundDrink : drinkList) {
+                if (foundDrink.getName().toLowerCase().startsWith(drinkSearch.toLowerCase())) {
+                    found.add(foundDrink);
                 }
             }
             return found;
         }
         return null;
+    }
+
+    public List<String> getDrinkNames() {
+        return drinkDao.getDrinkList().stream().map(Drink::getName).collect(Collectors.toList());
     }
 }

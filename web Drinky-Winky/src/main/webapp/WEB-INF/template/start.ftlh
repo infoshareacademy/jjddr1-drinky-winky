@@ -19,6 +19,20 @@
             <li><a href="#quotes">Recipes</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contacts</a></li>
+
+            <form method="get" action="Navigation-servlet">
+                <input type="submit" name="navigator" value="admin"/>
+                <input type="submit" name="navigator" value="user"/>
+            </form>
+
+
+
+            <form action="search-drink" method="get">
+
+                <label for="drinkSearchPost">Drink Search:</label> <input type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*Find drink by name">
+
+                <button type="submit">Find</button>
+            </form>
         </ul>
 
             <form method="get" action="Navigation-servlet" style="float: none; margin-right: 20px" >
