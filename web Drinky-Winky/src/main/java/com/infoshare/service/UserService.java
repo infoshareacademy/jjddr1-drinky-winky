@@ -23,14 +23,16 @@ public class UserService {
     private UserDao userDao;
 
     @Transactional
-    public void saveFavDrink(Long drinkId, Long userId){
-        userDao.addFav(drinkId,userId);
+    public void saveFavDrink(Long drinkId, Long userId) {
+        userDao.addFav(drinkId, userId);
     }
 
     @Transactional
     public void saveUser(UserDTO userDTO) {
-        User user = UserDTO.dtoToUser(userDTO);
-        userDao.saveUser(user);
+        if (userDao.getUserById(userDTO.getId()) == null) {
+            User user = UserDTO.dtoToUser(userDTO);
+            userDao.saveUser(user);
+        }
     }
 
     public void updateUser(UserDTO userDTO) {
