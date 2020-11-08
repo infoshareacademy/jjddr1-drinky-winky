@@ -98,27 +98,6 @@
                         </#if>
                     </datalist>
 
-
-
-                    <label for="ingredients-choice">Ingredients: <input list="ingredients"
-                                                                        id="ingredients-choice"
-                                                                        type="text"
-                                                                        name="ingredients"
-                                                                        required/><br/></label>
-
-                    <datalist id="ingredients">
-                        <#if ingredients??>
-                            <#list ingredients>
-                                <ul>
-                                    <#items as ingredient>
-                                    <option value="${ingredient}">
-                                        </#items>
-                                </ul>
-                            </#list>
-                        </#if>
-                    </datalist>
-
-
                     <label for="image-choice"> Image <input id="image-choice" type="url" name="imageUrl" required/><br/></label>
 
                     Alcoholic:
@@ -138,12 +117,25 @@
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
                             <td><input list="ingredients" type="text" name="ingredient" ng-model="item.ingredient" required></td>
-                            <td><input type="text" name="measure" ng-model="item.measure" required></td>
+                            <td><input type="text" name="measure" ng-model="item.measure" ></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
                             </td>
                         </tr>
                     </table>
+
+                    <datalist id="ingredients">
+                        <#if ingredients??>
+                            <#list ingredients>
+                                <ul>
+                                    <#items as ingredient>
+                                    <option value="${ingredient}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
                     <br/>
 
                     <!--                <button ng-click="addItem()">Add</button>-->
