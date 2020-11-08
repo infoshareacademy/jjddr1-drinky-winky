@@ -24,7 +24,7 @@ public class DrinkService {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkDao.addDrink(drink);
-            return "SUCCESS! THE DRINK HAS BEEN ADDED";
+            return  "SUCCESS! THE DRINK HAS BEEN ADDED";
         }
         return "SOMETHING WENT WRONG! THE DRINK WITH THAT NAME ALREADY EXIST";
     }

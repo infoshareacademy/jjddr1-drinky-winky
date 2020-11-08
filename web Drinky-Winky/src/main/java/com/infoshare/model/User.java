@@ -18,8 +18,8 @@ import java.util.List;
                 name = User.GET_USER_BY_PASSWORD,
                 query = "SELECT p FROM User p WHERE p.password LIKE :password"),
         @NamedQuery(
-                name = User.GET_USER_BY_LOGIN_AND_PASSWORD,
-                query = "SELECT u FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
+                name = User.GET_LOGIN_AND_PASSWORD,
+                query = "SELECT u.login, u.password FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
         )
 })
 
@@ -36,7 +36,7 @@ public class User {
     public static final String GET_FAVOURITE_LIST = "User.getFavouritesList";
     public static final String GET_USER_BY_LOGIN = "User.getUserByLogin";
     public static final String GET_USER_BY_PASSWORD = "User.getUserByPassword";
-    public static final String GET_USER_BY_LOGIN_AND_PASSWORD = "User.getUserByLoginAndPassword";
+    public static final String GET_LOGIN_AND_PASSWORD = "User.getLoginAndPassword";
 
     @Id
     @Column(name = "id")

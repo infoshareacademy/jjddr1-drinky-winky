@@ -1,7 +1,6 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
-import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
-import java.util.List;
 
 
 @RequestScoped
@@ -31,7 +29,11 @@ public class UserService {
         if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(userDTO.getLogin()))) {
             User user = UserDTO.dtoToUser(userDTO);
             userDao.saveUser(user);
-        } return false;
+//        if (userDao.getUserById(userDTO.getId()) == null) {
+//            User user = UserDTO.dtoToUser(userDTO);
+//            userDao.saveUser(user);
+        }
+        return false;
     }
 //    public void saveUser(UserDTO userDTO) {
 //        if (userDao.getUserById(userDTO.getId()) == null) {
@@ -71,11 +73,20 @@ public class UserService {
     }
 
 
-    public UserDTO getUserByLogin(String login) {
-        if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(login))) {
-            User user = userDao.getUserByLogin(login);
+    public UserDTO getUserLogin(String login) {
+        if (userDao.getUserList().stream().anyMatch(user -> user.getLogin().equals(login))) {
+            User user = userDao.getLogin(login);
             return UserDTO.userToDto(user);
         }
         return null;
+    }
+
+    public UserDTO getUserPassword(String password) {
+        if (userDao.getUserList().stream().anyMatch(user -> user.getPassword().equals(password))) {
+            User user = userDao.getPassword(password);
+            return UserDTO.userToDto(user);
+        }
+        return null;
+
     }
 }

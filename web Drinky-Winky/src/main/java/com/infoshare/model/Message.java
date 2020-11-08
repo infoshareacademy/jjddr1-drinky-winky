@@ -3,13 +3,14 @@ package com.infoshare.model;
 import javax.persistence.*;
 
 @NamedQuery(
-        name = "Message.getMessage",
+        name = Message.GET_MESSAGE,
         query = "SELECT m FROM Message m"
 )
 
 @Table
 @Entity
 public class Message {
+    public static final String GET_MESSAGE = "Message.getMessage";
 
     @Id
     @GeneratedValue

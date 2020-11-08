@@ -33,7 +33,7 @@ public class UserToDatabaseServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-//        if (userService.getUserByLogin(login) != null) {
+
             User user = new User();
             user.setLogin(login);
             user.setPassword(password);
