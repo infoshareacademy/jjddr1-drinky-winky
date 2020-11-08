@@ -23,6 +23,10 @@ public class MessageDto {
         }
     };
 
+    public MessageDto(String message) {
+        this.message = message;
+    }
+
     public MessageDto(Long id, String message) {
         this.id = id;
         this.message = message;
