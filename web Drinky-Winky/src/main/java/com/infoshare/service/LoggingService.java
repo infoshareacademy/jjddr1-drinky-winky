@@ -13,7 +13,7 @@ public class LoggingService {
     UserService userService;
 
     public Optional<UserDTO> checkIfUserExist(String login) {
-        return Optional.ofNullable(userService.findUserByLogin(login));
+        return userService.findUserByLogin(login);
     }
 
     public boolean checkCorrectPassword(UserDTO userDTO, String password) {

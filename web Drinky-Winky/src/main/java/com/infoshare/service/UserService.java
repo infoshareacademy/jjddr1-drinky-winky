@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @RequestScoped
@@ -50,11 +51,10 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO findUserByLogin(String login) {
-        User userByLogin = userDao.findUserByLogin(login);
-        if (userByLogin != null) {
-            return UserDTO.userToDto(userByLogin);
-        }
-        return null;
+    public Optional<UserDTO> findUserByLogin(String login) {
+        if (userDao.findUserByLogin(login).isPresent()) {
+            return Optional.of(UserDTO.userToDto(userDao.findUserByLogin(login).get()));
+        } return Optional.empty();
     }
+
 }
