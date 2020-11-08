@@ -17,16 +17,28 @@ public class Message {
     private Long id;
 
     @Column(name = "message")
-    private String text;
+    private String message;
+
+    public Message(String message) {
+        this.message = message;
+    }
 
     public Message() {
     }
 
-    public String getText() {
-        return text;
+    public Long getId() {
+        return id;
     }
 
-    public void setText(String message) {
-        this.text = message;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
