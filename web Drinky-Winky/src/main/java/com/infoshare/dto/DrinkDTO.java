@@ -5,6 +5,7 @@ import com.infoshare.model.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class DrinkDTO {
     private Long id;
@@ -152,5 +153,21 @@ public class DrinkDTO {
         this.ingredientList = ingredientList;
     }
 
+    @Override
+    public String toString() {
+        return "DrinkDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isCustom=" + isCustom +
+                ", isApproved=" + isApproved +
+                ", recipe='" + recipe + '\'' +
+                ", drinkType='" + drinkType + '\'' +
+                ", glassType='" + glassType + '\'' +
+                ", modificationDate='" + modificationDate + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", ingredientList=" + ingredientList +
+                '}';
+    }
 }
 

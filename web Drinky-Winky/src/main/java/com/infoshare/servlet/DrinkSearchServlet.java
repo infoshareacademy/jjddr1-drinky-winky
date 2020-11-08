@@ -2,6 +2,7 @@ package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -23,30 +24,29 @@ import java.util.Map;
 public class DrinkSearchServlet extends HttpServlet {
 
     @Inject
+    TemplateProvider templateProvider;
+    @Inject
     DrinkService drinkService;
 
-    @Inject
-    TemplateProvider templateProvider;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
+        String drinkSearch = request.getParameter("drinkSearch");
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Drink> drinkNames = drinkService.getDrinkByFirstTreeChars(drinkSearch);
 
-        resp.setContentType("text/html;charset=UTF-8");
+        Map<String, Object> root = new HashMap<>();
+        root.put("names", drinkService.getDrinkByFirstTreeChars(drinkSearch));
 
-        String drinkSearch = req.getParameter("drinkSearch");
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-search.ftlh");
+        Writer out = response.getWriter();
 
-        PrintWriter printWriter = resp.getWriter();
-
-        List<DrinkDTO> drinkByFirstTreeChars = drinkService.getDrinkByFirstTreeChars(drinkSearch);
-
-        for (DrinkDTO d : drinkByFirstTreeChars) {
-            printWriter.write("<!DOCTYPE html><html><body>"+d+"</body></html>");
+        try {
+            template.process(root, out);
+        } catch (TemplateException e) {
+            e.printStackTrace();
         }
-
     }
-
-
 }
 
 /*    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

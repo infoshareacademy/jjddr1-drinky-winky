@@ -27,8 +27,12 @@
 
 
 
-            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'">
+            <form action="search-drink" method="get">
+
+                <label for="drinkSearchPost">Drink Search:</label> <input type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*Find drink by name">
+
+                <button type="submit">Find</button>
+            </form>
         </ul>
     </div>
 </nav>

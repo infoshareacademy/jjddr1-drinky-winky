@@ -1,11 +1,21 @@
 <html>
+<head>
+    <title>View DRINK</title>
+</head>
 <body>
+<form method="get" action="search-drink">
 
-<form action="search-drink" method="post">
-    <label for="drinkSearchPost">Drink Search:</label> <input type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*Find drink by name">
-
-    <button type="submit">Find</button>
-</form>
+    <#list names>
+        <ul>
+            <#items as name>
+                <li>
+                    ${name.getName()}
+                    ${name.getName()}
+                    ${name.getName()}
+                </li>
+            </#items>
+        </ul>
+    </#list>
 
 </body>
 </html>

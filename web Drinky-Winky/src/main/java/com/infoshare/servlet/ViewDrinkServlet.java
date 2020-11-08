@@ -33,10 +33,8 @@ public class ViewDrinkServlet extends HttpServlet {
         Map<String, Object> root = new HashMap<>();
         root.put("names", drinkService.getDrinkList());
 
-        String drinkSearch = request.getParameter("drinkSearch");
-
         List<DrinkDTO> recipesList = drinkService.getDrinkList();
-
+        List<String> recipesList2 = drinkService.getDrinkNames();
 
         for(DrinkDTO drink:recipesList){
             root.put("ing",drink.getIngredientList());

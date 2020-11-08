@@ -82,7 +82,6 @@ public class DrinkDao {
         drinkQuery.setParameter("namesLength", namesLenght);
         return drinkQuery.getResultList();
     }
-
 }
 
 //      if (drinkToUpdate != null) {

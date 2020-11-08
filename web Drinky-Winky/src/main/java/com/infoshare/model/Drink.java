@@ -109,6 +109,10 @@ public class Drink {
 
     }
 
+    public Drink(String name) {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -204,4 +208,6 @@ public class Drink {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+
 }
