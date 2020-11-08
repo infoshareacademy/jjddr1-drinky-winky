@@ -18,11 +18,14 @@
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <input list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'" required>
+            <form action="Drink-view" method="get">
+                <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+                       onblur="this.placeholder='Search...'" required>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
 
             <datalist id="allDrink">
-                <#if allDrik??>
+                <#if allDrink??>
                     <#list allDrink>
                         <ul>
                             <#items as drink>
@@ -49,31 +52,42 @@
 </section>
 
 <section class="statement">
-    <div class="container">
-        <p>Drink or not to drink.. that is the question</p>
-    </div>
 </section>
 
 <section class="gallery" id="gallery">
     <h2 class="section-title">Drink list</h2>
-    <div class="gallery-wrapper">
 
-        <#if drinkList??>
-            <#list drinkList>
-                <#items as drink>
+    <div class="container">
+        <ul class="social-links">
+            <#if pageNumber??>
+                <#list pageNumber>
+                    <#items as page>
+                        <li style="margin-right: 20px; margin-left: 20px;">
+                            <form method="get" action="User-view">
+                                <input class="btn2" type="submit" name="page" value="${page}">
+                            </form>
+                        </li>
+                    </#items>
+                </#list>
+            </#if>
 
-                    <figure class="gallery-item" style="padding: 5px">
-                        <img src=${drink.getImageUrl()} alt="image">
-                        <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
-                            <figcaption>${drink.getName()}</figcaption>
-                        </a>
-                    </figure>
 
-                </#items>
-            </#list>
-        </#if>
+            <div class="gallery-wrapper">
+                <#if drinkList??>
+                    <#list drinkList>
+                        <#items as drink>
 
-    </div>
+                            <figure class="gallery-item" style="padding: 5px">
+                                <img src=${drink.getImageUrl()} alt="image">
+                                <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
+                                    <figcaption>${drink.getName()}</figcaption>
+                                </a>
+                            </figure>
+
+                        </#items>
+                    </#list>
+                </#if>
+            </div>
 </section>
 
 <#include "add-favourite.ftlh">
