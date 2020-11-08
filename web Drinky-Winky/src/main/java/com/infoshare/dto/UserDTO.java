@@ -14,7 +14,7 @@ public class UserDTO {
     private String userType;
     private String login;
     private String password;
-    private List<DrinkDTO> favouriteDrinkList;
+
 
     public static UserDTO userToDto(User user) {
         UserDTO userDTO = new UserDTO();
@@ -24,12 +24,6 @@ public class UserDTO {
         userDTO.setUserType(user.getUserType());
         userDTO.setLogin(user.getLogin());
         userDTO.setPassword(user.getPassword());
-        List<DrinkDTO> drinkDTOList = new ArrayList<>();
-        user.getFavouriteDrinkList().forEach(drink -> {
-            DrinkDTO drinkDTO = DrinkDTO.drinkToDTO(drink);
-            drinkDTOList.add(drinkDTO);
-        });
-        userDTO.setFavouriteDrinkList(drinkDTOList);
         return userDTO;
     }
 
@@ -40,18 +34,9 @@ public class UserDTO {
         user.setUserType(userDTO.getUserType());
         user.setLogin(userDTO.getLogin());
         user.setPassword(userDTO.getPassword());
-        List<Drink> drinkList = new ArrayList<>();
-        userDTO.getFavouriteDrinkList().forEach(drinkDTO -> {
-            Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-            drinkList.add(drink);
-        });
-        user.setFavouriteDrinkList(drinkList);
         return user;
     }
 
-    public void addFavouriteDrink(DrinkDTO drinkDTO){
-        favouriteDrinkList.add(drinkDTO);
-    }
 
     public Long getId() {
         return id;
@@ -101,11 +86,4 @@ public class UserDTO {
         this.password = password;
     }
 
-    public List<DrinkDTO> getFavouriteDrinkList() {
-        return favouriteDrinkList;
-    }
-
-    public void setFavouriteDrinkList(List<DrinkDTO> favouriteDrinkList) {
-        this.favouriteDrinkList = favouriteDrinkList;
-    }
 }

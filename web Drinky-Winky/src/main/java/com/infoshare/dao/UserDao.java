@@ -59,6 +59,19 @@ public class UserDao {
         return query.getResultList().stream().findFirst().orElse(null);
     }
 
+    public User getUserByLogin(String login){
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);
+        query.setParameter("login", login);
+        return query.getSingleResult();
+    }
+
+    public List<User> getUserByLoginAndPass(String login, String password){
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN_AND_PASSWORD, User.class);
+        query.setParameter("login",login);
+        query.setParameter("password", password);
+        return query.getResultList();
+    }
+
 }
 
 // if (userToUpdate != null) {

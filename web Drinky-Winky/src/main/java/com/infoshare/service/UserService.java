@@ -1,9 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
-import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
-import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +53,14 @@ public class UserService {
 //        List<Drink> favouriteDrinkList = userDao.getFavouriteDrinkList();
 //        return DrinkDTO.drinkToDTO(favouriteDrinkList);
 
-//    }
+    //    }
+    public List<User> getUserByLoginAndPass(String login, String password) {
 
+        return userDao.getUserByLoginAndPass(login, password);
+    }
 
+    public UserDTO getUserByLogin(String login) {
+        User user = userDao.getUserByLogin(login);
+        return UserDTO.userToDto(user);
+    }
 }

@@ -13,8 +13,12 @@
 
 <section class="about" id="logs">
     <div class="container">
-        <h2 class="section-title">Welcome!</br> Log in here. </h2>
-        <form method="post" action="Auth"  id="log">
+        <h2 class="section-title">Welcome!</br> Register in here. </h2>
+        <form method="post" action="RegUser"  id="log">
+            <label for="name"> Name: </label>
+            <input style="float: none" type="text" id="name" name="name"></br></br>
+            <label for="surname"> Surname: </label>
+            <input style="float: none" type="text" id="surname" name="surname"></br></br>
             <label for="login"> Login: </label>
             <input style="float: none" type="text" id="login" name="login"></br></br>
             <label for="password"> Password: </label>
