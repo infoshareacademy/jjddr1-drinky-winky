@@ -1,9 +1,5 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
-import com.infoshare.dto.UserDTO;
-import com.infoshare.model.Drink;
-import com.infoshare.model.User;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.UserService;
 
@@ -14,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/Add-favourite")
 public class AddFavouriteServlet extends HttpServlet {
@@ -30,13 +24,10 @@ public class AddFavouriteServlet extends HttpServlet {
 
         String name = request.getParameter("name");
 
-        DrinkDTO drinkByName = drinkService.getDrinkByName(name);
+        Long drinkId = drinkService.getDrinkByName(name).getId();
 
-        UserDTO userById = userService.getUserById(1L);
-//        userById.addFavouriteDrink(drinkByName);
-        userById.setName("Siara2");
+        userService.saveFavDrink(drinkId, 1L);
 
-        userService.updateUser(userById, 1L);
-
+        response.sendRedirect("User-view");
     }
 }

@@ -35,10 +35,10 @@ public class AdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getDrinkList());
+        root.put("drinks", drinkService.getDrinkList());
         root.put("categories", categoryService.getCategoriesList());
-        root.put("glasses", drinkService.getDrinkList());
-        root.put("ingredients",ingredientService.getIngredientsList());
+        root.put("glasses", drinkService.getUniqueGlassesNameList());
+        root.put("ingredients",ingredientService.getUniqueIngredientsNameList());
 
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");

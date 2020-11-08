@@ -16,13 +16,13 @@
         <h2 class="section-title">Welcome!</br> Register in here. </h2>
         <form method="post" action="RegUser"  id="log">
             <label for="name"> Name: </label>
-            <input style="float: none" type="text" id="name" name="name"></br></br>
+            <input style="float: none" type="text" id="name" name="name" required></br></br>
             <label for="surname"> Surname: </label>
-            <input style="float: none" type="text" id="surname" name="surname"></br></br>
+            <input style="float: none" type="text" id="surname" name="surname" required></br></br>
             <label for="login"> Login: </label>
-            <input style="float: none" type="text" id="login" name="login"></br></br>
+            <input style="float: none" type="text" id="login" name="login" required></br></br>
             <label for="password"> Password: </label>
-            <input style="float: none" type="password" id="password" name="password"></br></br>
+            <input style="float: none" type="password" id="password" name="password" placeholder="min 7 char" required></br></br>
 
             <div class="upload-btn-wrapper" style="float: none">
                 <input class="btn2" type="submit" name="save" value="save"/><br/><br/>

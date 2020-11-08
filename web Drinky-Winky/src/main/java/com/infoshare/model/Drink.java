@@ -35,7 +35,7 @@ public class Drink {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column(name = "name", unique = true, length = 100)
     @NotNull
     private String name;
 
@@ -79,7 +79,7 @@ public class Drink {
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "favouriteDrinkList", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "favouriteDrinkList")
     private List<User> users = new ArrayList<>();
 
     public Drink() {

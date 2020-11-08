@@ -1,10 +1,6 @@
 package com.infoshare.dto;
 
-import com.infoshare.model.Drink;
 import com.infoshare.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDTO {
 
@@ -14,7 +10,6 @@ public class UserDTO {
     private String userType;
     private String login;
     private String password;
-
 
     public static UserDTO userToDto(User user) {
         UserDTO userDTO = new UserDTO();
@@ -36,7 +31,6 @@ public class UserDTO {
         user.setPassword(userDTO.getPassword());
         return user;
     }
-
 
     public Long getId() {
         return id;
@@ -85,5 +79,5 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+    }
 
-}

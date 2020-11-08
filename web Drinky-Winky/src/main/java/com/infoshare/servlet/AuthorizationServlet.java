@@ -19,10 +19,10 @@ public class AuthorizationServlet extends HttpServlet {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        UserDTO userById = userService.getUserById(1L);
-//        UserDTO userByLogPass = userService.getUserByLoginAndPass(login, password);
+//        UserDTO userById = userService.getUserById(1L);
+        UserDTO userByLogPass = userService.getUserByLoginAndPass(login, password);
 
-        if (userById.getLogin().equals(login) && userById.getPassword().equals(password)) {
+        if (userByLogPass != null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("login", login);
             //setting session to expiry in 10s

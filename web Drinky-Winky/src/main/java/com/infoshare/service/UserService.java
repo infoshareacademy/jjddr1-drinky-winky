@@ -1,6 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
@@ -21,11 +22,16 @@ public class UserService {
     private UserDao userDao;
 
     @Transactional
-    public void saveUser(UserDTO userDTO) {
-        if (userDao.getUserList().stream().noneMatch(user -> user.getName().equals(userDTO.getName()))) {
+    public void saveFavDrink(Long drinkId, Long userId) {
+        userDao.addFav(drinkId, userId);
+    }
+
+    @Transactional
+    public Boolean saveUser(UserDTO userDTO) {
+        if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(userDTO.getLogin()))) {
             User user = UserDTO.dtoToUser(userDTO);
             userDao.saveUser(user);
-        }
+        } return false;
     }
 
 
@@ -54,13 +60,17 @@ public class UserService {
 //        return DrinkDTO.drinkToDTO(favouriteDrinkList);
 
     //    }
-    public List<User> getUserByLoginAndPass(String login, String password) {
-
-        return userDao.getUserByLoginAndPass(login, password);
+    public UserDTO getUserByLoginAndPass(String login, String password) {
+        User userByLoginAndPass = userDao.getUserByLoginAndPass(login, password);
+        return UserDTO.userToDto(userByLoginAndPass);
     }
 
+
     public UserDTO getUserByLogin(String login) {
-        User user = userDao.getUserByLogin(login);
-        return UserDTO.userToDto(user);
+        if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(login))) {
+            User user = userDao.getUserByLogin(login);
+            return UserDTO.userToDto(user);
+        }
+        return null;
     }
 }

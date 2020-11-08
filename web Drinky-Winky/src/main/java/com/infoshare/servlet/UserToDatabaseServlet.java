@@ -33,24 +33,25 @@ public class UserToDatabaseServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        User user = new User();
-
-        user.setLogin(login);
-        user.setPassword(password);
-        user.setName(name);
-        user.setSurname(surName);
+//        if (userService.getUserByLogin(login) != null) {
+            User user = new User();
+            user.setLogin(login);
+            user.setPassword(password);
+            user.setName(name);
+            user.setSurname(surName);
 //        user.setUserType();
-        UserDTO userDTO = UserDTO.userToDto(user);
-        userService.saveUser(userDTO);
+            UserDTO userDTO = UserDTO.userToDto(user);
+            userService.saveUser(userDTO);
 
-        Map<String, Object> root = new HashMap<>();
-        Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
-        Writer out = response.getWriter();
+            Map<String, Object> root = new HashMap<>();
+            Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
+            Writer out = response.getWriter();
 
-        try {
-            template.process(root, out);
-        } catch (TemplateException e) {
-            e.printStackTrace();
-        }
+            try {
+                template.process(root, out);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
+//        } else response.sendRedirect("Login");
     }
 }

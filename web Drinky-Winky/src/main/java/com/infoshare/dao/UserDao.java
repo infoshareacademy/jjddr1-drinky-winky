@@ -7,12 +7,27 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
 public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
+
+    public void addFav(Long drinkId, Long userId) {
+        User userById = getUserById(userId);
+
+        List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
+        Drink drink = entityManager.find(Drink.class, drinkId);
+
+        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+            favouriteDrinkList.remove(drink);
+        } else {
+            favouriteDrinkList.add(drink);
+        }
+        userById.setFavouriteDrinkList(favouriteDrinkList);
+    }
 
     public User saveUser(User user) {
         entityManager.persist(user);
@@ -65,11 +80,11 @@ public class UserDao {
         return query.getSingleResult();
     }
 
-    public List<User> getUserByLoginAndPass(String login, String password){
+    public User getUserByLoginAndPass(String login, String password){
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN_AND_PASSWORD, User.class);
         query.setParameter("login",login);
         query.setParameter("password", password);
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
 }

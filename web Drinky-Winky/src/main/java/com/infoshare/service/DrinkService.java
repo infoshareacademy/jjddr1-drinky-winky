@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -20,10 +21,10 @@ public class DrinkService {
     DrinkDao drinkDao;
 
     public void addDrink(DrinkDTO drinkDTO) {
-//        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
+        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             drinkDao.addDrink(drink);
-//        }
+        }
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
@@ -51,14 +52,18 @@ public class DrinkService {
 
     @Transactional
     public void deleteDrinkById(Long id) {
-        drinkDao.deleteDrinkById(id);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
+            drinkDao.deleteDrinkById(id);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
     public void deleteDrinkByName(String name) {
-        drinkDao.deleteDrinkByName(name);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
+            drinkDao.deleteDrinkByName(name);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
@@ -84,6 +89,14 @@ public class DrinkService {
                 .map(DrinkDTO::drinkToDTO)
                 .collect(Collectors.toList())
                 .subList(fromIndex, toIndex);
+    }
+
+    @Transactional
+    public Set<String> getUniqueGlassesNameList() {
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(Drink::getGlassType)
+                .collect(Collectors.toSet());
     }
 
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {

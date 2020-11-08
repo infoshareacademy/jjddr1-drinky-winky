@@ -13,13 +13,13 @@ import java.util.List;
                 query = "SELECT u FROM User u"),
         @NamedQuery(
                 name = User.GET_USER_BY_LOGIN,
-                query = "SELECT distinct r FROM User r WHERE r.login LIKE :login"),
+                query = "SELECT u FROM User u WHERE u.login LIKE :login"),
         @NamedQuery(
                 name = User.GET_USER_BY_PASSWORD,
                 query = "SELECT p FROM User p WHERE p.password LIKE :password"),
         @NamedQuery(
                 name = User.GET_USER_BY_LOGIN_AND_PASSWORD,
-                query = "SELECT u.login, u.password FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
+                query = "SELECT u FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
         )
 })
 

@@ -1,5 +1,6 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
@@ -11,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/User-view")
-public class UserViewServlet extends HttpServlet {
+@WebServlet("/Drink-view")
+public class DrinkViewServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
@@ -28,14 +28,13 @@ public class UserViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        HttpSession session = request.getSession();
-        session.getAttribute("login");
+        DrinkDTO drink = drinkService.getDrinkByName(request.getParameter("name"));
 
         Map<String, Object> root = new HashMap<>();
-        root.put("drinkList", drinkService.getRequestDrinkList(1,8));
-        root.put("allDrink", drinkService.getDrinkList());
+        root.put("drink", drink);
+        root.put("ingredients",drink.getIngredientList());
 
-        Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");
         Writer out = response.getWriter();
 
         try {
