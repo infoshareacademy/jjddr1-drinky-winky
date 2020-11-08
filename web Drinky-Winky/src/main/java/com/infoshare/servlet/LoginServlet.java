@@ -7,9 +7,7 @@ import freemarker.template.TemplateException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -35,4 +33,8 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
 }
+
+
+

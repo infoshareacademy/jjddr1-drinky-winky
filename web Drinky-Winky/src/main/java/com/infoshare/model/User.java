@@ -1,7 +1,6 @@
 package com.infoshare.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +13,20 @@ import java.util.List;
                 query = "SELECT distinct u FROM User u WHERE u.login like :login"),
         @NamedQuery(
                 name = User.FIND_USER_LIST,
-                query = "SELECT u FROM User u")
-
-
+                query = "SELECT u FROM User u"),
+        @NamedQuery(
+                name = User.GET_USER_BY_LOGIN,
+                query = "SELECT u FROM User u WHERE u.login LIKE :login"),
+        @NamedQuery(
+                name = User.GET_USER_BY_PASSWORD,
+                query = "SELECT p FROM User p WHERE p.password LIKE :password"),
+        @NamedQuery(
+                name = User.GET_LOGIN_AND_PASSWORD,
+                query = "SELECT u.login, u.password FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
+        )
 })
+
+
 //        @NamedQuery(
 //                name = User.GET_FAVOURITE_LIST,
 //                query = "SELECT u.favouriteDrinkList FROM User u JOIN u.favouriteDrinkList r WHERE r.id=u.id")
@@ -29,6 +38,9 @@ public class User {
     public static final String FIND_USER_BY_LOGIN = "User.findUserByLogin";
     public static final String FIND_USER_LIST = "User.getUserList";
     public static final String GET_FAVOURITE_LIST = "User.getFavouritesList";
+    public static final String GET_USER_BY_LOGIN = "User.getUserByLogin";
+    public static final String GET_USER_BY_PASSWORD = "User.getUserByPassword";
+    public static final String GET_LOGIN_AND_PASSWORD = "User.getLoginAndPassword";
 
     @Id
     @Column(name = "id")
@@ -36,23 +48,23 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotNull
+//    @NotNull
     private String name;
 
     @Column(name = "surname")
-    @NotNull
+//    @NotNull
     private String surname;
 
     @Column(name = "user_type")
-    @NotNull
+//    @NotNull
     private String userType;
 
-    @Column(name = "login")
-    @NotNull
+    @Column(name = "login", unique = true)
+//    @NotNull
     private String login;
 
     @Column(name = "password")
-    @NotNull
+//    @NotNull
     private String password;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)

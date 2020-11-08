@@ -2,7 +2,6 @@ package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
 import com.infoshare.dto.UserDTO;
-import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +21,31 @@ public class UserService {
     @EJB
     private UserDao userDao;
 
-    public void saveUser(UserDTO userDTO) {
-        User user = UserDTO.dtoToUser(userDTO);
-        userDao.saveUser(user);
+    @Transactional
+    public void saveFavDrink(Long drinkId, Long userId) {
+        userDao.addFav(drinkId, userId);
     }
 
-    public void updateUser(UserDTO userDTO) {
-        userDao.updateUser(UserDTO.dtoToUser(userDTO));
+    @Transactional
+    public Boolean saveUser(UserDTO userDTO) {
+        if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(userDTO.getLogin()))) {
+            User user = UserDTO.dtoToUser(userDTO);
+            userDao.saveUser(user);
+//        if (userDao.getUserById(userDTO.getId()) == null) {
+//            User user = UserDTO.dtoToUser(userDTO);
+//            userDao.saveUser(user);
+        }
+        return false;
+    }
+//    public void saveUser(UserDTO userDTO) {
+//        if (userDao.getUserById(userDTO.getId()) == null) {
+//            User user = UserDTO.dtoToUser(userDTO);
+//            userDao.saveUser(user);
+//        }
+//    }
+
+    public void updateUser(UserDTO userDTO, Long id) {
+        userDao.updateUser(UserDTO.dtoToUser(userDTO), id);
     }
 
     @Transactional
@@ -46,8 +63,14 @@ public class UserService {
     }
 
     //TODO change to DTO
-    public List<Drink> getFavouriteList() {
-        return userDao.getFavouriteDrinkList();
+//    public List<DrinkDTO> getFavouriteList() {
+//        List<Drink> favouriteDrinkList = userDao.getFavouriteDrinkList();
+//        return DrinkDTO.drinkToDTO(favouriteDrinkList);
+
+    //    }
+    public UserDTO getUserByLoginAndPass(String login, String password) {
+        User userByLoginAndPass = userDao.getUserByLoginAndPass(login, password);
+        return UserDTO.userToDto(userByLoginAndPass);
     }
 
     @Transactional
@@ -57,4 +80,20 @@ public class UserService {
         } return Optional.empty();
     }
 
+    public UserDTO getUserLogin(String login) {
+        if (userDao.getUserList().stream().anyMatch(user -> user.getLogin().equals(login))) {
+            User user = userDao.getLogin(login);
+            return UserDTO.userToDto(user);
+        }
+        return null;
+    }
+
+    public UserDTO getUserPassword(String password) {
+        if (userDao.getUserList().stream().anyMatch(user -> user.getPassword().equals(password))) {
+            User user = userDao.getPassword(password);
+            return UserDTO.userToDto(user);
+        }
+        return null;
+
+    }
 }

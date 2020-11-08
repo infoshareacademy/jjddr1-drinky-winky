@@ -37,6 +37,8 @@ public class JsonUploadServlet extends HttpServlet {
         Drink drink = new Drink();
         drink.setImageUrl(fileUrl);
 
+
+
         response.sendRedirect("Admin");
     }
 }

@@ -25,6 +25,14 @@
                 <input type="submit" name="navigator" value="user"/>
             </form>
 
+            <form method="get" action="Login">
+                <input type="submit" name="navigator" value="login"/>
+            </form>
+
+            <form method="get" action="Register">
+                <input type="submit" name="navigator" value="register"/>
+            </form>
+
         </ul>
     </div>
 </nav>

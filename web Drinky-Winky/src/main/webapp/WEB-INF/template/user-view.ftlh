@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <#include "css.ftlh">
-    <#--    <#include "js-head.ftlh">-->
 
     <meta charset="utf-8">
     <title>Welcome <#--${user.getName()}--></title>
@@ -14,16 +13,17 @@
 <nav class="navigation">
     <div class="container">
         <ul>
+            <li><a href="#load">Welcome</a></li>
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <input list="drinklist" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+            <input list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'" required>
 
-            <datalist id="drinklist">
-                <#if drinkList??>
-                    <#list drinkList>
+            <datalist id="allDrink">
+                <#if allDrik??>
+                    <#list allDrink>
                         <ul>
                             <#items as drink>
                             <option value="${drink.getName()}">
@@ -36,6 +36,17 @@
         </ul>
     </div>
 </nav>
+
+<section class="splash" id="load"
+         style="background-image: url('https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?cs=srgb&dl=pexels-toni-cuenca-616836.jpg&fm=jpg');">
+
+    <div class="page-intro">
+        <div class="container">
+            <h1 class="main-title">Welcome user</h1>
+        </div>
+    </div>
+
+</section>
 
 <section class="statement">
     <div class="container">
@@ -51,15 +62,25 @@
             <#list drinkList>
                 <#items as drink>
 
-                    <figure class="gallery-item">
-                        <img src= ${drink.getImageUrl()} alt="image">
-                        <figcaption>${drink.getName()}</figcaption>
+                    <figure class="gallery-item" style="padding: 5px">
+                        <img src=${drink.getImageUrl()} alt="image">
+                        <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
+                            <figcaption>${drink.getName()}</figcaption>
+                        </a>
                     </figure>
 
                 </#items>
             </#list>
         </#if>
 
+    </div>
+</section>
+
+<#include "add-favourite.ftlh">
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
     </div>
 </section>
 

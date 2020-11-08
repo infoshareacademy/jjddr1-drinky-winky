@@ -1,6 +1,8 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.MessageDto;
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.service.MessageService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -21,9 +23,13 @@ public class StartServlet extends HttpServlet {
     @Inject
     TemplateProvider templateProvider;
 
+    @Inject
+    MessageService messageService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        messageService.saveMessage(new MessageDto(1L,"HELLO START"));
         Map<String, Object> root = new HashMap<>();
 
         Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");

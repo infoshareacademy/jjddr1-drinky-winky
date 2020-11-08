@@ -15,13 +15,37 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+    public void addFav(Long drinkId, Long userId) {
+        User userById = getUserById(userId);
+
+        List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
+        Drink drink = entityManager.find(Drink.class, drinkId);
+
+        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+            favouriteDrinkList.remove(drink);
+        } else {
+            favouriteDrinkList.add(drink);
+        }
+        userById.setFavouriteDrinkList(favouriteDrinkList);
+    }
+
     public User saveUser(User user) {
         entityManager.persist(user);
         return user;
     }
 
-    public User updateUser(User user) {
-        return entityManager.merge(user);
+
+    public void updateUser(User user, Long id) {
+        User userToUpdate = entityManager.find(User.class, id);
+        if (userToUpdate != null) {
+            userToUpdate.setName(user.getName());
+            userToUpdate.setSurname(user.getSurname());
+            userToUpdate.setUserType(user.getUserType());
+            userToUpdate.setLogin(user.getLogin());
+            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setFavouriteDrinkList(user.getFavouriteDrinkList());
+            entityManager.merge(userToUpdate);
+        }
     }
 
     public User getUserById(Long id) {
@@ -58,6 +82,25 @@ public class UserDao {
         }
         return Optional.of(query.getSingleResult());
     }
+    public User getLogin(String login){
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);
+        query.setParameter("login", login);
+        return query.getSingleResult();
+    }
+
+    public User getPassword(String password){
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_PASSWORD, User.class);
+        query.setParameter("password", password);
+        return query.getSingleResult();
+    }
+
+    public User getUserByLoginAndPass(String login, String password){
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_LOGIN_AND_PASSWORD, User.class);
+        query.setParameter("login",login);
+        query.setParameter("password", password);
+        return query.getSingleResult();
+    }
+
 }
 
 // if (userToUpdate != null) {
