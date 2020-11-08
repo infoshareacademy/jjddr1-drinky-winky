@@ -29,20 +29,22 @@ public class UserToDatabaseServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String name = request.getParameter("name");
-        String surName = request.getParameter("surName");
+        String surName = request.getParameter("surname");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        UserDTO userDTO = new UserDTO();
-        userDTO.setName(name);
-        userDTO.setSurname(surName);
-        userDTO.setLogin(login);
-        userDTO.setPassword(password);
+        User user = new User();
 
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setName(name);
+        user.setSurname(surName);
+//        user.setUserType();
+        UserDTO userDTO = UserDTO.userToDto(user);
         userService.saveUser(userDTO);
 
         Map<String, Object> root = new HashMap<>();
-        Template template = templateProvider.getTemplate(getServletContext(), "Start.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
         Writer out = response.getWriter();
 
         try {

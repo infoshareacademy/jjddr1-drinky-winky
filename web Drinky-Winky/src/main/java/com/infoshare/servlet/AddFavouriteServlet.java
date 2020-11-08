@@ -33,7 +33,7 @@ public class AddFavouriteServlet extends HttpServlet {
         DrinkDTO drinkByName = drinkService.getDrinkByName(name);
 
         UserDTO userById = userService.getUserById(1L);
-        userById.addFavouriteDrink(drinkByName);
+//        userById.addFavouriteDrink(drinkByName);
         userById.setName("Siara2");
 
         userService.updateUser(userById, 1L);
