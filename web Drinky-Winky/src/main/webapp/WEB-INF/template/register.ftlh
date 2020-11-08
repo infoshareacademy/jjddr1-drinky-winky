@@ -23,6 +23,24 @@
             <input style="float: none" type="text" id="login" name="login" required></br></br>
             <label for="password"> Password: </label>
             <input style="float: none" type="password" id="password" name="password" placeholder="min 7 char" required></br></br>
+            <label for="password">Confirm password: </label>
+            <input style="float: none" type="password" id="passwordConfirm" name="passwordConfirm" placeholder="min 7 char" required></br></br>
+
+            <script>
+                var log_password = document.getElementById("password")
+                    , passwordConfirm = document.getElementById("passwordConfirm");
+
+                function validatePassword(){
+                    if(log_password.value != passwordConfirm.value) {
+                        passwordConfirm.setCustomValidity("Passwords Don't Match");
+                    } else {
+                        passwordConfirm.setCustomValidity('');
+                    }
+                }
+
+                log_password.onchange = validatePassword;
+                passwordConfirm.onkeyup = validatePassword;
+            </script>
 
             <div class="upload-btn-wrapper" style="float: none">
                 <input class="btn2" type="submit" name="save" value="save"/><br/><br/>
@@ -31,5 +49,8 @@
         </form>
     </div>
 </section>
+
+
+
 </body>
 </html>

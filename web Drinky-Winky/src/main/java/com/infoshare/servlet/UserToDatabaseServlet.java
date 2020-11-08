@@ -39,7 +39,7 @@ public class UserToDatabaseServlet extends HttpServlet {
             user.setPassword(password);
             user.setName(name);
             user.setSurname(surName);
-//        user.setUserType();
+            user.setUserType("user");
             UserDTO userDTO = UserDTO.userToDto(user);
             userService.saveUser(userDTO);
 
