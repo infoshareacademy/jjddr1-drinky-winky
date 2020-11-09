@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
@@ -20,10 +21,13 @@ public class DrinkService {
 
     @EJB
     DrinkDao drinkDao;
+    @Inject
+    MessageService messageService;
 
     public DrinkDTO addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+            messageService.leaveMessage(1L, "Drink was added!");
             return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
         }
         return null;
@@ -61,6 +65,9 @@ public class DrinkService {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
             drinkDao.deleteDrinkByName(name);
             logger.info("Drink has been deleted");
+            messageService.leaveMessage(1L, "Drink was deleted!!!");
+        } else {
+            messageService.leaveMessage(1L, "OMG! Nothing happened!");
         }
     }
 

@@ -30,6 +30,10 @@ public class MessageService {
         messageDao.save(MessageDto.dtoToMessage(messageDto));
     }
 
+    public void clean(Long id){
+        messageDao.delete(id);
+    }
+
     public void updateMessage(MessageDto messageDto, Long id) {
         Message message = MessageDto.dtoToMessage(messageDto);
         messageDao.updateMessage(id, message);

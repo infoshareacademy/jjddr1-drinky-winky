@@ -42,8 +42,10 @@ public class AdminServlet extends HttpServlet {
         root.put("categories", categoryService.getCategoriesList());
         root.put("glasses", drinkService.getUniqueGlassesNameList());
         root.put("ingredients", ingredientService.getUniqueIngredientsNameList());
+
         if (messageService.getMessageById(1L).isPresent()) {
             root.put("message", messageService.getMessageById(1L).orElseThrow());
+            messageService.clean(1L);
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "admin.ftlh");

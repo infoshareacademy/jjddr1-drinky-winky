@@ -28,6 +28,10 @@ public class MessageDao {
         entityManager.persist(message);
     }
 
+    public void delete(Long id) {
+        entityManager.remove(findMessageById(id).orElseThrow());
+    }
+
     public void updateMessage(Long id, Message message) {
         Message messageById = findMessageById(id).orElseThrow();
         if (findMessageById(id).isPresent()) {
