@@ -70,7 +70,8 @@
                     </#items>
                 </#list>
             </#if>
-
+        </ul>
+    </div>
 
             <div class="gallery-wrapper">
                 <#if drinkList??>
