@@ -27,7 +27,7 @@ public class CategoryService {
 
     public void updateCategory(CategoryDto categoryDto) {
         Category category = CategoryDto.dtoToCategory(categoryDto);
-        CategoryDto.categoryToDto(category);
+        categoryDao.updateCategory(category);
     }
 
     public Category getCategoryById(Long id) {

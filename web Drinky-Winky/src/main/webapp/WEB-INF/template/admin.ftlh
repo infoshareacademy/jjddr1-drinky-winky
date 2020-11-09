@@ -56,8 +56,8 @@
                                                            required/><br/></label>
 
                     <datalist id="names">
-                        <#if names??>
-                            <#list names>
+                        <#if drinks??>
+                            <#list drinks>
                                 <ul>
                                     <#items as name>
                                     <option value="${name.getName()}">
@@ -82,6 +82,7 @@
                         </#if>
                     </datalist>
 
+
                     <label for="glass-choice">Glass: <input list="glasses" id="glass-choice" type="text"
                                                             name="glassType" required/><br/></label>
 
@@ -90,7 +91,7 @@
                             <#list glasses>
                                 <ul>
                                     <#items as glass>
-                                    <option value="${glass.getGlassType()}">
+                                    <option value="${glass}">
                                         </#items>
                                 </ul>
                             </#list>
@@ -115,13 +116,26 @@
                             <td>Measures</td>
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input type="text" name="ingredient" ng-model="item.ingredient" required></td>
-                            <td><input type="text" name="measure" ng-model="item.measure" required></td>
+                            <td><input list="ingredients" type="text" name="ingredient" ng-model="item.ingredient" required></td>
+                            <td><input type="text" name="measure" ng-model="item.measure" ></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
                             </td>
                         </tr>
                     </table>
+
+                    <datalist id="ingredients">
+                        <#if ingredients??>
+                            <#list ingredients>
+                                <ul>
+                                    <#items as ingredient>
+                                    <option value="${ingredient}">
+                                        </#items>
+                                </ul>
+                            </#list>
+                        </#if>
+                    </datalist>
+
                     <br/>
 
                     <!--                <button ng-click="addItem()">Add</button>-->
@@ -167,21 +181,21 @@
         <figure class="gallery-item">
             <img src="https://img.wonderhowto.com/img/original/31/78/63586557575482/0/635865575754823178.jpg"
                  alt="image">
-<#--            <figcaption>${name.getName()}</figcaption>-->
+            <#--            <figcaption>${name.getName()}</figcaption>-->
         </figure>
 
 
         <figure>
             <form method="post" action="Remove-drink" id="mySelect">
                 <fieldset>
-                    <legend> Choose drink to remove </legend>
+                    <legend> Choose a drink to remove</legend>
 
                     <label for="names-choice">Name: <br/><input list="names" id="names-choice" type="text" name="name"
-                                                           required/><br/></label>
+                                                                required/><br/></label>
 
                     <datalist id="names">
-                        <#if names??>
-                            <#list names>
+                        <#if drinks??>
+                            <#list drinks>
                                 <ul>
                                     <#items as name>
                                     <option value="${name.getName()}">

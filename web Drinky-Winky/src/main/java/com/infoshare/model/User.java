@@ -7,16 +7,23 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
-                name = "User.findUserByName",
-                query = "SELECT u FROM User u WHERE u.name like :name"),
+                name = User.FIND_USER_BY_NAME ,
+                query = "SELECT distinct u FROM User u WHERE u.name like :name"),
         @NamedQuery(
-                name = "User.getUserList",
+                name = User.FIND_USER_LIST,
                 query = "SELECT u FROM User u")
-})
 
+})
+//        @NamedQuery(
+//                name = User.GET_FAVOURITE_LIST,
+//                query = "SELECT u.favouriteDrinkList FROM User u JOIN u.favouriteDrinkList r WHERE r.id=u.id")
 @Entity
 @Table(name = "user")
 public class User {
+
+    public static final String FIND_USER_BY_NAME = "User.findUserByName";
+    public static final String FIND_USER_LIST = "User.getUserList";
+    public static final String GET_FAVOURITE_LIST = "User.getFavouritesList";
 
     @Id
     @Column(name = "id")
@@ -24,37 +31,32 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotNull
+//    @NotNull
     private String name;
 
     @Column(name = "surname")
-    @NotNull
+//    @NotNull
     private String surname;
 
     @Column(name = "user_type")
-    @NotNull
+//    @NotNull
     private String userType;
 
     @Column(name = "login")
-    @NotNull
+//    @NotNull
     private String login;
 
     @Column(name = "password")
-    @NotNull
+//    @NotNull
     private String password;
-
-    @Column(name = "email")
-    @NotNull
-    private String email;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "user_favourite_recipe",
+            name = "user_favourite_drink",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "drink_id", referencedColumnName = "id")}
     )
-
-    private List<Drink> drinkList = new ArrayList<>();
+    private List<Drink> favouriteDrinkList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -104,19 +106,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Drink> getDrinkList() {
-        return drinkList;
+    public List<Drink> getFavouriteDrinkList() {
+        return favouriteDrinkList;
     }
 
-    public void setDrinkList(List<Drink> drinkList) {
-        this.drinkList = drinkList;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFavouriteDrinkList(List<Drink> favouriteDrinkList) {
+        this.favouriteDrinkList = favouriteDrinkList;
     }
 }

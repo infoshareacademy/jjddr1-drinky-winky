@@ -1,6 +1,8 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.CategoryDto;
 import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.IngredientDTO;
 import com.infoshare.model.Category;
 import com.infoshare.model.Ingredient;
 import com.infoshare.service.DrinkDeserializer;
@@ -37,12 +39,12 @@ public class NewDrinkServlet extends HttpServlet {
         String categoryName = request.getParameter("category");
         String[] ingredientName = request.getParameterValues("ingredient");
         String[] measureName = request.getParameterValues("measure");
-        Category category = new Category();
+        CategoryDto category = new CategoryDto();
         category.setName(categoryName);
-        List<Ingredient> ingredientList = new ArrayList<>();
+        List<IngredientDTO> ingredientList = new ArrayList<>();
 
         for (int ing = 0; ing < ingredientName.length; ing++) {
-            Ingredient ingredient = new Ingredient();
+            IngredientDTO ingredient = new IngredientDTO();
             ingredient.setName(ingredientName[ing]);
             ingredient.setMeasure(measureName[ing]);
             ingredientList.add(ingredient);
@@ -60,7 +62,7 @@ public class NewDrinkServlet extends HttpServlet {
         drinkDTO.setCategory(category);
         drinkDTO.setIngredientList(ingredientList);
 
-        drinkService.addDrink(drinkDTO);
+            drinkService.addDrink(drinkDTO);
 
         response.sendRedirect("Admin");
     }

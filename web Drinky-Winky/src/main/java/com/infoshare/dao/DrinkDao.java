@@ -1,6 +1,5 @@
 package com.infoshare.dao;
 
-
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
@@ -12,16 +11,14 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-
 @Stateless
 public class DrinkDao {
 
     @PersistenceContext
     EntityManager entityManager;
 
-    public Drink addDrink(Drink drink) {
+    public void addDrink(Drink drink) {
         entityManager.persist(drink);
-        return drink;
     }
 
     public Drink editDrink(Drink drink) {

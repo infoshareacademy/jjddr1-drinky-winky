@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -19,14 +20,18 @@ public class DrinkService {
     @EJB
     DrinkDao drinkDao;
 
-    public void addDrink(DrinkDTO drinkDTO) {
-        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.addDrink(drink);
+    public String addDrink(DrinkDTO drinkDTO) {
+        if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
+            Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+            drinkDao.addDrink(drink);
+            return "SUCCESS! THE DRINK HAS BEEN ADDED";
+        }
+        return "SOMETHING WENT WRONG! THE DRINK WITH THAT NAME ALREADY EXIST";
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        DrinkDTO.drinkToDTO(drink);
+        drinkDao.editDrink(drink);
     }
 
     @Transactional
@@ -49,14 +54,18 @@ public class DrinkService {
 
     @Transactional
     public void deleteDrinkById(Long id) {
-        drinkDao.deleteDrinkById(id);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
+            drinkDao.deleteDrinkById(id);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
     public void deleteDrinkByName(String name) {
-        drinkDao.deleteDrinkByName(name);
-        logger.info("Drink has been deleted");
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
+            drinkDao.deleteDrinkByName(name);
+            logger.info("Drink has been deleted");
+        }
     }
 
     @Transactional
@@ -65,6 +74,31 @@ public class DrinkService {
                 .stream()
                 .map(DrinkDTO::drinkToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<DrinkDTO> getRequestDrinkList(int request, int size) {
+
+        int fromIndex = (request - 1) * size;
+        int toIndex = request * size;
+
+        if (toIndex > drinkDao.getDrinkList().size()) {
+            toIndex = drinkDao.getDrinkList().size();
+        }
+
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(DrinkDTO::drinkToDTO)
+                .collect(Collectors.toList())
+                .subList(fromIndex, toIndex);
+    }
+
+    @Transactional
+    public Set<String> getUniqueGlassesNameList() {
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(Drink::getGlassType)
+                .collect(Collectors.toSet());
     }
 
     public List<Drink> findRecipeByCategoryId(List<Long> ids) {

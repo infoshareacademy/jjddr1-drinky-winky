@@ -11,7 +11,7 @@ import java.util.List;
                 query = "SELECT distinct i.name FROM Ingredient i WHERE i.name in :names"),
         @NamedQuery(
                 name = Ingredient.GET_INGREDIENT_LIST,
-                query = "SELECT distinct i.name FROM Ingredient i")
+                query = "SELECT distinct i FROM Ingredient i")
 })
 
 @Entity
@@ -34,7 +34,7 @@ public class Ingredient {
     @NotNull
     private String measure;
 
-    @ManyToMany(mappedBy = "ingredientList",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "ingredientList")
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {

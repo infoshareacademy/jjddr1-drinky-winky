@@ -1,12 +1,13 @@
 package com.infoshare.dao;
 
-import com.infoshare.dto.UserDTO;
+import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -14,13 +15,27 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+    public void addFav(Long drinkId, Long userId) {
+        User userById = getUserById(userId);
+
+        List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
+        Drink drink = entityManager.find(Drink.class, drinkId);
+
+        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+            favouriteDrinkList.remove(drink);
+        } else {
+            favouriteDrinkList.add(drink);
+        }
+        userById.setFavouriteDrinkList(favouriteDrinkList);
+    }
+
     public User saveUser(User user) {
         entityManager.persist(user);
         return user;
     }
 
-    public User updateUser(User user) {
-        return entityManager.merge(user);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
     public User getUserById(Long id) {
@@ -35,14 +50,18 @@ public class UserDao {
     }
 
     public List<User> getUserList() {
-        Query query = entityManager.createNamedQuery("User.getUserList");
-        return query.getResultList();
+        return entityManager.createNamedQuery(User.FIND_USER_LIST, User.class).getResultList();
+    }
+
+    //Todo query to make
+    public List<Drink> getFavouriteDrinkList() {
+        return entityManager.createNamedQuery(User.GET_FAVOURITE_LIST, Drink.class).getResultList();
     }
 
     public User findUserByName(String name) {
-        Query query = entityManager.createNamedQuery("User.findUserByName");
+        TypedQuery<User> query = entityManager.createNamedQuery(User.FIND_USER_BY_NAME, User.class);
         query.setParameter("name", name);
-        return (User) query.getResultList().stream().findFirst().orElse(null);
+        return query.getResultList().stream().findFirst().orElse(null);
     }
 
 }
