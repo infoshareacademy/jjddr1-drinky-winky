@@ -14,7 +14,7 @@
 <section class="about" id="logs">
     <div class="container">
         <h2 class="section-title">Welcome!</br> Log in here. </h2>
-        <form method="post" action="Auth"  id="log">
+        <form method="get" action="Auth"  id="log">
             <label for="login"> Login: </label>
             <input style="float: none" type="text" id="login" name="login"></br></br>
             <label for="password"> Password: </label>

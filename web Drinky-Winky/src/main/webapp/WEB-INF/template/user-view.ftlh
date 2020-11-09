@@ -5,7 +5,7 @@
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome <#--${user.getName()}--></title>
+    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
 
 </head>
 <body>

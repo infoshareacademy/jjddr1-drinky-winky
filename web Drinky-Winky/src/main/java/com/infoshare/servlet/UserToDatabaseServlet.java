@@ -25,7 +25,7 @@ public class UserToDatabaseServlet extends HttpServlet {
     @Inject
     TemplateProvider templateProvider;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String name = request.getParameter("name");
@@ -46,7 +46,7 @@ public class UserToDatabaseServlet extends HttpServlet {
             Map<String, Object> root = new HashMap<>();
             Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
             Writer out = response.getWriter();
-
+            response.sendRedirect("Login");
             try {
                 template.process(root, out);
             } catch (TemplateException e) {
