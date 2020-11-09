@@ -1,7 +1,7 @@
 package com.infoshare.utils;
 
 import com.infoshare.dto.DrinkDTO;
-import com.infoshare.model.Drink;
+
 import com.infoshare.service.DrinkService;
 
 import javax.enterprise.context.RequestScoped;
@@ -15,9 +15,10 @@ public class SearchEngineUtils {
     @Inject
     DrinkService drinkService;
 
+
     public List<DrinkDTO> findDrinkByName(String input) {
 
-        if (input != null) {
+        if (input != null || !input.isEmpty() || !input.isBlank()) {
             List<DrinkDTO> found = new ArrayList<>();
             List<DrinkDTO> drinkList = drinkService.getDrinkList();
             for (DrinkDTO foundDrink : drinkList) {
@@ -39,13 +40,44 @@ public class SearchEngineUtils {
                     }
                 }
                 // category check
-                if (foundDrink.getCategory().toString().toLowerCase().contains(input.toLowerCase())){
+                if (foundDrink.getCategory().toString().toLowerCase().contains(input.toLowerCase())) {
                     if (!found.contains(foundDrink)) {
                         found.add(foundDrink);
                     }
                 }
                 // trying to find an ingredient
-                if (foundDrink.getIngredientList().stream().anyMatch(d ->d.getName().toLowerCase().contains(input.toLowerCase()))){
+                if (foundDrink.getIngredientList().stream().anyMatch(d -> d.getName().toLowerCase().contains(input.toLowerCase()))) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+            }
+            return found;
+        }
+        return null;
+    }
+
+    public List<DrinkDTO> findDrinkByFilters(String category, String glass, String type) {
+        List<DrinkDTO> found = new ArrayList<>();
+        List<DrinkDTO> drinkList = drinkService.getDrinkList();
+        for (DrinkDTO foundDrink : drinkList) {
+
+            if (category != null || !category.isEmpty() || !category.isBlank()) {
+                if (foundDrink.getCategory().toString().toLowerCase().contains(category.toLowerCase())) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+            }
+            if (glass !=null || !glass.isEmpty() || !glass.isBlank()) {
+                if (foundDrink.getGlassType().toLowerCase().contains(glass.toLowerCase())) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+            }
+            if (type != null || !type.isEmpty() || !type.isBlank()){
+                if (foundDrink.getDrinkType().toLowerCase().contains(type.toLowerCase())){
                     if (!found.contains(foundDrink)) {
                         found.add(foundDrink);
                     }
