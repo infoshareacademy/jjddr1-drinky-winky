@@ -36,8 +36,5 @@ public class TestDatabaseServlet extends HttpServlet {
         printWriter.println(bora_bora);
         printWriter.println(recipesList);
         printWriter.println(drinkById);
-
     }
-
-
 }

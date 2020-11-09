@@ -35,9 +35,9 @@
 
 
         <figure>
-            <form method="get" action="Drink-view" id="mySelect">
+            <form method="get" action="Category-list" id="mySelect">
                 <fieldset>
-                    <legend> Choose Drink to view</legend>
+                    <legend> Choose category to view</legend>
 
                     <label for="names-choice">Name: <br/><input list="categories" id="names-choice" type="text" name="name"
                                                                 required/><br/></label>
@@ -46,8 +46,8 @@
                         <#if categories??>
                             <#list categories>
                                 <ul>
-                                    <#items as drink>
-                                    <option value="${drink.getName()}">
+                                    <#items as category>
+                                    <option value="${category.getName()}">
                                         </#items>
                                 </ul>
                             </#list>
@@ -55,7 +55,7 @@
                     </datalist>
 
                     <div class="upload-btn-wrapper">
-                        <input class="btn2" type="submit" value="Show"/><br/><br/>
+                        <input class="btn2" type="submit" value="Search"/><br/><br/>
                     </div>
 
                 </fieldset>
@@ -64,16 +64,16 @@
     </div>
 </section>
 
-<#include "about.ftlh">
+        <#include "about.ftlh">
 
-<section class="statement">
-    <div class="container">
-        <p>Drink or not to drink.. that is the question</p>
-    </div>
-</section>
+        <section class="statement">
+            <div class="container">
+                <p>Drink or not to drink.. that is the question</p>
+            </div>
+        </section>
 
-<#include "contact.ftlh">
-<#include "footer.ftlh">
+        <#include "contact.ftlh">
+        <#include "footer.ftlh">
 
 </body>
 </html>

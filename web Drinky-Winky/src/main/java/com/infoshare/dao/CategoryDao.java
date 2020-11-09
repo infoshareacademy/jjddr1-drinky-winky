@@ -34,10 +34,17 @@ public class CategoryDao {
     }
 
     //Daniel CHECK THIS
+
     public Category findCategoryByName(String name) {
         TypedQuery<Category> query = entityManager.createNamedQuery(Category.FIND_CATEGORY_BY_NAME, Category.class);
         query.setParameter("name", name);
         return query.getResultList().stream().findFirst().orElse(null);
+    }
+
+    public Object findCategoryByNames(String name) {
+        Query query = entityManager.createNamedQuery(Category.FIND_DRINKS_BY_CATEGORY_NAME, Category.class);
+        query.setParameter("name", name);
+        return query.getResultList();
     }
 
     public String[] getCategoryIds() {
