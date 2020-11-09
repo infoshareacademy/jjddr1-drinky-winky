@@ -1,6 +1,5 @@
 package com.infoshare.service;
 
-import com.infoshare.dao.CategoryDao;
 import com.infoshare.dao.DrinkDao;
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Drink;
@@ -21,9 +20,6 @@ public class DrinkService {
 
     @EJB
     DrinkDao drinkDao;
-
-    @EJB
-    CategoryDao categoryDao;
 
     public DrinkDTO addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
@@ -75,8 +71,11 @@ public class DrinkService {
                 .collect(Collectors.toList());
     }
 
-    public List<DrinkDTO> getDrinkListByCategoryName(String name) {
-        return getDrinkList().stream().filter(drinkDTO -> drinkDTO.getCategory().getName().equals(name)).collect(Collectors.toList());
+    public Set<DrinkDTO> getDrinkListByCategoryName(String name) {
+        return getDrinkList().
+                stream()
+                .filter(drinkDTO -> drinkDTO.getCategory().getName().equalsIgnoreCase(name))
+                .collect(Collectors.toSet());
     }
 
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
@@ -87,12 +86,7 @@ public class DrinkService {
         if (toIndex > drinkDao.getDrinkList().size()) {
             toIndex = drinkDao.getDrinkList().size();
         }
-
-        return drinkDao.getDrinkList()
-                .stream()
-                .map(DrinkDTO::drinkToDTO)
-                .collect(Collectors.toList())
-                .subList(fromIndex, toIndex);
+        return getDrinkList().subList(fromIndex, toIndex);
     }
 
     public Set<String> getUniqueGlassesNameList() {
