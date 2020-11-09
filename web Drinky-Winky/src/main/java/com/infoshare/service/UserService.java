@@ -28,6 +28,7 @@ public class UserService {
     public Boolean saveUser(UserDTO userDTO) {
         if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(userDTO.getLogin()))) {
             User user = UserDTO.dtoToUser(userDTO);
+            user.setUserType("custom");
             userDao.saveUser(user);
 //        if (userDao.getUserById(userDTO.getId()) == null) {
 //            User user = UserDTO.dtoToUser(userDTO);
