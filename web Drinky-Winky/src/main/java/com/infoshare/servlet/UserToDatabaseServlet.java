@@ -28,10 +28,23 @@ public class UserToDatabaseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String name = request.getParameter("name");
-        String surName = request.getParameter("surname");
         String login = request.getParameter("login");
-        String password = request.getParameter("password");
+        Writer out = response.getWriter();
+
+        if (userService.findUserByLogin(login).isPresent()) {
+            Map<String, Object> root1 = new HashMap<>();
+            Template template = templateProvider.getTemplate(getServletContext(), "userExist.ftlh");
+
+            try {
+                template.process(root1, out);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            String name = request.getParameter("name");
+            String surName = request.getParameter("surname");
+            String password = request.getParameter("password");
 
 
             User user = new User();
@@ -43,15 +56,15 @@ public class UserToDatabaseServlet extends HttpServlet {
             UserDTO userDTO = UserDTO.userToDto(user);
             userService.saveUser(userDTO);
 
-            Map<String, Object> root = new HashMap<>();
-            Template template = templateProvider.getTemplate(getServletContext(), "start.ftlh");
-            Writer out = response.getWriter();
+            Map<String, Object> root2 = new HashMap<>();
+            Template template = templateProvider.getTemplate(getServletContext(), "newUserRegistered.ftlh");
 
             try {
-                template.process(root, out);
+                template.process(root2, out);
             } catch (TemplateException e) {
                 e.printStackTrace();
             }
 //        } else response.sendRedirect("Login");
+        }
     }
 }

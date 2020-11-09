@@ -80,6 +80,8 @@ public class UserService {
         } return Optional.empty();
     }
 
+
+
     public UserDTO getUserLogin(String login) {
         if (userDao.getUserList().stream().anyMatch(user -> user.getLogin().equals(login))) {
             User user = userDao.getLogin(login);

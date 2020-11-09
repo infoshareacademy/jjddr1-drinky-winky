@@ -82,6 +82,13 @@ public class UserDao {
         }
         return Optional.of(query.getSingleResult());
     }
+
+//    public static String getExistingLogin(String login) {
+//        if (new UserDao().findUserByLogin(login).isPresent()){
+//            return login;
+//        } else return "";
+//    }
+
     public User getLogin(String login){
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);
         query.setParameter("login", login);

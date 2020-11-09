@@ -1,33 +1,51 @@
 package com.infoshare.servlet;
 
 import com.infoshare.dto.UserDTO;
+import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.service.LoggingService;
 import com.infoshare.service.UserService;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/Auth")
 public class AuthorizationServlet extends HttpServlet {
 
     @Inject
-    UserService userService;
+    LoggingService loggingService;
+
+    @Inject
+    TemplateProvider templateProvider;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
+        String userLog = request.getParameter("login");
+        String userPass = request.getParameter("password");
 
-        UserDTO userLog = userService.getUserLogin(login);
-        UserDTO userPass = userService.getUserPassword(password);
+        if (loggingService.checkIfUserExist(userLog).isPresent()) {
+            UserDTO registeredUserDTO = loggingService.checkIfUserExist(userLog).get();
+            if (loggingService.checkCorrectPassword(registeredUserDTO, userPass)) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("login", userLog);
 
-        if (userLog != null && userPass != null) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("login", login);
+                Writer out = response.getWriter();
+                Map<String, Object> root = new HashMap<>();
+                Template template = templateProvider.getTemplate(getServletContext(), "userSignedIn.ftlh");
 
-            response.sendRedirect("User-view");
+                try {
+                    template.process(root, out);
+                } catch (TemplateException e) {
+                    e.printStackTrace();
+                }
+            } else response.sendRedirect("Login");
         } else {
             response.sendRedirect("Login");
         }
