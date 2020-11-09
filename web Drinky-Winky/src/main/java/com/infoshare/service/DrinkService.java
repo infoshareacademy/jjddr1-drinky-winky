@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Transactional
 @RequestScoped
 public class DrinkService {
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
@@ -21,14 +22,15 @@ public class DrinkService {
     @EJB
     DrinkDao drinkDao;
 
+    @EJB
+    CategoryDao categoryDao;
 
-    public String addDrink(DrinkDTO drinkDTO) {
+    public DrinkDTO addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-            drinkDao.addDrink(drink);
-            return  "SUCCESS! THE DRINK HAS BEEN ADDED";
+            return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
         }
-        return "SOMETHING WENT WRONG! THE DRINK WITH THAT NAME ALREADY EXIST";
+        return null;
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
@@ -36,7 +38,6 @@ public class DrinkService {
         drinkDao.editDrink(drink);
     }
 
-    @Transactional
     public DrinkDTO getDrinkByName(String name) {
         Drink drinkByName = drinkDao.getDrinkByName(name);
         if (drinkByName != null) {
@@ -45,7 +46,6 @@ public class DrinkService {
         return null;
     }
 
-    @Transactional
     public DrinkDTO getDrinkById(Long id) {
         Drink drinkById = drinkDao.getDrinkById(id);
         if (drinkById != null) {
@@ -54,7 +54,6 @@ public class DrinkService {
         return null;
     }
 
-    @Transactional
     public void deleteDrinkById(Long id) {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
             drinkDao.deleteDrinkById(id);
@@ -62,7 +61,6 @@ public class DrinkService {
         }
     }
 
-    @Transactional
     public void deleteDrinkByName(String name) {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
             drinkDao.deleteDrinkByName(name);
@@ -70,7 +68,6 @@ public class DrinkService {
         }
     }
 
-    @Transactional
     public List<DrinkDTO> getDrinkList() {
         return drinkDao.getDrinkList()
                 .stream()
@@ -78,12 +75,10 @@ public class DrinkService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
-    public List<DrinkDTO>  getDrinkListByCategoryName(String name) {
+    public List<DrinkDTO> getDrinkListByCategoryName(String name) {
         return getDrinkList().stream().filter(drinkDTO -> drinkDTO.getCategory().getName().equals(name)).collect(Collectors.toList());
     }
 
-    @Transactional
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
 
         int fromIndex = (request - 1) * size;
@@ -100,7 +95,6 @@ public class DrinkService {
                 .subList(fromIndex, toIndex);
     }
 
-    @Transactional
     public Set<String> getUniqueGlassesNameList() {
         return drinkDao.getDrinkList()
                 .stream()
@@ -108,14 +102,4 @@ public class DrinkService {
                 .collect(Collectors.toSet());
     }
 
-    public List<Drink> findRecipeByCategoryId(List<Long> ids) {
-        return drinkDao.findDrinkByCategoryId(ids);
-    }
-
-    public Object findDrinkByCategoryName(String name) {
-        return categoryDao.findCategoryByNames(name);}
-
-    public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
-        return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
-    }
 }
