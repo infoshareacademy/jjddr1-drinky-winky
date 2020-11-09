@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/filters")
-public class SearchFiltersServlet extends HttpServlet {
+public class FiltersServlet extends HttpServlet {
 
 
     @Inject
@@ -36,12 +36,10 @@ public class SearchFiltersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String name = request.getParameter("name");
         String drinkType = request.getParameter("drinkType");
         String glassType = request.getParameter("glassType");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getDrinkList());
         root.put("categories", categoryService.getCategoriesList());
         root.put("glasses", drinkService.getDrinkList());
 

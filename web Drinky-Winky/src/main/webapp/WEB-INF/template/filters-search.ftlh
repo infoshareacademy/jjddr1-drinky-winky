@@ -3,7 +3,7 @@
     <title>View DRINK</title>
 </head>
 <body>
-<form method="get" action="search-drink">
+<form method="get" action="find-by-filters">
 
     <#list names>
         <ul>

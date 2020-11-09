@@ -1,8 +1,8 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
+
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.model.Drink;
+
 import com.infoshare.service.DrinkService;
 import com.infoshare.utils.SearchEngineUtils;
 import freemarker.template.Template;
@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 @WebServlet("/search-drink")
@@ -26,8 +26,7 @@ public class SearchDrinkServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
-    @Inject
-    DrinkService drinkService;
+
     @Inject
     SearchEngineUtils searchEngineUtils;
 
