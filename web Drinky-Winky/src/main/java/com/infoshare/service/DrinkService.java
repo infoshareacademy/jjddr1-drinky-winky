@@ -26,7 +26,8 @@ public class DrinkService {
 
     public void editDrink(DrinkDTO drinkDTO) {
         Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.editDrink(drink); }
+        drinkDao.editDrink(drink);
+    }
 
     @Transactional
     public DrinkDTO getDrinkByName(String name) {
@@ -96,21 +97,4 @@ public class DrinkService {
                 .collect(Collectors.toSet());
     }
 
-    public List<Drink> getDrinkByFirstTreeChars(String drinkSearch) {
-        if (drinkSearch != null) {
-            List<Drink> found = new ArrayList<>();
-            List<Drink> drinkList = drinkDao.getDrinkList();
-            for (Drink foundDrink : drinkList) {
-                if (foundDrink.getName().toLowerCase().startsWith(drinkSearch.toLowerCase())) {
-                    found.add(foundDrink);
-                }
-            }
-            return found;
-        }
-        return null;
-    }
-
-    public List<String> getDrinkNames() {
-        return drinkDao.getDrinkList().stream().map(Drink::getName).collect(Collectors.toList());
-    }
 }
