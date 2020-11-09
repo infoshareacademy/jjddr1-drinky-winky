@@ -20,8 +20,6 @@ public class CategoryService {
 
     @Inject
     private CategoryDao categoryDao;
-//    @Inject
-//    private DrinkService drinkService;
 
     public void saveCategory(CategoryDto categoryDto) {
         Category category = CategoryDto.dtoToCategory(categoryDto);
@@ -54,9 +52,5 @@ public class CategoryService {
         return categoryDao.getCategoryIds();
     }
 
-//    public Boolean isCategoryWithoutDrink(String name) {
-//        DrinkDTO drinkName = drinkService.getDrinkByName(name);
-//        CategoryDto category = drinkName.getCategory();
-//        return drinkService.getDrinkList().stream().anyMatch(drinkDTO -> drinkDTO.getCategory().equals(category));
-//    }
+
 }
