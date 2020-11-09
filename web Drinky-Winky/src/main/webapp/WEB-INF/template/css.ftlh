@@ -4,3 +4,4 @@
 <link href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" rel="stylesheet" type="text/css">
 <link href="https://unpkg.com/flickity@2/dist/flickity.min.css" rel="stylesheet" type="text/css">
 <link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

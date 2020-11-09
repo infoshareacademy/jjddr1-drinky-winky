@@ -22,7 +22,9 @@
 
             <form method="get" action="Navigation-servlet">
                 <input type="submit" name="navigator" value="admin"/>
-                <input type="submit" name="navigator" value="user"/>
+            </form>
+            <form method="get" action="User-view">
+                <input type="submit" name="page" value="1"/>
             </form>
 
             <form method="get" action="Login">
