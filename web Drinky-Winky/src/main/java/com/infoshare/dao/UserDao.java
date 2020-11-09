@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -14,13 +15,27 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+    public void addFav(Long drinkId, Long userId) {
+        User userById = getUserById(userId);
+
+        List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
+        Drink drink = entityManager.find(Drink.class, drinkId);
+
+        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+            favouriteDrinkList.remove(drink);
+        } else {
+            favouriteDrinkList.add(drink);
+        }
+        userById.setFavouriteDrinkList(favouriteDrinkList);
+    }
+
     public User saveUser(User user) {
         entityManager.persist(user);
         return user;
     }
 
-    public User updateUser(User user) {
-        return entityManager.merge(user);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
     public User getUserById(Long id) {

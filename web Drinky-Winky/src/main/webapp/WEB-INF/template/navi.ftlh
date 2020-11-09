@@ -8,12 +8,16 @@
             <li><a href="Age-query">Age query</a></li>
             <li><a href="Start">Start</a></li>
 
-            <input list="names" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Search...'" required>
+            <form action="Drink-view" method="get">
+                <input name="name" list="names" class="search" type="text" placeholder="Search.."
+                       onfocus="this.placeholder=''"
+                       onblur="this.placeholder='Search...'" required>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
 
             <datalist id="names">
-                <#if names??>
-                    <#list names>
+                <#if drinks??>
+                    <#list drinks>
                         <ul>
                             <#items as name>
                             <option value="${name.getName()}">

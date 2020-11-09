@@ -38,7 +38,7 @@ public class CategoryService {
     public List<CategoryDto> getCategoriesList() {
         return categoryDao.getCategoriesList()
                 .stream()
-                .map(category -> CategoryDto.categoryToDto(category))
+                .map(CategoryDto::categoryToDto)
                 .collect(Collectors.toList());
     }
 
