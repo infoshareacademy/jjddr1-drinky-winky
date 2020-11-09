@@ -10,8 +10,8 @@
             <#items as name>
                 <li>
                     ${name.getName()}
-                    ${name.getName()}
-                    ${name.getName()}
+
+                    <img src="${name.getImageUrl()}"  alt="Zdjecie drinka" style="width: 200px;" />
                 </li>
             </#items>
         </ul>

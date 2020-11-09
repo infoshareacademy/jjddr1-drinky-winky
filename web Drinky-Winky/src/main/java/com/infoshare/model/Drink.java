@@ -11,15 +11,13 @@ import java.util.List;
                 query = "SELECT r FROM Drink r"),
         @NamedQuery(
                 name = Drink.GET_RECIPE_BY_CATEGORY,
-                query = "SELECT r FROM Drink r where r.category IN :categories order by r.name ASC "
-        ),
+                query = "SELECT r FROM Drink r where r.category IN :categories order by r.name ASC "),
         @NamedQuery(
                 name = Drink.GET_DRINK_BY_CATEGORY_AND_INGREDIENT,
                 query = "SELECT r FROM Drink r JOIN r.ingredientList i WHERE r.category IN :categories AND ( i.name IN :ingredients) GROUP BY r HAVING COUNT(distinct i.name)=:namesLenght order by r.name ASC "),
         @NamedQuery(
                 name = Drink.GET_DRINK_BY_NAME,
-                query = "SELECT r FROM Drink r WHERE r.name = :name "
-        )
+                query = "SELECT r FROM Drink r WHERE r.name = :name "),
 })
 
 @Entity
@@ -29,6 +27,7 @@ public class Drink {
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";
     public static final String GET_DRINK_BY_NAME = "Drink.getDrinkByName";
     public static final String GET_DRINK_LIST = "Drink.getDrinkList";
+    public static final String GET_GLASS_TYPE = "Drink.findGlassNames";
 
     @Id
     @GeneratedValue

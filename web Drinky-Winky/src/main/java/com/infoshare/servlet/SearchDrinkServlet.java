@@ -4,6 +4,7 @@ import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
+import com.infoshare.utils.SearchEngineUtils;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -21,22 +22,22 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/search-drink")
-public class DrinkSearchServlet extends HttpServlet {
+public class SearchDrinkServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
     @Inject
     DrinkService drinkService;
+    @Inject
+    SearchEngineUtils searchEngineUtils;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String drinkSearch = request.getParameter("drinkSearch");
 
-        List<Drink> drinkNames = drinkService.getDrinkByFirstTreeChars(drinkSearch);
-
         Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getDrinkByFirstTreeChars(drinkSearch));
+        root.put("names", searchEngineUtils.findDrinkByName(drinkSearch));
 
         Template template = templateProvider.getTemplate(getServletContext(), "drink-search.ftlh");
         Writer out = response.getWriter();
