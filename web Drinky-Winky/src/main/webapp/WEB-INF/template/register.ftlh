@@ -14,7 +14,7 @@
 <section class="about" id="logs">
     <div class="container">
         <h2 class="section-title">Welcome!</br> Register in here. </h2>
-        <form method="post" action="RegUser"  id="log">
+        <form method="get" action="RegUser"  id="log">
             <label for="name"> Name: </label>
             <input style="float: none" type="text" id="name" name="name" required></br></br>
             <label for="surname"> Surname: </label>

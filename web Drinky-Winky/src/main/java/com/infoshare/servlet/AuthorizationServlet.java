@@ -15,7 +15,7 @@ public class AuthorizationServlet extends HttpServlet {
     @Inject
     UserService userService;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
@@ -27,7 +27,7 @@ public class AuthorizationServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("login", login);
 
-            response.sendRedirect("User-view");
+            response.sendRedirect("User-view?page=1");
         } else {
             response.sendRedirect("Login");
         }
