@@ -2,6 +2,7 @@ package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
 import com.infoshare.dto.CategoryDto;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,8 @@ public class CategoryService {
 
     @Inject
     private CategoryDao categoryDao;
+//    @Inject
+//    private DrinkService drinkService;
 
     public void saveCategory(CategoryDto categoryDto) {
         Category category = CategoryDto.dtoToCategory(categoryDto);
@@ -51,4 +54,9 @@ public class CategoryService {
         return categoryDao.getCategoryIds();
     }
 
+//    public Boolean isCategoryWithoutDrink(String name) {
+//        DrinkDTO drinkName = drinkService.getDrinkByName(name);
+//        CategoryDto category = drinkName.getCategory();
+//        return drinkService.getDrinkList().stream().anyMatch(drinkDTO -> drinkDTO.getCategory().equals(category));
+//    }
 }
