@@ -29,8 +29,7 @@ public class CategoryListServlet1 extends HttpServlet {
     TemplateProvider templateProvider;
     @Inject
     CategoryService categoryService;
-    @Inject
-    DrinkService drinkService;
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -46,16 +45,5 @@ public class CategoryListServlet1 extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(false);
-        String nameCategory = request.getParameter("name");
-        List<DrinkDTO> drinkByCategoryName = drinkService.getDrinkListByCategoryName(nameCategory);
-        RequestDispatcher rd=request.getRequestDispatcher("/Category-list");
-        rd.forward(request, response);
-
     }
 }

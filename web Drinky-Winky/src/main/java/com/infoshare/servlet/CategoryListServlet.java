@@ -32,7 +32,9 @@ public class CategoryListServlet extends HttpServlet {
     DrinkService drinkService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("categoryname");
+        response.setContentType("text/html;charset=UTF-8");
+        String name = request.getParameter("name");
+
         Map<String, Object> root = new HashMap<>();
         root.put("categories", drinkService.getDrinkListByCategoryName(name));
 

@@ -35,7 +35,7 @@
 
 
         <figure>
-            <form method="post" action="Category-list1" id="mySelect">
+            <form method="get" action="Category-list" id="mySelect">
                 <fieldset>
                     <legend> Choose category to view</legend>
 

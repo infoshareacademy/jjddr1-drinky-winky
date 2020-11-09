@@ -35,16 +35,16 @@
 
 
         <figure>
-            <form method="post" action="Category-list1" id="mySelect">
+            <form method="get" action="Category-list" id="mySelect">
                 <fieldset>
                     <legend> Choose Drink to view</legend>
 
-                    <label for="names-choice">Name: <br/><input list="nameofcategories" id="names-choice" type="text" name="name"
+                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" type="text" name="name"
                                                                 required/><br/></label>
 
-                    <datalist id="nameofcategories">
-                        <#if nameofcategories??>
-                            <#list nameofcategories>
+                    <datalist id="categories">
+                        <#if categories??>
+                            <#list categories>
                                 <ul>
                                     <#items as drink>
                                     <option value="${drink.getName()}">
