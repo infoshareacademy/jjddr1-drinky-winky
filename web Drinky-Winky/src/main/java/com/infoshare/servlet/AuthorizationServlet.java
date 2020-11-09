@@ -35,6 +35,7 @@ public class AuthorizationServlet extends HttpServlet {
             if (loggingService.checkCorrectPassword(registeredUserDTO, userPass)) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("login", userLog);
+//                session.setAttribute("role", userLog);
 
                 Writer out = response.getWriter();
                 Map<String, Object> root = new HashMap<>();

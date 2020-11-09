@@ -30,7 +30,7 @@ public class UserViewServlet extends HttpServlet {
 //            if (c.getName().equals("userName")) {
 
         HttpSession session = request.getSession(true);
-        session.setMaxInactiveInterval(10);
+        session.setMaxInactiveInterval(60);
         Object login = session.getAttribute("login");
         if(login == null){
             response.sendRedirect("Logout");

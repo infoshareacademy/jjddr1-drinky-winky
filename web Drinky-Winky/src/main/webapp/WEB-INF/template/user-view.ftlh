@@ -18,6 +18,10 @@
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
+            <form method="get" action="Logout">
+                <input type="submit" name="navigator" value="logout"/>
+            </form>
+
             <input list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'" required>
 
