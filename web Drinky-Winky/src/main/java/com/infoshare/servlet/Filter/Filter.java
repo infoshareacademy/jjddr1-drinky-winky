@@ -9,22 +9,19 @@ import java.io.IOException;
 
 @WebFilter(
         filterName = "authorisation",
-        servletNames = "/User-view",
-        urlPatterns = "/Admin/*",
+        urlPatterns = {"/Admin/*", "/User-view/*"},
         initParams = {
-                @WebInitParam(name = "userType", value = "admin"),
-                @WebInitParam(name = "userType", value = "custom")
-}
+                @WebInitParam(name = "userType", value = "custom"),
+        }
 )
-public class Filter implements javax.servlet.Filter{
+public class Filter implements javax.servlet.Filter {
 
-    private String admin;
-    private String custom;
+
+    private String login;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-    admin = filterConfig.getInitParameter("userType");
-    custom = filterConfig.getInitParameter("custom");
+        login = filterConfig.getInitParameter("login");
     }
 
     @Override
@@ -32,18 +29,17 @@ public class Filter implements javax.servlet.Filter{
 
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
-
-        String userType = (String) req.getSession().getAttribute("userType");
-        if((userType == null) && !(userType.equals(admin))){
-            resp.sendRedirect("Start");
-        }
         String path = req.getServletPath();
-        if((path.equals("Admin")) && !(userType.equals(admin))){
-            resp.sendRedirect("Start");
+        String loginUser = (String) req.getSession().getAttribute("login");
+
+        if (loginUser == null || loginUser.isEmpty()) {
+            resp.sendRedirect("/Login");
+        } else if (path.equals("/Admin") && !(login.equals("login"))) {
+            resp.sendRedirect("/Start");
         }
-        if((path.equals("User-view")) && !(userType.equals(custom))){
-            resp.sendRedirect("Start");
-        }
+
+
         chain.doFilter(servletRequest, servletResponse);
     }
 }
+
