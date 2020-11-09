@@ -34,7 +34,7 @@ public class Ingredient {
     @NotNull
     private String measure;
 
-    @ManyToMany(mappedBy = "ingredientList",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "ingredientList")
     private List<Drink> drinkList = new ArrayList<>();
 
     public Long getId() {

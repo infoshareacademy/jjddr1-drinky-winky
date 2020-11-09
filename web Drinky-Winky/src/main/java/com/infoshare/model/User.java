@@ -31,23 +31,23 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotNull
+//    @NotNull
     private String name;
 
     @Column(name = "surname")
-    @NotNull
+//    @NotNull
     private String surname;
 
     @Column(name = "user_type")
-    @NotNull
+//    @NotNull
     private String userType;
 
     @Column(name = "login")
-    @NotNull
+//    @NotNull
     private String login;
 
     @Column(name = "password")
-    @NotNull
+//    @NotNull
     private String password;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)

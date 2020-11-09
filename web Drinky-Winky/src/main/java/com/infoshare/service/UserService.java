@@ -1,6 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
@@ -21,9 +22,17 @@ public class UserService {
     @EJB
     private UserDao userDao;
 
+    @Transactional
+    public void saveFavDrink(Long drinkId, Long userId) {
+        userDao.addFav(drinkId, userId);
+    }
+
+    @Transactional
     public void saveUser(UserDTO userDTO) {
-        User user = UserDTO.dtoToUser(userDTO);
-        userDao.saveUser(user);
+        if (userDao.getUserById(userDTO.getId()) == null) {
+            User user = UserDTO.dtoToUser(userDTO);
+            userDao.saveUser(user);
+        }
     }
 
     public void updateUser(UserDTO userDTO) {

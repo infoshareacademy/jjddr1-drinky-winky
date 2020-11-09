@@ -78,7 +78,7 @@ public class Drink {
     )
     private List<Ingredient> ingredientList = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "favouriteDrinkList", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "favouriteDrinkList")
     private List<User> users = new ArrayList<>();
 
     public Drink() {

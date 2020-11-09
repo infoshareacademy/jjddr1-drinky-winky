@@ -1,7 +1,7 @@
 <section class="features" id="features">
     <div class="container">
         <h2 class="section-title">DRINKS RECIPE LIBRARY</h2>
-        <p class="section-intro">Tutaj jest miejsce na wyszukiwanie itp....
+        <p class="section-intro">
             <div class="features-wrapper">
                 <article class="feature">
                     <i class="fas fa-wine-glass-alt"></i>
