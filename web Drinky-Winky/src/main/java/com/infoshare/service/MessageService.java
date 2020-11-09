@@ -2,7 +2,6 @@ package com.infoshare.service;
 
 import com.infoshare.dao.MessageDao;
 import com.infoshare.dto.MessageDto;
-import com.infoshare.model.Message;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -17,8 +16,12 @@ public class MessageService {
         return MessageDto.messageToDto.apply(messageDao.getMessage(id));
     }
 
-    public void setMessage(MessageDto messageDto){
+    public void saveMessage(MessageDto messageDto) {
         messageDao.setMessage(MessageDto.dtoToMessage.apply(messageDto));
     }
 
+
+    public void updateMessage(MessageDto messageDto, Long id) {
+        messageDao.updateMessage(MessageDto.dtoToMessage.apply(messageDto), id);
+    }
 }

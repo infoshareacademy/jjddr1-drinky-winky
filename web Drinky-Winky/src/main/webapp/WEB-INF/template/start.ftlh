@@ -27,6 +27,14 @@
                 <input type="submit" name="page" value="1"/>
             </form>
 
+            <form method="get" action="Login">
+                <input type="submit" name="navigator" value="login"/>
+            </form>
+
+            <form method="get" action="Register">
+                <input type="submit" name="navigator" value="register"/>
+            </form>
+
         </ul>
     </div>
 </nav>
