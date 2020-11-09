@@ -24,8 +24,8 @@ public class AuthorizationServlet extends HttpServlet {
         UserDTO userPass = userService.getUserPassword(password);
 
         if (userLog != null && userPass != null) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("login", login);
+//            HttpSession session = request.getSession(true);
+//            session.setAttribute("login", login);
 
             response.sendRedirect("User-view");
         } else {
