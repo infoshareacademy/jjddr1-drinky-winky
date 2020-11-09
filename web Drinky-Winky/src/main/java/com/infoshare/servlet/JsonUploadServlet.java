@@ -3,6 +3,7 @@ package com.infoshareacademy.servlet;
 
 import com.infoshare.model.Drink;
 import com.infoshare.service.FileDataHandler;
+import com.infoshare.service.MessageService;
 import com.infoshare.service.RecipeUploadedFileNotFound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class JsonUploadServlet extends HttpServlet {
 
     @Inject
     private FileDataHandler fileDataHandler;
+
     Logger logger = LoggerFactory.getLogger(com.infoshareacademy.servlet.JsonUploadServlet.class);
 
     @Override
@@ -36,8 +38,6 @@ public class JsonUploadServlet extends HttpServlet {
         }
         Drink drink = new Drink();
         drink.setImageUrl(fileUrl);
-
-
 
         response.sendRedirect("Admin");
     }

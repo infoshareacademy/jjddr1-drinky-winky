@@ -29,6 +29,9 @@ public class FileParserService {
     @Inject
     private DrinkService drinkService;
 
+    @Inject
+    private MessageService messageService;
+
     @EJB
     private DrinkMapper drinkMapper;
 
@@ -38,7 +41,7 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
-
+    //TODO please refactor WOJTAS
     public List<Integer> parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         Integer size = drinkAPIS.size();
@@ -54,6 +57,8 @@ public class FileParserService {
             }
         }
         logger.info("{} was parsed from {}", count, size);
+
+        messageService.leaveMessage(1L, count + " was parsed from " + size);
 
         ArrayList<Integer> sizeCount = new ArrayList<>();
         sizeCount.add(size);

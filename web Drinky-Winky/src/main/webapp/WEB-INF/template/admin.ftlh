@@ -18,6 +18,7 @@
     <div class="page-intro">
         <div class="container">
             <h1 class="main-title">Admin Panel</h1>
+            <#if message??><h2 class="main-subtitle" style="color: #eb0000"> ${message.getMessage()} </h2></#if>
 
             <form action="Json-upload" method="post" enctype="multipart/form-data">
                 <div style="display: flex; flex-direction: row;">
@@ -116,8 +117,9 @@
                             <td>Measures</td>
                         </tr>
                         <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input list="ingredients" type="text" name="ingredient" ng-model="item.ingredient" required></td>
-                            <td><input type="text" name="measure" ng-model="item.measure" ></td>
+                            <td><input list="ingredients" type="text" name="ingredient" ng-model="item.ingredient"
+                                       required></td>
+                            <td><input type="text" name="measure" ng-model="item.measure"></td>
                             <td ng-if="!$first">
                                 <button ng-click="list.splice($index, 1)">-</button>
                             </td>
