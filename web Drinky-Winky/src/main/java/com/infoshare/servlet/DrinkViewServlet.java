@@ -35,7 +35,9 @@ public class DrinkViewServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
         root.put("drink", drink);
-        root.put("ingredients", drink.getIngredientList());
+        root.put("ingredients",drink.getIngredientList());
+        root.put("user",request.getRemoteUser());
+        root.put("allDrink", drinkService.getDrinkList());
         root.put("favourite", userService.isFavourite(drink.getName(), 1L));
 
         Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");

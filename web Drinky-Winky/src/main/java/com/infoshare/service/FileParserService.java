@@ -41,7 +41,6 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
-    //TODO please refactor WOJTAS
     public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         Integer size = drinkAPIS.size();
