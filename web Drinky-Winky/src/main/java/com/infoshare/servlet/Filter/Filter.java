@@ -11,17 +11,17 @@ import java.io.IOException;
         filterName = "authorisation",
         urlPatterns = {"/Admin/*", "/User-view/*"},
         initParams = {
-                @WebInitParam(name = "userType", value = "custom"),
+                @WebInitParam(name = "admin", value = "login"),
         }
 )
 public class Filter implements javax.servlet.Filter {
 
 
-    private String login;
+    private String admin;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        login = filterConfig.getInitParameter("login");
+        admin = filterConfig.getInitParameter("admin");
     }
 
     @Override
@@ -34,10 +34,9 @@ public class Filter implements javax.servlet.Filter {
 
         if (loginUser == null || loginUser.isEmpty()) {
             resp.sendRedirect("/Login");
-        } else if (path.equals("/Admin") && !(login.equals("login"))) {
+        } else if (path.equals("/Admin") && !(loginUser.equals(admin))) {
             resp.sendRedirect("/Start");
         }
-
 
         chain.doFilter(servletRequest, servletResponse);
     }

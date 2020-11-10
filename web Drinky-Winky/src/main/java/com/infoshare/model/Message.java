@@ -13,14 +13,19 @@ public class Message {
     public static final String GET_MESSAGE = "Message.getMessage";
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     private Long id;
 
     @Column(name = "message")
     private String message;
 
+
     public Message(String message) {
+        this.message = message;
+    }
+
+    public Message(Long id, String message) {
+        this.id = id;
         this.message = message;
     }
 

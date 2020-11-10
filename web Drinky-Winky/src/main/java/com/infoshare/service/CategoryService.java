@@ -47,6 +47,13 @@ public class CategoryService {
     public Category findCategoryByName(String name) {
         return categoryDao.findCategoryByName(name);
     }
+    
+    @Transactional
+    public List<CategoryDto> getCategoryNameList(String name) {
+        return categoryDao.getCategoriesList()
+                .stream().findFirst()
+                .map(category -> CategoryDto.categoryToDto(category)).stream().collect(Collectors.toList());
+    }
 
     public String[] getCategoryIds() {
         return categoryDao.getCategoryIds();

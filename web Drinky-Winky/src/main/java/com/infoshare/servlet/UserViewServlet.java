@@ -30,7 +30,7 @@ public class UserViewServlet extends HttpServlet {
         Object login = session.getAttribute("login");
         if (login == null) {
             response.sendRedirect("Logout");
-
+        }
             Map<String, Object> root = new HashMap<>();
 
             int size = drinkService.getDrinkList().size();
@@ -71,4 +71,4 @@ public class UserViewServlet extends HttpServlet {
             }
         }
     }
-}
+

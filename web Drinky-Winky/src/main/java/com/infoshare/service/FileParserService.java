@@ -1,11 +1,9 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
-import com.infoshare.dto.CategoryDto;
 import com.infoshare.mappers.CategoryMapper;
 import com.infoshare.mappers.DrinkMapper;
 import com.infoshare.model.Category;
-import com.infoshare.model.Drink;
 import com.infoshare.parser.DrinkAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +29,9 @@ public class FileParserService {
     @Inject
     private DrinkService drinkService;
 
+    @Inject
+    private MessageService messageService;
+
     @EJB
     private DrinkMapper drinkMapper;
 
@@ -40,7 +41,7 @@ public class FileParserService {
     @EJB
     private CategoryDao categoryDao;
 
-
+    //TODO please refactor WOJTAS
     public List<Integer> parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         Integer size = drinkAPIS.size();
@@ -55,7 +56,9 @@ public class FileParserService {
                 categoryDao.updateCategory(category);
             }
         }
-        logger.info("{} was parsed from {}",count,size);
+        logger.info("{} was parsed from {}", count, size);
+
+        messageService.leaveMessage(1L, count + " was parsed from " + size);
 
         ArrayList<Integer> sizeCount = new ArrayList<>();
         sizeCount.add(size);

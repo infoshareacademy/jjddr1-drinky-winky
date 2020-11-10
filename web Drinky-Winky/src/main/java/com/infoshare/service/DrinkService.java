@@ -8,25 +8,29 @@ import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Transactional
 @RequestScoped
 public class DrinkService {
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @EJB
     DrinkDao drinkDao;
+    @Inject
+    MessageService messageService;
 
-    public String addDrink(DrinkDTO drinkDTO) {
+    public DrinkDTO addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-            drinkDao.addDrink(drink);
-            return  "SUCCESS! THE DRINK HAS BEEN ADDED";
+            messageService.leaveMessage(1L, "Drink was added!");
+            return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
         }
-        return "SOMETHING WENT WRONG! THE DRINK WITH THAT NAME ALREADY EXIST";
+        return null;
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
@@ -34,7 +38,6 @@ public class DrinkService {
         drinkDao.editDrink(drink);
     }
 
-    @Transactional
     public DrinkDTO getDrinkByName(String name) {
         Drink drinkByName = drinkDao.getDrinkByName(name);
         if (drinkByName != null) {
@@ -43,7 +46,6 @@ public class DrinkService {
         return null;
     }
 
-    @Transactional
     public DrinkDTO getDrinkById(Long id) {
         Drink drinkById = drinkDao.getDrinkById(id);
         if (drinkById != null) {
@@ -52,7 +54,6 @@ public class DrinkService {
         return null;
     }
 
-    @Transactional
     public void deleteDrinkById(Long id) {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
             drinkDao.deleteDrinkById(id);
@@ -60,16 +61,16 @@ public class DrinkService {
         }
     }
 
-
-    @Transactional
     public void deleteDrinkByName(String name) {
         if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
             drinkDao.deleteDrinkByName(name);
             logger.info("Drink has been deleted");
+            messageService.leaveMessage(1L, "Drink was deleted!!!");
+        } else {
+            messageService.leaveMessage(1L, "OMG! Nothing happened!");
         }
     }
 
-    @Transactional
     public List<DrinkDTO> getDrinkList() {
         return drinkDao.getDrinkList()
                 .stream()
@@ -77,7 +78,13 @@ public class DrinkService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
+    public Set<DrinkDTO> getDrinkListByCategoryName(String name) {
+        return getDrinkList().
+                stream()
+                .filter(drinkDTO -> drinkDTO.getCategory().getName().equalsIgnoreCase(name))
+                .collect(Collectors.toSet());
+    }
+
     public List<DrinkDTO> getRequestDrinkList(int request, int size) {
 
         int fromIndex = (request - 1) * size;
@@ -86,15 +93,9 @@ public class DrinkService {
         if (toIndex > drinkDao.getDrinkList().size()) {
             toIndex = drinkDao.getDrinkList().size();
         }
-
-        return drinkDao.getDrinkList()
-                .stream()
-                .map(DrinkDTO::drinkToDTO)
-                .collect(Collectors.toList())
-                .subList(fromIndex, toIndex);
+        return getDrinkList().subList(fromIndex, toIndex);
     }
 
-    @Transactional
     public Set<String> getUniqueGlassesNameList() {
         return drinkDao.getDrinkList()
                 .stream()
@@ -102,11 +103,4 @@ public class DrinkService {
                 .collect(Collectors.toSet());
     }
 
-    public List<Drink> findRecipeByCategoryId(List<Long> ids) {
-        return drinkDao.findDrinkByCategoryId(ids);
-    }
-
-    public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
-        return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
-    }
 }

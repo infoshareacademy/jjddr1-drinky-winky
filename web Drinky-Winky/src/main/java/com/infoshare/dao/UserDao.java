@@ -93,11 +93,3 @@ public class UserDao {
     }
 
 }
-
-// if (userToUpdate != null) {
-//         userToUpdate.setName(userDTO.getName());
-//         userToUpdate.setSurname(userDTO.getSurname());
-//         userToUpdate.setUserType(userDTO.getUserType());
-//         userToUpdate.setLogin(userDTO.getLogin());
-//         userToUpdate.setPassword(userDTO.getPassword());
-//         userToUpdate.setEmail(userDTO.getEmail());
