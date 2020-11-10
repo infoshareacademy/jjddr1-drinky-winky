@@ -27,7 +27,7 @@ public class AuthorizationServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("login", login);
 
-            response.sendRedirect("User-view?page=1");
+            response.sendRedirect("Admin");
         } else {
             response.sendRedirect("Login");
         }
