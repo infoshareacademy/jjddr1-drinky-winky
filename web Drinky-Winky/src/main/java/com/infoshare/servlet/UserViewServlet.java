@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -21,6 +22,8 @@ public class UserViewServlet extends HttpServlet {
     TemplateProvider templateProvider;
     @Inject
     DrinkService drinkService;
+    @Inject
+    CategoryService categoryService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -53,10 +56,12 @@ public class UserViewServlet extends HttpServlet {
             if (page.equals("user")) {
                 root.put("drinkList", drinkService.getRequestDrinkList(numberOfPage, 8));
                 root.put("allDrink", drinkService.getDrinkList());
+                root.put("categories", categoryService.getCategoriesList());
             } else {
                 int i = Integer.parseInt(page);
                 root.put("allDrink", drinkService.getDrinkList());
                 root.put("drinkList", drinkService.getRequestDrinkList(i, 8));
+                root.put("categories", categoryService.getCategoriesList());
                 root.put("pageNumber", pages);
             }
 
