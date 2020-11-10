@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 
 @RequestScoped
@@ -54,7 +56,6 @@ public class UserService {
             return UserDTO.userToDto(userByID);
         }
         return null;
-
     }
 
     @Transactional
@@ -72,6 +73,14 @@ public class UserService {
         User userByLoginAndPass = userDao.getUserByLoginAndPass(login, password);
         return UserDTO.userToDto(userByLoginAndPass);
     }
+
+    @Transactional
+    public Optional<UserDTO> findUserByLogin(String login) {
+        if (userDao.findUserByLogin(login).isPresent()) {
+            return Optional.of(UserDTO.userToDto(userDao.findUserByLogin(login).get()));
+        } return Optional.empty();
+    }
+
 
 
     public UserDTO getUserLogin(String login) {
