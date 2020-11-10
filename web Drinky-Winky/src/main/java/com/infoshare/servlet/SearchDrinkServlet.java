@@ -3,7 +3,6 @@ package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
 
-import com.infoshare.service.DrinkService;
 import com.infoshare.utils.SearchEngineUtils;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -36,9 +35,9 @@ public class SearchDrinkServlet extends HttpServlet {
         String drinkSearch = request.getParameter("drinkSearch");
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", searchEngineUtils.findDrinkByName(drinkSearch));
+        root.put("names", searchEngineUtils.findDrinkByAll(drinkSearch));
 
-        Template template = templateProvider.getTemplate(getServletContext(), "drink-search.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "/search-engine/drink-search.ftlh");
         Writer out = response.getWriter();
 
         try {
