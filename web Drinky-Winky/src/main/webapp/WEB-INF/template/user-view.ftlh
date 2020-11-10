@@ -17,7 +17,17 @@
         .dropdown-content a {
             padding: 12px 16px;
             display: block;
-            color: #227093;
+            background-color: #227093;
+            opacity: 0.75;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #227093;
+            opacity: 0.4;
+            border-radius: 10px;
+            font-size: 18px;
         }
 
         .dropdown:hover .dropdown-content {
