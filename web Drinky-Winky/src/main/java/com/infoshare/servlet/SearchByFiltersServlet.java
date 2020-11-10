@@ -34,7 +34,7 @@ public class SearchByFiltersServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
         root.put("names", searchEngineUtils.findDrinkByFilters(category, glass, type));
-        Template template = templateProvider.getTemplate(getServletContext(), "filters-search.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "/search-engine/filters-search.ftlh");
         Writer out = response.getWriter();
 
         try {

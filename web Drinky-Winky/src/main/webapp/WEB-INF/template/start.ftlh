@@ -27,7 +27,7 @@
 
 
 
-            <form action="search-drink" method="get">
+            <form action="search-drink2" method="get">
                 <label for="drinkSearchPost">Drink Search:</label> <input type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*What would you like to drink?">
                 <button type="submit">Find</button>
             </form>

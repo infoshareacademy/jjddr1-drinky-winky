@@ -43,7 +43,7 @@ public class FiltersServlet extends HttpServlet {
         root.put("categories", categoryService.getCategoriesList());
         root.put("glasses", drinkService.getDrinkList());
 
-        Template template = templateProvider.getTemplate(getServletContext(), "filters.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "/search-engine/filters.ftlh");
         Writer out = response.getWriter();
 
         try {
