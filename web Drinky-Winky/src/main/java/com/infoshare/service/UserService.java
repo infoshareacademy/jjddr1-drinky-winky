@@ -88,6 +88,13 @@ public class UserService {
             return UserDTO.userToDto(user);
         }
         return null;
+    }
 
+    public UserDTO getUserType(String type) {
+        if (userDao.getUserList().stream().anyMatch(user -> user.getUserType().equals(type))) {
+            User user = userDao.getPassword(type);
+            return UserDTO.userToDto(user);
+        }
+        return null;
     }
 }

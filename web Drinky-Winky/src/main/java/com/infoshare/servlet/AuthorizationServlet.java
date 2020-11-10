@@ -19,20 +19,20 @@ public class AuthorizationServlet extends HttpServlet {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        String typeOfUser = request.getParameter("userType");
 
         UserDTO userLog = userService.getUserLogin(login);
         UserDTO userPass = userService.getUserPassword(password);
+        UserDTO userType = userService.getUserType(typeOfUser);
 
         if (userLog != null && userPass != null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("login", login);
-
+            session.setAttribute("userType", typeOfUser);
             response.sendRedirect("User-view?page=1");
+
         } else {
             response.sendRedirect("Login");
         }
     }
 }
-//            Cookie userName = new Cookie("login", login);
-//            userName.setMaxAge(10);
-//            response.addCookie(userName);

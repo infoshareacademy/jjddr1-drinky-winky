@@ -22,7 +22,7 @@ public class Utils {
         user.setPassword("pass");
         user.setName("Stefan");
         user.setSurname("Siara");
-        user.setUserType("custom");
+        user.setUserType("admin");
         UserDTO userDTO = UserDTO.userToDto(user);
         userService.saveUser(userDTO);
     }

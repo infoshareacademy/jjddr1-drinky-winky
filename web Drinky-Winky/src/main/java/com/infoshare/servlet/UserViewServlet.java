@@ -29,7 +29,7 @@ public class UserViewServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(true);
-        session.setMaxInactiveInterval(10);
+//        session.setMaxInactiveInterval(10);
         Object login = session.getAttribute("login");
         if (login == null) {
             response.sendRedirect("Logout");

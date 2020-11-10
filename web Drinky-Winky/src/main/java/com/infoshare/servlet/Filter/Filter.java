@@ -12,16 +12,19 @@ import java.io.IOException;
         urlPatterns = {"/Admin/*", "/User-view/*"},
         initParams = {
                 @WebInitParam(name = "admin", value = "login"),
+                @WebInitParam(name= "userType", value = "userType"),
         }
 )
 public class Filter implements javax.servlet.Filter {
 
 
     private String admin;
+    private String userT;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         admin = filterConfig.getInitParameter("admin");
+        userT = filterConfig.getInitParameter("userType");
     }
 
     @Override
