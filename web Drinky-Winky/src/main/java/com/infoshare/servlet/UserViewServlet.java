@@ -28,12 +28,12 @@ public class UserViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-//        HttpSession session = request.getSession(true);
-//        session.setMaxInactiveInterval(10);
-//        Object login = session.getAttribute("login");
-//        if (login == null) {
-//            response.sendRedirect("Logout");
-
+        HttpSession session = request.getSession(true);
+        session.setMaxInactiveInterval(10);
+        Object login = session.getAttribute("login");
+        if (login == null) {
+            response.sendRedirect("Logout");
+        }
             Map<String, Object> root = new HashMap<>();
 
             int size = drinkService.getDrinkList().size();
@@ -76,4 +76,4 @@ public class UserViewServlet extends HttpServlet {
             }
         }
     }
-//}
+

@@ -2,6 +2,7 @@ package com.infoshare.service;
 
 import com.infoshare.dao.CategoryDao;
 import com.infoshare.dto.CategoryDto;
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.model.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,5 +58,6 @@ public class CategoryService {
     public String[] getCategoryIds() {
         return categoryDao.getCategoryIds();
     }
+
 
 }
