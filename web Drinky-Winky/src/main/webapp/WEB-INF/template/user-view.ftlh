@@ -17,6 +17,7 @@
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
+            <li><a href="#category">Search By Category</a></li>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
@@ -80,7 +81,7 @@
 
                             <figure class="gallery-item" style="padding: 5px">
                                 <img src=${drink.getImageUrl()} alt="image">
-                                <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
+                                <a href="Drink-view?name=${drink.getName()}">
                                     <figcaption>${drink.getName()}</figcaption>
                                 </a>
                             </figure>
@@ -92,7 +93,9 @@
 </section>
 
 <#include "add-favourite.ftlh">
-
+<section id="category">
+<#include "category1.ftlh">
+</section>
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>
