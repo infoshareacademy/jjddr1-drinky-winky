@@ -28,6 +28,6 @@ public class AddFavouriteServlet extends HttpServlet {
 
         userService.saveFavDrink(drinkId, 1L);
 
-        response.sendRedirect("User-view");
+        response.sendRedirect("Drink-view?name=" + name);
     }
 }

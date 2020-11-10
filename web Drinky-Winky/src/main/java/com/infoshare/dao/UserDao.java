@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Stateless
 public class UserDao {
@@ -72,6 +73,21 @@ public class UserDao {
         query.setParameter("name", name);
         return query.getResultList().stream().findFirst().orElse(null);
     }
+
+    public Optional<User> findUserByLogin(String login) {
+        TypedQuery<User> query = entityManager.createNamedQuery(User.FIND_USER_BY_LOGIN, User.class);
+        query.setParameter("login",login);
+        if (query.getResultList().isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(query.getSingleResult());
+    }
+
+//    public static String getExistingLogin(String login) {
+//        if (new UserDao().findUserByLogin(login).isPresent()){
+//            return login;
+//        } else return "";
+//    }
 
     public User getLogin(String login){
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);

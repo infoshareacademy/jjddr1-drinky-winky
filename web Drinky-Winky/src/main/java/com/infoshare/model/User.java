@@ -6,8 +6,11 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
-                name = User.FIND_USER_BY_NAME ,
+                name = User.FIND_USER_BY_NAME,
                 query = "SELECT distinct u FROM User u WHERE u.name like :name"),
+        @NamedQuery(
+                name = User.FIND_USER_BY_LOGIN ,
+                query = "SELECT distinct u FROM User u WHERE u.login like :login"),
         @NamedQuery(
                 name = User.FIND_USER_LIST,
                 query = "SELECT u FROM User u"),
@@ -32,6 +35,7 @@ import java.util.List;
 public class User {
 
     public static final String FIND_USER_BY_NAME = "User.findUserByName";
+    public static final String FIND_USER_BY_LOGIN = "User.findUserByLogin";
     public static final String FIND_USER_LIST = "User.getUserList";
     public static final String GET_FAVOURITE_LIST = "User.getFavouritesList";
     public static final String GET_USER_BY_LOGIN = "User.getUserByLogin";

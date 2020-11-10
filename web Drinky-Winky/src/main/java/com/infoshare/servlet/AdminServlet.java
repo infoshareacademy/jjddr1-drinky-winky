@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -36,6 +37,13 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        HttpSession session = request.getSession(true);
+        session.setMaxInactiveInterval(5 * 60);
+        Object login = session.getAttribute("login");
+        if (login == null) {
+            response.sendRedirect("Logout");
+        }
 
         Map<String, Object> root = new HashMap<>();
         root.put("drinks", drinkService.getDrinkList());

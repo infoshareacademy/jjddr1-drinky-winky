@@ -3,7 +3,6 @@ package com.infoshareacademy.servlet;
 
 import com.infoshare.model.Drink;
 import com.infoshare.service.FileDataHandler;
-import com.infoshare.service.MessageService;
 import com.infoshare.service.RecipeUploadedFileNotFound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

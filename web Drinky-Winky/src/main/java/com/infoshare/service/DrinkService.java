@@ -29,8 +29,10 @@ public class DrinkService {
             Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
             messageService.leaveMessage(1L, "Drink was added!");
             return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
+        } else {
+            messageService.leaveMessage(1L, "Nothing has happened, please change name.");
+            return null;
         }
-        return null;
     }
 
     public void editDrink(DrinkDTO drinkDTO) {
