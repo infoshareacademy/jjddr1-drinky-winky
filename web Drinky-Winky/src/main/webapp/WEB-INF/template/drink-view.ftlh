@@ -39,5 +39,12 @@
     </#list>
 </div>
 
+<form action="Add-favourite" method="get">
+<div class="upload-btn-wrapper">
+    <a href="Add-favourite?name=${drink.getName()}"> DODAJ DO ULUBIONYCH  ${favourite}</a>
+<#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
+</div>
+</form>
+
 </body>
 </html>

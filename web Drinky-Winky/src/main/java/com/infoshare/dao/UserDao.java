@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Stateless
 public class UserDao {
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -21,7 +22,7 @@ public class UserDao {
         List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
         Drink drink = entityManager.find(Drink.class, drinkId);
 
-        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+        if (favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))) {
             favouriteDrinkList.remove(drink);
         } else {
             favouriteDrinkList.add(drink);
@@ -64,8 +65,14 @@ public class UserDao {
     }
 
     //Todo query to make
-    public List<Drink> getFavouriteDrinkList() {
-        return entityManager.createNamedQuery(User.GET_FAVOURITE_LIST, Drink.class).getResultList();
+    public List<Drink> getFavouriteDrinkList(Long id) {
+        List resultList = entityManager.createNamedQuery(User.GET_FAVOURITE_LIST)
+                .getResultList();
+        return (List<Drink>) resultList;
+    }
+
+    public Boolean isFavourite(String drinkName, Long id) {
+        return getFavouriteDrinkList(id).stream().anyMatch(drink -> drink.getName().equalsIgnoreCase(drinkName));
     }
 
     public User findUserByName(String name) {
@@ -76,34 +83,28 @@ public class UserDao {
 
     public Optional<User> findUserByLogin(String login) {
         TypedQuery<User> query = entityManager.createNamedQuery(User.FIND_USER_BY_LOGIN, User.class);
-        query.setParameter("login",login);
-        if (query.getResultList().isEmpty()){
+        query.setParameter("login", login);
+        if (query.getResultList().isEmpty()) {
             return Optional.empty();
         }
         return Optional.of(query.getSingleResult());
     }
 
-//    public static String getExistingLogin(String login) {
-//        if (new UserDao().findUserByLogin(login).isPresent()){
-//            return login;
-//        } else return "";
-//    }
-
-    public User getLogin(String login){
+    public User getLogin(String login) {
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);
         query.setParameter("login", login);
         return query.getSingleResult();
     }
 
-    public User getPassword(String password){
+    public User getPassword(String password) {
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_PASSWORD, User.class);
         query.setParameter("password", password);
         return query.getSingleResult();
     }
 
-    public User getUserByLoginAndPass(String login, String password){
+    public User getUserByLoginAndPass(String login, String password) {
         TypedQuery<User> query = entityManager.createNamedQuery(User.GET_LOGIN_AND_PASSWORD, User.class);
-        query.setParameter("login",login);
+        query.setParameter("login", login);
         query.setParameter("password", password);
         return query.getSingleResult();
     }

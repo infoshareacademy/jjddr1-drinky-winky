@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -60,6 +59,11 @@ public class UserService {
 //        return DrinkDTO.drinkToDTO(favouriteDrinkList);
 
     //    }
+
+    public Boolean isFavourite(String drinkName, Long id) {
+        return userDao.isFavourite(drinkName, id);
+    }
+
     public UserDTO getUserByLoginAndPass(String login, String password) {
         User userByLoginAndPass = userDao.getUserByLoginAndPass(login, password);
         return UserDTO.userToDto(userByLoginAndPass);
@@ -68,10 +72,10 @@ public class UserService {
     @Transactional
     public Optional<UserDTO> findUserByLogin(String login) {
         if (userDao.findUserByLogin(login).isPresent()) {
-            return Optional.of(UserDTO.userToDto(userDao.findUserByLogin(login).get()));
-        } return Optional.empty();
+            return Optional.of(UserDTO.userToDto(userDao.findUserByLogin(login).orElseThrow()));
+        }
+        return Optional.empty();
     }
-
 
 
     public UserDTO getUserLogin(String login) {
