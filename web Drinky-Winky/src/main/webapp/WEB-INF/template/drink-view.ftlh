@@ -46,7 +46,17 @@
     </div>
 </section>
 <section class="add" id="Drink view" autofocus>
-    <h2 class="section-title">${drink.getName()}</h2>
+    <h2 class="section-title">${drink.getName()}
+
+        <form action="Add-favourite" method="get">
+            <div class="upload-btn-wrapper">
+                <a href="Add-favourite?name=${drink.getName()}"> <#if favourite == true>ULUBIONY</#if> <#if favourite == false>DODAJ</#if></a>
+                <#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
+            </div>
+        </form>
+
+
+    </h2>
     <div class="gallery-wrapper">
 
         <figure class="add-drink"></figure>
@@ -75,10 +85,13 @@
                 </#list>
 
             </div>
-            <figure>
-                <div></div>
+        </figure>
 
-            </figure>
+        <figure>
+            <div></div>
+        </figure>
+
+    </div>
 </section>
 
 
@@ -95,13 +108,6 @@
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="scripts/main.js"></script>
-
-<form action="Add-favourite" method="get">
-<div class="upload-btn-wrapper">
-    <a href="Add-favourite?name=${drink.getName()}"> DODAJ DO ULUBIONYCH  ${favourite}</a>
-<#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
-</div>
-</form>
 
 </body>
 </html>
