@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div>
+<div style="align-content: center">
     ${drink.getName()}<br/>
     ${drink.getRecipe()}<br/>
     ${drink.getDrinkType()}<br/>
