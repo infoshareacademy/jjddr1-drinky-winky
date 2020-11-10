@@ -4,12 +4,10 @@
 
     <#include "css.ftlh">
 
-
     <meta charset="utf-8">
 
 </head>
 <body>
-
 
 <section class="about" id="logs">
     <div class="container">
@@ -27,24 +25,6 @@
             <label for="password">Confirm password: </label>
             <input style="float: none" type="password" id="passwordConfirm" name="passwordConfirm"
                    placeholder="min 7 char" required></br></br>
-
-<#--            <script>-->
-<#--                var new_login = document.getElementById("login")-->
-<#--                    , existingLogin = Packages.com.infoshare.dao.UserDao.getExistingLogin(new_login);-->
-
-<#--                function validateLogin() {-->
-
-<#--                    if (new_login.value != existingLogin.value) {-->
-<#--                        new_login.setCustomValidity("Login already Exists");-->
-<#--                    } else {-->
-<#--                        new_login.setCustomValidity('');-->
-<#--                    }-->
-<#--                }-->
-
-<#--                existingLogin.onchange = validateLogin();-->
-<#--                new_login.onkeyup = validateLogin();-->
-
-<#--            </script>-->
 
             <script>
                 var log_password = document.getElementById("password")

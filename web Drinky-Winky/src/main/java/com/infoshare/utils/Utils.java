@@ -17,12 +17,12 @@ public class Utils {
 
         //chwilowy user do testu
         User user = new User();
-        user.setId(1l);
+        user.setId(1L);
         user.setLogin("login");
         user.setPassword("pass");
         user.setName("Stefan");
-        user.setSurname("Siara");
-        user.setUserType("custom");
+        user.setSurname("Siarzewski");
+        user.setUserType("Boss");
         UserDTO userDTO = UserDTO.userToDto(user);
         userService.saveUser(userDTO);
     }

@@ -32,18 +32,9 @@ public class UserService {
             User user = UserDTO.dtoToUser(userDTO);
             user.setUserType("custom");
             userDao.saveUser(user);
-//        if (userDao.getUserById(userDTO.getId()) == null) {
-//            User user = UserDTO.dtoToUser(userDTO);
-//            userDao.saveUser(user);
         }
         return false;
     }
-//    public void saveUser(UserDTO userDTO) {
-//        if (userDao.getUserById(userDTO.getId()) == null) {
-//            User user = UserDTO.dtoToUser(userDTO);
-//            userDao.saveUser(user);
-//        }
-//    }
 
     public void updateUser(UserDTO userDTO, Long id) {
         userDao.updateUser(UserDTO.dtoToUser(userDTO), id);

@@ -42,27 +42,27 @@ public class FileParserService {
     private CategoryDao categoryDao;
 
     //TODO please refactor WOJTAS
-    public List<Integer> parseDataToDatabase(File json) {
+    public Object parseDataToDatabase(File json) {
         List<DrinkAPI> drinkAPIS = (List<DrinkAPI>) parserService.parseFile(json);
         Integer size = drinkAPIS.size();
         Integer count = 0;
         for (DrinkAPI drinkAPI : drinkAPIS) {
 
             if (drinkService.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkAPI.getName()))) {
+
                 count++;
+
                 Category category = Optional
-                        .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory())).orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+                        .ofNullable(categoryDao.findCategoryByName(drinkAPI.getCategory()))
+                        .orElseGet(() -> categoryMapper.mapCategory(drinkAPI));
+
                 category.getDrinkList().add(drinkMapper.mapRecipes(drinkAPI, category));
                 categoryDao.updateCategory(category);
             }
         }
         logger.info("{} was parsed from {}", count, size);
-
         messageService.leaveMessage(1L, count + " was parsed from " + size);
 
-        ArrayList<Integer> sizeCount = new ArrayList<>();
-        sizeCount.add(size);
-        sizeCount.add(count);
-        return sizeCount;
+        return new Object();
     }
 }

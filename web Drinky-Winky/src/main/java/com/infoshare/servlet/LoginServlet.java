@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
 
-        Template template = templateProvider.getTemplate(getServletContext(), "log.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "login.ftlh");
         Writer out = response.getWriter();
 
         try {

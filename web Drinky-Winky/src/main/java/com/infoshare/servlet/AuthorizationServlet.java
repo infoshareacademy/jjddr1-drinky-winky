@@ -3,7 +3,6 @@ package com.infoshare.servlet;
 import com.infoshare.dto.UserDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.LoggingService;
-import com.infoshare.service.UserService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -27,19 +26,19 @@ public class AuthorizationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userLog = request.getParameter("login");
-        String userPass = request.getParameter("password");
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
 
-        if (loggingService.checkIfUserExist(userLog).isPresent()) {
-            UserDTO registeredUserDTO = loggingService.checkIfUserExist(userLog).get();
-            if (loggingService.checkCorrectPassword(registeredUserDTO, userPass)) {
+        if (loggingService.checkUser(login).isPresent()) {
+            UserDTO registeredUserDTO = loggingService.checkUser(login).orElseThrow();
+            if (loggingService.checkPassword(registeredUserDTO, password)) {
+
                 HttpSession session = request.getSession(true);
-                session.setAttribute("login", userLog);
-//                session.setAttribute("role", userLog);
+                session.setAttribute("login", login);
 
                 Writer out = response.getWriter();
                 Map<String, Object> root = new HashMap<>();
-                Template template = templateProvider.getTemplate(getServletContext(), "userSignedIn.ftlh");
+                Template template = templateProvider.getTemplate(getServletContext(), "signed-in.ftlh");
 
                 try {
                     template.process(root, out);
@@ -52,6 +51,3 @@ public class AuthorizationServlet extends HttpServlet {
         }
     }
 }
-//            Cookie userName = new Cookie("login", login);
-//            userName.setMaxAge(10);
-//            response.addCookie(userName);

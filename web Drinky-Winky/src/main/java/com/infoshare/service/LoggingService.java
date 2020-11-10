@@ -12,11 +12,11 @@ public class LoggingService {
     @Inject
     UserService userService;
 
-    public Optional<UserDTO> checkIfUserExist(String login) {
+    public Optional<UserDTO> checkUser(String login) {
         return userService.findUserByLogin(login);
     }
 
-    public boolean checkCorrectPassword(UserDTO userDTO, String password) {
+    public boolean checkPassword(UserDTO userDTO, String password) {
         return userDTO.getPassword().equals(password);
     }
 
