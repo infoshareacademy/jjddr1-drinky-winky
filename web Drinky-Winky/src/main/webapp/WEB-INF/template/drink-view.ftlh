@@ -1,43 +1,113 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>${drink.getName()}</title>
+    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
 
 </head>
 <body>
 
-<div>
-    ${drink.getName()}<br/>
-    ${drink.getRecipe()}<br/>
-    ${drink.getDrinkType()}<br/>
-    ${drink.getGlassType()}<br/>
-    ${drink.getModificationDate()}<br/>
-    ${drink.getCategory().getName()}<br/>
-</div>
-
-<div>
-    <figure class="gallery-item" style="padding: 5px">
-        <img src="${drink.getImageUrl()}" alt="image"><br/>
-        <figcaption>${drink.getName()}</figcaption>
-    </figure>
-</div>
-
-<div>
-    <#list ingredients>
+<nav class="navigation">
+    <div class="container">
         <ul>
-            <#items as ingredient>
-                <li>
-                    ${ingredient.getName()}
-                    ${ingredient.getMeasure()}
-                </li>
-            </#items>
+            <li><a href="#load">Welcome</a></li>
+            <li><a href="#about">About application</a></li>
+            <li><a href="#contact">Contacts</a></li>
+
+            <form action="Drink-view" method="get">
+                <input name="name" list="allDrink" class="search" type="text" placeholder="Search.."
+                       onfocus="this.placeholder=''"
+                       onblur="this.placeholder='Search...'" required>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+            <datalist id="allDrink">
+                <#if allDrink??>
+                    <#list allDrink>
+                        <ul>
+                            <#items as drink>
+                            <option value="${drink.getName()}">
+                                </#items>
+                        </ul>
+                    </#list>
+                </#if>
+            </datalist>
+
         </ul>
-    </#list>
-</div>
+    </div>
+</nav>
+<section class="splash" id="load"
+         style="background-image:url('https://images.pexels.com/photos/239466/pexels-photo-239466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+    <div class="page-intro">
+        <div class="container"></div>
+    </div>
+</section>
+<section class="add" id="Drink view" autofocus>
+    <h2 class="section-title">${drink.getName()}
+
+        <form action="Add-favourite" method="get">
+            <div class="upload-btn-wrapper">
+                <a href="Add-favourite?name=${drink.getName()}"> <#if favourite == true>ULUBIONY</#if> <#if favourite == false>DODAJ</#if></a>
+                <#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
+            </div>
+        </form>
+
+
+    </h2>
+    <div class="gallery-wrapper">
+
+        <figure class="add-drink"></figure>
+        <figure class="gallery-item" style="padding: 5px">
+            <img src="${drink.getImageUrl()}" alt="image"><br/>
+            <figcaption>${drink.getName()}</figcaption>
+        </figure>
+
+        <figure class="add-drink">
+            <div class="container1">
+                ${drink.getName()}<br/>
+                ${drink.getRecipe()}<br/>
+                ${drink.getDrinkType()}<br/>
+                ${drink.getGlassType()}<br/>
+                ${drink.getModificationDate()}<br/>
+                ${drink.getCategory().getName()}<br/>
+                <#list ingredients>
+                    <ul>
+                        <#items as ingredient>
+                            <li>
+                                ${ingredient.getName()}
+                                ${ingredient.getMeasure()}
+                            </li>
+                        </#items>
+                    </ul>
+                </#list>
+
+            </div>
+        </figure>
+
+        <figure>
+            <div></div>
+        </figure>
+
+    </div>
+</section>
+
+
+<#include "about.ftlh">
+
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
+
+<#include "contact.ftlh">
+<#include "footer.ftlh">
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="scripts/main.js"></script>
 
 </body>
 </html>

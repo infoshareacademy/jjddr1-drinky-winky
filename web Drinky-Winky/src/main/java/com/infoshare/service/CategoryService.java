@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -36,11 +37,11 @@ public class CategoryService {
     }
 
     @Transactional
-    public List<CategoryDto> getCategoriesList() {
+    public Set<CategoryDto> getCategoriesList() {
         return categoryDao.getCategoriesList()
                 .stream()
                 .map(CategoryDto::categoryToDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Transactional
@@ -49,10 +50,10 @@ public class CategoryService {
     }
     
     @Transactional
-    public List<CategoryDto> getCategoryNameList(String name) {
+    public Set<CategoryDto> getCategoryNameList(String name) {
         return categoryDao.getCategoriesList()
                 .stream().findFirst()
-                .map(category -> CategoryDto.categoryToDto(category)).stream().collect(Collectors.toList());
+                .map(category -> CategoryDto.categoryToDto(category)).stream().collect(Collectors.toSet());
     }
 
     public String[] getCategoryIds() {

@@ -9,7 +9,7 @@ import java.util.List;
                 name = User.FIND_USER_BY_NAME,
                 query = "SELECT distinct u FROM User u WHERE u.name like :name"),
         @NamedQuery(
-                name = User.FIND_USER_BY_LOGIN ,
+                name = User.FIND_USER_BY_LOGIN,
                 query = "SELECT distinct u FROM User u WHERE u.login like :login"),
         @NamedQuery(
                 name = User.FIND_USER_LIST,
@@ -22,14 +22,12 @@ import java.util.List;
                 query = "SELECT p FROM User p WHERE p.password LIKE :password"),
         @NamedQuery(
                 name = User.GET_LOGIN_AND_PASSWORD,
-                query = "SELECT u.login, u.password FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"
-        )
+                query = "SELECT u.login, u.password FROM User u WHERE u.login LIKE :login AND u.password LIKE :password"),
+        @NamedQuery(
+                name = User.GET_FAVOURITE_LIST,
+                query = "SELECT u.favouriteDrinkList FROM User u JOIN u.favouriteDrinkList r WHERE r.id=u.id")
 })
 
-
-//        @NamedQuery(
-//                name = User.GET_FAVOURITE_LIST,
-//                query = "SELECT u.favouriteDrinkList FROM User u JOIN u.favouriteDrinkList r WHERE r.id=u.id")
 @Entity
 @Table(name = "user")
 public class User {

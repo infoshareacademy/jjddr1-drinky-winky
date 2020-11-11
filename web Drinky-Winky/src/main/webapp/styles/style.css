@@ -36,6 +36,18 @@ section {
     max-width: none;
     text-align: center;
     margin: 24px 0 0 0;
+    display: inline-block;
+    word-break: break-word;
+}
+
+.container1 {
+    flex: 0 0 33.333333%;
+    max-width: 30%;
+    text-align: center;
+    margin: 24px 0 0 0;
+    display: inline-block;
+    word-break: break-word;
+
 }
 
 .splash {
