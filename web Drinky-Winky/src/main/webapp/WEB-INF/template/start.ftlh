@@ -27,13 +27,9 @@
 
 
 
-            <form action="search-drink2" method="get">
+            <form action="search-drink" method="get">
                 <label for="drinkSearchPost">Drink Search:</label> <input pattern=".{3,}" required title="3 characters minimum" type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*What would you like to drink?">
                 <button type="submit">Find</button>
-            </form>
-
-            <form action="filters" method="get">
-                <button type="submit">More Filters</button>
             </form>
         </ul>
 

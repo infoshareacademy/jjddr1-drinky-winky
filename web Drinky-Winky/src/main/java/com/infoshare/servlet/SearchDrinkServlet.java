@@ -1,9 +1,7 @@
 package com.infoshare.servlet;
 
-
 import com.infoshare.freemarker.TemplateProvider;
-
-import com.infoshare.utils.SearchEngineUtils;
+import com.infoshare.service.DrinkService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -14,30 +12,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 import java.io.Writer;
 import java.util.HashMap;
-
 import java.util.Map;
 
 @WebServlet("/search-drink")
 public class SearchDrinkServlet extends HttpServlet {
-
     @Inject
     TemplateProvider templateProvider;
 
     @Inject
-    SearchEngineUtils searchEngineUtils;
+    DrinkService drinkService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String drinkSearch = request.getParameter("drinkSearch");
 
-        Map<String, Object> root = new HashMap<>();
-        root.put("names", searchEngineUtils.findDrinkByAll(drinkSearch));
+        int result1 = drinkService.findDrinkListByName(drinkSearch).size();
+        int result2 = drinkService.findDrinkListByCategory(drinkSearch).size();
+        int result3 = drinkService.findDrinkListByGlass(drinkSearch).size();
+        int result4 = drinkService.findDrinkListByIngredient(drinkSearch).size();
+        int result5 = drinkService.findDrinkListByType(drinkSearch).size();
 
-        Template template = templateProvider.getTemplate(getServletContext(), "/search-engine/drink-search.ftlh");
+        Map<String, Object> root = new HashMap<>();
+        root.put("names", drinkService.findDrinkListByName(drinkSearch));
+        root.put("categories", drinkService.findDrinkListByCategory(drinkSearch));
+        root.put("glassTypes", drinkService.findDrinkListByGlass(drinkSearch));
+        root.put("ingredients", drinkService.findDrinkListByIngredient(drinkSearch));
+        root.put("types", drinkService.findDrinkListByType(drinkSearch));
+
+        root.put("result1", result1);
+        root.put("result2", result2);
+        root.put("result3", result3);
+        root.put("result4", result4);
+        root.put("result5", result5);
+
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-search.ftlh");
         Writer out = response.getWriter();
 
         try {
@@ -47,32 +58,3 @@ public class SearchDrinkServlet extends HttpServlet {
         }
     }
 }
-
-/*    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-        Map<String, Object> root = new HashMap<>();
-        root.put("names", drinkService.getDrinkList());
-
-        String drinkSearch = request.getParameter("drinkSearch");
-
-        List<DrinkDTO> recipesList = drinkService.getDrinkByFirstTreeChars(drinkSearch);
-
-
-        for(DrinkDTO drink:recipesList){
-            root.put("ing",drink.getIngredientList());
-        }
-
-        Template template = templateProvider.getTemplate(getServletContext(), "view.ftlh");
-        Writer out = response.getWriter();
-
-        try {
-            template.process(root, out);
-        } catch (TemplateException e) {
-            e.printStackTrace();
-        }
-    }*/
-
-
-
-
