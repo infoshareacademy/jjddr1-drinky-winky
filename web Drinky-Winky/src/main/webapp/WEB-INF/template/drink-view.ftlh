@@ -45,7 +45,7 @@
         <div class="container"></div>
     </div>
 </section>
-<section class="add" id="Drink view" >
+<section class="add" id="Drink view">
     <h2 class="section-title">${drink.getName()}
 
         <form action="Add-favourite" method="get">
