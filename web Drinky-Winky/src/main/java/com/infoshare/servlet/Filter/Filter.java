@@ -34,8 +34,8 @@ public class Filter implements javax.servlet.Filter {
 
         if (loginUser == null || loginUser.isEmpty()) {
             resp.sendRedirect("/Login");
-        } else if (path.equals("/Admin") && !(loginUser.equals(admin))) {
-            resp.sendRedirect("/Start");
+        } else if (path.equals("/User-view") && (loginUser.equals(admin))) {
+            resp.sendRedirect("/Admin");
         }
 
         chain.doFilter(servletRequest, servletResponse);
