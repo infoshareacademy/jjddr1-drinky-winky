@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 @Transactional
 @RequestScoped
 public class DrinkService {
@@ -109,6 +110,7 @@ public class DrinkService {
     public List<Drink> findDrinkByCategoryIdAndIngredient(List<Long> ids, List<String> names) {
         return drinkDao.findDrinkByCategoryIdAndIngredient(ids, names);
     }
+
     public List<DrinkDTO> findDrinkListByName(String name) {
         if (name != null || !name.isBlank()) {
             List<DrinkDTO> found = new ArrayList<>();
