@@ -28,5 +28,6 @@
             </datalist>
 
         </ul>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>

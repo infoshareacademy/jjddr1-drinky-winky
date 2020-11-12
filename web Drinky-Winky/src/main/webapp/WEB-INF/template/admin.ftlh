@@ -7,6 +7,11 @@
 
     <meta charset="utf-8">
     <title>AdminMode</title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 <body ng-controller="formCtrl">
 

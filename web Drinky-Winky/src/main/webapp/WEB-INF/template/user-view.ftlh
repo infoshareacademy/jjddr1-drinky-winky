@@ -6,7 +6,11 @@
 
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 <body>
 
@@ -14,10 +18,10 @@
     <div class="container">
         <ul>
             <li><a href="#load">Welcome</a></li>
-            <li><a href="#gallery">Drinks</a></li>
+            <li><a href="#category">Search By Category</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
-            <li><a href="#category">Search By Category</a></li>
+
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
@@ -38,6 +42,7 @@
             </datalist>
 
         </ul>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 

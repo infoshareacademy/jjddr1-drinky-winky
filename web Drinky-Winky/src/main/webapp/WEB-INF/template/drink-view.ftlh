@@ -6,6 +6,12 @@
 
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
 
 </head>
 <body>
@@ -37,6 +43,7 @@
             </datalist>
 
         </ul>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 <section class="splash" id="load"
