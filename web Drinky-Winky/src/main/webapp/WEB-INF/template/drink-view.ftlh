@@ -42,7 +42,7 @@
                 </#if>
             </datalist>
 
-        </ul>
+        </ul><br/>
         <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
@@ -68,7 +68,7 @@
 
         <figure class="add-drink"></figure>
         <figure class="gallery-item" style="padding: 5px">
-            <img src="${drink.getImageUrl()}" alt="image" autofocus><br/>
+            <img src="${drink.getImageUrl()}" alt="image"><br/>
             <figcaption>${drink.getName()}</figcaption>
         </figure>
 
