@@ -30,7 +30,7 @@ public class LogOutServlet extends HttpServlet {
 
             Map<String, Object> root = new HashMap<>();
 
-            Template template = templateProvider.getTemplate(getServletContext(), "userSignedOut.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "usersigned-out.ftlh");
             Writer out = response.getWriter();
 
             try {

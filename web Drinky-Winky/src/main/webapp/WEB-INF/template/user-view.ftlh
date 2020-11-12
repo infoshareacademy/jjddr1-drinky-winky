@@ -7,6 +7,35 @@
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
 
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            color: #227093;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            background-color: #227093;
+            opacity: 0.75;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #227093;
+            opacity: 0.4;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            color: #227093;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -17,7 +46,14 @@
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
-            <li><a href="#category">Search By Category</a></li>
+
+            <li class="dropdown"><a>Search By</a>
+                <div class="dropdown-content">
+                    <a href="#category">Drink</a>
+                    <a href="#category">Category</a>
+                    <a href="#category">Ingredient</a>
+                </div>
+            </li>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"

@@ -57,7 +57,7 @@ public class UserToDatabaseServlet extends HttpServlet {
             userService.saveUser(userDTO);
 
             Map<String, Object> root2 = new HashMap<>();
-            Template template = templateProvider.getTemplate(getServletContext(), "newUserRegistered.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "user-registered.ftlh");
 
             try {
                 template.process(root2, out);
