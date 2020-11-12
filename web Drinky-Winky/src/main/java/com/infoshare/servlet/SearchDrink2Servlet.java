@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.service.DrinkService;
 import com.infoshare.utils.SearchEngineUtils;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -24,23 +25,26 @@ public class SearchDrink2Servlet extends HttpServlet {
     @Inject
     SearchEngineUtils searchEngineUtils;
 
+    @Inject
+    DrinkService drinkService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String drinkSearch = request.getParameter("drinkSearch");
 
-        int result1 = searchEngineUtils.findDrinkByName(drinkSearch).size();
-        int result2 = searchEngineUtils.findDrinkByCategory(drinkSearch).size();
-        int result3 = searchEngineUtils.findDrinkByGlass(drinkSearch).size();
-        int result4 = searchEngineUtils.findDrinkByIngredient(drinkSearch).size();
-        int result5 = searchEngineUtils.findDrinkByType(drinkSearch).size();
+        int result1 = drinkService.findDrinkListByName(drinkSearch).size();
+        int result2 = drinkService.findDrinkListByCategory(drinkSearch).size();
+        int result3 = drinkService.findDrinkListByGlass(drinkSearch).size();
+        int result4 = drinkService.findDrinkListByIngredient(drinkSearch).size();
+        int result5 = drinkService.findDrinkListByType(drinkSearch).size();
 
         Map<String, Object> root = new HashMap<>();
-        root.put("names", searchEngineUtils.findDrinkByName(drinkSearch));
-        root.put("categories", searchEngineUtils.findDrinkByCategory(drinkSearch));
-        root.put("glassTypes", searchEngineUtils.findDrinkByGlass(drinkSearch));
-        root.put("ingredients", searchEngineUtils.findDrinkByIngredient(drinkSearch));
-        root.put("types", searchEngineUtils.findDrinkByType(drinkSearch));
+        root.put("names", drinkService.findDrinkListByName(drinkSearch));
+        root.put("categories", drinkService.findDrinkListByCategory(drinkSearch));
+        root.put("glassTypes", drinkService.findDrinkListByGlass(drinkSearch));
+        root.put("ingredients", drinkService.findDrinkListByIngredient(drinkSearch));
+        root.put("types", drinkService.findDrinkListByType(drinkSearch));
 
         root.put("result1", result1);
         root.put("result2", result2);
@@ -48,7 +52,7 @@ public class SearchDrink2Servlet extends HttpServlet {
         root.put("result4", result4);
         root.put("result5", result5);
 
-        Template template = templateProvider.getTemplate(getServletContext(), "/search-engine/drink-search2.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-search2.ftlh");
         Writer out = response.getWriter();
 
         try {

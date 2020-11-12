@@ -17,7 +17,7 @@ public class SearchEngineUtils {
 
     public List<DrinkDTO> findDrinkByAll(String input) {
 
-        if (input != null || !input.isEmpty() || !input.isBlank()) {
+        if (input != null || !input.isBlank()) {
             List<DrinkDTO> found = new ArrayList<>();
             List<DrinkDTO> drinkList = drinkService.getDrinkList();
             for (DrinkDTO foundDrink : drinkList) {
