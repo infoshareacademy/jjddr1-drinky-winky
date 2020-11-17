@@ -14,17 +14,25 @@
 <section class="about" id="logs">
     <div class="container">
         <h2 class="section-title">Welcome!</br> Log in here. </h2>
-        <form method="post" action="Auth"  id="log">
+
+        <form method="post" action="Auth" id="log" style="width: 100%">
             <label for="login"> Login: </label>
-            <input style="float: none" type="text" id="login" name="login" required></br></br>
+            <input style="float: none; margin-left: 33px" type="text" id="login" name="login" required></br></br>
             <label for="password"> Password: </label>
-            <input style="float: none" type="password" id="password" name="password" required></br></br>
+            <input style="float: none; margin-left: 10px" type="password" id="password" name="password"
+                   required></br></br>
 
             <div class="upload-btn-wrapper" style="float: none">
                 <input class="btn2" type="submit" name="save" value="Sign in"/><br/><br/>
             </div>
-
         </form>
+
+        <div class="upload-btn-wrapper" style="float: none">
+            <form method="get" action="Navigation-servlet" style="width: 100%">
+                <input class="btn2" type="submit" name="navigator" value="Register"/>
+            </form>
+        </div>
+
     </div>
 </section>
 </body>
