@@ -45,7 +45,7 @@
         <div class="container"></div>
     </div>
 </section>
-<section class="add" id="Drink view" autofocus>
+<section class="add" id="Drink view" >
     <h2 class="section-title">${drink.getName()}
 
         <form action="Add-favourite" method="get">
@@ -61,18 +61,20 @@
 
         <figure class="add-drink"></figure>
         <figure class="gallery-item" style="padding: 5px">
-            <img src="${drink.getImageUrl()}" alt="image"><br/>
+            <img src="${drink.getImageUrl()}" alt="image" autofocus><br/>
             <figcaption>${drink.getName()}</figcaption>
         </figure>
 
-        <figure class="add-drink">
+        <figure class="add-drink1">
             <div class="container1">
-                ${drink.getName()}<br/>
-                ${drink.getRecipe()}<br/>
-                ${drink.getDrinkType()}<br/>
-                ${drink.getGlassType()}<br/>
-                ${drink.getModificationDate()}<br/>
-                ${drink.getCategory().getName()}<br/>
+                <B>${drink.getName()}</B><br/>
+                <B>Recipe:</B> ${drink.getRecipe()}<br/>
+                <B>Drink type:</B> ${drink.getDrinkType()}<br/>
+                <B>Glass type:</B> ${drink.getGlassType()}<br/>
+                <B>When added:</B> ${drink.getModificationDate()}<br/>
+                <B>Category:</B> ${drink.getCategory().getName()}<br/>
+                <br/>
+                <B>Ingredient with measure:</B><br/>
                 <#list ingredients>
                     <ul>
                         <#items as ingredient>

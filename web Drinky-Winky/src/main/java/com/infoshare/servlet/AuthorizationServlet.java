@@ -28,6 +28,7 @@ public class AuthorizationServlet extends HttpServlet {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        String userType = request.getParameter("userType");
 
         if (loggingService.checkUser(login).isPresent()) {
             UserDTO registeredUserDTO = loggingService.checkUser(login).orElseThrow();
@@ -35,7 +36,8 @@ public class AuthorizationServlet extends HttpServlet {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("login", login);
-
+                session.setAttribute("password", password);
+                session.setAttribute("userType", userType);
                 Writer out = response.getWriter();
                 Map<String, Object> root = new HashMap<>();
                 Template template = templateProvider.getTemplate(getServletContext(), "signed-in.ftlh");
