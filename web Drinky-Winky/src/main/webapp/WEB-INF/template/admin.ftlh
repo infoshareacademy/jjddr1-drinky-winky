@@ -7,11 +7,7 @@
 
     <meta charset="utf-8">
     <title>AdminMode</title>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+
 </head>
 <body ng-controller="formCtrl">
 
@@ -143,15 +139,7 @@
                         </#if>
                     </datalist>
 
-                    <br/>
-
-                    <!--                <button ng-click="addItem()">Add</button>-->
-
-                    <#--                    <div class="upload-btn-wrapper">-->
-                    <#--                        <button class="btn2">Upload a file</button>-->
-                    <#--                        <input class="file_btn" type="file" name="image"/><br/><br/>-->
-                    <#--                    </div>-->
-                    <br/><br/>
+                    <br/><br/><br/>
 
                     <div class="upload-btn-wrapper">
                         <input class="btn2" type="submit" name="save" value="save"/><br/><br/>

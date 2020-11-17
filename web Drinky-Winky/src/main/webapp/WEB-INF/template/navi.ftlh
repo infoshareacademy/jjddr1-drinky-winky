@@ -28,7 +28,6 @@
                 </#if>
             </datalist>
 
-        </ul><br/>
-        <button onclick="goBack()" class="btn2">Go Back</button>
+        </ul>
     </div>
 </nav>

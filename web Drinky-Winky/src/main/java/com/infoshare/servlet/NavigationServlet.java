@@ -19,11 +19,11 @@ public class NavigationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        if (request.getParameter("navigator").equals("user")) {
-            response.sendRedirect("User-view");
+        if (request.getParameter("navigator").equals("login")) {
+            response.sendRedirect("Login");
 
-        } else if (request.getParameter("navigator").equals("admin")) {
-            response.sendRedirect("Admin");
+        } else if (request.getParameter("navigator").equals("register")) {
+            response.sendRedirect("Register");
         }
     }
 }
