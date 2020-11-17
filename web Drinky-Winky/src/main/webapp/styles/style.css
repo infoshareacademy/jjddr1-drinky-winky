@@ -229,6 +229,7 @@ section.gallery {
     max-width: 90%;
     text-align: center;
     transition: all 0.5s;
+    list-style:none;
 }
 
 

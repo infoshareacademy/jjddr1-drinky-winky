@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <#include "css.ftlh">
     <#include "js-head.ftlh">
 
     <meta charset="utf-8">
     <title>Drinky-Winky WebApp</title>
+
 
 </head>
 <body>
@@ -21,11 +26,11 @@
             <li><a href="#contact">Contacts</a></li>
 
             <form method="get" action="Login" style="float: right; margin-right: 20px" >
-                <input type="submit" name="navigator" value="login"/>
+                <input class="btn2" type="submit" name="navigator" value="login"/>
             </form>
 
             <form method="get" action="Register" style="float: right; margin-right: 20px">
-                <input type="submit" name="navigator" value="register"/>
+                <input class="btn2" type="submit" name="navigator" value="register"/>
             </form>
 
         </ul>
