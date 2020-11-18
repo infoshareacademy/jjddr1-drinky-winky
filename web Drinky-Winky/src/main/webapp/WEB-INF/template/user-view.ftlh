@@ -17,14 +17,14 @@
         .dropdown-content a {
             padding: 12px 16px;
             display: block;
-            background-color: #227093;
+            background-color: black;
             opacity: 0.75;
             border-radius: 10px;
             font-size: 14px;
         }
 
         .dropdown-content a:hover {
-            background-color: #227093;
+            background-color: black;
             opacity: 0.4;
             border-radius: 10px;
             font-size: 18px;
@@ -54,6 +54,10 @@
                     <a href="#category">Ingredient</a>
                 </div>
             </li>
+
+            <form method="get" action="Logout" style="float: right; margin-right: 20px" >
+                <input type="submit" name="navigator" value="logout"/>
+            </form>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"

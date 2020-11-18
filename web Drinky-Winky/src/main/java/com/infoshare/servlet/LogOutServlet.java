@@ -7,7 +7,6 @@ import freemarker.template.TemplateException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,10 +38,5 @@ public class LogOutServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-
-        //        Cookie cookie = new Cookie ("userName", "");
-//        cookie.setMaxAge(0);
-//        response.addCookie(cookie);
     }
 }

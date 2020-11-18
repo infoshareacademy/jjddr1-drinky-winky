@@ -17,7 +17,7 @@
     <script>
         var timer = setTimeout(function() {
             window.location='/User-view?page=1'
-        }, 2000);
+        }, 1500);
     </script>
 
 </section>
