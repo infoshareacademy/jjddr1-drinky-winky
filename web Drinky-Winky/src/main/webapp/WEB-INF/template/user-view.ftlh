@@ -6,6 +6,11 @@
 
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <style>
         .dropdown-content {
@@ -77,7 +82,8 @@
                 </#if>
             </datalist>
 
-        </ul>
+        </ul><br/>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 

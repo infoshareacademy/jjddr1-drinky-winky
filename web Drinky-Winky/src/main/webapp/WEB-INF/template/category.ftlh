@@ -5,7 +5,11 @@
     <#include "css.ftlh">
 
     <title>Welcome <#--${user.getName()}--></title>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 <body ng-controller="formCtrl">
 
@@ -22,6 +26,7 @@
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
         </ul>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 <section class="add" id="Category List">

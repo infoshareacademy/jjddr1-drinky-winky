@@ -13,7 +13,7 @@
         <figure>
             <form method="get" action="Add-favourite" id="mySelect">
                 <fieldset>
-                    <legend> Choose a drink to remove</legend>
+                    <legend> Choose a drink to add favourite </legend>
 
                     <label for="names-choice">Name: <br/><input list="drinkList" id="names-choice" type="text" name="name"
                                                                 required/><br/></label>

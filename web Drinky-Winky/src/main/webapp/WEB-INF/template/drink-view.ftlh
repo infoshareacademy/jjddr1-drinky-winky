@@ -6,6 +6,12 @@
 
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
 
 </head>
 <body>
@@ -36,7 +42,8 @@
                 </#if>
             </datalist>
 
-        </ul>
+        </ul><br/>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 <section class="splash" id="load"
@@ -45,7 +52,7 @@
         <div class="container"></div>
     </div>
 </section>
-<section class="add" id="Drink view" >
+<section class="add" id="Drink view">
     <h2 class="section-title">${drink.getName()}
 
         <form action="Add-favourite" method="get">
@@ -61,7 +68,7 @@
 
         <figure class="add-drink"></figure>
         <figure class="gallery-item" style="padding: 5px">
-            <img src="${drink.getImageUrl()}" alt="image" autofocus><br/>
+            <img src="${drink.getImageUrl()}" alt="image"><br/>
             <figcaption>${drink.getName()}</figcaption>
         </figure>
 

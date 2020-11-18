@@ -20,7 +20,8 @@
             <label for="surname"> Surname: </label>
             <input style="float: none" type="text" id="surname" name="surname" required></br></br>
             <label for="password"> Password: </label>
-            <input style="float: none" type="password" minlength="7" id="password" name="password" placeholder="min 7 char"
+            <input style="float: none" type="password" minlength="7" id="password" name="password"
+                   placeholder="min 7 char"
                    required></br></br>
             <label for="password">Confirm password: </label>
             <input style="float: none" type="password" id="passwordConfirm" name="passwordConfirm"
@@ -45,8 +46,12 @@
             <div class="upload-btn-wrapper" style="float: none">
                 <input class="btn2" type="submit" name="save" value="Sign up"/><br/><br/>
             </div>
-
         </form>
+        <div class="upload-btn-wrapper" style="float: none">
+            <form method="get" action="Navigation-servlet" style="width: 100%">
+                <input class="btn2" type="submit" name="navigator" value="Login"/>
+            </form>
+        </div>
     </div>
 </section>
 </body>

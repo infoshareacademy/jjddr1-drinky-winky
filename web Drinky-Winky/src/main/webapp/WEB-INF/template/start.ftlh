@@ -19,16 +19,13 @@
             <li><a href="#quotes">Recipes</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contacts</a></li>
-
-            <form method="get" action="Login" style="float: right; margin-right: 20px" >
-                <input type="submit" name="navigator" value="login"/>
-            </form>
-
-            <form method="get" action="Register" style="float: right; margin-right: 20px">
-                <input type="submit" name="navigator" value="register"/>
-            </form>
-
         </ul>
+
+            <form method="get" action="Navigation-servlet" style="float: none; margin-right: 20px" >
+                <input class="btn2" type="submit" name="navigator" value="Login"/>
+                <input class="btn2" type="submit" name="navigator" value="Register"/>
+            </form>
+
     </div>
 </nav>
 
