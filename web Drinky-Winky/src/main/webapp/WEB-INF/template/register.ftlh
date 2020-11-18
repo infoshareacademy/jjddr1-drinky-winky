@@ -13,19 +13,16 @@
     <div class="container">
         <h2 class="section-title">Welcome!</br> Register in here. </h2>
         <form method="post" action="RegUser" id="log">
-            <label for="login"> Login: </label>
-            <input style="float: none" type="text" id="login" name="login" required></br></br>
-            <label for="name"> Name: </label>
-            <input style="float: none" type="text" id="name" name="name" required></br></br>
-            <label for="surname"> Surname: </label>
-            <input style="float: none" type="text" id="surname" name="surname" required></br></br>
-            <label for="password"> Password: </label>
-            <input style="float: none" type="password" minlength="7" id="password" name="password"
-                   placeholder="min 7 char"
-                   required></br></br>
-            <label for="password">Confirm password: </label>
-            <input style="float: none" type="password" id="passwordConfirm" name="passwordConfirm"
-                   placeholder="min 7 char" required></br></br>
+            <label for="login" style="margin-left: -55px"> Login: </label>
+            <input style="float: none; margin-left: 10px" type="text" id="login" name="login" required=""></br></br>
+            <label for="name" style="margin-left: -55px"> Name: </label>
+            <input style="float: none; margin-left: 10px" type="text" id="name" name="name" required=""></br></br>
+            <label for="surname" style="margin-left: -79px"> Surname: </label>
+            <input style="float: none; margin-left: 10px" type="text" id="surname" name="surname" required=""></br></br>
+            <label for="password" style="margin-left: -84px"> Password: </label>
+            <input style="float: none; margin-left: 10px" type="password" minlength="7" id="password" name="password" placeholder="min 7 char" required=""></br></br>
+            <label for="password" style="margin-left: -144px">Confirm password: </label>
+            <input style="float: none; margin-left: 10px" type="password" id="passwordConfirm" name="passwordConfirm" placeholder="min 7 char" required=""></br></br>
 
             <script>
                 var log_password = document.getElementById("password")

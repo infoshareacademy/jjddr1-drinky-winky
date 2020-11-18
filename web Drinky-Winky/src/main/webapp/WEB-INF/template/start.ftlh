@@ -22,8 +22,9 @@
         </ul>
 
             <form method="get" action="Navigation-servlet" style="float: none; margin-right: 20px" >
-                <input class="btn2" type="submit" name="navigator" value="Login"/>
                 <input class="btn2" type="submit" name="navigator" value="Register"/>
+                <input class="btn2" type="submit" name="navigator" value="Login"/>
+                <input class="btn2" type="submit" name="navigator" value="Logout"/>
             </form>
 
     </div>

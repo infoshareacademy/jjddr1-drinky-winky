@@ -60,9 +60,6 @@
                 </div>
             </li>
 
-            <form method="get" action="Logout" style="float: right; margin-right: 20px" >
-                <input type="submit" name="navigator" value="logout"/>
-            </form>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
@@ -84,6 +81,9 @@
 
         </ul><br/>
         <button onclick="goBack()" class="btn2">Go Back</button>
+        <form method="get" action="Logout" style="float: none;" >
+            <input class="btn2" type="submit" name="navigator" value="Logout"/>
+        </form>
     </div>
 </nav>
 
