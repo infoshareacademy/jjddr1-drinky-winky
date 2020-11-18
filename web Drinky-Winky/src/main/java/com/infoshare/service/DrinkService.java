@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -104,5 +105,115 @@ public class DrinkService {
                 .map(Drink::getGlassType)
                 .collect(Collectors.toSet());
     }
+    public List<DrinkDTO> findDrinkListByName(String name) {
+        if (name != null || !name.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+                if (foundDrink.getName().toLowerCase().contains(name.toLowerCase())) {
+                    found.add(foundDrink);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
 
+    public List<DrinkDTO> findDrinkListByGlass(String glass) {
+        if (glass != null || !glass.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+                if (foundDrink.getGlassType().toLowerCase().contains(glass.toLowerCase())) {
+                    found.add(foundDrink);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
+
+    public List<DrinkDTO> findDrinkListByCategory(String category) {
+
+        if (category != null || !category.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+                if (foundDrink.getCategory().toString().toLowerCase().contains(category.toLowerCase())) {
+                    found.add(foundDrink);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
+
+    public List<DrinkDTO> findDrinkListByIngredient(String ingredient) {
+        if (ingredient != null || !ingredient.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+                if (foundDrink.getIngredientList().stream().anyMatch(d -> d.getName().toLowerCase().contains(ingredient.toLowerCase()))) {
+                    found.add(foundDrink);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
+
+    public List<DrinkDTO> findDrinkListByType(String type) {
+        if (type != null || !type.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+                if (foundDrink.getDrinkType().toLowerCase().contains(type.toLowerCase())) {
+                    found.add(foundDrink);
+                }
+            }
+            return found;
+        }
+        return null;
+    }
+
+    public List<DrinkDTO> findDrinkListBasicOnAllValues(String input) {
+
+        if (input != null || !input.isBlank()) {
+            List<DrinkDTO> found = new ArrayList<>();
+            List<DrinkDTO> drinkList = getDrinkList();
+            for (DrinkDTO foundDrink : drinkList) {
+
+                //Name check
+                if (foundDrink.getName().toLowerCase().contains(input.toLowerCase())) {
+                    found.add(foundDrink);
+                }
+                //glass type check
+                if (foundDrink.getGlassType().toLowerCase().contains(input.toLowerCase())) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+                //drink type check, if user want to find alcoholic or non alcoholic
+                if (foundDrink.getDrinkType().toLowerCase().contains(input.toLowerCase())) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+                // category check
+                if (foundDrink.getCategory().toString().toLowerCase().contains(input.toLowerCase())) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+                // trying to find an ingredient
+                if (foundDrink.getIngredientList().stream().anyMatch(d -> d.getName().toLowerCase().contains(input.toLowerCase()))) {
+                    if (!found.contains(foundDrink)) {
+                        found.add(foundDrink);
+                    }
+                }
+            }
+            return found;
+        }
+        return null;
+    }
 }
