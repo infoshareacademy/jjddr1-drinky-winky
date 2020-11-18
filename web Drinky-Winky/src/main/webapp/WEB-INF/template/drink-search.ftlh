@@ -23,7 +23,13 @@
                                 <ul>
                                     <#items as name>
                                         <li>
-                                            <figure class="gallery-item" style="padding: 5px">
+                                            <figure style="
+                                                     position: relative;
+                                                     flex: 0 0 25%;
+                                                     transition: all 0.5s;
+                                                     float: none;
+                                                     align-content: center;
+                                                     display: flex;">
                                                 <img src=${name.getImageUrl()} alt="image" style="width: 200px;">
                                                 <a href="http://localhost:8080/Drink-view?name=${name.getName()}">
                                                     <figcaption>${name.getName()}</figcaption>
