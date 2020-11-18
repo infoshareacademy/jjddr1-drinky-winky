@@ -58,7 +58,13 @@
                                 <ul>
                                     <#items as category>
                                         <li>
-                                            <figure class="gallery-item" style="padding: 5px">
+                                            <figure style="
+                                                     position: relative;
+                                                     flex: 0 0 25%;
+                                                     transition: all 0.5s;
+                                                     float: none;
+                                                     align-content: center;
+                                                     display: flex;">
                                                 <img src=${category.getImageUrl()} alt="image"
                                                      style="width: 200px;">
                                                 <a href="http://localhost:8080/Drink-view?name=${category.getName()}">
@@ -86,7 +92,13 @@
                                 <ul>
                                     <#items as type>
                                         <li>
-                                            <figure class="gallery-item" style="padding: 5px">
+                                            <figure style="
+                                                     position: relative;
+                                                     flex: 0 0 25%;
+                                                     transition: all 0.5s;
+                                                     float: none;
+                                                     align-content: center;
+                                                     display: flex;">
                                                 <img src=${type.getImageUrl()} alt="image" style="width: 200px;">
                                                 <a href="http://localhost:8080/Drink-view?name=${type.getName()}">
                                                     <figcaption>${type.getName()}</figcaption>
@@ -112,7 +124,13 @@
                                 <ul>
                                     <#items as ingredient>
                                         <li>
-                                            <figure class="gallery-item" style="padding: 5px">
+                                            <figure style="
+                                                     position: relative;
+                                                     flex: 0 0 25%;
+                                                     transition: all 0.5s;
+                                                     float: none;
+                                                     align-content: center;
+                                                     display: flex;">
                                                 <img src=${ingredient.getImageUrl()} alt="image"
                                                      style="width: 200px;">
                                                 <a href="http://localhost:8080/Drink-view?name=${ingredient.getName()}">
@@ -140,7 +158,13 @@
                                 <ul>
                                     <#items as glassType>
                                         <li>
-                                            <figure class="gallery-item" style="padding: 5px">
+                                            <figure style="
+                                                     position: relative;
+                                                     flex: 0 0 25%;
+                                                     transition: all 0.5s;
+                                                     float: none;
+                                                     align-content: center;
+                                                     display: flex;">
                                                 <img src=${glassType.getImageUrl()} alt="image"
                                                      style="width: 200px;">
                                                 <a href="http://localhost:8080/Drink-view?name=${glassType.getName()}">
