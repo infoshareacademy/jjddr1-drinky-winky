@@ -60,7 +60,7 @@ public class FileParserService {
             }
         }
         logger.info("{} was parsed from {}", count, size);
-        messageService.leaveMessage(1L, count + " was parsed from " + size);
+        messageService.leaveMessage(1L, count + " items was parsed from " + size);
 
         return new Object();
     }
