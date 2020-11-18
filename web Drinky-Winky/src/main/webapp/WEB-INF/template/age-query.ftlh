@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Age-Query</title>
-
     <#include "css.ftlh">
 
 </head>

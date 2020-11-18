@@ -7,11 +7,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Stateless
 public class UserDao {
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -21,7 +22,7 @@ public class UserDao {
         List<Drink> favouriteDrinkList = userById.getFavouriteDrinkList();
         Drink drink = entityManager.find(Drink.class, drinkId);
 
-        if(favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))){
+        if (favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))) {
             favouriteDrinkList.remove(drink);
         } else {
             favouriteDrinkList.add(drink);
@@ -34,8 +35,18 @@ public class UserDao {
         return user;
     }
 
-    public void updateUser(User user) {
-        entityManager.merge(user);
+
+    public void updateUser(User user, Long id) {
+        User userToUpdate = entityManager.find(User.class, id);
+        if (userToUpdate != null) {
+            userToUpdate.setName(user.getName());
+            userToUpdate.setSurname(user.getSurname());
+            userToUpdate.setUserType(user.getUserType());
+            userToUpdate.setLogin(user.getLogin());
+            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setFavouriteDrinkList(user.getFavouriteDrinkList());
+            entityManager.merge(userToUpdate);
+        }
     }
 
     public User getUserById(Long id) {
@@ -54,8 +65,14 @@ public class UserDao {
     }
 
     //Todo query to make
-    public List<Drink> getFavouriteDrinkList() {
-        return entityManager.createNamedQuery(User.GET_FAVOURITE_LIST, Drink.class).getResultList();
+    public List<Drink> getFavouriteDrinkList(Long id) {
+        List resultList = entityManager.createNamedQuery(User.GET_FAVOURITE_LIST)
+                .getResultList();
+        return (List<Drink>) resultList;
+    }
+
+    public Boolean isFavourite(String drinkName, Long id) {
+        return getFavouriteDrinkList(id).stream().anyMatch(drink -> drink.getName().equalsIgnoreCase(drinkName));
     }
 
     public User findUserByName(String name) {
@@ -64,12 +81,32 @@ public class UserDao {
         return query.getResultList().stream().findFirst().orElse(null);
     }
 
-}
+    public Optional<User> findUserByLogin(String login) {
+        TypedQuery<User> query = entityManager.createNamedQuery(User.FIND_USER_BY_LOGIN, User.class);
+        query.setParameter("login", login);
+        if (query.getResultList().isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(query.getSingleResult());
+    }
 
-// if (userToUpdate != null) {
-//         userToUpdate.setName(userDTO.getName());
-//         userToUpdate.setSurname(userDTO.getSurname());
-//         userToUpdate.setUserType(userDTO.getUserType());
-//         userToUpdate.setLogin(userDTO.getLogin());
-//         userToUpdate.setPassword(userDTO.getPassword());
-//         userToUpdate.setEmail(userDTO.getEmail());
+    public User getLogin(String login) {
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_LOGIN, User.class);
+        query.setParameter("login", login);
+        return query.getSingleResult();
+    }
+
+    public User getPassword(String password) {
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_USER_BY_PASSWORD, User.class);
+        query.setParameter("password", password);
+        return query.getSingleResult();
+    }
+
+    public User getUserByLoginAndPass(String login, String password) {
+        TypedQuery<User> query = entityManager.createNamedQuery(User.GET_LOGIN_AND_PASSWORD, User.class);
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return query.getSingleResult();
+    }
+
+}

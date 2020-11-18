@@ -1,4 +1,4 @@
-package com.infoshare.servlet;
+package com.infoshareacademy.servlet;
 
 
 import com.infoshare.model.Drink;
@@ -23,7 +23,8 @@ public class JsonUploadServlet extends HttpServlet {
 
     @Inject
     private FileDataHandler fileDataHandler;
-    Logger logger = LoggerFactory.getLogger(com.infoshare.servlet.JsonUploadServlet.class);
+
+    Logger logger = LoggerFactory.getLogger(com.infoshareacademy.servlet.JsonUploadServlet.class);
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +37,6 @@ public class JsonUploadServlet extends HttpServlet {
         }
         Drink drink = new Drink();
         drink.setImageUrl(fileUrl);
-
-
 
         response.sendRedirect("Admin");
     }

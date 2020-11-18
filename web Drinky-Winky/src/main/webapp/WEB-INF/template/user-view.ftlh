@@ -5,8 +5,12 @@
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome <#--${user.getName()}--></title>
-
+    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
 <body>
 
@@ -14,9 +18,10 @@
     <div class="container">
         <ul>
             <li><a href="#load">Welcome</a></li>
-            <li><a href="#gallery">Drinks</a></li>
+            <li><a href="#category">Search By Category</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
+
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
@@ -36,7 +41,8 @@
                 </#if>
             </datalist>
 
-        </ul>
+        </ul><br/>
+        <button onclick="goBack()" class="btn2">Go Back</button>
     </div>
 </nav>
 
@@ -70,7 +76,8 @@
                     </#items>
                 </#list>
             </#if>
-
+        </ul>
+    </div>
 
             <div class="gallery-wrapper">
                 <#if drinkList??>
@@ -79,7 +86,7 @@
 
                             <figure class="gallery-item" style="padding: 5px">
                                 <img src=${drink.getImageUrl()} alt="image">
-                                <a href="http://localhost:8080/Drink-view?name=${drink.getName()}">
+                                <a href="Drink-view?name=${drink.getName()}">
                                     <figcaption>${drink.getName()}</figcaption>
                                 </a>
                             </figure>
@@ -91,7 +98,9 @@
 </section>
 
 <#include "add-favourite.ftlh">
-
+<section id="category">
+<#include "category1.ftlh">
+</section>
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>

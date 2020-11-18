@@ -38,6 +38,16 @@ section {
     margin: 24px 0 0 0;
 }
 
+.container1 {
+    flex: 0 0 45.33333%;
+    max-width: 90%;
+    text-align: center;
+    margin: 24px 0 0 0;
+    display: inline-block;
+    word-break: break-word;
+
+}
+
 .splash {
     height: 100vh;
     position: relative;
@@ -211,6 +221,17 @@ section.gallery {
     text-align: center;
     transition: all 0.5s;
 }
+
+.add-drink1 {
+    position: static;
+    margin: 0;
+    flex: 0 0 45%;
+    max-width: 90%;
+    text-align: center;
+    transition: all 0.5s;
+    list-style:none;
+}
+
 
 .gallery-item img {
     display: block;

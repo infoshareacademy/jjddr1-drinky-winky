@@ -1,113 +1,85 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="pl" ng-app="agendaEditor">
 <head>
-
+    <meta charset="UTF-8">
     <#include "css.ftlh">
 
+    <title>Welcome <#--${user.getName()}--></title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </head>
-<body>
+<body ng-controller="formCtrl">
 
-<section class="add" id="add">
-    <h2 class="section-title">ADD NEW DRINK</h2>
+<nav class="navigation">
+    <div class="container">
+        <ul>
+            <li><a href="#gallery">Drinks</a></li>
+            <li><a href="#about">About application</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href="Age-query">Age query</a></li>
+            <li><a href="Start">Start</a></li>
+            <li><a href="Category-list1">Search By Category<</a></li>
+
+            <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
+                   onblur="this.placeholder='Search...'">
+        </ul>
+        <button onclick="goBack()" class="btn2">Go Back</button>
+    </div>
+</nav>
+<section class="add" id="Category List">
+    <h2 class="section-title">Category List</h2>
     <div class="gallery-wrapper">
 
         <figure class="add-drink"></figure>
         <figure class="gallery-item">
-            <img src="https://img.wonderhowto.com/img/original/31/78/63586557575482/0/635865575754823178.jpg"
+            <img src="https://images.pexels.com/photos/1128259/pexels-photo-1128259.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                  alt="image">
-            <figcaption>Alcohol Only 18+</figcaption>
         </figure>
+
 
         <figure>
-
-            <form method="post" action="New-drink" id="mySelect">
-
+            <form method="get" action="Drink-view" id="mySelect">
                 <fieldset>
+                    <legend> Choose Drink to view</legend>
 
-                    <legend> Fill all fields</legend>
-
-
-                    Name: <input type="text" name="name" required/><br/>
-
-                    <label for="category-choice">Category: <input list="categories" id="category-choice" type="text" name="category" required/><br/></label>
+                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" type="text" placeholder="Search.." name="name"
+                                                                required/><br/></label>
 
                     <datalist id="categories">
-
-                        <#list categories>
-                                                    <ul>
-                        <#items as category>
-                        <option value="${category.getName()}">
-                            </#items>
-                                                        </ul>
+                        <#if categories??>
+                            <#list categories>
+                                <ul>
+                                    <#items as drink>
+                                    <option value="${drink.getName()}">
+                                        </#items>
+                                </ul>
                             </#list>
-
+                        </#if>
                     </datalist>
 
-
-                    Glass: <input type="text" name="glassType" required/><br/>
-                    <label> Image <input type="url" name="imageUrl" required/><br/></label>
-                    Alcoholic:
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Non alcoholic" required> No </label>
-                    <label style="float: right"> <input type="radio" name="drinkType" value="Alcoholic" required> Yes </label>
-                    <br/>
-
-                    Recipe: <textarea type="text" name="recipe"
-                                      style="width: 185px; height: 120px; float: right" required></textarea><br/>
-
-
-                    <table>
-                        <tr>
-                            <td>Ingredient</td>
-                            <td>Measures</td>
-                        </tr>
-                        <tr ng-repeat="item in list" ng-click="$last && addItem()">
-                            <td><input type="text" name="ingredient" ng-model="item.ingredient" required></td>
-                            <td><input type="text" name="measure" ng-model="item.measure" required></td>
-                            <td ng-if="!$first">
-                                <button ng-click="list.splice($index, 1)">-</button>
-                            </td>
-                        </tr>
-                    </table>
-                    <br/>
-
-                    <!--                <button ng-click="addItem()">Add</button>-->
-
-                    <#--                    <div class="upload-btn-wrapper">-->
-                    <#--                        <button class="btn2">Upload a file</button>-->
-                    <#--                        <input class="file_btn" type="file" name="image"/><br/><br/>-->
-                    <#--                    </div>-->
-                    <br/><br/>
-
                     <div class="upload-btn-wrapper">
-                        <input class="btn2" type="submit" name="save" value="save"/><br/><br/>
+                        <input class="btn2" type="submit" value="Show"/><br/><br/>
                     </div>
 
-                    <br/>
-
-
                 </fieldset>
-
             </form>
-
         </figure>
-
-
-        <figure class="add-drink"></figure>
-
     </div>
 </section>
 
+<#include "about.ftlh">
 
-<#--<#list categories>-->
-<#--    <ul>-->
-<#--        <#items as category>-->
-<#--            <li>-->
-<#--                ${category.getName()}-->
-<#--            </li>-->
-<#--        </#items>-->
-<#--    </ul>-->
-<#--</#list>-->
+<section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
+</section>
+
+<#include "contact.ftlh">
+<#include "footer.ftlh">
 
 </body>
 </html>
