@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    box-shadow: none;
+}
+
+body, html {
+    color: #227093;
+    font-size: 20px;
+    line-height: 1.7;
+    margin: 0;
+    height: 100%;
+    font-family: 'Oswald', sans-serif;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: #ff5252;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.container {
+    flex: 0 0 33.333333%;
+    max-width: none;
+    text-align: center;
+    margin: 24px 0 0 0;
+}
+
+.container1 {
+    flex: 0 0 45.33333%;
+    max-width: 90%;
+    text-align: center;
+    margin: 24px 0 0 0;
+    display: inline-block;
+    word-break: break-word;
+
+}
+
+.splash {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    background-image: url('https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.page-intro {
+    margin: auto;
+    text-align: center;
+}
+
+.main-title {
+    margin: 0;
+    font-weight: 600;
+    color: #f7f1e3;
+    font-size: 50px;
+    padding: 0 24px;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.7);
+    font-family: 'Oswald', sans-serif;
+}
+
+.main-subtitle {
+    margin: 12px 0 60px 0;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+    padding: 10px 20px 10px 20px;
+    font-size: 22px;
+    font-weight: 600;
+    background-color: #ff5252;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    transition: all 0.5s;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #eb0000;
+    color: #fff;
+    transition: all 0.5s;
+    box-shadow: 7px 4px 12px 4px black;
+}
+
+.section-title {
+    position: relative;
+    margin: 0 0 60px 0;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #227093;
+}
+
+.section-title:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 50px;
+    height: 5px;
+    background: #ff5252;
+    left: 50%;
+    bottom: -16px;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.about {
+    background-color: black;
+}
+
+.section-intro {
+    margin: 36px 0 0 0;
+    color: #fff;
+}
+
+.features-wrapper {
+    display: flex;
+}
+
+.feature {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    text-align: center;
+    margin: 24px 0 0 0;
+}
+
+.feature i {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    color: #227093;
+    font-size: 32px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 8px 4px #eb0000;
+}
+
+.feature-title {
+    margin: 24px 0 0 0;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.feature-description {
+    margin: 24px 0 0 0;
+    padding: 0 24px;
+}
+
+.statement {
+    background-image: url('https://i.postimg.cc/xTQwftdW/woman-standing-in-front-of-body-of-water-under-clear-blue-270296.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.statement p {
+    margin: 0;
+    color: #f7f1e3;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.3);
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.quotes {
+    background-color: #050505;
+}
+
+.quotes-wrapper {
+    margin: 72px 0 0 0;
+}
+
+.quote blockquote {
+    padding: 0 36px;
+}
+
+.quote footer {
+    margin: 24px 0 0 0;
+}
+
+section.gallery {
+    padding: 60px 0 0 0;
+    transition: all 0.5s;
+}
+
+.gallery-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 72px 0 0 0;
+    transition: all 0.5s;
+}
+
+.gallery-item, .add-drink {
+    position: relative;
+    margin: 0;
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.add-drink1 {
+    position: static;
+    margin: 0;
+    flex: 0 0 45%;
+    max-width: 90%;
+    text-align: center;
+    transition: all 0.5s;
+    list-style:none;
+}
+
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s;
+}
+
+.gallery-item:before {
+    position: absolute;
+    display: none;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    transition: all 0.5s;
+}
+
+.gallery-item figcaption {
+    position: absolute;
+    display: none;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #f7f1e3;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    transition: all 0.5s;
+}
+
+.gallery-item:hover:before, .gallery-item:hover figcaption {
+    display: block;
+    transition: all 0.5s;
+}
+
+.contact {
+    text-align: center;
+}
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+.social-links li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 20%;
+    margin-right: 50px;
+    margin-left: 50px;
+    transition: all 0.5s;
+}
+
+.social-links li:hover {
+    background: #ff5252;
+    transition: all 0.5s;
+}
+
+.social-links li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.social-links li a:hover {
+    color: #227093;
+    transition: all 0.5s;
+}
+
+.page-footer {
+    background: #000;
+    padding: 30px 0;
+    font-size: 22px;
+}
+
+.page-footer .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-footer p {
+    margin: 0;
+}
+
+.navigation {
+    background-color: black;
+    padding: 12px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    transition: all 0.5s;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+.navigation ul li {
+    display: inline-block;
+    margin-right: 25px;
+    transition: all 0.5s;
+}
+
+.navigation ul li a {
+    color: #f7f1e3;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    transition: all 0.5s;
+}
+
+.navigation ul li a:hover {
+    color: #f7f1e3;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    transition: all 0.5s;
+}
+
+.navigation input {
+    text-align: center;
+    font-size: 20px;
+    float: none;
+}
+
+.quote {
+    width: 100%;
+    padding: 0 72px;
+}
+
+@media (max-width: 767px) {
+    .features-wrapper {
+        display: block;
+    }
+
+    .feature {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .gallery-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+input {
+    float: right;
+}
+
+.file_btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    float: right;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.btn2 {
+    border: 2px solid #227093;
+    color: #227093;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn2:hover {
+    background-color: #ff5252;
+    color: #fff;
+    transition: all 0.7s;
+}

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputDataUser {
+
     private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final String DATE_MODIFIED = String.valueOf(LocalDateTime.now());
