@@ -2,7 +2,6 @@ package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.MessageService;
 import com.infoshare.service.UserService;
@@ -20,7 +19,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @WebServlet("/Drink-view")
 public class DrinkViewServlet extends HttpServlet {
@@ -45,8 +43,8 @@ public class DrinkViewServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<>();
         root.put("drink", drink);
-        root.put("ingredients",drink.getIngredientList());
-        root.put("user",request.getRemoteUser());
+        root.put("ingredients", drink.getIngredientList());
+        root.put("user", request.getRemoteUser());
         root.put("allDrink", drinkService.getDrinkList());
         root.put("favourite", userService.isFavourite(drink.getName(), id));
 
