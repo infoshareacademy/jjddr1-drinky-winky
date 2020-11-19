@@ -24,7 +24,6 @@
         <ul>
             <li><a href="#load">Welcome</a></li>
             <li><a href="#drink">Drink</a></li>
-            <li><a href="#load" style="margin-left: 140px">Welcome</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
             <li style="margin-left: 50px"><a style><i class="fa fa-fw fa-user"></i> ${loggedUser.getLogin()}</a></li>
