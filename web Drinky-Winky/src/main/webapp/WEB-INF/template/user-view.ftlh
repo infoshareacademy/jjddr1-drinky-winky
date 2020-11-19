@@ -28,8 +28,8 @@
             <li class="dropdown"><a>Features</a>
                 <div class="dropdown-content">
                     <a href="#add">Add to Favourite</a>
+                    <a href="#fav-list">Favourite list</a>
                     <a href="#category">Category Search</a>
-                    <a href="#contact">Contact</a>
                 </div>
             </li>
 
@@ -68,7 +68,7 @@
 
     <div class="page-intro">
         <div class="container">
-            <h1 class="main-title">Welcome <B>${loggedUser}</B></h1>
+            <h1 class="main-title">Welcome ${loggedUser}</h1>
         </div>
     </div>
 
@@ -115,9 +115,11 @@
 </section>
 
 <#include "add-favourite.ftlh">
-<section id="category">
-    <#include "category1.ftlh">
-</section>
+
+<#include "favourite-view.ftlh">
+
+<#include "category1.ftlh">
+
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>
