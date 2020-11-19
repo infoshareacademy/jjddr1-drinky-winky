@@ -10,7 +10,9 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,11 +44,15 @@ public class DrinkService {
 
     public DrinkDTO getDrinkByName(String name) {
         Drink drinkByName = drinkDao.getDrinkByName(name);
-        if (drinkByName != null) {
+        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getName().equals(name))) {
+            messageService.leaveMessage(1L, "Drink showed");
             return DrinkDTO.drinkToDTO(drinkByName);
+        } else {
+            messageService.leaveMessage(1L, "OMG! Nothing happened!");
+            return null;
         }
-        return null;
     }
+
 
     public DrinkDTO getDrinkById(Long id) {
         Drink drinkById = drinkDao.getDrinkById(id);

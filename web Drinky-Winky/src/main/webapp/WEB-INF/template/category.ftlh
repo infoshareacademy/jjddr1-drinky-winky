@@ -15,13 +15,6 @@
 
 <nav class="navigation">
     <div class="container">
-        <ul>
-            <li><a href="#gallery">Drinks</a></li>
-            <li><a href="#about">About application</a></li>
-            <li><a href="#contact">Contacts</a></li>
-            <li><a href="Age-query">Age query</a></li>
-            <li><a href="Start">Start</a></li>
-            <li><a href="Category-list1">Search By Category<</a></li>
 
             <input class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                    onblur="this.placeholder='Search...'">
@@ -45,7 +38,7 @@
                 <fieldset>
                     <legend> Choose Drink to view</legend>
 
-                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" type="text" placeholder="Search.." name="name"
+                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" placeholder="Search.." name="name"
                                                                 required/><br/></label>
 
                     <datalist id="categories">

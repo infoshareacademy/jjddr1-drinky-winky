@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @WebServlet("/Drink-view")
 public class DrinkViewServlet extends HttpServlet {
@@ -31,22 +32,28 @@ public class DrinkViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        DrinkDTO drink = drinkService.getDrinkByName(request.getParameter("name"));
+        String name = request.getParameter("name");
+        if (!(name == null && !name.equalsIgnoreCase(String.valueOf(drinkService.getDrinkByName(name))))) {
+        DrinkDTO drink = drinkService.getDrinkByName(name);
 
         Map<String, Object> root = new HashMap<>();
-        root.put("drink", drink);
-        root.put("ingredients",drink.getIngredientList());
-        root.put("user",request.getRemoteUser());
-        root.put("allDrink", drinkService.getDrinkList());
-        root.put("favourite", userService.isFavourite(drink.getName(), 1L));
+            root.put("drink", drink);
+            assert drink != null;
+            root.put("ingredients", drink.getIngredientList());
+            root.put("user", request.getRemoteUser());
+            root.put("allDrink", drinkService.getDrinkList());
+            root.put("favourite", userService.isFavourite(drink.getName(), 1L));
 
-        Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");
-        Writer out = response.getWriter();
+            Template template = templateProvider.getTemplate(getServletContext(), "drink-view.ftlh");
+            Writer out = response.getWriter();
 
-        try {
-            template.process(root, out);
-        } catch (TemplateException e) {
-            e.printStackTrace();
+            try {
+                template.process(root, out);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            } }
+        else {
+            response.sendRedirect("User-view?page=1");
         }
-    }
-}
+        }
+        }

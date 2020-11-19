@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 public class DrinkDao {
@@ -26,10 +27,10 @@ public class DrinkDao {
     }
 
     public Drink getDrinkByName(String name) {
-        TypedQuery<Drink> query = entityManager.createNamedQuery(Drink.GET_DRINK_BY_NAME, Drink.class);
-        query.setParameter("name", name);
-        return query.getSingleResult();
+        TypedQuery<Drink> query = (TypedQuery<Drink>) entityManager.createNamedQuery(Drink.GET_DRINK_BY_NAME, Drink.class).getResultStream().collect(Collectors.toSet()).stream().findFirst().orElseThrow();
+            return query.getSingleResult();
     }
+
 
     public Drink getDrinkById(Long id) {
         return entityManager.find(Drink.class, id);
@@ -57,5 +58,4 @@ public class DrinkDao {
         TypedQuery<Drink> query = entityManager.createNamedQuery(Drink.GET_DRINK_LIST, Drink.class);
         return query.getResultList();
     }
-
 }

@@ -14,15 +14,15 @@
                 <fieldset>
                     <legend> Choose category to view</legend>
 
-                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" type="text" type="text" placeholder="Search.." name="name"
-                                                                required/><br/></label>
+                    <label for="names-choice">Name: <br/><input list="categories" id="names-choice" placeholder="Search.." name="name"
+                                                                required /><br/></label>
 
                     <datalist id="categories">
                         <#if categories??>
                             <#list categories>
                                 <ul>
                                     <#items as category>
-                                    <option value="${category.getName()}">
+                                        <option value="${category.getName()}"> ${category.getName()}</option>
                                         </#items>
                                 </ul>
                             </#list>
