@@ -5,7 +5,7 @@
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+    <title>Welcome</title>
     <script>
         function goBack() {
             window.history.back();
@@ -67,7 +67,7 @@
 
     <div class="page-intro">
         <div class="container">
-            <h1 class="main-title">Welcome user</h1>
+            <h1 class="main-title">Welcome <B>${loggedUser}</B></h1>
         </div>
     </div>
 
