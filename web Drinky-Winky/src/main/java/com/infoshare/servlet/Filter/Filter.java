@@ -42,6 +42,7 @@ public class Filter implements javax.servlet.Filter {
             resp.sendRedirect("/Start");
         }
 
+
         chain.doFilter(servletRequest, servletResponse);
     }
 }

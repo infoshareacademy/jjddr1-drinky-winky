@@ -7,7 +7,6 @@
             <li><a href="#logs"><i class="fa fa-fw fa-user"></i> Login</a></li>
             <li><a href="Age-query">Age query</a></li>
             <li><a href="Start">Start</a></li>
-            <li><a href="User-view">User View</a></li>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="names" class="search" type="text" placeholder="Search.."

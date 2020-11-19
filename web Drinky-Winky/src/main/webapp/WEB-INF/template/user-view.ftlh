@@ -11,6 +11,9 @@
             window.history.back();
         }
     </script>
+
+    <link href="/styles/drop-menu.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 
@@ -18,14 +21,23 @@
     <div class="container">
         <ul>
             <li><a href="#load">Welcome</a></li>
-            <li><a href="#category">Search By Category</a></li>
+            <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
+            <li class="dropdown"><a>Features</a>
+                <div class="dropdown-content">
+                    <a href="#add">Add to Favourite</a>
+                    <a href="#category">Category Search</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </li>
+
 
             <form action="Drink-view" method="get">
-                <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
-                       onblur="this.placeholder='Search...'" required>
+                <input name="name" list="allDrink" class="search" type="text" placeholder="Search.."
+                       onfocus="this.placeholder=''"
+                       onblur="this.placeholder='Search...'" required/>
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
 
@@ -34,15 +46,20 @@
                     <#list allDrink>
                         <ul>
                             <#items as drink>
-                            <option value="${drink.getName()}">
+                                <option value="${drink.getName()}"> ${drink.getName()} </option>
                                 </#items>
                         </ul>
                     </#list>
                 </#if>
             </datalist>
 
-        </ul><br/>
-        <button onclick="goBack()" class="btn2">Go Back</button>
+        </ul>
+        <br/>
+
+        <form method="get" action="Logout" style="float: none;">
+            <button onclick="goBack()" class="btn2">Go Back</button>
+            <input class="btn2" type="submit" name="navigator" value="Logout"/>
+        </form>
     </div>
 </nav>
 
@@ -79,27 +96,27 @@
         </ul>
     </div>
 
-            <div class="gallery-wrapper">
-                <#if drinkList??>
-                    <#list drinkList>
-                        <#items as drink>
+    <div class="gallery-wrapper">
+        <#if drinkList??>
+            <#list drinkList>
+                <#items as drink>
 
-                            <figure class="gallery-item" style="padding: 5px">
-                                <img src=${drink.getImageUrl()} alt="image">
-                                <a href="Drink-view?name=${drink.getName()}">
-                                    <figcaption>${drink.getName()}</figcaption>
-                                </a>
-                            </figure>
+                    <figure class="gallery-item" style="padding: 5px">
+                        <img src=${drink.getImageUrl()} alt="image">
+                        <a href="Drink-view?name=${drink.getName()}">
+                            <figcaption>${drink.getName()}</figcaption>
+                        </a>
+                    </figure>
 
-                        </#items>
-                    </#list>
-                </#if>
-            </div>
+                </#items>
+            </#list>
+        </#if>
+    </div>
 </section>
 
 <#include "add-favourite.ftlh">
 <section id="category">
-<#include "category1.ftlh">
+    <#include "category1.ftlh">
 </section>
 <section class="statement">
     <div class="container">
