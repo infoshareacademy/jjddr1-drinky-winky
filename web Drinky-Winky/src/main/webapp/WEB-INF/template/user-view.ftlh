@@ -5,12 +5,12 @@
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <title>Welcome </title>
+    <#--    <script>-->
+    <#--        function goBack() {-->
+    <#--            window.history.back();-->
+    <#--        }-->
+    <#--    </script>-->
 
     <link href="/styles/drop-menu.css" rel="stylesheet" type="text/css">
 
@@ -47,7 +47,7 @@
                         <ul>
                             <#items as drink>
                                 <option value="${drink.getName()}"> ${drink.getName()} </option>
-                                </#items>
+                            </#items>
                         </ul>
                     </#list>
                 </#if>
@@ -56,8 +56,8 @@
         </ul>
         <br/>
 
+        <#--        <button onclick="goBack()" class="btn2">Go Back</button>-->
         <form method="get" action="Logout" style="float: none;">
-            <button onclick="goBack()" class="btn2">Go Back</button>
             <input class="btn2" type="submit" name="navigator" value="Logout"/>
         </form>
     </div>
