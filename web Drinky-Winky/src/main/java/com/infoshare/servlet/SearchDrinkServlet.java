@@ -16,7 +16,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/search-drink2")
+@WebServlet("/search-drink")
 public class SearchDrinkServlet extends HttpServlet {
     @Inject
     TemplateProvider templateProvider;
@@ -48,7 +48,7 @@ public class SearchDrinkServlet extends HttpServlet {
         root.put("result4", result4);
         root.put("result5", result5);
 
-        Template template = templateProvider.getTemplate(getServletContext(), "drink-search2.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "drink-search.ftlh");
         Writer out = response.getWriter();
 
         try {

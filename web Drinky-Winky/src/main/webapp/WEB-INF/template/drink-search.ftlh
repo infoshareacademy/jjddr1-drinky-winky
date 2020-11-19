@@ -5,11 +5,19 @@
     <link rel="stylesheet" href="styles/drink-search.css" type="text/css"/>
     <link rel="drink-search" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.css">
     <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    <title>CSS Tabs</title>
+    <title>Drink Search</title>
     <meta charset=utf-8>
+
 </head>
 
 <body>
+<center>
+<form action="search-drink" method="get"; style="">
+    <input pattern=".{3,}" required title="3 characters minimum" type="text" name="drinkSearch" id="drinkSearchPost"
+           placeholder="What would you like to drink?">
+    <button type="submit">Search</button>
+</form>
+</center>
 <div class="tabbed">
     <input type="radio" name="tabs" id="tab-nav-1" checked>
     <label for="tab-nav-1">Search by name</label>
@@ -23,35 +31,28 @@
     <label for="tab-nav-5">Search by glass type</label>
     <div class="tabs">
         <div>
-            <section class="gallery" id="gallery">
-                <div class="names">
-                    <h1 style="marker-mid: none"> Drinks found by name </h1>
-                    <h2> Results found: ${result1}</h2>
-
-                    <#if names??>
-                        <#list names>
-                            <ul >
-                                <#items as name>
-                                    <li class="list-block">
-
-
-                                        <figure>
-                                            <img src=${name.getImageUrl()} alt="image" style="width: 200px;">
-                                            <a href="Drink-view?name=${name.getName()}">
-                                                <figcaption>${name.getName()}</figcaption>
-                                            </a>
-                                        </figure>
-
-
-                                    </li>
-                                </#items>
-                            </ul>
-                        </#list>
-                    </#if>
-
-                </div>
-            </section>
+            <div>
+                <h1 style="marker-mid: none"> Drinks found by name </h1>
+                <h2> Results found: ${result1}</h2>
+            </div>
+            <div>
+                <#if names??>
+                    <#list names>
+                        <#items as name>
+                            <div class="szereg-4">
+                            <figure style="padding: 5px">
+                                <img src=${name.getImageUrl()} alt="image" style="width: 200px;">
+                                <a href="Drink-view?name=${name.getName()}">
+                                    <figcaption>${name.getName()}</figcaption>
+                                </a>
+                            </figure>
+                            </div>
+                        </#items>
+                    </#list>
+                </#if>
+            </div>
         </div>
+
         <div>
 
             <div>
@@ -157,5 +158,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.6/prefixfree.min.js"></script>
 </body>
+
 
 </html>
