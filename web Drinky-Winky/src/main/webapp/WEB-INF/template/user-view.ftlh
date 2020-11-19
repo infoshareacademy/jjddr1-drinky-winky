@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/html">
+<html lang="pl">
 <head>
 
     <#include "css.ftlh">
@@ -116,7 +116,7 @@
 
 <#include "add-favourite.ftlh">
 
-<#include "favourite-view.ftlh">
+<#include "favourite-section.ftlh">
 
 <#include "category1.ftlh">
 

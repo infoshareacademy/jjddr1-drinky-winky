@@ -20,6 +20,7 @@
     <div class="container">
         <ul>
             <li><a href="#load">Welcome</a></li>
+            <li><a href="#drink">Drink</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
@@ -73,7 +74,7 @@
         </div>
     </div>
 </section>
-<section class="add" id="Drink view">
+<section class="add" id="drink">
     <h2 class="section-title">${drink.getName()}</h2>
     <div class="gallery-wrapper">
 
