@@ -57,7 +57,7 @@
 
         <form action="Add-favourite" method="get">
             <div class="upload-btn-wrapper">
-                <a href="Add-favourite?name=${drink.getName()}"> <#if favourite == true>ULUBIONY</#if> <#if favourite == false>DODAJ</#if></a>
+                <a href="Add-favourite?name=${drink.getName()}"> <#if favourite == true> FAVOURITE <#else> ADD </#if> </a>
                 <#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
             </div>
         </form>
