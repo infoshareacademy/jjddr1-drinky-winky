@@ -64,15 +64,12 @@ public class UserDao {
         return entityManager.createNamedQuery(User.FIND_USER_LIST, User.class).getResultList();
     }
 
-    //Todo query to make
     public List<Drink> getFavouriteDrinkList(Long id) {
-        List resultList = entityManager.createNamedQuery(User.GET_FAVOURITE_LIST)
-                .getResultList();
-        return (List<Drink>) resultList;
+        return getUserById(id).getFavouriteDrinkList();
     }
 
-    public Boolean isFavourite(String drinkName, Long id) {
-        return getFavouriteDrinkList(id).stream().anyMatch(drink -> drink.getName().equalsIgnoreCase(drinkName));
+    public Optional<Drink> isFavourite(String drinkName, Long id) {
+        return getFavouriteDrinkList(id).stream().filter(drink -> drink.getName().equalsIgnoreCase(drinkName)).findFirst();
     }
 
     public User findUserByName(String name) {

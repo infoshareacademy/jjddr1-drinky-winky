@@ -44,14 +44,14 @@
         </ul>
         <br/>
 
-        <#if favourite == true>
+        <#if favourite.isEmpty()>
 
         <form action="Add-favourite?name=${drink.getName()}" method="post">
             <input class="btn2" type="submit" name="${drink.getName()}" value="ADD FAV"/>
             <button onclick="goBack()" class="btn2">Go Back</button>
         </form>
 
-        <#else>
+        <#elseif favourite.isPresent()>
 
         <form action="Add-favourite?name=${drink.getName()}" method="post">
             <input class="btn2" type="submit" name="${drink.getName()}" value="REMOVE FAV"/>

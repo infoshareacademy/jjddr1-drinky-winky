@@ -2,6 +2,7 @@ package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
+import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.UserService;
 import freemarker.template.Template;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @WebServlet("/Drink-view")
 public class DrinkViewServlet extends HttpServlet {
