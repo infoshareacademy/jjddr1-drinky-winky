@@ -11,6 +11,9 @@
         function pageRedirect() {
             window.location.href = "User-view?page=1";
         }
+        function logout() {
+            window.location.href = "Logout";
+        }
     </script>
 
 </head>
@@ -19,9 +22,10 @@
 <nav class="navigation">
     <div class="container">
         <ul>
-            <li><a href="#load">Welcome</a></li>
+            <li><a href="#load" style="margin-left: 140px">Welcome</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
+            <li style="margin-left: 50px"><a style><i class="fa fa-fw fa-user"></i> ${loggedUser.getLogin()}</a></li>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" placeholder="Search.."
@@ -46,21 +50,27 @@
 
         <#if favourite.isEmpty()>
 
-            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 49%; float: left">
+            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 47%; float: left">
                 <input class="btn2" type="submit" name="${drink.getName()}" value="ADD FAV" style="float: right"/>
             </form>
-            <div style="width: 49%; float: right">
+            <div style="width: 52%; float: right">
                 <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+                <button onclick="logout()" class="btn2" style="float: left; margin-left: 20px">Logout</button>
             </div>
+
         <#elseif favourite.isPresent()>
 
-            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 49%; float: left">
+            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 47%; float: left">
                 <input class="btn2" type="submit" name="${drink.getName()}" value="REMOVE FAV" style="float: right"/>
             </form>
-            <div style="width: 49%; float: right">
+            <div style="width: 52%; float: right">
                 <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+                <button onclick="logout()" class="btn2" style="float: left; margin-left: 20px">Logout</button>
             </div>
+
         </#if>
+
+
 
     </div>
 </nav>

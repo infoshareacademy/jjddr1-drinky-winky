@@ -1,6 +1,7 @@
 package com.infoshare.servlet;
 
 import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.UserDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.Drink;
 import com.infoshare.service.DrinkService;
@@ -40,6 +41,7 @@ public class DrinkViewServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute("login");
         Long id = userService.findUserByLogin(login).orElseThrow().getId();
+        UserDTO loggedUser = userService.findUserByLogin(login).orElseThrow();
 
         DrinkDTO drink = drinkService.getDrinkByName(request.getParameter("name"));
 
@@ -49,6 +51,7 @@ public class DrinkViewServlet extends HttpServlet {
         root.put("user",request.getRemoteUser());
         root.put("allDrink", drinkService.getDrinkList());
         root.put("favourite", userService.isFavourite(drink.getName(), id));
+        root.put("loggedUser", loggedUser);
 
         if (messageService.getMessageById(1L).isPresent()) {
             root.put("message", messageService.getMessageById(1L).orElseThrow());

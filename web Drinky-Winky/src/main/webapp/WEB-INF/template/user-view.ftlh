@@ -20,7 +20,7 @@
 <nav class="navigation">
     <div class="container">
         <ul>
-            <li><a href="#load">Welcome</a></li>
+            <li style="margin-left: 60px"><a href="#load">Welcome</a></li>
             <li><a href="#gallery">Drinks</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
@@ -32,7 +32,7 @@
                     <a href="#contact">Contact</a>
                 </div>
             </li>
-
+            <li style="margin-left: 50px"><a style><i class="fa fa-fw fa-user"></i> ${loggedUser.getLogin()}</a></li>
 
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.."
@@ -47,7 +47,7 @@
                         <ul>
                             <#items as drink>
                                 <option value="${drink.getName()}"> ${drink.getName()} </option>
-                                </#items>
+                            </#items>
                         </ul>
                     </#list>
                 </#if>
@@ -56,8 +56,8 @@
         </ul>
         <br/>
 
-        <form method="get" action="Logout" style="float: none;">
-            <button onclick="goBack()" class="btn2">Go Back</button>
+        <form method="get" action="Logout">
+            <button onclick="goBack()" class="btn2" style="margin-left: -20px">Go Back</button>
             <input class="btn2" type="submit" name="navigator" value="Logout"/>
         </form>
     </div>
@@ -68,7 +68,7 @@
 
     <div class="page-intro">
         <div class="container">
-            <h1 class="main-title">Welcome <B>${loggedUser}</B></h1>
+            <h1 class="main-title">Welcome ${loggedUser.getName()}</h1>
         </div>
     </div>
 

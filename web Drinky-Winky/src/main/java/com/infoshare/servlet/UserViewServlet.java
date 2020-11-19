@@ -75,7 +75,7 @@ public class UserViewServlet extends HttpServlet {
         }
         String loginUser = (String) request.getSession().getAttribute("login");
 
-        String loggedUser = userService.findUserByLogin(loginUser).orElseThrow().getName();
+        UserDTO loggedUser = userService.findUserByLogin(loginUser).orElseThrow();
         root.put("loggedUser", loggedUser);
 
         Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
