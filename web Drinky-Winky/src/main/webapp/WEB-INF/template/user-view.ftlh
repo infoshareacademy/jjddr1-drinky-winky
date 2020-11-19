@@ -39,7 +39,6 @@
                        onfocus="this.placeholder=''"
                        onblur="this.placeholder='Search...'" required/>
                 <button type="submit"><i class="fa fa-search"></i></button>
-
             </form>
 
             <datalist id="allDrink">
@@ -55,6 +54,8 @@
             </datalist>
 
         </ul>
+        <br/>
+
         <form method="get" action="Logout" style="float: none;">
             <button onclick="goBack()" class="btn2">Go Back</button>
             <input class="btn2" type="submit" name="navigator" value="Logout"/>

@@ -41,9 +41,25 @@
                     </#list>
                 </#if>
             </datalist>
+        </ul>
+        <br/>
 
-        </ul><br/>
-        <button onclick="goBack()" class="btn2">Go Back</button>
+        <#if favourite == true>
+
+        <form action="Add-favourite?name=${drink.getName()}" method="post">
+            <input class="btn2" type="submit" name="${drink.getName()}" value="ADD FAV"/>
+            <button onclick="goBack()" class="btn2">Go Back</button>
+        </form>
+
+        <#else>
+
+        <form action="Add-favourite?name=${drink.getName()}" method="post">
+            <input class="btn2" type="submit" name="${drink.getName()}" value="REMOVE FAV"/>
+            <button onclick="goBack()" class="btn2">Go Back</button>
+        </form>
+
+        </#if>
+
     </div>
 </nav>
 <section class="splash" id="load"
@@ -53,17 +69,7 @@
     </div>
 </section>
 <section class="add" id="Drink view">
-    <h2 class="section-title">${drink.getName()}
-
-        <form action="Add-favourite" method="get">
-            <div class="upload-btn-wrapper">
-                <a href="Add-favourite?name=${drink.getName()}"> <#if favourite == true> FAVOURITE <#else> ADD </#if> </a>
-                <#--    <input class="btn2" type="submit" name="save" value="save"/><br/><br/>-->
-            </div>
-        </form>
-
-
-    </h2>
+    <h2 class="section-title">${drink.getName()}</h2>
     <div class="gallery-wrapper">
 
         <figure class="add-drink"></figure>
