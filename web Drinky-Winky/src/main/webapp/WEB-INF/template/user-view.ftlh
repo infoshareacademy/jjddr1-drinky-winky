@@ -12,34 +12,7 @@
         }
     </script>
 
-    <style>
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            color: #227093;
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            display: block;
-            background-color: black;
-            opacity: 0.75;
-            border-radius: 10px;
-            font-size: 14px;
-        }
-
-        .dropdown-content a:hover {
-            background-color: black;
-            opacity: 0.4;
-            border-radius: 10px;
-            font-size: 18px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            color: #227093;
-        }
-    </style>
+    <link href="/styles/drop-menu.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
