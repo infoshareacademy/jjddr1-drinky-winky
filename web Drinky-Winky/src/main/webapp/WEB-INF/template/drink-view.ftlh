@@ -22,6 +22,8 @@
 <nav class="navigation">
     <div class="container">
         <ul>
+            <li><a href="#load">Welcome</a></li>
+            <li><a href="#drink">Drink</a></li>
             <li><a href="#load" style="margin-left: 140px">Welcome</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
@@ -70,8 +72,6 @@
 
         </#if>
 
-
-
     </div>
 </nav>
 <section class="splash" id="load"
@@ -83,7 +83,7 @@
         </div>
     </div>
 </section>
-<section class="add" id="Drink view">
+<section class="add" id="drink">
     <h2 class="section-title">${drink.getName()}</h2>
     <div class="gallery-wrapper">
 

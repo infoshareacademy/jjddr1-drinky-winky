@@ -1,5 +1,5 @@
-<section class="add" id="Category List">
-    <h2 class="section-title">Category List</h2>
+<section class="add" id="category">
+    <h2 class="section-title">Category search</h2>
     <div class="gallery-wrapper">
 
         <figure class="add-drink"></figure>

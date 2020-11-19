@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/html">
+<html lang="pl">
 <head>
 
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome</title>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <title>Welcome </title>
+    <#--    <script>-->
+    <#--        function goBack() {-->
+    <#--            window.history.back();-->
+    <#--        }-->
+    <#--    </script>-->
 
     <link href="/styles/drop-menu.css" rel="stylesheet" type="text/css">
 
@@ -28,8 +28,8 @@
             <li class="dropdown"><a>Features</a>
                 <div class="dropdown-content">
                     <a href="#add">Add to Favourite</a>
+                    <a href="#fav-list">Favourite list</a>
                     <a href="#category">Category Search</a>
-                    <a href="#contact">Contact</a>
                 </div>
             </li>
             <li style="margin-left: 50px"><a style><i class="fa fa-fw fa-user"></i> ${loggedUser.getLogin()}</a></li>
@@ -57,7 +57,7 @@
         <br/>
 
         <form method="get" action="Logout">
-            <button onclick="goBack()" class="btn2" style="margin-left: -20px">Go Back</button>
+<#--            <button onclick="goBack()" class="btn2" style="margin-left: -20px">Go Back</button>-->
             <input class="btn2" type="submit" name="navigator" value="Logout"/>
         </form>
     </div>
@@ -115,9 +115,11 @@
 </section>
 
 <#include "add-favourite.ftlh">
-<section id="category">
-    <#include "category1.ftlh">
-</section>
+
+<#include "favourite-section.ftlh">
+
+<#include "category1.ftlh">
+
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>

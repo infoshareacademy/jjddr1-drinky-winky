@@ -1,6 +1,5 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.UserDTO;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.UserService;
 
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet("/Add-favourite")
 public class AddFavouriteServlet extends HttpServlet {
@@ -28,6 +26,7 @@ public class AddFavouriteServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute("login");
         Long id = userService.findUserByLogin(login).orElseThrow().getId();
+
         String name = request.getParameter("name");
         Long drinkId = drinkService.getDrinkByName(name).getId();
         userService.saveFavDrink(drinkId, id);

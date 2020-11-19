@@ -6,12 +6,11 @@
         <figure class="gallery-item">
             <img src="https://img.wonderhowto.com/img/original/31/78/63586557575482/0/635865575754823178.jpg"
                  alt="image">
-            <#--            <figcaption>${name.getName()}</figcaption>-->
         </figure>
 
 
         <figure>
-            <form method="get" action="Add-favourite" id="mySelect">
+            <form method="post" action="Add-favourite" id="mySelect">
                 <fieldset>
                     <legend> Choose a drink to add favourite </legend>
 
