@@ -8,7 +8,6 @@
 
 </head>
 
-<link href="../../styles/style.css" rel="stylesheet" type="text/css">
 <section class="quotes" id="quotes">
     <div class="container">
         <h2 class="section-title">RECIPES</h2>
@@ -31,7 +30,7 @@
                                                      align-content: center;
                                                      display: flex;">
                                                 <img src=${name.getImageUrl()} alt="image" style="width: 200px;">
-                                                <a href="http://localhost:8080/Drink-view?name=${name.getName()}">
+                                                <a href="Drink-view?name=${name.getName()}">
                                                     <figcaption>${name.getName()}</figcaption>
                                                 </a>
                                             </figure>
@@ -67,7 +66,7 @@
                                                      display: flex;">
                                                 <img src=${category.getImageUrl()} alt="image"
                                                      style="width: 200px;">
-                                                <a href="http://localhost:8080/Drink-view?name=${category.getName()}">
+                                                <a href="Drink-view?name=${category.getName()}">
                                                     <figcaption>${category.getName()}</figcaption>
                                                 </a>
                                             </figure>
@@ -100,7 +99,7 @@
                                                      align-content: center;
                                                      display: flex;">
                                                 <img src=${type.getImageUrl()} alt="image" style="width: 200px;">
-                                                <a href="http://localhost:8080/Drink-view?name=${type.getName()}">
+                                                <a href="Drink-view?name=${type.getName()}">
                                                     <figcaption>${type.getName()}</figcaption>
                                                 </a>
                                             </figure>
@@ -133,7 +132,7 @@
                                                      display: flex;">
                                                 <img src=${ingredient.getImageUrl()} alt="image"
                                                      style="width: 200px;">
-                                                <a href="http://localhost:8080/Drink-view?name=${ingredient.getName()}">
+                                                <a href="Drink-view?name=${ingredient.getName()}">
                                                     <figcaption>${ingredient.getName()}</figcaption>
                                                 </a>
                                             </figure>
@@ -167,7 +166,7 @@
                                                      display: flex;">
                                                 <img src=${glassType.getImageUrl()} alt="image"
                                                      style="width: 200px;">
-                                                <a href="http://localhost:8080/Drink-view?name=${glassType.getName()}">
+                                                <a href="Drink-view?name=${glassType.getName()}">
                                                     <figcaption>${glassType.getName()}</figcaption>
                                                 </a>
                                             </figure>
