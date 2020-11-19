@@ -15,7 +15,8 @@
             <article class="quote">
                 <blockquote>
                     <div class="names">
-                        <h1> Drinks found by name.</h1>
+                        <h1 style="marker-mid: none"> Drinks found by name </h1>
+                        <h1 style="margin-left: auto">Find by categories </h1>
                         <h2> Results found: ${result1}</h2>
                         <#if names??>
                             <#list names>
@@ -40,18 +41,15 @@
                             </#list>
                         </#if>
                     </div>
-
-
                 </blockquote>
             </article>
-
-
             <article class="quote">
                 <blockquote>
-                    <div class="categories">
-                        <h1> Drinks found by category</h1>
-                        <h2> Results found: ${result2}</h2>
 
+                        <div>
+                            <h1>Find by names                         Drinks found by category                         Find by type</h1>
+                            <h2> Results found: ${result2}</h2>
+                        </div>
                         <#if categories??>
                             <#list categories>
                                 <ul>
@@ -75,7 +73,7 @@
                                 </ul>
                             </#list>
                         </#if>
-                    </div>
+
 
                 </blockquote>
             </article>
@@ -83,7 +81,7 @@
             <article class="quote">
                 <blockquote>
                     <div class="types">
-                        <h1> Drinks found by type</h1>
+                        <h1>Find by category                         Drinks found by type                         Find by ingredient</h1>
                         <h2> Results found:${result5} </h2>
 
                         <#if types??>
@@ -115,7 +113,7 @@
             <article class="quote">
                 <blockquote>
                     <div class="ingredients">
-                        <h1> Drinks containing the specified ingredient</h1>
+                        <h1>Find by type Drinks                         containing the specified ingredient                         Find by glass type</h1>
                         <h2> Results found: ${result4}</h2>
 
                         <#if ingredients??>
@@ -149,7 +147,7 @@
                 <blockquote>
                     <div class="glasstypes">
 
-                        <h1> Drinks found by type of glass</h1>
+                        <h1>Find by ingredient                         Drinks found by type of glass</h1>
                         <h2> Results found: ${result3}</h2>
 
                         <#if glassTypes??>
