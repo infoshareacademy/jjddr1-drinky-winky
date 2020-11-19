@@ -46,7 +46,7 @@
                     <#list allDrink>
                         <ul>
                             <#items as drink>
-                            <option value="${drink.getName()}">
+                                <option value="${drink.getName()}"> ${drink.getName()} </option>
                                 </#items>
                         </ul>
                     </#list>
