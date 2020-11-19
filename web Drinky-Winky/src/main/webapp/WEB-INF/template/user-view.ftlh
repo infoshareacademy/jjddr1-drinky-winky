@@ -64,7 +64,8 @@
             <form action="Drink-view" method="get">
                 <input name="name" list="allDrink" class="search" type="text" placeholder="Search.." onfocus="this.placeholder=''"
                        onblur="this.placeholder='Search...'" required>
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit" style="float: none; margin-bottom: 8px; width: 30px; height: 28px"><i class="fa fa-search"></i></button><i class="fa fa-search"></i>
+                </button>
             </form>
 
             <datalist id="allDrink">
@@ -79,9 +80,9 @@
                 </#if>
             </datalist>
 
-        </ul><br/>
-        <button onclick="goBack()" class="btn2">Go Back</button>
+        </ul>
         <form method="get" action="Logout" style="float: none;" >
+            <button onclick="goBack()" class="btn2">Go Back</button>
             <input class="btn2" type="submit" name="navigator" value="Logout"/>
         </form>
     </div>
