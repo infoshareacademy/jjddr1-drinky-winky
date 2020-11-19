@@ -98,6 +98,12 @@ public class DrinkService {
         }
         return getDrinkList().subList(fromIndex, toIndex);
     }
+    public Set<String> getUniqueGlassesNameList() {
+        return drinkDao.getDrinkList()
+                .stream()
+                .map(Drink::getGlassType)
+                .collect(Collectors.toSet());
+    }
 
     public List<DrinkDTO> findDrinkListByName(String name) {
         if (name != null || !name.isBlank()) {
