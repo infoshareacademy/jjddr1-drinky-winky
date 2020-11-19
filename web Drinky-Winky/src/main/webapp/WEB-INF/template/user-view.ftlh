@@ -25,11 +25,11 @@
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <li class="dropdown"><a>Search By</a>
+            <li class="dropdown"><a>Features</a>
                 <div class="dropdown-content">
-                    <a href="#category">Drink</a>
-                    <a href="#category">Category</a>
-                    <a href="#category">Ingredient</a>
+                    <a href="#add">Add to Favourite</a>
+                    <a href="#category">Category Search</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </li>
 
