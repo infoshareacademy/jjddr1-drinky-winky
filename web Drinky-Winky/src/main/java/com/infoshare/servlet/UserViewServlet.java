@@ -3,6 +3,7 @@ package com.infoshare.servlet;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
+import com.infoshare.service.UserService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -29,6 +30,8 @@ public class UserViewServlet extends HttpServlet {
     DrinkService drinkService;
     @Inject
     CategoryService categoryService;
+    @Inject
+    UserService userService;
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +74,10 @@ public class UserViewServlet extends HttpServlet {
             root.put("categories", categoryService.getCategoriesList());
             root.put("pageNumber", pages);
         }
+        String loginUser = (String) request.getSession().getAttribute("login");
 
+        String loggedUser = userService.findUserByLogin(loginUser).orElseThrow().getName();
+        root.put("loggedUser", loggedUser);
 
         Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
         Writer out = response.getWriter();

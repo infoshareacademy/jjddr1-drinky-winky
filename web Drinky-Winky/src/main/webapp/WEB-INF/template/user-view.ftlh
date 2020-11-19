@@ -68,7 +68,7 @@
 
     <div class="page-intro">
         <div class="container">
-            <h1 class="main-title">Welcome user</h1>
+            <h1 class="main-title">Welcome <B>${loggedUser}</B></h1>
         </div>
     </div>
 
