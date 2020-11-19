@@ -2,6 +2,7 @@ package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
 import com.infoshare.dto.UserDTO;
+import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +60,7 @@ public class UserService {
 
     //    }
 
-    public Boolean isFavourite(String drinkName, Long id) {
+    public Optional<Drink> isFavourite(String drinkName, Long id) {
         return userDao.isFavourite(drinkName, id);
     }
 

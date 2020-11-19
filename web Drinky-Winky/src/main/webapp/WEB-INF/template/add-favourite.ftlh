@@ -1,4 +1,4 @@
-<section class="add" id="remove">
+<section class="add" id="add">
     <h2 class="section-title"> ADD TO FAVOURITE </h2>
     <div class="gallery-wrapper">
 
