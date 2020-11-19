@@ -17,7 +17,7 @@
     <script>
         var timer = setTimeout(function() {
             window.location='/Start'
-        }, 4000);
+        }, 1500);
     </script>
 
 </section>
