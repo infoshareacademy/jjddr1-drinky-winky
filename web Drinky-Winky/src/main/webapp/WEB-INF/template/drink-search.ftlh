@@ -1,3 +1,4 @@
+<html>
 <head>
 
     <#include "css.ftlh">
@@ -7,6 +8,8 @@
     <title>Searching results</title>
 
 </head>
+
+<body>
 
 <section class="quotes" id="quotes">
     <div class="container">
@@ -23,13 +26,7 @@
                                 <ul>
                                     <#items as name>
                                         <li>
-                                            <figure style="
-                                                     position: relative;
-                                                     flex: 0 0 25%;
-                                                     transition: all 0.5s;
-                                                     float: none;
-                                                     align-content: center;
-                                                     display: flex;">
+                                            <figure>
                                                 <img src=${name.getImageUrl()} alt="image" style="width: 200px;">
                                                 <a href="Drink-view?name=${name.getName()}">
                                                     <figcaption>${name.getName()}</figcaption>
@@ -46,33 +43,29 @@
             <article class="quote">
                 <blockquote>
 
-                        <div>
-                            <h1>Find by names                         Drinks found by category                         Find by type</h1>
+                    <div>
+                        <h1>Find by names
+                            <h1>Drinks found by category</h1>
+                            <h1> Find by type</h1>
                             <h2> Results found: ${result2}</h2>
-                        </div>
-                        <#if categories??>
-                            <#list categories>
-                                <ul>
-                                    <#items as category>
-                                        <li>
-                                            <figure style="
-                                                     position: relative;
-                                                     flex: 0 0 25%;
-                                                     transition: all 0.5s;
-                                                     float: none;
-                                                     align-content: center;
-                                                     display: flex;">
-                                                <img src=${category.getImageUrl()} alt="image"
-                                                     style="width: 200px;">
-                                                <a href="Drink-view?name=${category.getName()}">
-                                                    <figcaption>${category.getName()}</figcaption>
-                                                </a>
-                                            </figure>
-                                        </li>
-                                    </#items>
-                                </ul>
-                            </#list>
-                        </#if>
+                    </div>
+                    <#if categories??>
+                        <#list categories>
+                            <ul>
+                                <#items as category>
+                                    <li>
+                                        <figure>
+                                            <img src=${category.getImageUrl()} alt="image"
+                                                 style="width: 200px;">
+                                            <a href="Drink-view?name=${category.getName()}">
+                                                <figcaption>${category.getName()}</figcaption>
+                                            </a>
+                                        </figure>
+                                    </li>
+                                </#items>
+                            </ul>
+                        </#list>
+                    </#if>
 
 
                 </blockquote>
@@ -81,7 +74,9 @@
             <article class="quote">
                 <blockquote>
                     <div class="types">
-                        <h1>Find by category                         Drinks found by type                         Find by ingredient</h1>
+                        <h1>Find by category </h1>
+                        <h1> Drinks found by type </h1>
+                        <h1> Find by ingredient</h1>
                         <h2> Results found:${result5} </h2>
 
                         <#if types??>
@@ -89,13 +84,7 @@
                                 <ul>
                                     <#items as type>
                                         <li>
-                                            <figure style="
-                                                     position: relative;
-                                                     flex: 0 0 25%;
-                                                     transition: all 0.5s;
-                                                     float: none;
-                                                     align-content: center;
-                                                     display: flex;">
+                                            <figure>
                                                 <img src=${type.getImageUrl()} alt="image" style="width: 200px;">
                                                 <a href="Drink-view?name=${type.getName()}">
                                                     <figcaption>${type.getName()}</figcaption>
@@ -113,7 +102,11 @@
             <article class="quote">
                 <blockquote>
                     <div class="ingredients">
-                        <h1>Find by type Drinks                         containing the specified ingredient                         Find by glass type</h1>
+                        <h1style
+                        ="margin-left: 20px; text-align: center">Find by type </h1>
+                        <h1> Drinks containing the specified ingredient </h1>
+                        <h1style
+                        ="margin-right: 20px; text-align: center"> Find by glass type</h1>
                         <h2> Results found: ${result4}</h2>
 
                         <#if ingredients??>
@@ -121,13 +114,7 @@
                                 <ul>
                                     <#items as ingredient>
                                         <li>
-                                            <figure style="
-                                                     position: relative;
-                                                     flex: 0 0 25%;
-                                                     transition: all 0.5s;
-                                                     float: none;
-                                                     align-content: center;
-                                                     display: flex;">
+                                            <figure>
                                                 <img src=${ingredient.getImageUrl()} alt="image"
                                                      style="width: 200px;">
                                                 <a href="Drink-view?name=${ingredient.getName()}">
@@ -147,7 +134,8 @@
                 <blockquote>
                     <div class="glasstypes">
 
-                        <h1>Find by ingredient                         Drinks found by type of glass</h1>
+                        <h1 style="margin-left: 20px; text-align: center">Find by ingredient</h1>
+                        <h1> Drinks found by type of glass</h1>
                         <h2> Results found: ${result3}</h2>
 
                         <#if glassTypes??>
@@ -155,13 +143,7 @@
                                 <ul>
                                     <#items as glassType>
                                         <li>
-                                            <figure style="
-                                                     position: relative;
-                                                     flex: 0 0 25%;
-                                                     transition: all 0.5s;
-                                                     float: none;
-                                                     align-content: center;
-                                                     display: flex;">
+                                            <figure>
                                                 <img src=${glassType.getImageUrl()} alt="image"
                                                      style="width: 200px;">
                                                 <a href="Drink-view?name=${glassType.getName()}">
@@ -179,9 +161,10 @@
         </div>
     </div>
 </section>
-<#include "contact.ftlh">
 
-<#include "footer.ftlh">
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="scripts/main.js"></script>
+
+</body>
+</html>

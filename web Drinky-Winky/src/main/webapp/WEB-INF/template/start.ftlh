@@ -20,7 +20,7 @@
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <form action="search-drink" method="get">
+            <form action="search-drink2" method="get">
                 <input pattern=".{3,}" required title="3 characters minimum" type="text" name="drinkSearch" id="drinkSearchPost" placeholder="What would you like to drink?">
                 <button type="submit">Search</button>
             </form>
