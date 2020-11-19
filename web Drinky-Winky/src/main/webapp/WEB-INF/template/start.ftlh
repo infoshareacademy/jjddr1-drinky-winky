@@ -20,16 +20,9 @@
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contacts</a></li>
 
-            <form method="get" action="Navigation-servlet">
-                <input type="submit" name="navigator" value="admin"/>
-                <input type="submit" name="navigator" value="user"/>
-            </form>
-
-
-
             <form action="search-drink" method="get">
-                <label for="drinkSearchPost">Drink Search:</label> <input pattern=".{3,}" required title="3 characters minimum" type="text" name="drinkSearch" id="drinkSearchPost" placeholder="*What would you like to drink?">
-                <button type="submit">Find</button>
+                <input pattern=".{3,}" required title="3 characters minimum" type="text" name="drinkSearch" id="drinkSearchPost" placeholder="What would you like to drink?">
+                <button type="submit">Search</button>
             </form>
         </ul>
 
