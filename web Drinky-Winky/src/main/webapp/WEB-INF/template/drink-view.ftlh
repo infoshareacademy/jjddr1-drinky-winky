@@ -6,12 +6,12 @@
 
     <meta charset="utf-8">
     <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
+
     <script>
-        function goBack() {
-            window.history.back();
+        function pageRedirect() {
+            window.location.href = "User-view?page=1";
         }
     </script>
-
 
 </head>
 <body>
@@ -20,11 +20,12 @@
     <div class="container">
         <ul>
             <li><a href="#load">Welcome</a></li>
+            <li><a href="#drink">Drink</a></li>
             <li><a href="#about">About application</a></li>
             <li><a href="#contact">Contacts</a></li>
 
             <form action="Drink-view" method="get">
-                <input name="name" list="allDrink" class="search" type="text" placeholder="Search.."
+                <input name="name" list="allDrink" class="search" placeholder="Search.."
                        onfocus="this.placeholder=''"
                        onblur="this.placeholder='Search...'" required>
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -46,18 +47,20 @@
 
         <#if favourite.isEmpty()>
 
-        <form action="Add-favourite?name=${drink.getName()}" method="post">
-            <input class="btn2" type="submit" name="${drink.getName()}" value="ADD FAV"/>
-            <button onclick="goBack()" class="btn2">Go Back</button>
-        </form>
-
+            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 49%; float: left">
+                <input class="btn2" type="submit" name="${drink.getName()}" value="ADD FAV" style="float: right"/>
+            </form>
+            <div style="width: 49%; float: right">
+                <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+            </div>
         <#elseif favourite.isPresent()>
 
-        <form action="Add-favourite?name=${drink.getName()}" method="post">
-            <input class="btn2" type="submit" name="${drink.getName()}" value="REMOVE FAV"/>
-            <button onclick="goBack()" class="btn2">Go Back</button>
-        </form>
-
+            <form action="Add-favourite?name=${drink.getName()}" method="post" style="width: 49%; float: left">
+                <input class="btn2" type="submit" name="${drink.getName()}" value="REMOVE FAV" style="float: right"/>
+            </form>
+            <div style="width: 49%; float: right">
+                <button onclick="pageRedirect()" class="btn2" style="float: left">Main</button>
+            </div>
         </#if>
 
     </div>
@@ -65,10 +68,13 @@
 <section class="splash" id="load"
          style="background-image:url('https://images.pexels.com/photos/239466/pexels-photo-239466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
     <div class="page-intro">
-        <div class="container"></div>
+        <div class="container">
+            <h1 class="main-title">${drink.getName()}</h1>
+            <#if message??><h2 class="main-subtitle" style="color: #eb0000"> ${message.getMessage()} </h2></#if>
+        </div>
     </div>
 </section>
-<section class="add" id="Drink view">
+<section class="add" id="drink">
     <h2 class="section-title">${drink.getName()}</h2>
     <div class="gallery-wrapper">
 

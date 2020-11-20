@@ -1,5 +1,6 @@
 package com.infoshare.servlet;
 
+import com.infoshare.dto.DrinkDTO;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.CategoryService;
 import com.infoshare.service.DrinkService;
@@ -21,15 +22,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/User-view")
-public class UserViewServlet extends HttpServlet {
+@WebServlet("/Favourite-list")
+public class FavouriteListServlet extends HttpServlet {
 
     @Inject
     TemplateProvider templateProvider;
-    @Inject
-    DrinkService drinkService;
-    @Inject
-    CategoryService categoryService;
     @Inject
     UserService userService;
 
@@ -40,13 +37,16 @@ public class UserViewServlet extends HttpServlet {
 
         HttpSession session = request.getSession(true);
         session.setMaxInactiveInterval(5 * 60);
-        Object login = session.getAttribute("login");
+        String login = (String) session.getAttribute("login");
+        Long id = userService.findUserByLogin(login).orElseThrow().getId();
+
+        List<DrinkDTO> favouriteList = userService.getFavouriteList(id);
 
         if (login == null) {
             response.sendRedirect("Logout");
         }
 
-        int size = drinkService.getDrinkList().size();
+        int size = userService.getFavouriteList(id).size();
         int numberOfPage = 1;
         List<Integer> pages = new ArrayList<>();
 
@@ -64,22 +64,17 @@ public class UserViewServlet extends HttpServlet {
 
         String page = request.getParameter("page");
         if (page.equals("user")) {
-            root.put("drinkList", drinkService.getRequestDrinkList(numberOfPage, 8));
-            root.put("allDrink", drinkService.getDrinkList());
-            root.put("categories", categoryService.getCategoriesList());
+            root.put("drinkList", userService.getRequestFavouriteDrinkList(id, numberOfPage, 8));
         } else {
             int i = Integer.parseInt(page);
-            root.put("allDrink", drinkService.getDrinkList());
-            root.put("drinkList", drinkService.getRequestDrinkList(i, 8));
-            root.put("categories", categoryService.getCategoriesList());
+            root.put("drinkList", userService.getRequestFavouriteDrinkList(id, i, 8));
             root.put("pageNumber", pages);
         }
-        String loginUser = (String) request.getSession().getAttribute("login");
 
-        String loggedUser = userService.findUserByLogin(loginUser).orElseThrow().getName();
+        String loggedUser = userService.findUserByLogin(login).orElseThrow().getName();
         root.put("loggedUser", loggedUser);
 
-        Template template = templateProvider.getTemplate(getServletContext(), "user-view.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "Favourite-view.ftlh");
         Writer out = response.getWriter();
 
         try {

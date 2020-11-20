@@ -2,8 +2,10 @@ package com.infoshare.dao;
 
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
+import com.infoshare.service.MessageService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -15,6 +17,8 @@ public class UserDao {
 
     @PersistenceContext
     EntityManager entityManager;
+    @Inject
+    MessageService messageService;
 
     public void addFav(Long drinkId, Long userId) {
         User userById = getUserById(userId);
@@ -24,8 +28,10 @@ public class UserDao {
 
         if (favouriteDrinkList.stream().anyMatch(e -> drinkId.equals(e.getId()))) {
             favouriteDrinkList.remove(drink);
+            messageService.leaveMessage(1L, "Drink was removed from favourite");
         } else {
             favouriteDrinkList.add(drink);
+            messageService.leaveMessage(1L, "Drink was added to favourite");
         }
         userById.setFavouriteDrinkList(favouriteDrinkList);
     }
