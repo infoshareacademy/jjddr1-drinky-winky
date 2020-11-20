@@ -27,7 +27,7 @@
     <label for="tab-nav-3">Search by type</label>
     <input type="radio" name="tabs" id="tab-nav-4">
     <label for="tab-nav-4">Search by ingredient</label>
-    <input type="radio" name="tabs" id="tab-nav-5" checked>
+    <input type="radio" name="tabs" id="tab-nav-5">
     <label for="tab-nav-5">Search by glass type</label>
     <div class="tabs">
         <div>
