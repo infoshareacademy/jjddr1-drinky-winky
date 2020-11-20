@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/html">
+<html lang="pl">
 <head>
 
     <#include "css.ftlh">
 
     <meta charset="utf-8">
-    <title>Welcome <#--<--${user.getName()}&ndash;&gt;--></title>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <title>Welcome </title>
+    <#--    <script>-->
+    <#--        function goBack() {-->
+    <#--            window.history.back();-->
+    <#--        }-->
+    <#--    </script>-->
 
     <link href="/styles/drop-menu.css" rel="stylesheet" type="text/css">
 
@@ -28,8 +28,8 @@
             <li class="dropdown"><a>Features</a>
                 <div class="dropdown-content">
                     <a href="#add">Add to Favourite</a>
+                    <a href="#fav-list">Favourite list</a>
                     <a href="#category">Category Search</a>
-                    <a href="#contact">Contact</a>
                 </div>
             </li>
 
@@ -47,7 +47,7 @@
                         <ul>
                             <#items as drink>
                                 <option value="${drink.getName()}"> ${drink.getName()} </option>
-                                </#items>
+                            </#items>
                         </ul>
                     </#list>
                 </#if>
@@ -56,8 +56,8 @@
         </ul>
         <br/>
 
+        <#--        <button onclick="goBack()" class="btn2">Go Back</button>-->
         <form method="get" action="Logout" style="float: none;">
-            <button onclick="goBack()" class="btn2">Go Back</button>
             <input class="btn2" type="submit" name="navigator" value="Logout"/>
         </form>
     </div>
@@ -68,7 +68,7 @@
 
     <div class="page-intro">
         <div class="container">
-            <h1 class="main-title">Welcome user</h1>
+            <h1 class="main-title">Welcome ${loggedUser}</h1>
         </div>
     </div>
 
@@ -115,9 +115,11 @@
 </section>
 
 <#include "add-favourite.ftlh">
-<section id="category">
-    <#include "category1.ftlh">
-</section>
+
+<#include "favourite-section.ftlh">
+
+<#include "category1.ftlh">
+
 <section class="statement">
     <div class="container">
         <p>Drink or not to drink.. that is the question</p>
