@@ -30,6 +30,7 @@
                     <a href="#add">Add to Favourite</a>
                     <a href="#fav-list">Favourite list</a>
                     <a href="#category">Category Search</a>
+                    <a href="#prof">Professional Search</a>
                 </div>
             </li>
 
@@ -119,6 +120,20 @@
 <#include "favourite-section.ftlh">
 
 <#include "category1.ftlh">
+
+<section class="about" id="prof">
+    <div class="container">
+        <h2 class="section-title">
+            Professional searcher engine</h2>
+        <form action="search-drink" method="get" style="width: 55%">
+            <button type="submit" style="float: right"><i class="fa fa-search"></i></button>
+            <input style="float: right" pattern=".{3,}" required title="3 characters minimum" type="text"
+                   name="drinkSearch" id="drinkSearchPost" placeholder="Professional searcher engine">
+        </form>
+
+    </div>
+</section>
+
 
 <section class="statement">
     <div class="container">
