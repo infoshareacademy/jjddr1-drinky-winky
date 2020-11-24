@@ -27,18 +27,13 @@ public class DrinkService {
 
     public DrinkDTO addDrink(DrinkDTO drinkDTO) {
         if (drinkDao.getDrinkList().stream().noneMatch(drink -> drink.getName().equals(drinkDTO.getName()))) {
-            Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
+            Drink drink = DrinkDTO.dtoToDrink(drinkDTO);
             messageService.leaveMessage(1L, "Drink was added!");
             return DrinkDTO.drinkToDTO(drinkDao.addDrink(drink));
         } else {
             messageService.leaveMessage(1L, "Nothing has happened, please change name.");
             return null;
         }
-    }
-
-    public void editDrink(DrinkDTO drinkDTO) {
-        Drink drink = DrinkDTO.DtoToDrink(drinkDTO);
-        drinkDao.editDrink(drink);
     }
 
     public DrinkDTO getDrinkByName(String name) {
@@ -55,13 +50,6 @@ public class DrinkService {
             return DrinkDTO.drinkToDTO(drinkById);
         }
         return null;
-    }
-
-    public void deleteDrinkById(Long id) {
-        if (drinkDao.getDrinkList().stream().anyMatch(drink -> drink.getId().equals(id))) {
-            drinkDao.deleteDrinkById(id);
-            logger.info("Drink has been deleted");
-        }
     }
 
     public void deleteDrinkByName(String name) {

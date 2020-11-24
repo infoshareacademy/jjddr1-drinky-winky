@@ -9,6 +9,7 @@ import java.util.List;
 public class DrinkDTO {
     private Long id;
     private String name;
+
     private Boolean isCustom;
     private Boolean isApproved;
     private String recipe;
@@ -18,8 +19,6 @@ public class DrinkDTO {
     private String imageUrl;
     private CategoryDto category;
     private List<IngredientDTO> ingredientList;
-
-
 
     public static DrinkDTO drinkToDTO(Drink drink) {
         DrinkDTO drinkDTO = new DrinkDTO();
@@ -43,7 +42,7 @@ public class DrinkDTO {
         return drinkDTO;
     }
 
-    public static Drink DtoToDrink(DrinkDTO drinkDTO) {
+    public static Drink dtoToDrink(DrinkDTO drinkDTO) {
         Drink drink = new Drink();
         drink.setName(drinkDTO.getName());
         drink.setCustom(drinkDTO.getCustom());
