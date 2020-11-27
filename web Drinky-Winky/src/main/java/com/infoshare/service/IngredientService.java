@@ -1,7 +1,7 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.IngredientDao;
-import com.infoshare.dto.IngredientDTO;
+import com.infoshare.dto.IngredientDto;
 import com.infoshare.model.Ingredient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,13 +20,13 @@ public class IngredientService {
     @Inject
     private IngredientDao ingredientDao;
 
-    public void addIngredient(IngredientDTO ingredientDTO) {
-        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+    public void addIngredient(IngredientDto ingredientDTO) {
+        Ingredient ingredient = IngredientDto.dtoToIngredient(ingredientDTO);
         ingredientDao.addIngredient(ingredient);
     }
 
-    public void editIngredient(IngredientDTO ingredientDTO) {
-        Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+    public void editIngredient(IngredientDto ingredientDTO) {
+        Ingredient ingredient = IngredientDto.dtoToIngredient(ingredientDTO);
         ingredientDao.editIngredient(ingredient);
     }
 
@@ -47,10 +45,10 @@ public class IngredientService {
 
 
     @Transactional
-    public List<IngredientDTO> getIngredientsList() {
+    public List<IngredientDto> getIngredientsList() {
         return ingredientDao.getIngredientsList()
                 .stream()
-                .map(IngredientDTO::ingredientToDto)
+                .map(IngredientDto::ingredientToDto)
                 .collect(Collectors.toList());
     }
 

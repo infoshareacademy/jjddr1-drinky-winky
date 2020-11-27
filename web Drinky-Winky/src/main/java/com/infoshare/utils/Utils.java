@@ -1,6 +1,6 @@
 package com.infoshare.utils;
 
-import com.infoshare.dto.UserDTO;
+import com.infoshare.dto.UserDto;
 import com.infoshare.model.User;
 import com.infoshare.service.UserService;
 
@@ -23,7 +23,7 @@ public class Utils {
         user.setName("Stefan");
         user.setSurname("Siarzewski");
         user.setUserType("Boss");
-        UserDTO userDTO = UserDTO.userToDto(user);
+        UserDto userDTO = UserDto.userToDto(user);
         userService.saveUser(userDTO);
     }
 

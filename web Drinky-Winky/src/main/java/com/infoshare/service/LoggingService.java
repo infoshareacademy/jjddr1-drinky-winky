@@ -1,6 +1,6 @@
 package com.infoshare.service;
 
-import com.infoshare.dto.UserDTO;
+import com.infoshare.dto.UserDto;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -12,11 +12,11 @@ public class LoggingService {
     @Inject
     UserService userService;
 
-    public Optional<UserDTO> checkUser(String login) {
+    public Optional<UserDto> checkUser(String login) {
         return userService.findUserByLogin(login);
     }
 
-    public boolean checkPassword(UserDTO userDTO, String password) {
+    public boolean checkPassword(UserDto userDTO, String password) {
         return userDTO.getPassword().equals(password);
     }
 

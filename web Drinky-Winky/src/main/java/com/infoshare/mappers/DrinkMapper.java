@@ -1,6 +1,5 @@
 package com.infoshare.mappers;
 
-import com.infoshare.dto.CategoryDto;
 import com.infoshare.model.Category;
 import com.infoshare.model.Drink;
 import com.infoshare.parser.DrinkAPI;
@@ -13,10 +12,10 @@ import javax.ejb.Stateless;
 @Stateless
 public class DrinkMapper {
 
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
-@EJB
-private IngredientMapper ingredientMapper;
-    
+    private final Logger logger = LoggerFactory.getLogger(getClass().getName());
+    @EJB
+    private IngredientMapper ingredientMapper;
+
     public Drink mapRecipes(DrinkAPI drinkAPI, Category category) {
 
         Drink drink = new Drink();
@@ -31,7 +30,7 @@ private IngredientMapper ingredientMapper;
         drink.setCategory(category);
         drink.setCustom(false);
         drink.setApproved(true);
-        logger.info("Drink " + drink.getName() +" mapped");
+        logger.info("Drink {} mapped", drink.getName());
         return drink;
     }
 }
