@@ -1,6 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.DrinkDto;
 import com.infoshare.freemarker.BfTemplateProvider;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.IngredientService;
@@ -40,7 +40,7 @@ public class SingleDrinkViewServlet extends HttpServlet {
         } else {
             Map<String, Object> drinkModel = new HashMap<>();
             Long id = Long.valueOf(paramId);
-            DrinkDTO drinkDTO = drinkService.getDrinkById(id);
+            DrinkDto drinkDTO = drinkService.getDrinkById(id);
             drinkModel.put("drink", drinkDTO);
             drinkModel.put("category", drinkDTO);
             drinkModel.put("ingredients", drinkDTO.getIngredientList());

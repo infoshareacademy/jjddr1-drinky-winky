@@ -1,9 +1,7 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.DrinkDto;
 import com.infoshare.freemarker.TemplateProvider;
-import com.infoshare.service.CategoryService;
-import com.infoshare.service.DrinkService;
 import com.infoshare.service.UserService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -40,7 +38,7 @@ public class FavouriteListServlet extends HttpServlet {
         String login = (String) session.getAttribute("login");
         Long id = userService.findUserByLogin(login).orElseThrow().getId();
 
-        List<DrinkDTO> favouriteList = userService.getFavouriteList(id);
+        List<DrinkDto> favouriteList = userService.getFavouriteList(id);
 
         if (login == null) {
             response.sendRedirect("Logout");

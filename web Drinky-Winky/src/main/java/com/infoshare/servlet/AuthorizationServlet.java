@@ -1,6 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.UserDTO;
+import com.infoshare.dto.UserDto;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.LoggingService;
 import freemarker.template.Template;
@@ -31,8 +31,8 @@ public class AuthorizationServlet extends HttpServlet {
         String userType = request.getParameter("userType");
 
         if (loggingService.checkUser(login).isPresent()) {
-            UserDTO registeredUserDTO = loggingService.checkUser(login).orElseThrow();
-            if (loggingService.checkPassword(registeredUserDTO, password)) {
+            UserDto registeredUserDto = loggingService.checkUser(login).orElseThrow();
+            if (loggingService.checkPassword(registeredUserDto, password)) {
 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("login", login);

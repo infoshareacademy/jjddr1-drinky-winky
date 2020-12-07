@@ -2,7 +2,7 @@ package com.infoshare.dto;
 
 import com.infoshare.model.User;
 
-public class UserDTO {
+public class UserDto {
 
     private Long id;
     private String name;
@@ -11,8 +11,8 @@ public class UserDTO {
     private String login;
     private String password;
 
-    public static UserDTO userToDto(User user) {
-        UserDTO userDTO = new UserDTO();
+    public static UserDto userToDto(User user) {
+        UserDto userDTO = new UserDto();
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
         userDTO.setSurname(user.getSurname());
@@ -22,7 +22,7 @@ public class UserDTO {
         return userDTO;
     }
 
-    public static User dtoToUser(UserDTO userDTO) {
+    public static User dtoToUser(UserDto userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());

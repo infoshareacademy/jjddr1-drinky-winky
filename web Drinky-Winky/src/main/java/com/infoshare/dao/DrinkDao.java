@@ -19,12 +19,6 @@ public class DrinkDao {
         return drink;
     }
 
-    //TODO PLEASE FIX IT id require
-    public Drink editDrink(Drink drink) {
-        entityManager.merge(drink);
-        return drink;
-    }
-
     public Drink getDrinkByName(String name) {
         TypedQuery<Drink> query = entityManager.createNamedQuery(Drink.GET_DRINK_BY_NAME, Drink.class);
         query.setParameter("name", name);
@@ -33,15 +27,6 @@ public class DrinkDao {
 
     public Drink getDrinkById(Long id) {
         return entityManager.find(Drink.class, id);
-    }
-
-    public Boolean deleteDrinkById(Long id) {
-        Drink drink = getDrinkById(id);
-        if (drink != null) {
-            entityManager.remove(drink);
-            return true;
-        }
-        return false;
     }
 
     public Boolean deleteDrinkByName(String name) {

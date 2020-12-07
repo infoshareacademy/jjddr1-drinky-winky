@@ -6,9 +6,10 @@ import com.infoshare.model.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrinkDTO {
+public class DrinkDto {
     private Long id;
     private String name;
+
     private Boolean isCustom;
     private Boolean isApproved;
     private String recipe;
@@ -17,12 +18,10 @@ public class DrinkDTO {
     private String modificationDate;
     private String imageUrl;
     private CategoryDto category;
-    private List<IngredientDTO> ingredientList;
+    private List<IngredientDto> ingredientList;
 
-
-
-    public static DrinkDTO drinkToDTO(Drink drink) {
-        DrinkDTO drinkDTO = new DrinkDTO();
+    public static DrinkDto drinkToDTO(Drink drink) {
+        DrinkDto drinkDTO = new DrinkDto();
         drinkDTO.setId(drink.getId());
         drinkDTO.setName(drink.getName());
         drinkDTO.setCustom(drink.getCustom());
@@ -34,16 +33,16 @@ public class DrinkDTO {
         drinkDTO.setImageUrl(drink.getImageUrl());
         drinkDTO.setCategory(CategoryDto.categoryToDto(drink.getCategory()));
 
-        List<IngredientDTO> ingredientDTOList = new ArrayList<>();
+        List<IngredientDto> ingredientDtoList = new ArrayList<>();
         drink.getIngredientList().forEach(ingredient -> {
-            IngredientDTO ingredientDTO = IngredientDTO.ingredientToDto(ingredient);
-            ingredientDTOList.add(ingredientDTO);
+            IngredientDto ingredientDTO = IngredientDto.ingredientToDto(ingredient);
+            ingredientDtoList.add(ingredientDTO);
                 });
-        drinkDTO.setIngredientList(ingredientDTOList);
+        drinkDTO.setIngredientList(ingredientDtoList);
         return drinkDTO;
     }
 
-    public static Drink DtoToDrink(DrinkDTO drinkDTO) {
+    public static Drink dtoToDrink(DrinkDto drinkDTO) {
         Drink drink = new Drink();
         drink.setName(drinkDTO.getName());
         drink.setCustom(drinkDTO.getCustom());
@@ -56,8 +55,8 @@ public class DrinkDTO {
         drink.setCategory(CategoryDto.dtoToCategory(drinkDTO.getCategory()));
 
         List<Ingredient> ingredientList = new ArrayList<>();
-        drinkDTO.getIngredientList().forEach(ingredientDTO -> {
-            Ingredient ingredient = IngredientDTO.dtoToIngredient(ingredientDTO);
+        drinkDTO.getIngredientList().forEach(ingredientDto -> {
+            Ingredient ingredient = IngredientDto.dtoToIngredient(ingredientDto);
             ingredientList.add(ingredient);
         });
         drink.setIngredientList(ingredientList);
@@ -144,11 +143,11 @@ public class DrinkDTO {
         this.category = category;
     }
 
-    public List<IngredientDTO> getIngredientList() {
+    public List<IngredientDto> getIngredientList() {
         return ingredientList;
     }
 
-    public void setIngredientList(List<IngredientDTO> ingredientList) {
+    public void setIngredientList(List<IngredientDto> ingredientList) {
         this.ingredientList = ingredientList;
     }
 

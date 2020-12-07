@@ -1,6 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.UserDTO;
+import com.infoshare.dto.UserDto;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.model.User;
 import com.infoshare.service.UserService;
@@ -53,7 +53,7 @@ public class UserToDatabaseServlet extends HttpServlet {
             user.setName(name);
             user.setSurname(surName);
             user.setUserType("user");
-            UserDTO userDTO = UserDTO.userToDto(user);
+            UserDto userDTO = UserDto.userToDto(user);
             userService.saveUser(userDTO);
 
             Map<String, Object> root2 = new HashMap<>();

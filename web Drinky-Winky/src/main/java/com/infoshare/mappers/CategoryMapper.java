@@ -10,12 +10,12 @@ import javax.ejb.Stateless;
 @Stateless
 public class CategoryMapper {
 
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private final Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     public Category mapCategory(DrinkAPI drinkAPI) {
         Category category = new Category();
         category.setName(drinkAPI.getCategory());
-        logger.info("Category " + category.getName() + " mapped");
+        logger.info("Category {} mapped", category.getName());
         return category;
     }
 }

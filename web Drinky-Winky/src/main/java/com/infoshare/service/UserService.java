@@ -1,8 +1,8 @@
 package com.infoshare.service;
 
 import com.infoshare.dao.UserDao;
-import com.infoshare.dto.DrinkDTO;
-import com.infoshare.dto.UserDTO;
+import com.infoshare.dto.DrinkDto;
+import com.infoshare.dto.UserDto;
 import com.infoshare.model.Drink;
 import com.infoshare.model.User;
 import org.slf4j.Logger;
@@ -28,22 +28,22 @@ public class UserService {
         userDao.addFav(drinkId, userId);
     }
 
-    public Boolean saveUser(UserDTO userDTO) {
+    public Boolean saveUser(UserDto userDTO) {
         if (userDao.getUserList().stream().noneMatch(user -> user.getLogin().equals(userDTO.getLogin()))) {
-            User user = UserDTO.dtoToUser(userDTO);
+            User user = UserDto.dtoToUser(userDTO);
             userDao.saveUser(user);
         }
         return false;
     }
 
-    public void updateUser(UserDTO userDTO, Long id) {
-        userDao.updateUser(UserDTO.dtoToUser(userDTO), id);
+    public void updateUser(UserDto userDTO, Long id) {
+        userDao.updateUser(UserDto.dtoToUser(userDTO), id);
     }
 
-    public UserDTO getUserById(Long id) {
+    public UserDto getUserById(Long id) {
         User userByID = userDao.getUserById(id);
         if (userByID != null) {
-            return UserDTO.userToDto(userByID);
+            return UserDto.userToDto(userByID);
         }
         return null;
     }
@@ -52,14 +52,14 @@ public class UserService {
         userDao.deleteUserById(id);
     }
 
-    public List<DrinkDTO> getFavouriteList(Long userId) {
+    public List<DrinkDto> getFavouriteList(Long userId) {
         return userDao.getFavouriteDrinkList(userId)
                 .stream()
-                .map(DrinkDTO::drinkToDTO)
+                .map(DrinkDto::drinkToDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<DrinkDTO> getRequestFavouriteDrinkList(Long userId, int request, int size) {
+    public List<DrinkDto> getRequestFavouriteDrinkList(Long userId, int request, int size) {
 
         int fromIndex = (request - 1) * size;
         int toIndex = request * size;
@@ -74,30 +74,30 @@ public class UserService {
         return userDao.isFavourite(drinkName, id);
     }
 
-    public UserDTO getUserByLoginAndPass(String login, String password) {
+    public UserDto getUserByLoginAndPass(String login, String password) {
         User userByLoginAndPass = userDao.getUserByLoginAndPass(login, password);
-        return UserDTO.userToDto(userByLoginAndPass);
+        return UserDto.userToDto(userByLoginAndPass);
     }
 
-    public Optional<UserDTO> findUserByLogin(String login) {
+    public Optional<UserDto> findUserByLogin(String login) {
         if (userDao.findUserByLogin(login).isPresent()) {
-            return Optional.of(UserDTO.userToDto(userDao.findUserByLogin(login).orElseThrow()));
+            return Optional.of(UserDto.userToDto(userDao.findUserByLogin(login).orElseThrow()));
         }
         return Optional.empty();
     }
 
-    public UserDTO getUserLogin(String login) {
+    public UserDto getUserLogin(String login) {
         if (userDao.getUserList().stream().anyMatch(user -> user.getLogin().equals(login))) {
             User user = userDao.getLogin(login);
-            return UserDTO.userToDto(user);
+            return UserDto.userToDto(user);
         }
         return null;
     }
 
-    public UserDTO getUserPassword(String password) {
+    public UserDto getUserPassword(String password) {
         if (userDao.getUserList().stream().anyMatch(user -> user.getPassword().equals(password))) {
             User user = userDao.getPassword(password);
-            return UserDTO.userToDto(user);
+            return UserDto.userToDto(user);
         }
         return null;
     }

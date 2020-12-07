@@ -1,6 +1,6 @@
 package com.infoshare.servlet;
 
-import com.infoshare.dto.DrinkDTO;
+import com.infoshare.dto.DrinkDto;
 import com.infoshare.freemarker.TemplateProvider;
 import com.infoshare.service.DrinkService;
 import com.infoshare.service.MessageService;
@@ -39,7 +39,7 @@ public class DrinkViewServlet extends HttpServlet {
         String login = (String) session.getAttribute("login");
         Long id = userService.findUserByLogin(login).orElseThrow().getId();
 
-        DrinkDTO drink = drinkService.getDrinkByName(request.getParameter("name"));
+        DrinkDto drink = drinkService.getDrinkByName(request.getParameter("name"));
 
         Map<String, Object> root = new HashMap<>();
         root.put("drink", drink);
