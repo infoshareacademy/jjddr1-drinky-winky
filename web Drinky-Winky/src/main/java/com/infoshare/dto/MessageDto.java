@@ -8,7 +8,7 @@ public class MessageDto {
     private String message;
 
     public static MessageDto messageToDto(Message message) {
-        return new MessageDto(message.getId() ,message.getMessage());
+        return new MessageDto(message.getId() ,message.getInformation());
     }
 
     public static Message dtoToMessage(MessageDto messageDto) {

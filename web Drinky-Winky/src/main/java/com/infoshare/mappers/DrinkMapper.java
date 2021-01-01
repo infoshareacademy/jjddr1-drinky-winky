@@ -28,8 +28,8 @@ public class DrinkMapper {
         drink.setModificationDate(drinkAPI.getModificationDate());
         drink.setImageUrl(drinkAPI.getImageUrl());
         drink.setCategory(category);
-        drink.setCustom(false);
-        drink.setApproved(true);
+        drink.setIsCustom(false);
+        drink.setIsApproved(true);
         logger.info("Drink {} mapped", drink.getName());
         return drink;
     }

@@ -24,8 +24,8 @@ public class DrinkDto {
         DrinkDto drinkDTO = new DrinkDto();
         drinkDTO.setId(drink.getId());
         drinkDTO.setName(drink.getName());
-        drinkDTO.setCustom(drink.getCustom());
-        drinkDTO.setApproved(drink.getApproved());
+        drinkDTO.setCustom(drink.getIsCustom());
+        drinkDTO.setApproved(drink.getIsApproved());
         drinkDTO.setRecipe(drink.getRecipe());
         drinkDTO.setDrinkType(drink.getDrinkType());
         drinkDTO.setGlassType(drink.getGlassType());
@@ -45,8 +45,8 @@ public class DrinkDto {
     public static Drink dtoToDrink(DrinkDto drinkDTO) {
         Drink drink = new Drink();
         drink.setName(drinkDTO.getName());
-        drink.setCustom(drinkDTO.getCustom());
-        drink.setApproved(drinkDTO.getApproved());
+        drink.setIsCustom(drinkDTO.getCustom());
+        drink.setIsApproved(drinkDTO.getApproved());
         drink.setRecipe(drinkDTO.getRecipe());
         drink.setDrinkType(drinkDTO.getDrinkType());
         drink.setGlassType(drinkDTO.getGlassType());
