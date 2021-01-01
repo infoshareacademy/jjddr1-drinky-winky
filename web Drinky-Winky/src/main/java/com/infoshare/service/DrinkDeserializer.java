@@ -18,7 +18,7 @@ import java.util.Properties;
 
 public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
 
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private final Logger logger = LoggerFactory.getLogger(getClass().getName());
     private static final String SETTINGS_FILE_NAME = "settings.properties";
     private static final String DATE_FORMAT = "date.format";
 
@@ -78,7 +78,7 @@ public class DrinkDeserializer extends JsonDeserializer<DrinkAPI> {
         Properties settings = new Properties();
         settings.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(SETTINGS_FILE_NAME)).openStream());
         String dateFormat = settings.getProperty(DATE_FORMAT);
-        logger.info("Date Time format is : " + dateFormat);
+        logger.info("Date Time format is : {}", dateFormat);
         return dateFormat;
     }
 }
