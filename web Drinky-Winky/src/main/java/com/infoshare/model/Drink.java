@@ -1,6 +1,9 @@
 package com.infoshare.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,6 +29,8 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 public class Drink {
     public static final String GET_RECIPE_BY_CATEGORY = "Drink.findDrinkByCategory";
     public static final String GET_DRINK_BY_CATEGORY_AND_INGREDIENT = "Drink.findDrinkByCategoryIdAndIngredientName";

@@ -18,18 +18,19 @@ public class DrinkMapper {
 
     public Drink mapRecipes(DrinkAPI drinkAPI, Category category) {
 
-        Drink drink = new Drink();
-        drink.setId(drinkAPI.getId());
-        drink.setName(drinkAPI.getName());
-        drink.setDrinkType(drinkAPI.getDrinkType());
-        drink.setGlassType(drinkAPI.getGlassType());
-        drink.setRecipe(drinkAPI.getRecipe());
-        drink.getIngredientList().addAll(ingredientMapper.mapIngredients(drinkAPI));
-        drink.setModificationDate(drinkAPI.getModificationDate());
-        drink.setImageUrl(drinkAPI.getImageUrl());
-        drink.setCategory(category);
-        drink.setIsCustom(false);
-        drink.setIsApproved(true);
+        Drink drink = Drink.builder()
+                .id(drinkAPI.getId())
+                .name(drinkAPI.getName())
+                .drinkType(drinkAPI.getDrinkType())
+                .glassType(drinkAPI.getGlassType())
+                .recipe(drinkAPI.getRecipe())
+                .ingredientList(ingredientMapper.mapIngredients(drinkAPI))
+                .modificationDate(drinkAPI.getModificationDate())
+                .imageUrl(drinkAPI.getImageUrl())
+                .category(category)
+                .isCustom(false)
+                .isApproved(true)
+                .build();
         logger.info("Drink {} mapped", drink.getName());
         return drink;
     }
