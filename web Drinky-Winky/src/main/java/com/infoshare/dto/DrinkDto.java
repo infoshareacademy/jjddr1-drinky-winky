@@ -2,10 +2,12 @@ package com.infoshare.dto;
 
 import com.infoshare.model.Drink;
 import com.infoshare.model.Ingredient;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class DrinkDto {
     private Long id;
     private String name;
@@ -24,8 +26,8 @@ public class DrinkDto {
         DrinkDto drinkDTO = new DrinkDto();
         drinkDTO.setId(drink.getId());
         drinkDTO.setName(drink.getName());
-        drinkDTO.setCustom(drink.getIsCustom());
-        drinkDTO.setApproved(drink.getIsApproved());
+        drinkDTO.setIsCustom(drink.getIsCustom());
+        drinkDTO.setIsApproved(drink.getIsApproved());
         drinkDTO.setRecipe(drink.getRecipe());
         drinkDTO.setDrinkType(drink.getDrinkType());
         drinkDTO.setGlassType(drink.getGlassType());
@@ -45,8 +47,8 @@ public class DrinkDto {
     public static Drink dtoToDrink(DrinkDto drinkDTO) {
         Drink drink = new Drink();
         drink.setName(drinkDTO.getName());
-        drink.setIsCustom(drinkDTO.getCustom());
-        drink.setIsApproved(drinkDTO.getApproved());
+        drink.setIsCustom(drinkDTO.getIsCustom());
+        drink.setIsApproved(drinkDTO.getIsApproved());
         drink.setRecipe(drinkDTO.getRecipe());
         drink.setDrinkType(drinkDTO.getDrinkType());
         drink.setGlassType(drinkDTO.getGlassType());
@@ -62,94 +64,5 @@ public class DrinkDto {
         drink.setIngredientList(ingredientList);
         return drink;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Boolean getCustom() {
-        return isCustom;
-    }
-
-    public void setCustom(Boolean custom) {
-        isCustom = custom;
-    }
-
-    public Boolean getApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(Boolean approved) {
-        isApproved = approved;
-    }
-
-    public String getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(String recipe) {
-        this.recipe = recipe;
-    }
-
-    public String getDrinkType() {
-        return drinkType;
-    }
-
-    public void setDrinkType(String drinkType) {
-        this.drinkType = drinkType;
-    }
-
-    public String getGlassType() {
-        return glassType;
-    }
-
-    public void setGlassType(String glassType) {
-        this.glassType = glassType;
-    }
-
-    public String getModificationDate() {
-        return modificationDate;
-    }
-
-    public void setModificationDate(String modificationDate) {
-        this.modificationDate = modificationDate;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public CategoryDto getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryDto category) {
-        this.category = category;
-    }
-
-    public List<IngredientDto> getIngredientList() {
-        return ingredientList;
-    }
-
-    public void setIngredientList(List<IngredientDto> ingredientList) {
-        this.ingredientList = ingredientList;
-    }
-
 }
 
