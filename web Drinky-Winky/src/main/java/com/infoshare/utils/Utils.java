@@ -14,18 +14,24 @@ public class Utils {
     UserService userService;
 
     public void createRandomUserDto() {
+        User admin = new User();
+        admin.setId(1L);
+        admin.setLogin("login");
+        admin.setPassword("pass");
+        admin.setName("Stefan");
+        admin.setSurname("Siarzewski");
+        admin.setUserType("Boss");
+        UserDto adminDTO = UserDto.userToDto(admin);
+        userService.saveUser(adminDTO);
 
-        //chwilowy user do testu
         User user = new User();
-        user.setId(1L);
-        user.setLogin("login");
+        user.setId(2L);
+        user.setLogin("user");
         user.setPassword("pass");
-        user.setName("Stefan");
-        user.setSurname("Siarzewski");
-        user.setUserType("Boss");
+        user.setName("Jurek");
+        user.setSurname("Killer");
+        user.setUserType("Killer");
         UserDto userDTO = UserDto.userToDto(user);
         userService.saveUser(userDTO);
     }
-
-
 }
