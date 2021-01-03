@@ -50,8 +50,8 @@ public class NewDrinkServlet extends HttpServlet {
 
         DrinkDto drinkDTO = new DrinkDto();
         drinkDTO.setName(name);
-        drinkDTO.setCustom(true);
-        drinkDTO.setApproved(true);
+        drinkDTO.setIsCustom(true);
+        drinkDTO.setIsApproved(true);
         drinkDTO.setRecipe(recipe);
         drinkDTO.setDrinkType(drinkType);
         drinkDTO.setGlassType(glassType);

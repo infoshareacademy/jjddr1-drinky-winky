@@ -1,12 +1,12 @@
 package com.infoshare.model;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 @NamedQueries({
         @NamedQuery(
@@ -28,7 +28,7 @@ import java.util.List;
 })
 
 @Entity
-@Table(name = "category")
+@Data
 public class Category {
 
     public static final String FIND_CATEGORY_BY_NAME = "Category.findCategoryByName";
@@ -38,38 +38,13 @@ public class Category {
     public static final String FIND_DRINKS_BY_CATEGORY_NAME = "Category.getDrinksListByCategoryName";
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 50)
+    @Column(length = 50)
     @NotNull
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Drink> drinkList = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Drink> getDrinkList() {
-        return drinkList;
-    }
-
-    public void setDrinkList(List<Drink> drinkList) {
-        this.drinkList = drinkList;
-    }
 }

@@ -72,10 +72,12 @@
             <h1 class="main-title">Welcome ${loggedUser}</h1>
         </div>
     </div>
-
 </section>
 
 <section class="statement">
+    <div class="container">
+        <p>Drink or not to drink.. that is the question</p>
+    </div>
 </section>
 
 <section class="gallery" id="gallery">

@@ -1,5 +1,7 @@
 package com.infoshare.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -15,57 +17,24 @@ import java.util.List;
 })
 
 @Entity
-@Table(name = "ingredient", indexes = {@Index(name = "idx_name", columnList = "name")})
+@Table(indexes = {@Index(name = "idx_name", columnList = "name")})
+@Data
 public class Ingredient {
 
     public static final String FIND_INGREDIENT_BY_NAME = "Ingredient.findIngredientByName";
     public static final String GET_INGREDIENT_LIST = "Ingredient.getIngredientList";
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100)
+    @Column( length = 100)
     @NotNull
     private String name;
 
-    @Column(name = "measure")
     @NotNull
     private String measure;
 
     @ManyToMany(mappedBy = "ingredientList")
     private List<Drink> drinkList = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMeasure() {
-        return measure;
-    }
-
-    public void setMeasure(String measure) {
-        this.measure = measure;
-    }
-
-    public List<Drink> getDrinkList() {
-        return drinkList;
-    }
-
-    public void setDrinkList(List<Drink> drinkList) {
-        this.drinkList = drinkList;
-    }
 }

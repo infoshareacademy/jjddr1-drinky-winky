@@ -35,10 +35,9 @@ public class MessageDao {
     public void updateMessage(Long id, Message message) {
         Message messageById = findMessageById(id).orElseThrow();
         if (findMessageById(id).isPresent()) {
-            messageById.setMessage(message.getMessage());
+            messageById.setInformation(message.getInformation());
             entityManager.merge(messageById);
         }
     }
-
 }
 
