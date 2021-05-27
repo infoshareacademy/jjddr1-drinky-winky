@@ -4,11 +4,10 @@ import com.infoshare.drinkywinky.model.Drink;
 import com.infoshare.drinkywinky.model.DrinkList;
 
 import java.math.BigInteger;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -40,8 +39,8 @@ public class Utils {
      */
     public static Set<String> getCategoryOfAllDrink(DrinkList drinkList) {
         return drinkList.getAllDrink()
-                .stream().
-                        map(Drink::getCategory)
+                .stream()
+                .map(Drink::getCategory)
                 .collect(Collectors.toSet());
     }
 
@@ -50,12 +49,10 @@ public class Utils {
      * @return only unique names included in each drink
      */
     public static Set<String> getNamesOfAllIngredients(DrinkList drinkList) {
-        Set<String> ingredients = new HashSet<>();
-        List<Drink> allDrink = drinkList.getAllDrink();
-        for (Drink drink : allDrink) {
-            drink.getIngredients().forEach(e -> ingredients.add(e.toLowerCase()));
-        }
-        return ingredients;
+        return drinkList.getAllDrink()
+                .stream()
+                .flatMap(drink -> drink.getIngredients().stream())
+                .collect(Collectors.toSet());
     }
 
     /**
